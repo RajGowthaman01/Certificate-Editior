@@ -1,7 +1,7 @@
 <script>
 	import MetadataTemplate from "../modules/MetadataTemplate.svelte"
 	import FileName from "../modules/FileName.svelte"
-	import BaseImageUpload from "../modules/BaseImageUpload.svelte"
+
 	import { fade } from "svelte/transition"
 	import Tooltip from "../shared/tooltip.svelte"
 	import { createEventDispatcher } from "svelte"
