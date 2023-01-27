@@ -6,8 +6,6 @@
 	import { createEventDispatcher } from "svelte"
 	import OverlappingImageUpload from "./overlappingImageUpload.svelte"
 
-	export let pagination = true
-	export let baseImgUpload = false
 	const dispatch = createEventDispatcher()
 	let modalOverLay = true
 	let value = 0
