@@ -1,15 +1,14 @@
 <script>
 import MetadataTemplate from "../modules/MetadataTemplate.svelte"
 import FileName from "../modules/FileName.svelte"
-
+// import BaseImageUpload from "../modules/BaseImageUpload.svelte"
 import { fade } from "svelte/transition"
 import Tooltip from "../shared/tooltip.svelte"
 import { createEventDispatcher } from "svelte"
-// import OverlappingImageUpload from "./overlappingImageUpload.svelte"
-import DragAndDropImageUpload from "./dragAndDropImageUpload.svelte"
+import OverlappingImageUpload from "./overlappingImageUpload.svelte"
 const dispatch = createEventDispatcher()
 let modalOverLay = true
-let components = [MetadataTemplate, FileName, DragAndDropImageUpload]
+let components = [MetadataTemplate, FileName, OverlappingImageUpload]
 export let pagination = true
 export let baseImgUpload = false
 // export let current = FileName
@@ -34,7 +33,7 @@ const toggleModal = () => {
   <div
     class="absolute flex h-screen w-screen items-center justify-center bg-black/70 sm:p-5">
     <div
-      class="relative aspect-[18/10] w-[960px] rounded-md bg-certificateSection"
+      class="relative aspect-[16/9] w-[800px] rounded-md bg-certificateSection"
       in:fade
       out:fade>
       <!-- {#if Close} -->
