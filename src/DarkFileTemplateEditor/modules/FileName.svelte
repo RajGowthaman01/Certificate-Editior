@@ -8,7 +8,7 @@
 	let pagination = true
 </script>
 
-<h1 class="mb-4 pt-8 pl-8 text-4xl text-blue-400">
+<h1 class="text-primaryBlue mb-4 pt-8 pl-8 text-4xl dark:text-blue-400">
 	File
 	<br />
 	Name
