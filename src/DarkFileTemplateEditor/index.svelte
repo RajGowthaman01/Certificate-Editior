@@ -1,5 +1,5 @@
 <script>
-	import FileTemplateEditor from "./components/FileTemplateEditor.svelte"
+import FileTemplateEditor from "./components/FileTemplateEditor.svelte"
 </script>
 
 <FileTemplateEditor />

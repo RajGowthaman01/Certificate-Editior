@@ -1,9 +1,35 @@
 <script>
 import Index from "./FileTemplateEditor/index.svelte"
+import Index1 from "./DarkFileTemplateEditor/index.svelte"
+let showIndex = false,
+  showIndex1 = false,
+  showBtn = true
+$: if (showIndex || showIndex1) {
+  showBtn = false
+}
 </script>
 
 <main>
-  <Index />
+  {#if showBtn}
+    <div class="mx-auto flex h-screen w-2/4 items-center justify-between">
+      <button
+        on:click={() => (showIndex = true)}
+        class="rounded-md bg-blue-500 px-2 py-1 font-semibold text-white">
+        KARTHI
+      </button>
+      <button
+        on:click={() => (showIndex1 = true)}
+        class="rounded-md bg-blue-500 px-2 py-1 font-semibold text-white">
+        VENKATESH
+      </button>
+    </div>
+  {/if}
+  {#if showIndex}
+    <Index />
+  {/if}
+  {#if showIndex1}
+    <Index1 />
+  {/if}
 </main>
 
 <style global lang="postcss">
