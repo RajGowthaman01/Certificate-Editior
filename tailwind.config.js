@@ -57,6 +57,10 @@ module.exports = {
         green: "#3bb143",
         Red: "#ef4444",
         rose: "#e8155c",
+         // light-theme
+        lightGray: "#f3f3f3",
+        lightDarkGray: "#1b2a3e",
+        lightBlue: "#43a4cb",
       },
        boxShadow: {
         box_Shadow: "0px 0px 20px 10px rgb(0 0 0 / .15)",
