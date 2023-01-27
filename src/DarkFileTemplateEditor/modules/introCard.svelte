@@ -8,6 +8,7 @@
 
 	const dispatch = createEventDispatcher()
 	let modalOverLay = true
+	let darkMode = false
 	let value = 0
 	let components = [MetadataTemplate, FileName, OverlappingImageUpload]
 
@@ -25,10 +26,20 @@
 		console.log("modal toggled")
 		modalOverLay = !modalOverLay
 	}
+
+	const toggle = () => {
+		darkMode = !darkMode
+		window.document.body.classList.toggle("dark")
+	}
 </script>
 
-<div class:hidden={!modalOverLay} class="absolute flex h-screen w-screen items-center justify-center bg-black/70 sm:p-5">
-	<div class="bg-certificateSection relative aspect-[15/7] w-[700px] rounded-md  2xl:aspect-[16/8] 2xl:w-[800px]" in:fade out:fade>
+<div class:hidden={!modalOverLay} class="bg-topNavSvgBg/80 absolute flex h-screen w-screen items-center justify-center dark:bg-black/70 sm:p-5">
+	{#if darkMode}
+		<button on:click={toggle} class="absolute top-10 right-10 rounded-lg bg-gray-500 py-1 px-2 capitalize text-white   focus:outline-none "> darkMode </button>
+	{:else}
+		<button on:click={toggle} class="absolute top-10 right-10 rounded-lg bg-white py-1 px-2 capitalize text-gray-800   focus:outline-none "> lightMode </button>
+	{/if}
+	<div class="dark:bg-certificateSection bg-heading shadow-box_Shadow relative aspect-[15/7] w-[700px] rounded-md 2xl:aspect-[16/8] 2xl:w-[800px]" in:fade out:fade>
 		<!-- {#if Close} -->
 		<button class=" group absolute top-8 right-8 cursor-pointer" on:click={toggleModal}>
 			<div class="z-20 hidden group-hover:block">

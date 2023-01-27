@@ -21,7 +21,7 @@
 		baseImgUpload = false
 		pagination = !pagination
 	}
-	const removeBaseImage = () => {
+	export const removeBaseImage = () => {
 		PreviewBaseImage = !PreviewBaseImage
 		baseImgUpload = true
 		pagination = true

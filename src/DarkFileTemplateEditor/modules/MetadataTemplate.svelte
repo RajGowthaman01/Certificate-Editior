@@ -19,23 +19,23 @@
 	}
 </script>
 
-<h1 class="mb-4 pt-8 pl-8 text-4xl text-blue-400">
+<h1 class="text-primary_blue mb-4 pt-8 pl-8 text-4xl dark:text-blue-400">
 	MetaData
 	<br />
 	Template
 </h1>
 <div class="grid grid-cols-2">
 	<div class=" text-primaryGray pr-8 pl-8">
-		<p class="text-sm">Select the MetaData Template from which key values will be imported for autocompleting Name fills</p>
+		<p class="text-sm">Select the <strong>MetaData Template </strong> from which key values will be imported for autocompleting Name fills</p>
 	</div>
 	<div class="relative mx-auto w-2/3">
-		<button on:click={Dropdown} type="button" class="bg-secondary text-primaryGray focus:ring-primaryBlue relative w-full rounded-md py-2 px-4 text-left text-sm uppercase focus:outline-none focus:ring-2">
+		<button on:click={Dropdown} type="button" class="bg-topNavSvgBg dark:bg-secondary text-heading dark:text-primaryGray focus:ring-primaryBlue relative w-full rounded-md py-2 px-4 text-left text-sm uppercase focus:outline-none focus:ring-2">
 			{Documenttype}
 			<span class="absolute top-0 right-0 flex h-full items-center">
 				<DropDownIcon />
 			</span>
 		</button>
-		<div class:hidden={!showSelectOptions} class="bg-secondary text-primaryGray ring-primaryBlue absolute mt-2 w-full space-y-4 rounded-md text-sm ring-1">
+		<div class:hidden={!showSelectOptions} class="bg-topNavSvgBg dark:bg-secondary text-primaryGray ring-primaryBlue absolute mt-2 w-full space-y-4 rounded-md text-sm ring-1">
 			<div class="w-full">
 				<option on:click={() => SelectDocumentType("Sample 1")} class="SelectDocumentType">Sample 1</option>
 				<option on:click={() => SelectDocumentType("Sample 2")} class="SelectDocumentType">Sample 2</option>
@@ -69,7 +69,7 @@
 				}}
 			/>
 			<button
-				class="pagination pointer-events-none"
+				class="pagination"
 				title="Page 3"
 				on:click={() => {
 					dispatch("Component", 2)
@@ -89,7 +89,7 @@
 
 <style lang="postcss">
 	.SelectDocumentType {
-		@apply w-full cursor-pointer rounded-md py-2 px-4 text-sm text-[#949494] hover:bg-[#353535] hover:text-[#949494];
+		@apply text-heading w-full cursor-pointer rounded-md py-2 px-4 text-sm hover:bg-[#353535] dark:text-[#949494] dark:hover:text-[#949494];
 	}
 	.active {
 		@apply bg-primaryBlue;

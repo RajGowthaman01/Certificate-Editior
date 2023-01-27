@@ -34,14 +34,14 @@
 
 {#if baseImgUpload}
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<div class="h-full w-full" on:click={openFileInput} on:dragover|preventDefault|stopPropagation on:drop|preventDefault|stopPropagation={fileDrop}>
+	<div class="h-[326px] w-full 2xl:h-[400px]" on:click={openFileInput} on:dragover|preventDefault|stopPropagation on:drop|preventDefault|stopPropagation={fileDrop}>
 		<div class="flex-col">
 			<h1 class="mb-4 pt-8 pl-8 text-4xl text-blue-400">
 				Upload <br />
 				Image
 			</h1>
 			<div class=" text-primaryGray space-y-2 pr-8 pl-8">
-				<p class="text-sm">
+				<p class="text-justify text-sm">
 					Choose your <strong>Base Design Image</strong>
 					to upload.
 					<br />
@@ -56,7 +56,7 @@
 
 			<div class="mx-auto flex justify-center space-y-2 rounded-md text-center">
 				<div class="space-y-1 text-center">
-					<svg class="text-primaryBlue mx-auto h-20 w-20" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+					<svg class="text-primaryBlue mx-auto h-16 w-16 2xl:h-20 2xl:w-20 " stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
 						<path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 					</svg>
 					<div class="flex text-sm text-gray-600">
