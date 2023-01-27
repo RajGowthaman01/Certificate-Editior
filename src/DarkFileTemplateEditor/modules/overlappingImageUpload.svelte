@@ -2,8 +2,11 @@
 	import { createEventDispatcher } from "svelte"
 	import Tooltip from "../shared/tooltip.svelte"
 	import Tick from "../svg/tick.svelte"
-	import BaseDesignImageUpload from "./BaseDesignImageUpload.svelte"
+	import BaseDesignImageUpload from "./dragAndDrop.svelte"
+	import DisabledNexPage from "../svg/disabledNexPage.svelte"
+	import PrevPage from "../svg/prevPage.svelte"
 
+	let active = true
 	let baseImgUpload = true
 	let PreviewBaseImage = false
 	let pagination = true
@@ -13,8 +16,8 @@
 
 	const handleDrop = (e) => {
 		fileBlobUrl = URL.createObjectURL(e.detail.file)
-		PreviewBaseImage = !PreviewBaseImage
-		baseImgUpload = !baseImgUpload
+		PreviewBaseImage = true
+		baseImgUpload = false
 		pagination = !pagination
 	}
 	export const removeBaseImage = () => {
@@ -26,11 +29,50 @@
 
 {#if baseImgUpload}
 	<BaseDesignImageUpload on:onChange={handleDrop} />
+	<div class:hidden={!pagination} class="absolute inset-x-0 bottom-8 mx-auto flex items-center ">
+		<div class="mx-auto flex">
+			<nav class="flex flex-row items-center gap-4 md:justify-center">
+				<button
+					title="prev page"
+					on:click={() => {
+						dispatch("Component", 1)
+					}}
+				>
+					<PrevPage />
+				</button>
+				<button
+					class="pagination pointer-events-none"
+					title="Page 1"
+					on:click={() => {
+						dispatch("Component", 0)
+					}}
+				/>
+				<button
+					class="pagination"
+					title="Page 2"
+					on:click={() => {
+						dispatch("Component", 1)
+					}}
+				/>
+				<button
+					class="pagination"
+					title="Page 3"
+					class:active
+					on:click={() => {
+						dispatch("Component", 2)
+					}}
+				/>
+				<button class="pointer-events-none cursor-not-allowed" title="prev page">
+					<DisabledNexPage />
+				</button>
+			</nav>
+		</div>
+	</div>
 {/if}
 
 {#if PreviewBaseImage}
 	<div class="relative flex items-center">
-		<div class="bg-certificateSection aspect-[18/10] w-full flex-col">
+		<div class="bg-certificateSection aspect-[16/9] w-full flex-col">
 			<h1 class="mb-4 pt-16 pl-16 text-4xl text-blue-400">
 				Upload <br />
 				Image
@@ -70,9 +112,12 @@
 				</div>
 			</div>
 		</div>
-		<img src={fileBlobUrl} alt="" class="absolute -right-[80px] w-[600px] rounded-md" />
+		<img src={fileBlobUrl} alt="" class="absolute -right-[40px] w-[400px] rounded-md" />
 	</div>
 {/if}
 
 <style lang="postcss">
+	.active {
+		@apply bg-primaryBlue;
+	}
 </style>
