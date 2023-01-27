@@ -9,7 +9,7 @@
 	import DragAndDropImageUpload from "./dragAndDropImageUpload.svelte"
 	const dispatch = createEventDispatcher()
 	let modalOverLay = true
-	let components = [MetadataTemplate, FileName, DragAndDropImageUpload]
+	let components = [MetadataTemplate, FileName, OverlappingImageUpload]
 	export let pagination = true
 	export let baseImgUpload = false
 	// export let current = FileName
