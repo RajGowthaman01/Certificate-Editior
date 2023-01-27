@@ -12,15 +12,24 @@
 	let fileInput = document.createElement("input")
 	fileInput.type = "file"
 
+	/**
+	 *
+	 * @param e - an event targetting files to be selected
+	 */
 	fileInput.onchange = (e) => {
 		file = e.target.files[0]
 	}
-
+	/** @function
+	 * @name openFileInput - to open file input box
+	 */
 	const openFileInput = () => {
 		fileInput.click()
-		// console.log("clicked")
 	}
 
+	/** @function
+	 * @name openFileInput - to open file input box
+	 * @param e
+	 */
 	const fileDrop = (e) => {
 		file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0]
 	}
