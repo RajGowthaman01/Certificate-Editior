@@ -1,1 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-textGray group-hover:fill-primary_blue group-active:fill-darkGray" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="m13.775 22l-3.625-7.8L6 20V2l14 11h-7.1l3.6 7.725Z" /></svg>
