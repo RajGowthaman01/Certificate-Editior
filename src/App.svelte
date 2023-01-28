@@ -1,10 +1,11 @@
 <script>
-let showIndex = false,
-  showIndex1 = false,
-  showBtn = true
-$: if (showIndex || showIndex1) {
-  showBtn = false
-}
+  import Index from "./Pages/FileTemplateEditor/Index.svelte"
+  let showIndex = false,
+    showIndex1 = false,
+    showBtn = true
+  $: if (showIndex || showIndex1) {
+    showBtn = false
+  }
 </script>
 
 <main>
@@ -12,19 +13,20 @@ $: if (showIndex || showIndex1) {
     <div class="mx-auto flex h-screen w-2/4 items-center justify-between">
       <button
         on:click={() => (showIndex = true)}
-        class="rounded-md bg-blue-500 px-2 py-1 font-semibold text-white">
+        class="rounded-md bg-blue-500 px-2 py-1 font-semibold text-white"
+      >
         KARTHI
       </button>
       <button
         on:click={() => (showIndex1 = true)}
-        class="rounded-md bg-blue-500 px-2 py-1 font-semibold text-white">
+        class="rounded-md bg-blue-500 px-2 py-1 font-semibold text-white"
+      >
         VENKATESH
       </button>
     </div>
   {/if}
   {#if showIndex}
-    <h1>KARTHI</h1>
-    <!-- <Index /> -->
+    <Index />
   {/if}
   {#if showIndex1}
     <h1>VENKATESH</h1>
@@ -33,17 +35,17 @@ $: if (showIndex || showIndex1) {
 </main>
 
 <style global lang="postcss">
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-.spanLabelName {
-  @apply select-none text-sm font-bold text-textGray group-focus-within:text-primary_blue;
-}
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+  .spanLabelName {
+    @apply select-none text-sm font-bold text-textGray group-focus-within:text-primary_blue;
+  }
 
-.label-div {
-  @apply absolute inset-y-0 left-3 flex items-center;
-}
-.inputbox {
-  @apply block h-10 w-3/4 rounded-md border-none bg-lightGray text-sm text-white focus:ring-2  focus:ring-primary_blue;
-}
+  .label-div {
+    @apply absolute inset-y-0 left-3 flex items-center;
+  }
+  .inputbox {
+    @apply block h-10 w-3/4 rounded-md border-none bg-lightGray text-sm text-white focus:ring-2  focus:ring-primary_blue;
+  }
 </style>
