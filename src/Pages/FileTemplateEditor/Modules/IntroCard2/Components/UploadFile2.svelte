@@ -4,6 +4,11 @@ import { linear } from "svelte/easing"
 import { slide } from "svelte/transition"
 let blobUrl
 let formData
+let uploadImageHide = false
+let uploadHide = false
+let imgWidth = 0,
+  imgHeight = 0,
+  KB = 0
 const uploadImage = () => {
   console.log("uploadImage")
   let image = document.getElementById("imageUpload")
@@ -12,16 +17,26 @@ const uploadImage = () => {
   let datum = [...formData][0]
   File = datum[1]
   blobUrl = URL.createObjectURL(File)
+  KB = Math.floor(File.size / 1000).toFixed(1)
   console.log(blobUrl)
-  dispatch("uploadFile")
-  Modal.update((data) => {
-    data.bloburl = blobUrl
-    return data
-  })
+  console.log(File)
+  // dispatch("uploadFile")
+  // Modal.update((data) => {
+  //   data.bloburl = blobUrl
+  //   return data
+  // })
+  uploadImageHide = true
+  uploadHide = false
+
+  setTimeout(() => {
+    imgHeight = document.getElementById("UploadImage").naturalHeight
+    // imgHeight = document.querySelector("img").naturalHeight
+    imgWidth = document.getElementById("UploadImage").naturalWidth
+  }, 200)
 }
-let uploadHide = false
 const uploadHideShow = () => {
   uploadHide = !uploadHide
+  uploadImageHide = false
 }
 </script>
 
@@ -69,6 +84,51 @@ const uploadHideShow = () => {
             >PNG, JPG, GIF up to 10MB</button>
         </div>
       </form>
+    </div>
+  {/if}
+  {#if uploadImageHide}
+    <div
+      transition:slide={{ duration: 500, easing: linear }}
+      class="flex items-center gap-5">
+      <div class="flex justify-start">
+        <img
+          id="UploadImage"
+          src={blobUrl}
+          alt="selected img"
+          class="h-36 rounded-md object-contain" />
+      </div>
+      <div class="flex flex-col justify-center space-y-3">
+        <div
+          class="overflow-hidden text-ellipsis whitespace-nowrap text-sm text-textGray">
+          <p class="font-bold">File Name</p>
+          <p class="overflow-hidden text-ellipsis whitespace-nowrap font-thin">
+            {File.name}
+          </p>
+        </div>
+        <div class="items-center text-sm text-textGray">
+          <p class="font-bold">Resolution</p>
+          <p class="flex items-center font-thin">
+            {imgWidth}<svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="h-3 w-3">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12" />
+            </svg>{imgHeight} px
+          </p>
+        </div>
+        <div class="text-sm text-textGray">
+          <p class="font-bold">Size</p>
+          <p class="font-thin">
+            {KB}KB
+          </p>
+        </div>
+      </div>
     </div>
   {/if}
 </div>
