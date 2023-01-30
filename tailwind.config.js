@@ -27,8 +27,6 @@ module.exports = {
         lightGray: "rgb(47 , 47, 47)",
         textGray: "rgb(121 , 121, 121)",
         primary_blue: "rgb(48 , 122, 255)",
-<<<<<<< HEAD
-=======
         input_white: "rgb(242,242,242)",
         place_white: "rgb(180,180,180)", //text-color
         icon_black: "rgb(66,66,66)",
@@ -58,7 +56,6 @@ module.exports = {
       },
       boxShadow: {
         box_Shadow: "0px 0px 20px 10px rgb(0 0 0 / .15)",
->>>>>>> 0916ceaf5460d033ec9132d5461457e3648230cb
       },
     },
   },
