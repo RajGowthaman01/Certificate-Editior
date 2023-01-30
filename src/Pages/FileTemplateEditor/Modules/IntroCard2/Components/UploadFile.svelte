@@ -1,74 +1,90 @@
 <script>
-import UploadIcon from "../../../svgIcons/UploadIcon.svelte"
-import { linear } from "svelte/easing"
-import { slide } from "svelte/transition"
-let blobUrl
-let formData
-const uploadImage = () => {
-  console.log("uploadImage")
-  let image = document.getElementById("imageUpload")
-  formData = new FormData(image)
-  console.log([...formData])
-  let datum = [...formData][0]
-  File = datum[1]
-  blobUrl = URL.createObjectURL(File)
-  console.log(blobUrl)
-  dispatch("uploadFile")
-  Modal.update((data) => {
-    data.bloburl = blobUrl
-    return data
-  })
-}
-let uploadHide = false
-const uploadHideShow = () => {
-  uploadHide = !uploadHide
-}
+  import UploadIcon from "../../../svgIcons/UploadIcon.svelte"
+  import { linear } from "svelte/easing"
+  import { slide } from "svelte/transition"
+  import Delete from "../../../svgIcons/Delete.svelte"
+  import Modal from "../../../Stores/Modal"
+  import Int from "../../../svgIcons/Int.svelte"
+  let upload = true,
+    blobUrl,
+    formData,
+    imgHeight,
+    imgWidth,
+    KB
+  const uploadImage = () => {
+    console.log("uploadImage")
+    let image = document.getElementById("imageUpload")
+    formData = new FormData(image)
+    console.log([...formData])
+    let datum = [...formData][0]
+    File = datum[1]
+    blobUrl = URL.createObjectURL(File)
+    upload = false
+    KB = Math.floor(File.size / 1000).toFixed(1)
+    console.log(blobUrl)
+    Modal.update((data) => {
+      data.bloburl = blobUrl
+      return data
+    })
+
+    setTimeout(() => {
+      imgHeight = document.getElementById("upload").naturalHeight
+      // imgHeight = document.querySelector("img").naturalHeight
+      imgWidth = document.getElementById("upload").naturalWidth
+    }, 200)
+  }
+  const chooseDiffFile = () => {
+    upload = true
+  }
 </script>
 
-<div class="flex flex-col space-y-3 py-4">
-  <div class="inline-flex w-full items-center justify-center">
-    <h1 class="text-base font-bold text-textGray">UploadFile</h1>
+<div transition:slide={{ duration: 500, easing: linear }}>
+  {#if upload}
+    <div class="w-3/4">
+      <p>Select the MetaData Template from which key values imported for autocompleting Name fills</p>
+    </div>
 
-    <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <span on:click={uploadHideShow} class="ml-auto cursor-pointer">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        class="h-8 w-8 stroke-textGray">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    </span>
-  </div>
-  {#if uploadHide}
-    <div transition:slide={{ duration: 500, easing: linear }} class="space-y-3">
-      <p class="w-3/4 text-sm font-normal text-textGray">
-        Select the MetaData Template from which key values imported for
-        autocompleting Name fills
-      </p>
-      <form
-        enctype="multipart/form-data"
-        id="imageUpload"
-        class="relative mt-3 flex h-44 w-full cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed border-gray2 bg-white dark:bg-lightGray">
-        <input
-          on:change={uploadImage}
-          type="file"
-          name="uploadimageSec"
-          class="absolute inset-0 opacity-0"
-          accept="image/*" />
-        <div class="flex h-full flex-col items-center justify-center gap-2">
-          <UploadIcon />
-          <p class="text-sm text-gray1 dark:text-textGray">
-            Drag and Drop or Click here to Upload a File
-          </p>
-          <button class="rounded-md text-xs text-gray1 dark:text-textGray"
-            >PNG, JPG, GIF up to 10MB</button>
+    <form enctype="multipart/form-data" id="imageUpload" class="relative mt-3 flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed border-gray2 bg-white dark:bg-lightGray">
+      <input on:change={uploadImage} type="file" name="uploadimageSec" class="absolute inset-0 opacity-0" accept="image/*" />
+      <div class="flex h-full flex-col items-center justify-center gap-2">
+        <UploadIcon />
+        <p>Drag and Drop or Click here to Upload a File</p>
+        <h6 class="text-xs font-normal text-gray1 dark:text-textGray">PNG, JPG, GIF up to 10MB</h6>
+      </div>
+    </form>
+  {:else}
+    <div class="flex items-center gap-5 pt-4">
+      <div class="group relative flex justify-start">
+        <img id="upload" src={blobUrl} alt="selected img" class="h-32 rounded-md object-contain" />
+
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="absolute inset-0 hidden items-center justify-center bg-[#000000cc] group-hover:flex">
+          <span on:click={chooseDiffFile} class="rounded-full border p-2">
+            <Delete stroke="stroke-white" />
+          </span>
         </div>
-      </form>
+      </div>
+
+      <div class="flex flex-col justify-center space-y-1.5">
+        <div>
+          <h4>File Name</h4>
+          <h5>{$Modal.fileName}</h5>
+        </div>
+
+        <div>
+          <h4>Resolution</h4>
+          <h5 class="flex items-center">
+            {imgWidth}
+            <Int />
+            {imgHeight} px
+          </h5>
+        </div>
+
+        <div>
+          <h4>Size</h4>
+          <h5>{KB} KB</h5>
+        </div>
+      </div>
     </div>
   {/if}
 </div>
