@@ -57,7 +57,7 @@
 </script>
 
 {#if imageUploadedSection}
-	<div class=" bg-lightHeaderSection dark:bg-secondary left-0 top-14 flex h-auto min-w-[330px] max-w-[330px] flex-col border-b border-white/30 pt-4 pb-4 dark:border-black" in:fly={{ y: -200, duration: 1500 }} out:fly={{ y: -200, duration: 2000 }}>
+	<div class="left-0 top-14 flex h-auto min-w-[330px] max-w-[330px] flex-col border-b border-black bg-secondary pt-4 pb-4" in:fly={{ y: -200, duration: 1500 }} out:fly={{ y: -200, duration: 2000 }}>
 		<div class="flex ">
 			<div class="w-full flex-col items-center px-4">
 				<div class=" group relative flex items-center rounded-md">
@@ -67,15 +67,15 @@
 
 				<!-- toggle button -->
 				<div class="relative mt-3 flex h-9 w-full items-center gap-2 rounded-md bg-transparent px-2">
-					<div class="focus:ring-primaryBlue rounded-md focus:outline-none focus:ring-2">
+					<div class="rounded-md focus:outline-none focus:ring-2 focus:ring-primaryBlue">
 						<div class="group/edit relative">
-							<div class="group-hover/edit:block ml-1 hidden"><Tooltip tooltip="Info" top="true" /></div>
+							<div class="ml-1 hidden group-hover/edit:block"><Tooltip tooltip="Info" top="true" /></div>
 							<InfoIcon />
 						</div>
 					</div>
-					<h1 class="text-secondaryGray text-sm font-bold dark:text-gray-400">{togglePosition}</h1>
-					<button on:click={displayUploadSection} class:justify-end={toggleButton} class="group/item bg-heading text-secondaryGray relative ml-auto mr-1 flex h-3 w-12 items-center rounded-full focus:outline-none">
-						<button class="bg-primaryBlue relative h-6 w-6 rounded-full text-xs text-white focus:outline-none " />
+					<h1 class="text-sm font-bold text-gray-400">{togglePosition}</h1>
+					<button on:click={displayUploadSection} class:justify-end={toggleButton} class="group/item relative ml-auto mr-1 flex h-3 w-12 items-center rounded-full bg-heading text-secondaryGray focus:outline-none">
+						<button class="relative h-6 w-6 rounded-full bg-primaryBlue text-xs text-white focus:outline-none " />
 					</button>
 				</div>
 
@@ -83,12 +83,12 @@
 				{#if dargAndDrop}
 					<div class="mt-3" in:fly={{ y: -200, duration: 1500 }} out:fly={{ y: -200, duration: 1500 }}>
 						<form enctype="multipart/form-data" id="formImage" accept="image">
-							<label class=" bg-lightHeaderSection  dark:bg-secondary border-primary flex h-28 w-full cursor-pointer appearance-none justify-center rounded-md border border-dotted px-4 transition focus:outline-none dark:border-gray-300">
+							<label class="focus:outline-noneborder-gray-300 flex h-28 w-full cursor-pointer appearance-none justify-center rounded-md border border-dotted bg-secondary px-4 transition">
 								<span class="flex items-center space-x-2">
-									<svg xmlns="http://www.w3.org/2000/svg" class="text-heading h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-heading" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
 										<path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
 									</svg>
-									<span class="text-secondaryGray font-medium">
+									<span class="font-medium text-secondaryGray">
 										Drop files to Attach, or
 										<span class="text-primaryBlue underline">browse</span>
 									</span>
@@ -102,23 +102,23 @@
 				<!-- image preview -->
 				{#if imageUploaded}
 					<div class="mt-3 items-center" in:fly={{ y: -200, duration: 600 }} out:fly={{ y: -200, duration: 600 }}>
-						<div class=" bg-lightGray dark:bg-primary border-primary flex rounded-md px-1.5 py-1 dark:border-gray-300">
+						<div class=" flex rounded-md  bg-primary px-1.5 py-1">
 							<div class="flex h-24 w-full flex-row items-stretch gap-2">
 								<div class="w-4/12">
 									<img src={blobUrl} alt="QRCode" id="uploadImage" class="h-full w-full cursor-pointer rounded-md" />
 								</div>
 								<div class="group/item relative flex w-8/12 items-start gap-2 rounded-md">
 									<div class="flex flex-col gap-1">
-										<h3 class="text-secondaryGray dark:text-heading h-5 w-32 overflow-hidden text-sm font-bold">
+										<h3 class="h-5 w-32 overflow-hidden text-sm font-bold text-heading">
 											<div class="hidden group-hover:block"><Tooltip tooltip={a} top={true} /></div>
 											{a}
 										</h3>
 
-										<span class="text-secondaryGray dark:text-heading  text-xs font-bold">{imgWidth}px X {imgHeight}px</span>
-										<div class="text-secondaryGray dark:text-heading text-xs font-bold">{KB}KB</div>
+										<span class="text-xs font-bold  text-heading">{imgWidth}px X {imgHeight}px</span>
+										<div class="text-xs font-bold text-heading">{KB}KB</div>
 									</div>
-									<button on:click={RemoveImage} class="group/edit hover:text-roundedRed active:bg-roundedRed relative right-0 top-0 ml-8 flex items-start justify-end rounded-md hover:ring-2 focus:outline-none focus:ring-2 active:text-white">
-										<div class="group-hover/edit:block hidden"><Tooltip tooltip="Back" top={true} /></div>
+									<button on:click={RemoveImage} class="group/edit relative right-0 top-0 ml-8 flex items-start justify-end rounded-md hover:text-roundedRed hover:ring-2 focus:outline-none focus:ring-2 active:bg-roundedRed active:text-white">
+										<div class="hidden group-hover/edit:block"><Tooltip tooltip="Back" top={true} /></div>
 										<Mark />
 									</button>
 								</div>
@@ -126,15 +126,15 @@
 						</div>
 					</div>
 				{/if}
-				<div class="text-secondaryGray mt-3 ml-2 flex text-sm">Positions</div>
+				<div class="mt-3 ml-2 flex text-sm text-secondaryGray">Positions</div>
 				<!-- position lock -->
 				<div class=" mt-2 flex items-center justify-between gap-3 text-base">
-					<div class="bg-primary group  relative mx-auto flex w-2/5 items-center justify-between rounded-md focus:outline-none">
-						<div class="labelSpan text-heading dark:text-gray-400">X</div>
+					<div class="group relative  mx-auto flex w-2/5 items-center justify-between rounded-md bg-primary focus:outline-none">
+						<div class="labelSpan text-primary">X</div>
 						<input name="field_name" class="inputField" type="number" min="0" placeholder="" />
 					</div>
-					<div class="bg-primary focus:bg-secondary focus:ring-primaryBlue group relative mx-auto flex w-2/5 items-center justify-between rounded-md focus:outline-none focus:ring-2">
-						<div class="labelSpan text-heading dark:text-gray-400">Y</div>
+					<div class="group relative mx-auto flex w-2/5 items-center justify-between rounded-md bg-primary focus:bg-secondary focus:outline-none focus:ring-2 focus:ring-primaryBlue">
+						<div class="labelSpan text-gray-400">Y</div>
 						<input name="field_name" class="inputField" type="number" min="0" placeholder="" />
 					</div>
 					<button class="lockPositionBtn group relative">
@@ -145,9 +145,9 @@
 					</button>
 				</div>
 				<!-- image width and height -->
-				<div class="text-secondaryGray mt-3 ml-2 text-sm">Dimensions</div>
+				<div class="mt-3 ml-2 text-sm text-secondaryGray">Dimensions</div>
 				<div class=" mt-2 flex items-center gap-3 text-base">
-					<div class="bg-primary group relative mx-auto flex w-2/5 items-center justify-between rounded-md focus:outline-none ">
+					<div class="group relative mx-auto flex w-2/5 items-center justify-between rounded-md bg-primary focus:outline-none ">
 						<div class="labelSpan text-gray-400">W</div>
 						<input name="field_name" class="inputField" type="number" min="0" placeholder="" />
 					</div>
@@ -172,15 +172,15 @@
 
 <style lang="postcss" global>
 	.labelSpan {
-		@apply focus:ring-primaryBlue group-focus-within:text-primaryBlue absolute rounded-md px-2 py-2 text-sm font-bold outline-none focus:ring-1 dark:text-gray-400;
+		@apply absolute rounded-md border-none px-2 py-2 text-sm font-bold text-gray-400 outline-none focus:ring-1 focus:ring-primaryBlue group-focus-within:text-primaryBlue;
 	}
 	.lockPositionBtn {
-		@apply hover:ring-primaryBlue active:bg-primaryBlue flex h-8 w-8 items-center justify-center rounded-md hover:ring-1;
+		@apply flex h-8 w-8 items-center justify-center rounded-md hover:ring-1 hover:ring-primaryBlue active:bg-primaryBlue;
 	}
 	.inputField {
-		@apply bg-lightHeaderSection dark:bg-primary dark:focus:bg-secondary focus:ring-primaryBlue w-full rounded-md px-2 py-2 pl-8 text-sm text-white focus:bg-gray-400  focus:outline-none focus:ring-1;
+		@apply w-full rounded-md bg-primary px-2 py-2 pl-8 text-sm text-white focus:bg-secondary focus:outline-none  focus:ring-1 focus:ring-primaryBlue;
 	}
 	.inputValue {
-		@apply dark:bg-primary bg-lightHeaderSection dark:focus:bg-secondary focus:ring-primaryBlue  text-primary w-full rounded-md px-4 py-2 pl-16 text-sm focus:bg-gray-400 focus:outline-none focus:ring-1 dark:text-white;
+		@apply w-full rounded-md bg-primary px-4 py-2 pl-16 text-sm font-bold text-white focus:bg-secondary focus:outline-none focus:ring-1 focus:ring-primaryBlue;
 	}
 </style>

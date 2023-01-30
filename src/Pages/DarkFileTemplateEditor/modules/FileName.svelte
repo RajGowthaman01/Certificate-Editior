@@ -4,7 +4,6 @@
 	import PrevPage from "../svg/prevPage.svelte"
 	const dispatch = createEventDispatcher()
 	let active = true
-	let hidden = true
 	let pagination = true
 	let fileName = ""
 </script>
@@ -25,11 +24,8 @@
 	<div class="relative mx-auto w-2/3">
 		<div class="w-full text-center">
 			<div class="group w-full items-center rounded-md">
-				<!-- <input name="field_name" class="text-secondaryGray dark:text-heading dark:bg-secondary dark:focus:bg-topNavSvgBg/80 focus:ring-primaryBlue w-full rounded-md border-none bg-gray-200 px-4 py-2 text-sm uppercase focus:bg-gray-300 focus:outline-none focus:ring-1" type="text" placeholder="" /> -->
 				<input type="text" bind:value={fileName} name="first-name" id="first-name" autocomplete="given-name" class="block w-full max-w-lg rounded-md border-gray-300 text-secondaryGray shadow-sm focus:border-primaryBlue focus:ring-primaryBlue dark:border-primaryBlue dark:bg-secondary dark:text-heading dark:focus:bg-secondary sm:max-w-xs sm:text-sm" />
 			</div>
-
-			<!-- <div class="mt-1 sm:col-span-2 sm:mt-0" /> -->
 		</div>
 	</div>
 </div>

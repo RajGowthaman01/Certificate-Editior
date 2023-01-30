@@ -4,6 +4,9 @@ module.exports = {
   content: ["./src/**/*.svelte"],
   theme: {
     extend: {
+      strokeWidth: {
+        '4': '4px',
+      },
       padding: {
         22: "88px",
       },

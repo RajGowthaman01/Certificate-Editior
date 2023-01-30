@@ -2,8 +2,8 @@
 	import EyeClose from "../svg/eyeClose.svelte"
 	import Eye from "../svg/eye.svelte"
 	import Tooltip from "../shared/tooltip.svelte"
-	import ArrowDown from "../svg/arrowDown.svelte"
-	import ArrowUp from "../svg/arrowUp.svelte"
+	import ChevronUp from "../svg/chevronUp.svelte"
+	import DropDownIcon from "../svg/dropDownIcon.svelte"
 	import Image from "../svg/image.svelte"
 	import ImagePropertyPanel from "./imagePropertyPanel.svelte"
 	export let imageUploadedSection = false
@@ -23,7 +23,7 @@
 	}
 </script>
 
-<div class:active class="bg-lightGray dark:bg-primary flex justify-between border-b px-4 dark:border-black ">
+<div class:active class=" flex justify-between border-b border-black bg-primary px-4 ">
 	<div class="flex items-center gap-3 py-2">
 		<button on:click={() => (active = !active)} on:click={openEdit}>
 			{#if editSection}
@@ -32,10 +32,10 @@
 				<Eye />
 			{/if}
 		</button>
-		<div class="dark:text-heading text-secondaryGray">
+		<div class="text-heading">
 			<Image />
 		</div>
-		<div class="dark:text-heading text-secondaryGray">Image</div>
+		<div class="text-heading">Image</div>
 	</div>
 
 	<div class:hidden={editSection} class="flex items-center">
@@ -45,14 +45,16 @@
 					<div class="z-20 hidden group-hover:block">
 						<Tooltip tooltip="Hide Edit" left={true} />
 					</div>
-					<div class="relative flex">
-						<ArrowUp />
+					<div class="relative flex stroke-[3px] ">
+						<ChevronUp />
 					</div>
 				{:else}
 					<div class="z-20 hidden group-hover:block">
 						<Tooltip tooltip="Edit" left={true} />
 					</div>
-					<ArrowDown />
+					<div class="relative  flex">
+						<DropDownIcon />
+					</div>
 				{/if}
 			</span>
 		</button>
@@ -63,6 +65,6 @@
 <!-- <TextPropertyPanel /> -->
 <style global lang="postcss">
 	.active {
-		@apply bg-lightHeaderSection dark:bg-secondary;
+		@apply bg-secondary;
 	}
 </style>

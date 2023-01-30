@@ -20,7 +20,7 @@
 		<Index />
 	{/if}
 	{#if showIndex1}
-		<h1>VENKATESH</h1>
+		<!-- <h1>VENKATESH</h1> -->
 		<Index2 />
 	{/if}
 </main>

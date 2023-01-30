@@ -96,7 +96,7 @@
 </script>
 
 {#if textEditSection}
-	<div class="bg-lightHeaderSection dark:bg-secondary flex h-full w-[330px] flex-col border-b border-r border-white/60 dark:border-black " in:fly={{ y: -200, duration: 1500 }} out:fly={{ y: -200, duration: 2000 }}>
+	<div class="flex h-full w-[330px] flex-col border-b border-r border-black bg-secondary " in:fly={{ y: -200, duration: 1500 }} out:fly={{ y: -200, duration: 2000 }}>
 		<div class="flex ">
 			<div class=" w-full flex-col items-center px-4 py-4">
 				<div class="group relative flex items-center rounded-md">
@@ -109,17 +109,17 @@
 					<input name="field_name" class="inputValue" type="text" placeholder="" />
 				</div>
 
-				<div class=" bg-primary/50 mt-3 h-0.5 w-full" />
-				<div class=" text-secondaryGray mt-3 ml-2 flex text-sm">Font</div>
+				<div class=" mt-3 h-0.5 w-full bg-primary/50" />
+				<div class=" mt-3 ml-2 flex text-sm text-secondaryGray">Font</div>
 				<div class="mt-1 flex flex-row items-center justify-between space-x-3">
 					<div class="flex gap-2">
 						{#if input}
 							<div class="relative w-full">
-								<button on:click={Dropdown} type="button" class="text-secondaryGray flex w-[177px] py-2 px-2 text-sm  focus:outline-none">
+								<button on:click={Dropdown} type="button" class="flex w-[177px] py-2 px-2 text-sm text-secondaryGray  focus:outline-none">
 									{fontFamily}
 									<DropDownIcon />
 								</button>
-								<div class="{fontName ? 'flex' : 'hidden'} bg-secondary text-primary absolute z-10 w-full rounded-md px-2  text-sm font-bold ring-2 ring-blue-500">
+								<div class="{fontName ? 'flex' : 'hidden'} absolute z-10 w-full rounded-md bg-secondary px-2 text-sm font-bold text-primary ring-2 ring-blue-500">
 									<div class="w-full ">
 										<option on:click={() => changeFont("TimesNewRoman")} class="changefont">TimesNewRoman</option>
 										<option on:click={() => changeFont("Arial")} class="changefont">Arial</option>
@@ -132,28 +132,28 @@
 						{:else}
 							<div class="group relative rounded-md">
 								<div class="absolute inset-y-0 left-0 flex items-center pl-3">
-									<span class="group-focus-within:text-bg-primaryBlue text-secondary text-xs font-bold">FONT</span>
+									<span class="group-focus-within:text-bg-primaryBlue text-xs font-bold text-secondary">FONT</span>
 								</div>
-								<input type="text" class="border-darkGray bg-lightGray text-textGray focus:border-bg-primaryBlue block h-10 w-full  rounded-md pl-16 text-sm sm:pl-14" />
+								<input type="text" class="focus:border-bg-primaryBlue block h-10 w-full rounded-md border-darkGray bg-lightGray  pl-16 text-sm text-textGray sm:pl-14" />
 							</div>
 						{/if}
 					</div>
-					<div class="hover:ring-primaryBlue group relative flex h-8 w-8 items-center justify-center rounded-md hover:ring-2">
+					<div class="group relative flex h-8 w-8 items-center justify-center rounded-md hover:ring-2 hover:ring-primaryBlue">
 						<div class=" group flex overflow-visible text-3xl text-[#6c6c6c] ">
 							<div class="z-50 hidden overflow-visible group-hover:block "><Tooltip tooltip="AddNewFont" top={true} /></div>
 							<ChooseFontIcon />
 						</div>
 					</div>
 				</div>
-				<div class="bg-primary/50 mt-3 h-0.5 w-full" />
-				<div class="text-secondaryGray mt-3 ml-2 flex text-sm">Positions</div>
+				<div class="mt-3 h-0.5 w-full bg-primary/50" />
+				<div class="mt-3 ml-2 flex text-sm text-secondaryGray">Positions</div>
 				<!-- position lock -->
 				<div class=" mt-2 flex items-center justify-between gap-3 text-base">
-					<div class="bg-primary group  relative mx-auto flex w-2/5 items-center justify-between rounded-md focus:outline-none">
+					<div class="group relative mx-auto flex w-2/5 items-center justify-between rounded-md bg-primary focus:outline-none">
 						<div class="labelSpan text-secondaryGray">X</div>
 						<input name="field_name" class="inputField" type="number" min="0" placeholder="" />
 					</div>
-					<div class="bg-primary focus:bg-secondary focus:ring-primaryBlue group relative mx-auto flex w-2/5 items-center justify-between rounded-md focus:outline-none focus:ring-2">
+					<div class="group relative mx-auto flex w-2/5 items-center justify-between rounded-md bg-primary focus:bg-secondary focus:outline-none focus:ring-2 focus:ring-primaryBlue">
 						<div class="labelSpan text-secondaryGray">Y</div>
 						<input name="field_name" class="inputField" type="number" min="0" placeholder="" />
 					</div>
@@ -164,17 +164,15 @@
 						<PositonLock />
 					</button>
 				</div>
-
-				<div class="bg-hr mt-3 h-0.5 w-full" />
-
-				<div class="text-secondaryGray mt-3 ml-2 flex text-sm">Text Size</div>
-				<div class=" group mt-2 flex h-9 ">
+				<div class="mt-3 h-0.5 w-full bg-hr" />
+				<div class="mt-3 ml-2 flex text-sm text-secondaryGray">Text Size</div>
+				<div class=" group mt-2 flex h-9 gap-2 ">
 					{#if SingleClickFocus}
-						<button on:click={decFontSize} class=" group">
+						<button on:click={decFontSize} class="group">
 							<div class="hidden group-hover:block"><Tooltip tooltip="Min Font Size" top={true} /></div>
 							<FontSizeReduce />
 						</button>
-						<div class="group flex items-center justify-center gap-8">
+						<div class="group flex items-center justify-center gap-6">
 							{#each displayNumbers as Size}
 								<button on:dblclick={InputShow} on:click={activeSize(Size)} class="FontSize hover:text-primaryBlue  group-active:text-primary  {fontSize == Size ? 'text-white' : 'text-gray-500'}">{Size}</button>
 							{/each}
@@ -184,78 +182,79 @@
 							<FontSizeIncrease />
 						</button>
 					{:else}
-						<div class="dbClickLabel w-full ">
+						<div class="dbClickLabel group z-20 w-full bg-secondary ">
 							<div class="label-division2">
 								<span class="span-label mr-4">SIZE</span>
 							</div>
-							<div class="focus:ring-primaryBlue group-focus-within:text-primaryBlue absolute inset-y-1.5 right-4 flex gap-3 focus:ring-2">
-								<button on:click={onCustomSize} class="focus:ring-primaryBlue rounded-full focus:outline-none focus:ring-2">
+							<div class="absolute inset-y-1.5 right-4 flex gap-3 focus:ring-2 focus:ring-primaryBlue group-focus-within:text-primaryBlue">
+								<button on:click={onCustomSize} class="rounded-full focus:outline-none focus:ring-2 focus:ring-primaryBlue">
 									<Tick />
 								</button>
 								<button
 									on:click={() => {
 										SingleClickFocus = true
 									}}
-									class="focus:ring-primaryBlue rounded-full focus:outline-none focus:ring-2"
+									class="rounded-full focus:outline-none focus:ring-2 focus:ring-primaryBlue"
 								>
 									<Int />
 								</button>
 							</div>
-							<input bind:value={defaultSize} type="number" class="text-heading absolute bg-transparent py-3 focus:outline-none" />
+							<input bind:value={defaultSize} type="number" class="w-full rounded-lg bg-primary text-heading focus:outline-none" />
 						</div>
 					{/if}
 				</div>
-				<div class="bg-primary/50 mt-3 h-0.5 w-full" />
+				<div class="mt-3 h-0.5 w-full bg-primary/50" />
 
 				<div class="flex w-full flex-row items-center justify-center gap-3">
 					<div class="flex w-1/2 flex-col">
-						<div class="text-secondaryGray mt-3 ml-2 flex text-sm">Font style</div>
+						<div class="mt-3 ml-2 flex text-sm text-secondaryGray">Font style</div>
 						<div class="mt-1 flex items-center justify-between gap-3 text-base ">
-							<div class="hover:ring-primaryBlue group relative flex h-8 w-8 cursor-pointer items-center justify-center rounded-md hover:ring-2">
+							<div class="group relative flex h-8 w-8 cursor-pointer items-center justify-center rounded-md hover:ring-2 hover:ring-primaryBlue">
 								<div class=" hidden group-hover:block "><Tooltip tooltip="Normal" top={true} /></div>
-								<div class="group-hover:text-primaryBlue flex text-2xl  text-white ">N</div>
+								<div class="flex text-2xl text-white  group-hover:text-primaryBlue ">N</div>
 							</div>
 
-							<div class="hover:ring-primaryBlue group relative flex h-8 w-8 cursor-pointer items-center justify-center rounded-md hover:ring-2">
+							<div class="group relative flex h-8 w-8 cursor-pointer items-center justify-center rounded-md hover:ring-2 hover:ring-primaryBlue">
 								<div class=" hidden group-hover:block "><Tooltip tooltip="Bold" top={true} /></div>
-								<p class="group-hover:text-primaryBlue flex  text-2xl capitalize text-[#6c6c6c]">B</p>
+								<p class="flex text-2xl  capitalize text-[#6c6c6c] group-hover:text-primaryBlue">B</p>
 							</div>
-							<div class="hover:ring-primaryBlue group relative flex h-8 w-8 items-center justify-center rounded-md hover:ring-2">
+							<div class="group relative flex h-8 w-8 items-center justify-center rounded-md hover:ring-2 hover:ring-primaryBlue">
 								<div class=" hidden group-hover:block "><Tooltip tooltip="Underline" top={true} /></div>
-								<div class="group-hover:text-primaryBlue flex  text-2xl text-[#6c6c6c] underline">U</div>
+								<div class="flex text-2xl  text-[#6c6c6c] underline group-hover:text-primaryBlue">U</div>
 							</div>
 						</div>
 					</div>
 					<div class=" flex w-1/2 flex-col">
-						<div class="text-secondaryGray mt-3 ml-2 flex text-sm">Align Items</div>
+						<div class="mt-3 ml-2 flex text-sm text-secondaryGray">Align Items</div>
 						<div class="mt-1  flex items-center justify-between gap-3 text-base text-[#444549]">
-							<div class="hover:text-primaryBlue hover:ring-primaryBlue group relative flex h-8 w-8 items-center justify-center rounded-md hover:ring-2 ">
+							<div class="group relative flex h-8 w-8 items-center justify-center rounded-md hover:text-primaryBlue hover:ring-2 hover:ring-primaryBlue ">
 								<div class=" hidden group-hover:block "><Tooltip tooltip="Left Align" top={true} /></div>
 								<AlignLeft />
 							</div>
-							<div class="hover:ring-primaryBlue group relative flex h-8 w-8 items-center justify-center rounded-md hover:ring-2 ">
+							<div class="group relative flex h-8 w-8 items-center justify-center rounded-md hover:ring-2 hover:ring-primaryBlue ">
 								<div class=" hidden group-hover:block "><Tooltip tooltip="Right Align" top={true} /></div>
 								<AlighRight />
 							</div>
-							<div class="hover:ring-primaryBlue group relative flex h-8 w-8 items-center justify-center rounded-md hover:ring-2 ">
+							<div class="group relative flex h-8 w-8 items-center justify-center rounded-md hover:ring-2 hover:ring-primaryBlue ">
 								<div class=" hidden group-hover:block "><Tooltip tooltip="Center Align" top={true} /></div>
 								<AlignCenter />
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="bg-primary/50 mt-3 h-0.5 w-full" />
-				<div class="text-secondaryGray ml-2 mt-3 flex text-sm">Color</div>
+				<div class="mt-3 h-0.5 w-full bg-primary/50" />
+				<div class="ml-2 mt-3 flex text-sm text-secondaryGray">Color</div>
 				<div class=" mt-3 ml-2 flex items-center gap-5 text-base">
 					{#each color as colors}
-						<button on:click={focusedColor(colors)} class="roundedColor rounded-full p-0.5 {colorPicked == colors ? 'ring-2 ring-white ring-offset-2 ring-offset-gray-700' : ''} focus:ring-primaryBlue focus:outline-none focus:ring-2" style="background:{colors}" />
+						<button on:click={focusedColor(colors)} class="roundedColor rounded-full p-0.5 {colorPicked == colors ? 'ring-2 ring-white ring-offset-2 ring-offset-gray-700' : ''} focus:outline-none focus:ring-2 focus:ring-primaryBlue" style="background:{colors}" />
 					{/each}
 					<label for="input-color" class="relative flex cursor-pointer items-center justify-center pr-1 ">
-						<button type="color" class="hover:ring-primaryBlue group relative flex h-8 w-8 items-center justify-center rounded-full hover:ring">
+						<button type="color" class="group relative flex h-8 w-8 items-center justify-center rounded-full hover:ring hover:ring-primaryBlue">
 							<div class=" hidden group-hover:block "><Tooltip tooltip="Add New Color" top={true} /></div>
-							<img src="/assets/images/color-circle.png" alt="" class="h-8 w-8" />
-							<input on:change={newColor} type="color" id="input-color" class="absolute inset-0 opacity-0" />
-						</button>
+							<div class=" inset-0 h-7 w-7 rounded-full bg-[conic-gradient(from_180deg_at_50%_50%,_rgb(255,_255,_255)_-48.75deg,_rgb(242,_78,_30)_35.62deg,_rgb(162,_89,_255)_153.75deg,_rgb(254,_108,_26)_232.5deg,_rgb(255,_255,_255)_311.25deg,_rgb(242,_78,_30)_395.63deg)]">
+								<input on:change={newColor} type="color" id="input-color" class="absolute inset-0 opacity-0" />
+							</div></button
+						>
 					</label>
 				</div>
 			</div>
@@ -271,34 +270,34 @@
 	}
 
 	.changefont {
-		@apply text-secondaryGray hover:bg-secondary hover:text-primaryBlue w-full cursor-pointer rounded-md px-2 py-1 text-sm font-bold;
+		@apply w-full cursor-pointer rounded-md px-2 py-1 text-sm font-bold text-secondaryGray hover:bg-secondary hover:text-primaryBlue;
 	}
 	.inputDiv {
-		@apply bg-secondary hover:bg-secondary relative flex cursor-pointer items-center justify-center rounded-md text-xs;
+		@apply relative flex cursor-pointer items-center justify-center rounded-md bg-secondary text-xs hover:bg-secondary;
 	}
 	.dbClkInputDiv {
-		@apply bg-primary absolute inset-y-0 inset-x-0 mx-auto flex items-center rounded-md;
+		@apply absolute inset-y-0 inset-x-0 mx-auto flex items-center rounded-md bg-primary;
 	}
 	.positonHolder {
-		@apply text-secondaryGray ml-1 text-base font-bold;
+		@apply ml-1 text-base font-bold text-secondaryGray;
 	}
 	.labelSpan {
-		@apply text-secondaryGray focus:ring-primaryBlue group-focus-within:text-primaryBlue absolute rounded-md text-sm outline-none focus:ring-1;
+		@apply absolute rounded-md text-sm text-secondaryGray outline-none focus:ring-1 focus:ring-primaryBlue group-focus-within:text-primaryBlue;
 	}
 	/* .inputValue {
 		@apply bg-primary focus:bg-secondary focus:ring-primaryBlue w-full rounded-md px-4 pl-16 text-sm text-white focus:outline-none focus:ring-2;
 	} */
 	.fontSizeSelect {
-		@apply text-secondaryGray flex items-center text-base;
+		@apply flex items-center text-base text-secondaryGray;
 	}
 	.FontSize {
-		@apply hover:bg-secondary flex h-7 w-7 items-center justify-center rounded-md text-base font-bold  outline-none focus:outline-none;
+		@apply flex h-7 w-7 items-center justify-center rounded-md text-base font-bold outline-none  hover:bg-secondary focus:outline-none;
 	}
 	.span-label {
-		@apply text-secondaryGray group-focus-within:text-primaryBlue mr-10 select-none text-sm font-bold;
+		@apply mr-10 select-none text-sm font-bold text-secondaryGray group-focus-within:text-primaryBlue;
 	}
 	.dbClickLabel {
-		@apply bg-primary group-focus-within:bg-secondary group-focus-within:text-primaryBlue group-focus-within:ring-primaryBlue relative flex cursor-pointer items-center justify-center rounded-md py-1 text-xs outline-none group-focus-within:ring-2;
+		@apply relative flex w-full cursor-pointer items-center justify-center rounded-md bg-primary py-1 text-xs outline-none group-focus-within:bg-secondary group-focus-within:text-primaryBlue group-focus-within:ring-2 group-focus-within:ring-primaryBlue;
 	}
 	.label-division2 {
 		@apply absolute left-3 flex w-full items-center py-1;

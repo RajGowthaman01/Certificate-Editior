@@ -1,22 +1,17 @@
 <script>
-	import DropDownIcon from "../svg/dropDownIcon.svelte"
-	import NextPage from "../svg/nextPage.svelte"
 	import { createEventDispatcher } from "svelte"
-	import PrevPage from "../svg/prevPage.svelte"
+	import NextPage from "../svg/nextPage.svelte"
 	import DisabledPrevButton from "../svg/disabledPrevButton.svelte"
-	import KeyValueArrow from "../svg/keyValueArrow.svelte"
 	import DropdownArrow from "../../FileTemplateEditor/svgIcons/DropdownArrow.svelte"
 
 	const dispatch = createEventDispatcher()
 
 	let pagination = true
-
 	let active = true
 	let nameFills = ["Quotaions", "Balance", "Delivery Note", "purchase Order", "E-Invoice", "Payment Receipt"]
 	let activeNameFill = "Select Template"
 	let KeyValues = false
 	let container
-
 	const onWindowClick = (e) => {
 		if (container.contains(e.target) == false) KeyValues = false
 	}
@@ -41,7 +36,7 @@
 					<DropdownArrow />
 				</span>
 			</button>
-			<div class:hidden={!KeyValues} class="absolute z-20 mt-2 w-full rounded-md bg-gray-200 text-sm ring-1 dark:bg-secondary dark:ring-primaryBlue">
+			<div class:hidden={!KeyValues} class="absolute z-20 mt-2 w-full rounded-md bg-heading text-sm ring-1 dark:bg-secondary dark:ring-primaryBlue">
 				{#each nameFills as nameFill}
 					<option
 						on:click={() => {

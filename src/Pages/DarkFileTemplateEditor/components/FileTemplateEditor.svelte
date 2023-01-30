@@ -1,8 +1,4 @@
 <script>
-	import ArrowPointer from "../svg/arrowPointer.svelte"
-	import CardIconNav from "../svg/cardIconNav.svelte"
-	import SettingIconNav from "../svg/settingIconNav.svelte"
-	import StackedCircles from "../svg/StackedCircles.svelte"
 	import Footer from "./footer.svelte"
 	import LayersSection from "./layerPanel.svelte"
 	import Image from "../svg/image.svelte"
@@ -10,16 +6,11 @@
 	import Index from "../modules/introCard.svelte"
 
 	let editSection
-	let darkMode = false
 	let modalOverLay = true
-	const toggleLightDark = () => {
-		darkMode = !darkMode
-		window.document.body.classList.toggle("dark")
-	}
 </script>
 
 <div class="relative flex h-screen w-screen flex-col overflow-hidden">
-	<div class="bg-lightHeaderSection dark:bg-secondary h-14 w-full items-center justify-center border-b-0 border-inherit py-2">
+	<div class="h-14 w-full items-center justify-center border-b-0 border-inherit bg-secondary py-2">
 		<div class="justify-right flex">
 			<div class="flex">
 				<div class="left-0 top-0 grid min-w-[330px] max-w-[330px] grid-cols-3 justify-end ">
@@ -35,28 +26,18 @@
 					</button>
 				</div>
 			</div>
-			<div class="flex w-[330px] flex-row items-center justify-between gap-8 border-l border-gray-700 px-8">
-				<!-- <CardIconNav />
-				<SettingIconNav />
-				<StackedCircles />
-				<ArrowPointer /> -->
-				{#if darkMode}
-					<button on:click={toggleLightDark} class="absolute top-1 right-5 rounded-lg bg-gray-500 py-1 px-2 capitalize text-white   focus:outline-none "> darkMode </button>
-				{:else}
-					<button on:click={toggleLightDark} class="absolute top-1 right-5 rounded-lg bg-white py-1 px-2 capitalize text-gray-800   focus:outline-none "> lightMode </button>
-				{/if}
-			</div>
+			<div class="flex w-[330px] flex-row items-center justify-between gap-8 border-l border-gray-700 px-8" />
 		</div>
 	</div>
-	<div class="bg-heading dark:bg-certificateSection flex w-full flex-row">
+	<div class="flex w-full flex-row bg-certificateSection">
 		<LayersSection {editSection} />
-		<div class="bg-heading dark:bg-certificateSection flex h-screen w-screen" />
+		<div class="flex h-screen w-screen bg-certificateSection" />
 	</div>
 	<Footer />
 	<!-- <DarkCard {modalOverLay} /> -->
-	<!-- {#if modalOverLay}
+	{#if modalOverLay}
 		<Index on:hideModal={() => (modalOverLay = !modalOverLay)} />
-	{/if} -->
+	{/if}
 </div>
 
 <style lang="postcss" global>
@@ -70,9 +51,9 @@
 		margin: 0;
 	}
 	.Button {
-		@apply border-green text-green hover:bg-green focus:ring-green active:bg-green mx-auto inline-flex cursor-pointer select-none gap-2 rounded-md border py-1 px-2  text-center  text-sm font-medium  capitalize hover:text-white focus:border-none focus:text-white focus:outline-none  focus:ring active:text-white dark:hover:text-white;
+		@apply mx-auto inline-flex cursor-pointer select-none gap-2 rounded-md border border-green py-1 px-2 text-center text-sm font-medium capitalize  text-green  hover:bg-green hover:text-white  focus:border-none focus:text-white focus:outline-none focus:ring focus:ring-green  active:bg-green active:text-white dark:hover:text-white;
 	}
 	.topnavsvg {
-		@apply border-green text-green hover:bg-green focus:ring-green flex h-8 w-8 items-center justify-center rounded-md  border ring-0 focus:border-none focus:text-white focus:outline-none focus:ring active:bg-transparent active:text-white dark:hover:text-white;
+		@apply flex h-8 w-8 items-center justify-center rounded-md border border-green text-green ring-0  hover:bg-green focus:border-none focus:text-white focus:outline-none focus:ring focus:ring-green active:bg-transparent active:text-white dark:hover:text-white;
 	}
 </style>
