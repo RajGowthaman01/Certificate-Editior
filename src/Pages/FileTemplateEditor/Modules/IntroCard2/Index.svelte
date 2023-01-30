@@ -39,9 +39,9 @@
 
 <div class="flex flex-col space-y-4">
   <h1 class="cardHeading">File Template Editor</h1>
-  <div class="relative flex aspect-[16/10] w-[720px] flex-col  rounded-md bg-white px-5 pt-1 dark:bg-darkGray">
+  <div class="relative flex aspect-[16/10] w-[576px] flex-col  rounded-md bg-white p-4 dark:bg-darkGray">
     {#each sections as sections (sections.id)}
-      <div class="space-y-3 border-b  border-textGray/50 pb-4 pt-4 last:border-none">
+      <div class="space-y-2 border-b border-textGray/50 pb-4 pt-4 first:pt-0 last:border-none last:pb-0">
         <div class="inline-flex w-full items-center justify-center">
           <h1 class="text-base font-bold text-textGray">{sections.Title}</h1>
           <!-- svelte-ignore a11y-click-events-have-key-events -->

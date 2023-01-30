@@ -44,7 +44,7 @@
       <p>Select the MetaData Template from which key values imported for autocompleting Name fills</p>
     </div>
 
-    <form enctype="multipart/form-data" id="imageUpload" class="relative mt-3 flex h-44 w-full cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed border-gray2 bg-white dark:bg-lightGray">
+    <form enctype="multipart/form-data" id="imageUpload" class="relative mt-3 flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed border-gray2 bg-white dark:bg-lightGray">
       <input on:change={uploadImage} type="file" name="uploadimageSec" class="absolute inset-0 opacity-0" accept="image/*" />
       <div class="flex h-full flex-col items-center justify-center gap-2">
         <UploadIcon />
@@ -53,19 +53,19 @@
       </div>
     </form>
   {:else}
-    <div class="flex items-center gap-5">
+    <div class="flex items-center gap-5 pt-4">
       <div class="group relative flex justify-start">
-        <img id="upload" src={blobUrl} alt="selected img" class="h-36 rounded-md object-contain" />
+        <img id="upload" src={blobUrl} alt="selected img" class="h-32 rounded-md object-contain" />
 
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div on:click={chooseDiffFile} class="absolute inset-0 hidden items-center justify-center bg-[#000000cc] group-hover:flex">
-          <span class="rounded-full border p-2">
+        <div class="absolute inset-0 hidden items-center justify-center bg-[#000000cc] group-hover:flex">
+          <span on:click={chooseDiffFile} class="rounded-full border p-2">
             <Delete stroke="stroke-white" />
           </span>
         </div>
       </div>
 
-      <div class="flex flex-col justify-center space-y-3">
+      <div class="flex flex-col justify-center space-y-1.5">
         <div>
           <h4>File Name</h4>
           <h5>{$Modal.fileName}</h5>
