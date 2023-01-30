@@ -10,7 +10,7 @@
 
 <div transition:slide={{ duration: 500, easing: linear }} class="space-y-2">
   <div class="w-3/4">
-    <p>Select the MetaData Template from which key values imported for autocompleting Name fills.</p>
+    <p>Select the MetaData Template From which key values imported for autocompleting Name fills.</p>
   </div>
   <div class="group relative flex w-full">
     <button
