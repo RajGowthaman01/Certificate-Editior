@@ -1,5 +1,6 @@
 <script>
   import Index from "./Pages/FileTemplateEditor/Index.svelte"
+  import Index2 from "./Pages/DarkFileTemplateEditor/Index.svelte"
   let showIndex = false,
     showIndex1 = false,
     showBtn = true
@@ -20,7 +21,7 @@
   {/if}
   {#if showIndex1}
     <h1>VENKATESH</h1>
-    <!-- <Index1 /> -->
+    <Index2 />
   {/if}
 </main>
 
