@@ -35,7 +35,7 @@
   }
 </script>
 
-<form enctype="multipart/form-data" id="customFonts" class="relative h-full cursor-pointer flex-col items-center rounded-md dark:bg-green-600">
+<form enctype="multipart/form-data" id="customFonts" class="relative h-full cursor-pointer flex-col items-center rounded-md dark:bg-emerald-500">
   <input on:change={customFontFiles} type="file" name="uploadimageSec" class="absolute inset-0 opacity-0" accept=".ttf" />
   <div transition:fade={{ duration: 1500 }} class="flex h-full flex-col items-center justify-center gap-2">
     <UploadIcon />

@@ -1,29 +1,14 @@
 <script>
-  import Index from "./Pages/FileTemplateEditor/Index.svelte"
-  import Index2 from "./Pages/DarkFileTemplateEditor/Index.svelte"
-  let showIndex = false,
-    showIndex1 = false,
-    showBtn = true
-  $: if (showIndex || showIndex1) {
-    showBtn = false
+  import Router from "svelte-spa-router"
+  import routes from "./routes"
+  const changeNav = (value) => {
+    nav = nav.filter((nav) => nav != value)
+    nav = [activeNav, ...nav]
+    activeNav = value
   }
 </script>
 
-<main>
-  {#if showBtn}
-    <div class="mx-auto flex h-screen w-2/4 items-center justify-between">
-      <button on:click={() => (showIndex = true)} class="rounded-md bg-blue-500 px-2 py-1 font-semibold text-white">KARTHI</button>
-      <button on:click={() => (showIndex1 = true)} class="rounded-md bg-blue-500 px-2 py-1 font-semibold text-white">VENKATESH</button>
-    </div>
-  {/if}
-  {#if showIndex}
-    <Index />
-  {/if}
-  {#if showIndex1}
-    <h1>VENKATESH</h1>
-    <Index2 />
-  {/if}
-</main>
+<Router {routes} />
 
 <style global lang="postcss">
   @tailwind base;
