@@ -6,7 +6,7 @@
 </script>
 
 <div class="flex flex-col">
-  <div class="relative flex w-[400px] flex-col rounded-md bg-white p-5 dark:bg-modalCardGray">
+  <div class="relative flex w-[400px] flex-col rounded-md bg-white p-5 dark:bg-[#1E1E1E]">
     <CustomFonts />
   </div>
 

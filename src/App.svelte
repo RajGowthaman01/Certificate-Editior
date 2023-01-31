@@ -22,7 +22,7 @@
     @apply absolute inset-y-0 left-3 flex items-center;
   }
   .inputbox {
-    @apply block h-10 w-3/4 rounded-md border-none bg-lightGray text-sm text-white focus:ring-2  focus:ring-primary_blue;
+    @apply block h-10 w-3/4 rounded-md border-none bg-lightGray text-sm text-white focus:ring-2 focus:ring-primary_blue;
   }
   p {
     @apply text-sm font-normal text-textGray;

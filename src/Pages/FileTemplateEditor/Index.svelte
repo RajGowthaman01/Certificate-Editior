@@ -17,7 +17,7 @@
 </script>
 
 <main class="dark relative flex h-screen overflow-hidden bg-darkGray">
-  <div class="h-full w-85 space-y-3 overflow-y-auto bg-modalCardGray p-4">
+  <div class="h-full w-85 space-y-3 overflow-y-auto bg-[#1E1E1E] p-4">
     <BasicImageCard />
     <TextEditorMenu on:click={fontModal} />
     <ImageEditorMenu />
