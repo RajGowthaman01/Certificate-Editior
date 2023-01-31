@@ -22,12 +22,15 @@ module.exports = {
         Diplomata: ["Diplomata"],
       },
       colors: {
+        //from karthick
         gray1: "rgb(33 , 33, 41)",
         gray2: "rgb(125 , 125, 127)",
         darkGray: "rgb(36 , 36, 36)",
         lightGray: "rgb(47 , 47, 47)",
         textGray: "rgb(121 , 121, 121)",
         primary_blue: "rgb(48 , 122, 255)",
+        modalCardGray: "rgb(30, 30, 30)",
+        //to
       },
     },
   },
