@@ -43,9 +43,9 @@
       </div>
       <div class="flex flex-col items-center justify-center gap-5">
         <a href="#/"><Pdicon /></a>
-        <a href="#/"><Settingsicon /></a>
+        <a href="#/FileTemplateEditor"><Settingsicon /></a>
         <a href="#/Analytics" class="bg-primary p-2"><Analyticicon /></a>
-        <a href="#/"><Historyicon /></a>
+        <a href="#/DarkFileTemplateEditor"><Historyicon /></a>
         <a href="#/"><Templateicon /></a>
       </div>
     </div>
