@@ -59,7 +59,7 @@
   <div class="mt-12">
     {#each sections as sections (sections.id)}
       <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <div on:click={() => changeActiveBar(sections.id)} class="flex border-l-4 border-b cursor-pointer select-none {sections.active ? 'active' : 'border-l-transparent'} border-Analytics-sidebar px-4 py-3">
+      <div on:click={() => changeActiveBar(sections.id)} class="flex border-l-4 border-b cursor-pointer select-none {sections.active ? 'active shadow-3xl' : 'border-l-transparent'} border-Analytics-sidebar px-4 py-3">
         <div class="flex items-center justify-center">
           <svelte:component this={sections.icon} />
         </div>
@@ -83,6 +83,6 @@
     @apply text-base font-medium tracking-wider text-white;
   }
   .active {
-    @apply border-l-Analytics-iconcolor bg-Analytics-primary shadow-3xl;
+    @apply border-l-Analytics-iconcolor bg-Analytics-primary;
   }
 </style>
