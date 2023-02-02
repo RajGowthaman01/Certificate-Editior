@@ -1,11 +1,11 @@
 <script>
   import { createEventDispatcher } from "svelte"
-  import Tooltip from "../shared/tooltip.svelte"
-  import Tick from "../svg/tick.svelte"
+  import Tooltip from "../../shared/tooltip.svelte"
+  import Tick from "../../svg/tick.svelte"
   // import BaseDesignImageUpload from "./BaseImageUpload.svelte"
   import DragAndDrop from "./dragAndDropImageUpload.svelte"
-  import DisabledNexPage from "../svg/disabledNexPage.svelte"
-  import PrevPage from "../svg/prevPage.svelte"
+  import DisabledNexPage from "../../svg/disabledNexPage.svelte"
+  import PrevPage from "../../svg/prevPage.svelte"
 
   let active = true
   let baseImgUpload = true

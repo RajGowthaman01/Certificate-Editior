@@ -3,7 +3,7 @@
   import LayersSection from "./layerPanel.svelte"
   import Image from "../svg/image.svelte"
   import Save from "../svg/save.svelte"
-  import Index from "../modules/introCard.svelte"
+  import IntroCard from "../modules/introCard/introCard.svelte"
   import ImagePropertyPanel from "./imagePropertyPanel.svelte"
 
   let editSection
@@ -36,9 +36,10 @@
     <div class="flex h-screen w-screen bg-certificateSection" />
   </div>
   <Footer />
-  <!-- {#if modalOverLay}
-    <Index on:hideModal={() => (modalOverLay = !modalOverLay)} />
-  {/if} -->
+
+  {#if modalOverLay}
+    <IntroCard on:hideModal={() => (modalOverLay = !modalOverLay)} />
+  {/if}
 </div>
 
 <style lang="postcss" global>
