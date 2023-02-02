@@ -29,16 +29,15 @@
   .inputbox {
     @apply block h-10 w-3/4 rounded-md border-none bg-lightGray text-sm text-white focus:ring-2 focus:ring-primary_blue;
   }
-  p {
+  /* p {
     @apply block h-10 w-3/4 rounded-md border-none bg-lightGray text-sm text-white focus:ring-2  focus:ring-primary_blue;
-  }
+  } */
   .svg-nav {
     @apply h-6 w-6 flex-shrink-0 stroke-Analytics-secondarytext;
   }
   .cardHeading {
     @apply text-center text-2xl font-bold text-textGray;
   }
-
   label {
     @apply text-sm font-medium tracking-wider text-white;
   }
