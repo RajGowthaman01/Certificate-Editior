@@ -1,4 +1,6 @@
 <script>
+  import { createEventDispatcher } from "svelte"
+
   import { customHorizontalSlide } from "../scripts/customTransition"
   import AlighRight from "../svg/alighRight.svelte"
   import AlignCenter from "../svg/alignCenter.svelte"
@@ -13,7 +15,9 @@
   import Int from "../svg/int.svelte"
   import { linear } from "svelte/easing"
   export let textEditSection = false
+  export let customFontModal = false
 
+  const dispatch = createEventDispatcher()
   let input = true
   let color = ["#ef4444", "#f97f1a", "#f9c921", "#2fedd0", "#1dacf0"]
   let colorPicked = "#1dacf0"
@@ -139,7 +143,12 @@
               </div>
             {/if}
           </div>
-          <div on:click={() => console.log("click")} class="group relative flex h-8 w-8 items-center justify-center rounded-md hover:ring-2 hover:ring-primary_blue">
+          <div
+            on:click={() => {
+              dispatch("FontModal")
+            }}
+            class="group relative flex h-8 w-8 items-center justify-center rounded-md hover:ring-2 hover:ring-primary_blue"
+          >
             <div class="group flex text-3xl text-[#6c6c6c] ">
               <div class="z-50 hidden  group-hover:block "><Tooltip tooltip="AddNewFont" top={true} /></div>
               <ChooseFontIcon />

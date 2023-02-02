@@ -4,11 +4,11 @@
   import Image from "../svg/image.svelte"
   import Save from "../svg/save.svelte"
   import IntroCard from "../modules/introCard/introCard.svelte"
-  import ImagePropertyPanel from "./imagePropertyPanel.svelte"
+  import Index from "../modules/addCustomFont/Index.svelte"
 
   let editSection
-  let imagePanel = true
-  let modalOverLay = true
+  let modalOverLay = false
+  let customFontModal = true
 </script>
 
 <div class="relative flex h-screen w-screen flex-col overflow-hidden">
@@ -32,10 +32,25 @@
     </div>
   </div>
   <div class="flex w-full flex-row bg-certificateSection">
-    <LayersSection {editSection} />
+    <LayersSection
+      on:FontModal={() => {
+        customFontModal = true
+      }}
+      {editSection}
+    />
     <div class="flex h-screen w-screen bg-certificateSection" />
   </div>
   <Footer />
+
+  {#if customFontModal}
+    <div out:fade class="absolute inset-0 flex items-center justify-center overflow-hidden bg-topNavSvgBg/50">
+      <Index
+        on:FontModal={() => {
+          customFontModal = true
+        }}
+      />
+    </div>
+  {/if}
 
   {#if modalOverLay}
     <IntroCard on:hideModal={() => (modalOverLay = !modalOverLay)} />
