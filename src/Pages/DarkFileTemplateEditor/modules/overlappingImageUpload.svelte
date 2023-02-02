@@ -72,7 +72,7 @@
 </div>
 
 <div class:hidden={!PreviewBaseImage}>
-	<h1 class="text-primaryBlue mb-4 pt-8 pl-8 text-4xl dark:text-blue-400">
+	<h1 class="text-primary_blue mb-4 pt-8 pl-8 text-4xl dark:text-blue-400">
 		Upload <br />
 		Image
 	</h1>
@@ -88,11 +88,11 @@
 	</div>
 	<div class="absolute bottom-8 left-8">
 		<div class="flex gap-6">
-			<button on:click={removeBaseImage} class=" hover:ring-primaryBlue group relative flex h-8 w-8 items-center justify-center rounded-full hover:ring-2">
+			<button on:click={removeBaseImage} class=" hover:ring-primary_blue group relative flex h-8 w-8 items-center justify-center rounded-full hover:ring-2">
 				<div class="z-20 hidden group-hover:block">
 					<Tooltip tooltip="Choose Different ImageFile" top={true} />
 				</div>
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-secondaryGray dark:text-heading hover:text-primaryBlue h-6 w-6 ">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-secondaryGray dark:text-heading hover:text-primary_blue h-6 w-6 ">
 					<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
 				</svg>
 			</button>
@@ -100,7 +100,7 @@
 				on:click={() => {
 					dispatch("hideModal")
 				}}
-				class="hover:ring-primaryBlue group relative flex h-8 w-8 items-center justify-center rounded-full hover:ring-2 "
+				class="hover:ring-primary_blue group relative flex h-8 w-8 items-center justify-center rounded-full hover:ring-2 "
 			>
 				<div class="z-20 hidden group-hover:block">
 					<Tooltip tooltip="Upload Image" top={true} />
@@ -121,6 +121,6 @@
 
 <style lang="postcss">
 	.active {
-		@apply bg-primaryBlue;
+		@apply bg-primary_blue;
 	}
 </style>

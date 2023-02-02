@@ -4,18 +4,17 @@
 	import PrevPage from "../svg/prevPage.svelte"
 	const dispatch = createEventDispatcher()
 	let active = true
-	let hidden = true
 	let pagination = true
 	let fileName = ""
 </script>
 
-<h1 class="mb-4 pt-8 pl-8 text-4xl text-primaryBlue dark:text-blue-400">
+<h1 class="text-primary_blue mb-4 pt-8 pl-8 text-4xl dark:text-blue-400">
 	File
 	<br />
 	Name
 </h1>
 <div class="mt-7 grid grid-cols-2 items-center 2xl:mt-16">
-	<div class=" pr-8 pl-8 text-secondaryGray dark:text-primaryGray">
+	<div class=" text-secondaryGray dark:text-primaryGray pr-8 pl-8">
 		<p class="text-sm">
 			Enter Your desired <strong>File Name</strong>
 			. You cannot change your File Name once you confirm.
@@ -25,11 +24,8 @@
 	<div class="relative mx-auto w-2/3">
 		<div class="w-full text-center">
 			<div class="group w-full items-center rounded-md">
-				<!-- <input name="field_name" class="text-secondaryGray dark:text-heading dark:bg-secondary dark:focus:bg-topNavSvgBg/80 focus:ring-primaryBlue w-full rounded-md border-none bg-gray-200 px-4 py-2 text-sm uppercase focus:bg-gray-300 focus:outline-none focus:ring-1" type="text" placeholder="" /> -->
-				<input type="text" bind:value={fileName} name="first-name" id="first-name" autocomplete="given-name" class="block w-full max-w-lg rounded-md border-gray-300 text-secondaryGray shadow-sm focus:border-primaryBlue focus:ring-primaryBlue dark:border-primaryBlue dark:bg-secondary dark:text-heading dark:focus:bg-secondary sm:max-w-xs sm:text-sm" />
+				<input type="text" bind:value={fileName} name="first-name" id="first-name" autocomplete="given-name" class="text-secondaryGray focus:border-primary_blue focus:ring-primary_blue dark:border-primary_blue dark:bg-secondary dark:text-heading dark:focus:bg-secondary block w-full max-w-lg rounded-md border-gray-300 shadow-sm sm:max-w-xs sm:text-sm" />
 			</div>
-
-			<!-- <div class="mt-1 sm:col-span-2 sm:mt-0" /> -->
 		</div>
 	</div>
 </div>
@@ -82,6 +78,6 @@
 
 <style lang="postcss">
 	.active {
-		@apply bg-primaryBlue;
+		@apply bg-primary_blue;
 	}
 </style>

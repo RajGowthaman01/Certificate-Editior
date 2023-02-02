@@ -7,6 +7,17 @@
   import DoubleLeft from "../../svgicons/DoubleLeft.svelte"
   import DocumentUpload2 from "./Components/DocumentUpload2.svelte"
   import DocumentUpload3 from "./Components/DocumentUpload3.svelte"
+
+
+  let uploadImageSection = true
+  let File, ImgUrl, KB, imgName
+  const imgUrl = (e) => {
+    File = e.detail
+    ImgUrl = URL.createObjectURL(File)
+    KB = Math.floor(File.size / 1000).toFixed(1)
+    console.log(ImgUrl)
+    uploadImageSection = false
+  }
 </script>
 
 <svelte:head>
@@ -37,6 +48,17 @@
   </div>
 </main>
 
+<!-- <main class="h-screen w-screen flex justify-center items-center bg-[#000000cc]">
+  <div class="relative p-5 w-4/6 bg-darkGray rounded-md">
+  <ImageUploadSection />
+  <ImagePreview />
+  <ImgUpload />
+  <ImguploadSec />
+  </div>
+  <div class="relative w-5/12">
+    <SignDoc />
+  </div>
+</main> -->
 <style lang="postcss">
   .option-class {
     @apply w-full border-b-2 px-3 py-1.5 text-sm font-bold text-textGray hover:text-primary_blue;
