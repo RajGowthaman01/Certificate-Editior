@@ -67,7 +67,7 @@
   }
 </script>
 
-<main class="h-screen w-screen flex justify-center items-center bg-[#000000cc]">
+<main class="h-screen w-screen flex justify-center items-center">
   <!-- <div class="relative p-5 w-4/6 bg-darkGray rounded-md"> -->
   <!-- <ImageUploadSection /> -->
   <!-- <ImagePreview /> -->

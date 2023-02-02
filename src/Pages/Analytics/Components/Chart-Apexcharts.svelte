@@ -117,19 +117,19 @@
       series: [
         {
           name: "Sent",
-          data: [45, 52, 38, 45, 19, 23, 2, 45, 52, 38, 45, 19],
+          data: [45, 52, 38, 45, 19, 23, 2, 45, 52, 38, 45, 52, 38, 45, 19, 23, 2, 45, 52, 38, 45, 52, 38, 45, 19, 23, 2, 45, 52, 38],
         },
         {
           name: "Delivered",
-          data: [55, 52, 28, 35, 19, 13, 2, 2, 45, 52, 38, 45],
+          data: [55, 52, 28, 35, 19, 13, 2, 2, 45, 52, 55, 52, 28, 35, 19, 13, 2, 2, 45, 52, 55, 52, 28, 35, 19, 13, 2, 2, 45, 52],
         },
         {
           name: "Bounced",
-          data: [5, 10, 15, 20, 25, 5, 10, 15, 20, 25, 5, 10],
+          data: [5, 10, 15, 20, 25, 5, 10, 15, 20, 25, 5, 10, 15, 20, 25, 5, 10, 15, 20, 25, 5, 10, 15, 20, 25, 5, 10, 15, 20, 25],
         },
         {
           name: "Opened",
-          data: [10, 30, 12, 34, 45, 34, 2, 1, 4, 6, 23, 25],
+          data: [10, 30, 12, 34, 45, 34, 2, 1, 4, 6, 10, 30, 12, 34, 45, 34, 2, 1, 4, 6, 10, 30, 12, 34, 45, 34, 2, 1, 4, 6],
         },
       ],
       fill: {
@@ -175,7 +175,7 @@
         tooltip: {
           enabled: false,
         },
-        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        categories: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"],
       },
       yaxis: {
         labels: {
@@ -198,7 +198,7 @@
 
 <div class="flex gap-10 px-4">
   <div class="flex w-1/6 flex-col gap-2">
-    <h5 class="text-base font-medium text-primarytext">Timestamp</h5>
+    <h5 class="text-Analytics-primarytext">Timestamp</h5>
     {#if activeDropDown == "Monthly"}
       <h1>{date ? `${currentMonth} ${date} ${currentYear}` : `${currentMonth} ${currentYear}`}</h1>
     {:else}
@@ -206,27 +206,42 @@
     {/if}
   </div>
   <div class="flex flex-col gap-2">
-    <h5 class="text-base font-medium text-primarytext">Email Sent</h5>
-    <h1>{sent ? sent : "0"}</h1>
+    <h5 class="text-Analytics-primarytext">Email Sent</h5>
+    <div class="flex items-center gap-3">
+      <span class="h-4 w-4 rounded-full bg-Analytics-iconcolor " />
+      <h1>{sent ? sent : "0"}</h1>
+    </div>
   </div>
   <div class="flex flex-col gap-2">
-    <h5 class="text-base font-medium text-primarytext">Email Delivered</h5>
-    <h1>{Delivered ? Delivered : "0"}</h1>
+    <h5 class="text-Analytics-primarytext">Email Delivered</h5>
+    <div class="flex items-center gap-3">
+      <span class="h-4 w-4 rounded-full bg-Analytics-card2" />
+      <h1>{Delivered ? Delivered : "0"}</h1>
+    </div>
   </div>
   <div class="flex flex-col gap-2">
-    <h5 class="text-base font-medium text-primarytext">Email Bounced</h5>
-    <h1>{Bounced ? Bounced : "0"}</h1>
+    <h5 class="text-Analytics-primarytext">Email Bounced</h5>
+    <div class="flex items-center gap-3">
+      <span class="h-4 w-4 rounded-full bg-Analytics-card3" />
+      <h1>{Bounced ? Bounced : "0"}</h1>
+    </div>
   </div>
   <div class="flex flex-col gap-2">
-    <h5 class="text-base font-medium text-primarytext">Email Opened</h5>
-    <h1>{Opened ? Opened : "0"}</h1>
+    <h5 class="text-Analytics-primarytext">Email Opened</h5>
+    <div class="flex items-center gap-3">
+      <span class="h-4 w-4 rounded-full bg-Analytics-card4" />
+      <h1>{Opened ? Opened : "0"}</h1>
+    </div>
   </div>
 </div>
-<div class="z-0 h-96 w-full rounded-md bg-transparent shadow-sm dark:bg-primary">
+<div class="z-0 h-80 w-full rounded-md bg-transparent shadow-sm dark:bg-Analytics-primary">
   <div id="chart" class="h-full" />
 </div>
 
-<style global>
+<style global lang="postcss">
+  h5 {
+    @apply text-sm font-medium tracking-wider;
+  }
   #chart .apexcharts-tooltip {
     background: transparent !important;
     border: none !important;

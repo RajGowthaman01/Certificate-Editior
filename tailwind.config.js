@@ -44,18 +44,19 @@ module.exports = {
         certificateSection: "#252525",
         secondaryGray: "#666769", //for text
         hr: "gray-700/50",
-
-        //Analytics
-        sidebar: "#3D3D45", //
-        primary: "#232428", //
-        secondary: "#302F35", //
-        iconcolor: "#1B5FDA", //
-        primarytext: "#A0A1A3", //
-        secondarytext: "#A8A7AD", //
-        addbtn: "#43434B", //
-        card2: "#9259E9",
-        card3: "#4DE5BE",
-        card4: "#58C0FE",
+       
+        Analytics: {
+          sidebar: "#3D3D45", //
+          primary: "#232428", //
+          secondary: "#302F35", //
+          iconcolor: "#1B5FDA", //
+          primarytext: "#A0A1A3", //
+          secondarytext: "#A8A7AD", //
+          addbtn: "#43434B", //
+          card2: "#9259E9",
+          card3: "#4DE5BE",
+          card4: "#58C0FE",
+        },
       },
       aspectRatio: {
         "16/10": "16 / 10",
