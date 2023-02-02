@@ -1,11 +1,11 @@
 <script>
   import Router from "svelte-spa-router"
   import routes from "./routes"
-  const changeNav = (value) => {
-    nav = nav.filter((nav) => nav != value)
-    nav = [activeNav, ...nav]
-    activeNav = value
-  }
+  // const changeNav = (value) => {
+  //   nav = nav.filter((nav) => nav != value)
+  //   nav = [activeNav, ...nav]
+  //   activeNav = value
+  // }
 </script>
 
 <Router {routes} />

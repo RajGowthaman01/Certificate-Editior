@@ -1,28 +1,69 @@
 <script>
-  import Logo from "../../svgicons/logo.svelte"
-  import Pdicon from "../../svgicons/Pdicon.svelte"
-  import Settingsicon from "../../svgicons/settingsicon.svelte"
-  import Analyticicon from "../../svgicons/Analyticicon.svelte"
-  import Historyicon from "../../svgicons/Historyicon.svelte"
-  import Docicon from "../../svgicons/Docicon.svelte"
-  import Emailicon from "../../svgicons/Emailicon.svelte"
-  import Msgicon from "../../svgicons/msgicon.svelte"
-  import Templateicon from "../../svgicons/Templateicon.svelte"
-  import Searchicon from "../../svgicons/Searchicon.svelte"
-  import ImageUploadSection from "./modules/ImageUploadSection.svelte"
-  import ImagePreview from "../PublishDoc/modules/imagePreview.svelte"
-  import ImgUpload from "./modules/imgUpload.svelte"
-  import ImguploadSec from "./modules/imguploadSec.svelte"
+  import { slide, fade } from "svelte/transition"
   import SignDoc from "./modules/SignDoc.svelte"
+  import SignPlace from "./modules/SignPlace.svelte"
+  import Empty from "./modules/empty.svelte"
+  import SignClr from "./modules/signClr.svelte"
+  import EnterOtp from "./modules/EnterOtp.svelte"
+  import PreOrDownDoc from "./modules/PreOrDownDoc.svelte"
 
-  let uploadImageSection = true
-  let File, ImgUrl, KB, imgName
-  const imgUrl = (e) => {
-    File = e.detail
-    ImgUrl = URL.createObjectURL(File)
-    KB = Math.floor(File.size / 1000).toFixed(1)
-    console.log(ImgUrl)
-    uploadImageSection = false
+  // let uploadImageSection = true
+  // let File, ImgUrl, KB, imgName
+  // const imgUrl = (e) => {
+  //   File = e.detail
+  //   ImgUrl = URL.createObjectURL(File)
+  //   KB = Math.floor(File.size / 1000).toFixed(1)
+  //   console.log(ImgUrl)
+  //   uploadImageSection = false
+  // }
+
+  let sections = [
+    {
+      id: 0,
+      Title: "User Details",
+      Component: SignDoc,
+      Active: false,
+    },
+    {
+      id: 1,
+      Title: "Signature placement selection",
+      Component: SignPlace,
+      Active: false,
+    },
+    {
+      id: 3,
+      Title: "Select Signature Colour",
+      Component: SignClr,
+      Active: false,
+    },
+    {
+      id: 4,
+      Title: "Enter OTP",
+      Component: EnterOtp,
+      Active: false,
+    },
+    {
+      id: 5,
+      Title: "PDF Preview (or) Download",
+      Component: PreOrDownDoc,
+      Active: false,
+    },
+  ]
+
+  const changeActiveComponent = (id) => {
+    sections = sections.map((sections) => {
+      sections.Active = false
+      if (sections.id == id) {
+        sections.Active = true
+      }
+      return sections
+    })
+    // console.log(sections)
+  }
+
+  let img = false
+  const showImg = () => {
+    img = !img
   }
 </script>
 
@@ -33,7 +74,45 @@
   <!-- <ImgUpload /> -->
   <!-- <ImguploadSec /> -->
   <!-- </div> -->
-  <div class="relative w-5/12">
-    <SignDoc />
+  <div class="grid grid-cols-12 w-full h-full">
+    <div class="col-span-3 flex" />
+    <div class="col-span-9 flex">
+      <div class="w-8/12" />
+      <div class="w-4/12 h-full relative bg-darkGray">
+        <!-- <div class=" w-5/12"> -->
+        {#if img}
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <img src="assets/images/download (1).png" alt="img" on:click={showImg} />
+        {:else}
+          <!-- <h1 class="text-center text-2xl text-primary_blue mb-5">Document Signature Section</h1> -->
+          <div class="px-5">
+            {#each sections as section (section.id)}
+              <div class="{sections[sections.length - 1] == section ? '' : 'border-b'} border-textGray">
+                <div class=" flex justify-between py-5">
+                  <span class="text-lg text-textGray font-bold">{section.Title}</span>
+                  <!-- svelte-ignore a11y-click-events-have-key-events -->
+                  <svg on:click={() => changeActiveComponent(section.id)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-textGray w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="{section.Active ? 'M15 12' : 'M12 9v6m3-3'}H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                {#if section.Active}
+                  <div in:slide>
+                    <svelte:component this={section.Component} on:ShowImg={showImg} />
+                  </div>
+                {/if}
+              </div>
+            {/each}
+          </div>
+        {/if}
+      </div>
+    </div>
   </div>
+
+  <!-- <Empty /> -->
 </main>
+
+<style global lang="postcss">
+  .btn {
+    @apply rounded-[0.375rem] bg-[#0d6efd] py-[0.375rem] px-[0.75rem] font-semibold text-white;
+  }
+</style>
