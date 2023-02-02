@@ -1,4 +1,4 @@
-<footer class="px-15 fixed bottom-0 flex h-6 w-full  bg-primaryBlue">
+<footer class="px-15 fixed bottom-0 flex h-6 w-full  bg-primary_blue">
   <div class="container mx-auto flex flex-row">
     <div class="flex w-80 flex-row items-center">
       <div class="flex items-center text-xs text-heading ">20,20</div>

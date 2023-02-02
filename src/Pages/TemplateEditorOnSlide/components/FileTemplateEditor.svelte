@@ -37,8 +37,8 @@
   </div>
   <Footer />
   <!-- {#if modalOverLay}
-		<Index on:hideModal={() => (modalOverLay = !modalOverLay)} />
-	{/if} -->
+    <Index on:hideModal={() => (modalOverLay = !modalOverLay)} />
+  {/if} -->
 </div>
 
 <style lang="postcss" global>
@@ -52,9 +52,9 @@
     margin: 0;
   }
   .Button {
-    @apply mx-auto inline-flex cursor-pointer select-none gap-2 rounded-md border border-green py-1 px-2 text-center text-sm font-medium capitalize  text-green  hover:bg-green hover:text-white  focus:border-none focus:text-white focus:outline-none focus:ring focus:ring-green  active:bg-green active:text-white dark:hover:text-white;
+    @apply border-green text-green hover:bg-green focus:ring-green active:bg-green mx-auto inline-flex cursor-pointer select-none gap-2 rounded-md border py-1 px-2  text-center  text-sm font-medium  capitalize hover:text-white focus:border-none focus:text-white focus:outline-none  focus:ring active:text-white dark:hover:text-white;
   }
   .topnavsvg {
-    @apply flex h-8 w-8 items-center justify-center rounded-md border border-green text-green ring-0  hover:bg-green focus:border-none focus:text-white focus:outline-none focus:ring focus:ring-green active:bg-transparent active:text-white dark:hover:text-white;
+    @apply border-green text-green hover:bg-green focus:ring-green flex h-8 w-8 items-center justify-center rounded-md  border ring-0 focus:border-none focus:text-white focus:outline-none focus:ring active:bg-transparent active:text-white dark:hover:text-white;
   }
 </style>
