@@ -6,23 +6,16 @@
   let sections = [
     {
       id: 0,
-      Title: "Choose Document Template",
+      Title: "Single Document Publishing",
       icon: Docicon,
-      Content: "Choose the Document Template based on your preference",
+      Content: "This option supports single document publishing",
       active: true,
     },
     {
       id: 1,
-      Title: "Generate Document ID",
+      Title: "Bulk Upload",
       icon: Msgicon,
-      Content: "Document ID for publishing documents will be generated",
-      active: false,
-    },
-    {
-      id: 2,
-      Title: "Continue with Existing Doc ID",
-      icon: Emailicon,
-      Content: "Choose this option if you already have any existing document IDs",
+      Content: "If you want to upload multiple documents at once, prefer this option",
       active: false,
     },
     {
@@ -34,9 +27,9 @@
     },
     {
       id: 4,
-      Title: "Release Document",
+      Title: "Revoke Document",
       icon: Msgicon,
-      Content: "Release any document that is already published",
+      Content: "Revoke any document that is already published",
       active: false,
     },
   ]
@@ -59,7 +52,7 @@
   <div class="mt-12">
     {#each sections as sections (sections.id)}
       <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <div on:click={() => changeActiveBar(sections.id)} class="flex border-l-4 border-b cursor-pointer select-none {sections.active ? 'active' : 'border-l-transparent'} border-Analytics-sidebar px-4 py-3">
+      <div on:click={() => changeActiveBar(sections.id)} class="flex border-l-4 border-b cursor-pointer select-none {sections.active ? 'active shadow-3xl' : 'border-l-transparent'} border-Analytics-sidebar px-4 py-3">
         <div class="flex items-center justify-center">
           <svelte:component this={sections.icon} />
         </div>
@@ -83,6 +76,6 @@
     @apply text-base font-medium tracking-wider text-white;
   }
   .active {
-    @apply border-l-Analytics-iconcolor bg-Analytics-primary shadow-3xl;
+    @apply border-l-Analytics-iconcolor bg-Analytics-primary;
   }
 </style>

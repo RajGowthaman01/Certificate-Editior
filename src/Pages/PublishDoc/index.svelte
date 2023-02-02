@@ -1,13 +1,12 @@
 <script>
   import Navbar from "../../Components/Navbar.svelte"
   import PublishSidebar from "./Components/PublishSidebar.svelte"
-  import Nexticon from "../../svgicons/Nexticon.svelte"
   import DocumentTemplate from "./Components/DocumentTemplate.svelte"
   import DocumentUpload from "./Components/DocumentUpload.svelte"
-  import DoubleLeft from "../../svgicons/DoubleLeft.svelte"
-  import DocumentUpload2 from "./Components/DocumentUpload2.svelte"
-  import DocumentUpload3 from "./Components/DocumentUpload3.svelte"
-  import SignerOverlay from "./modules/SignerOverlay.svelte"
+  import RightArrow from "../../svgicons/RightArrow.svelte"
+  import Leftarrow from "../../svgicons/Leftarrow.svelte"
+  import PublishHeader from "./Components/PublishHeader.svelte"
+  import ProgressHeader from "./Components/ProgressHeader.svelte"
 
   let uploadImageSection = true
   let File, ImgUrl, KB, imgName
@@ -29,26 +28,23 @@
     <Navbar />
     <PublishSidebar />
   </div>
-  <div class="relative col-span-9 grid grid-cols-2 h-full items-center bg-Analytics-primary">
-    <!-- <PublishHeader /> -->
-    <div class="absolute bottom-5 right-32">
-      <div class="flex gap-56">
-        <div class="inline-flex gap-2 items-center">
-          <DoubleLeft />
-          <span class="text-xs text-Analytics-primarytext font-medium">Prev</span>
-        </div>
-        <div class="inline-flex gap-2 items-center">
-          <span class="text-xs text-Analytics-primarytext font-medium">Next</span>
-          <Nexticon />
-        </div>
+  <div class="relative col-span-9 grid grid-cols-2 h-full bg-Analytics-primary">
+    <PublishHeader />
+    <div class="col-span-9 mt-12">
+      <ProgressHeader />
+    </div>
+    <!-- <div class="absolute bottom-5 right-32">
+      <div class="flex gap-10">
+        <Leftarrow />
+        <RightArrow />
       </div>
     </div>
-    <!-- <DocumentTemplate /> -->
-    <DocumentUpload />
+    <DocumentTemplate />
+    <DocumentUpload /> -->
   </div>
-  <div class="absolute">
+  <!-- <div class="absolute">
     <SignerOverlay />
-  </div>
+  </div> -->
 </main>
 
 <!-- <main class="h-screen w-screen flex justify-center items-center bg-[#000000cc]">
