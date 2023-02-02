@@ -10,7 +10,7 @@
   import Templateicon from "../../svgicons/Templateicon.svelte"
   import Searchicon from "../../svgicons/Searchicon.svelte"
   import ImageUploadSection from "./modules/ImageUploadSection.svelte"
-  import ImagePreview from "../PublishDoc/modules/imagePreview.svelte"
+  import ImagePreview from "../PublishDoc/modules/ImagePreview.svelte"
   import ImgUpload from "./modules/imgUpload.svelte"
   import ImguploadSec from "./modules/imguploadSec.svelte"
   import SignDoc from "./modules/SignDoc.svelte"

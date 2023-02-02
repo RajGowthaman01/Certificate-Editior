@@ -24,7 +24,7 @@
 						<path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 					</svg>
 					<div class="flex text-sm text-gray-600">
-						<label for="file-upload" class="text-primaryBlue relative cursor-pointer rounded-md font-medium">
+						<label for="file-upload" class="text-primary_blue relative cursor-pointer rounded-md font-medium">
 							<!-- svelte-ignore a11y-click-events-have-key-events -->
 							<span>Upload a file</span>
 							<input id="file-upload" name="file-upload" type="file" class="sr-only" />
@@ -40,9 +40,9 @@
 
 <style lang="postcss">
 	.labelSpan {
-		@apply text-secondaryGray group-focus-within:text-primaryBlue group-focus-within:ring-primaryBlue absolute rounded-md text-sm outline-none focus:ring-1;
+		@apply text-secondaryGray group-focus-within:text-primary_blue group-focus-within:ring-primary_blue absolute rounded-md text-sm outline-none focus:ring-1;
 	}
 	.inputValue {
-		@apply bg-primary focus:bg-secondary focus:ring-primaryBlue w-full rounded-md px-4 pl-24 text-sm font-bold text-white focus:outline-none focus:ring-2;
+		@apply bg-primary focus:bg-secondary focus:ring-primary_blue w-full rounded-md px-4 pl-24 text-sm font-bold text-white focus:outline-none focus:ring-2;
 	}
 </style>
