@@ -36,10 +36,4 @@
   h5 {
     @apply text-sm font-thin text-textGray;
   }
-  @layer base {
-    @font-face {
-      font-family: "Roboto";
-      src: url("/Fonts/Roboto-LightItalic.ttf") format("truetype");
-    }
-  }
 </style>

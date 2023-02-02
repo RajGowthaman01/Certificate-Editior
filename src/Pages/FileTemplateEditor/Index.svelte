@@ -5,7 +5,6 @@
   import TextEditorMenu from "./Components/TextEditorMenu.svelte"
   import IntroCard2 from "./Modules/IntroCard2/Index.svelte"
   import CustomFont from "./Modules/CustomFont/Index.svelte"
-  import Dark from "./svgIcons/Dark.svelte"
   let showIntroCard = false
   const hideModal = () => {
     showIntroCard = false
@@ -33,7 +32,11 @@
   {/if}
   {#if showFontModal}
     <div out:fade class="absolute inset-0 flex items-center justify-center overflow-hidden bg-[#000000cc]">
-      <CustomFont />
+      <CustomFont
+        on:click={() => {
+          showFontModal = false
+        }}
+      />
     </div>
   {/if}
 </main>

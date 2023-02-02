@@ -16,6 +16,7 @@ module.exports = {
         "9/10": "90%",
       },
       fontFamily: {
+        // Roboto: ["Roboto"],
         Emblema_One: ["Emblema One"],
         nunito: ["nunito", "sans-serif"],
         Croissant_One: ["Croissant One"],
