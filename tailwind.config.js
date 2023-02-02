@@ -57,17 +57,18 @@ module.exports = {
         lightHeaderSection: "#dedede", //for light placeholder too
         layerPanelActive: "#f3f4f6",
         layerPanelinActive: "#e6e7eb",
-        //Analytics
-        sidebar: "#3D3D45", //
-        primary: "#232428", //
-        secondary: "#302F35", //
-        iconcolor: "#1B5FDA", //
-        primarytext: "#A0A1A3", //
-        secondarytext: "#A8A7AD", //
-        addbtn: "#43434B", //
-        card2: "#9259E9",
-        card3: "#4DE5BE",
-        card4: "#58C0FE",
+        Analytics: {
+          sidebar: "#3D3D45", //
+          primary: "#232428", //
+          secondary: "#302F35", //
+          iconcolor: "#1B5FDA", //
+          primarytext: "#A0A1A3", //
+          secondarytext: "#A8A7AD", //
+          addbtn: "#43434B", //
+          card2: "#9259E9",
+          card3: "#4DE5BE",
+          card4: "#58C0FE",
+        },
       },
       aspectRatio: {
         "16/10": "16 / 10",
