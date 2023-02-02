@@ -10,9 +10,14 @@
   let activeDocType = "Normal"
   let dropDown = false
   let option = "p"
+  let container
+  const onWindowClick = (e) => {
+    if (container.contains(e.target) == false) dropDown = false
+  }
 </script>
 
-<div class="flex flex-col gap-3">
+<svelte:window on:click={onWindowClick} />
+<div bind:this={container} class="flex flex-col gap-3">
   <div class="h-48">
     <h1 class="pb-2 text-lg font-medium text-textGray">Font Preview</h1>
 

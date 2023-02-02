@@ -101,10 +101,10 @@
 </script>
 
 {#if textEditSection}
-  <div class="flex h-full w-[330px] flex-col border-b border-r border-black bg-secondary " transition:customHorizontalSlide={{ direction: "inline", duration: 800 }}>
+  <div class="flex h-full w-[330px] flex-col border-b border-r border-black bg-[#1e1e1e] " transition:customHorizontalSlide={{ direction: "inline", duration: 800 }}>
     <div class="flex ">
       <div class=" w-full flex-col items-center px-4 py-4">
-        <div class="group relative flex items-center rounded-md bg-secondary">
+        <div class="group relative flex items-center rounded-md bg-bg-[#1e1e1e] ">
           <span class="labelSpan ml-1">NAME</span>
           <input name="field_name" class="inputValue" type="text" placeholder="" />
         </div>
@@ -124,7 +124,7 @@
                   {fontFamily}
                   <DropDownIcon />
                 </button>
-                <div class="{fontName ? 'flex' : 'hidden'} absolute z-10 w-full rounded-md bg-secondary px-2 text-sm font-bold text-primary ring-2 ring-blue-500">
+                <div class="{fontName ? 'flex' : 'hidden'} absolute z-10 w-full rounded-md bg-bg-[#1e1e1e]  px-2 text-sm font-bold text-primary ring-2 ring-blue-500">
                   <div class="w-full ">
                     <option on:click={() => changeFont("TimesNewRoman")} class="changefont">TimesNewRoman</option>
                     <option on:click={() => changeFont("Arial")} class="changefont">Arial</option>

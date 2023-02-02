@@ -8,7 +8,7 @@
 
   let editSection
   let modalOverLay = false
-  let customFontModal = true
+  let customFontModal = false
 </script>
 
 <div class="relative flex h-screen w-screen flex-col overflow-hidden">
