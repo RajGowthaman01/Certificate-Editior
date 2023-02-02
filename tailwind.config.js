@@ -34,17 +34,28 @@ module.exports = {
         textGray: "rgb(121 , 121, 121)",
         primary_blue: "rgb(48 , 122, 255)",
 
-        //Analytics
-        sidebar: "#3D3D45", //
-        primary: "#232428", //
-        secondary: "#302F35", //
-        iconcolor: "#1B5FDA", //
-        primarytext: "#A0A1A3", //
-        secondarytext: "#A8A7AD", //
-        addbtn: "#43434B", //
-        card2: "#9259E9",
-        card3: "#4DE5BE",
-        card4: "#58C0FE",
+        //venkatesh
+        secondary: "#1e1e1e", //black for majority
+        primary: "#444549", //text-color for label
+        primaryGray: "#949494",
+        topNavSvgBg: "#4e4f51",
+        heading: "#fcfefb", //properties white
+        certificateSection: "#252525",
+        secondaryGray: "#666769", //for text
+        hr: "gray-700/50",
+
+        Analytics: {
+          sidebar: "#3D3D45", //
+          primary: "#232428", //
+          secondary: "#302F35", //
+          iconcolor: "#1B5FDA", //
+          primarytext: "#A0A1A3", //
+          secondarytext: "#A8A7AD", //
+          addbtn: "#43434B", //
+          card2: "#9259E9",
+          card3: "#4DE5BE",
+          card4: "#58C0FE",
+        },
       },
       aspectRatio: {
         "16/10": "16 / 10",

@@ -39,6 +39,12 @@ export default {
   },
   plugins: [
     svelte({
+      onwarn: (warning, handler) => {
+        const { code, frame } = warning
+        if (code === "css-unused-selector") return
+
+        handler(warning)
+      },
       preprocess: [
         preprocess({
           postcss: true,
