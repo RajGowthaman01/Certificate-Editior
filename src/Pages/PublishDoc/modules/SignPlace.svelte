@@ -2,19 +2,18 @@
   import { slide, fade } from "svelte/transition"
   import { createEventDispatcher } from "svelte"
   const dispatch = createEventDispatcher()
-  let toggleSwitchPosition = true
+  let toggleSwitchPosition = false
   const toggleSwitch = () => {
     toggleSwitchPosition = !toggleSwitchPosition
   }
+  let toggleSwitchWithText = false
   const signDoc = () => {
-    dispatch("ShowImg")
+    toggleSwitchWithText = !toggleSwitchWithText
+    // dispatch("ShowImg")
   }
   let pageNos = [1, 2, 3, 4, 5, 6],
     PageNoDiv = false
   $: InputValue = "Select Page No"
-  const showPageNo = () => {
-    PageNoDiv = !PageNoDiv
-  }
   const BindPageNoValue = (pageNo) => {
     InputValue = pageNo
     PageNoDiv = !PageNoDiv
@@ -38,16 +37,20 @@
         {/each}
       </div>
     {/if}
-    <button on:click={signDoc} class="btn w-20">Sign</button>
   </div>
-  <div class="flex items-center justify-start">
-    <button on:click={toggleSwitch} class="w-9 mr-2 h-5 rounded-full p-1 bg-lightGray flex {toggleSwitchPosition ? 'justify-start' : 'justify-end'} items-center">
-      <div class="w-3 h-3 rounded-full bg-primary_blue" />
-    </button>
-    {#if toggleSwitchPosition}
-      <span class="text-thin text-textGray mb-1">Horizontaly Lock</span>
-    {:else}
-      <span class="text-thin text-textGray mb-1">Vertically Lock</span>
+  <div class="flex gap-3">
+    <button on:click={signDoc} class="btn w-20">Sign</button>
+    {#if toggleSwitchWithText}
+      <div transition:fade class="flex items-center justify-start">
+        <button on:click={toggleSwitch} class="w-9 mr-2 h-5 rounded-full p-1 bg-lightGray flex {toggleSwitchPosition ? 'justify-start' : 'justify-end'} items-center">
+          <div class="w-3 h-3 rounded-full bg-primary_blue" />
+        </button>
+        {#if toggleSwitchPosition}
+          <span class="text-thin text-textGray mb-1">Horizontaly Lock</span>
+        {:else}
+          <span class="text-thin text-textGray mb-1">Vertically Lock</span>
+        {/if}
+      </div>
     {/if}
   </div>
 </div>
