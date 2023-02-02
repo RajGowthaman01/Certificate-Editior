@@ -1,4 +1,5 @@
 <script>
+  import { slide, fade } from "svelte/transition"
   import { createEventDispatcher } from "svelte"
   const dispatch = createEventDispatcher()
   let toggleSwitchPosition = true
@@ -31,7 +32,7 @@
       <button on:click={() => BindPageNoValue("Select Page No")} class="w-full rounded-md border-2 border-lightGray bg-lightGray py-2 px-3 text-start text-sm font-bold text-textGray focus:border-primary_blue focus:outline-none focus:ring-primary_blue focus:bg-darkGray">{InputValue}</button>
     </div>
     {#if PageNoDiv}
-      <div class="flex flex-col border-2 py-0.5 border-primary_blue ring-primary_blue text-white w-full rounded-md">
+      <div transition:slide class="flex flex-col border-2 py-0.5 border-primary_blue ring-primary_blue text-white w-full rounded-md">
         {#each pageNos as pageNo}
           <button on:click={() => BindPageNoValue(pageNo)} class="hover:bg-lightGray pb-0.5 rounded-sm border-b border-lightGray px-3 text-start">{pageNo}</button>
         {/each}
