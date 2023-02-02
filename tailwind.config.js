@@ -41,16 +41,9 @@ module.exports = {
         heading: "#fcfefb", //properties white
         certificateSection: "#252525",
         secondaryGray: "#666769", //for text
-        primaryBlue: "#007acd", //vscode blue
+        // primaryBlue: "#007acd", //vscode blue
         hr: "gray-700/50",
-        roundedRed: "#f93925",
-        Orange: "#f97f1a",
-        Yellow: "#f9c921",
-        SkyBlue: "#2fedd0",
-        DarkBlue: "#1dacf0",
-        green: "#3bb143",
-        Red: "#ef4444",
-        rose: "#e8155c",
+
         // light-theme
         lightDarkGray: "#1b2a3e",
         lightBlue: "#43a4cb",

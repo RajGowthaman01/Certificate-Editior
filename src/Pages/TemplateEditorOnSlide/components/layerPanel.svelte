@@ -1,0 +1,30 @@
+<script>
+	import ImageLayerTile from "./imageLayerTile.svelte"
+	import TextLayerTile from "./textLayerTile.svelte"
+	import ImagePreview from "./imagePreview.svelte"
+	import ImagePropertyPanel from "./imagePropertyPanel.svelte"
+	import TextPropertyPanel from "./textPropertyPanel.svelte"
+	let imageUploadedSection = false
+	let textEditSection = false
+	let activeComponent
+</script>
+
+<div class="flex h-[screen] min-w-[330px] flex-col border-r border-black bg-certificateSection">
+	<ImagePreview />
+	<div class="flex py-2 px-4">
+		<div class="flex font-medium text-heading">Layers</div>
+	</div>
+	<div class="overflow-y-auto overflow-x-hidden	">
+		<div class="mb-20 flex flex-col">
+			<!-- {#each Array(30) as _, index (index)} -->
+			<ImageLayerTile on:hideImageProp={() => (imageUploadedSection = !imageUploadedSection)} on:hideImage={() => (imageUploadedSection = false)} on:click={() => (activeComponent = ImagePropertyPanel)} />
+			<TextLayerTile on:hideTextProp={() => (textEditSection = !textEditSection)} on:hideText={() => (textEditSection = false)} on:click={() => (activeComponent = TextPropertyPanel)} />
+			<!-- {/each} -->
+		</div>
+	</div>
+</div>
+<div class="flex min-w-[330px] flex-col">
+	{#if activeComponent}
+		<svelte:component this={activeComponent} {imageUploadedSection} {textEditSection} />
+	{/if}
+</div>

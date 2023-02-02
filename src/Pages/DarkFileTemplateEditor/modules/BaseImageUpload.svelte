@@ -61,12 +61,12 @@
 						<label class="group flex w-full flex-col rounded-lg p-10 text-center">
 							<div class="flex h-full w-full flex-col items-center justify-center space-y-2 text-center">
 								<div class="mx-auto flex w-full flex-auto">
-									<svg class="text-primaryBlue mx-auto h-10 w-10" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+									<svg class="text-primary_blue mx-auto h-10 w-10" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
 										<path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 									</svg>
 								</div>
 								<p class="text-secondaryGray cursor-pointer rounded-md text-sm  font-medium">
-									<strong class="text-primaryBlue">Click to Upload</strong>
+									<strong class="text-primary_blue">Click to Upload</strong>
 									<span>or Drag and Drop</span>
 								</p>
 								<p class="text-sm text-gray-500">PNG, JPG, GIF up to 10MB</p>
@@ -133,11 +133,11 @@
 			</div>
 		</div>
 		<div class="flex gap-6">
-			<button on:click={removeBaseImage} class=" hover:ring-primaryBlue group relative flex h-8 w-8 items-center justify-center rounded-full hover:ring-2">
+			<button on:click={removeBaseImage} class=" hover:ring-primary_blue group relative flex h-8 w-8 items-center justify-center rounded-full hover:ring-2">
 				<div class="z-20 hidden group-hover:block">
 					<Tooltip tooltip="Choose Different ImageFile" top={true} />
 				</div>
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-heading hover:text-primaryBlue h-6 w-6 ">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-heading hover:text-primary_blue h-6 w-6 ">
 					<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
 				</svg>
 			</button>
@@ -145,7 +145,7 @@
 				on:click={() => {
 					dispatch("hideModal")
 				}}
-				class="hover:ring-primaryBlue group relative flex h-8 w-8 items-center justify-center rounded-full hover:ring-2 "
+				class="hover:ring-primary_blue group relative flex h-8 w-8 items-center justify-center rounded-full hover:ring-2 "
 			>
 				<div class="z-20 hidden group-hover:block">
 					<Tooltip tooltip="Upload Image" top={true} />
@@ -159,6 +159,6 @@
 
 <style lang="postcss">
 	.active {
-		@apply bg-primaryBlue;
+		@apply bg-primary_blue;
 	}
 </style>
