@@ -7,7 +7,7 @@
   import DoubleLeft from "../../svgicons/DoubleLeft.svelte"
   import DocumentUpload2 from "./Components/DocumentUpload2.svelte"
   import DocumentUpload3 from "./Components/DocumentUpload3.svelte"
-
+  import SignerOverlay from "./modules/SignerOverlay.svelte"
 
   let uploadImageSection = true
   let File, ImgUrl, KB, imgName
@@ -45,6 +45,9 @@
     </div>
     <!-- <DocumentTemplate /> -->
     <DocumentUpload />
+  </div>
+  <div class="absolute">
+    <SignerOverlay />
   </div>
 </main>
 
