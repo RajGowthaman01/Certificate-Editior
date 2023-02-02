@@ -52,9 +52,9 @@
     margin: 0;
   }
   .Button {
-    @apply border-green text-green hover:bg-green focus:ring-green active:bg-green mx-auto inline-flex cursor-pointer select-none gap-2 rounded-md border py-1 px-2  text-center  text-sm font-medium  capitalize hover:text-white focus:border-none focus:text-white focus:outline-none  focus:ring active:text-white dark:hover:text-white;
+    @apply mx-auto inline-flex cursor-pointer select-none gap-2 rounded-md border border-green-600 py-1 px-2 text-center text-sm font-medium capitalize  text-green-600  hover:bg-green-600 hover:text-white  focus:border-none focus:text-white focus:outline-none focus:ring focus:ring-green-600  active:bg-green-600 active:text-white dark:hover:text-white;
   }
   .topnavsvg {
-    @apply border-green text-green hover:bg-green focus:ring-green flex h-8 w-8 items-center justify-center rounded-md  border ring-0 focus:border-none focus:text-white focus:outline-none focus:ring active:bg-transparent active:text-white dark:hover:text-white;
+    @apply flex h-8 w-8 items-center justify-center rounded-md border border-green-600 text-green-600 ring-0  hover:bg-green-600 focus:border-none focus:text-white focus:outline-none focus:ring focus:ring-green-600 active:bg-transparent active:text-white dark:hover:text-white;
   }
 </style>
