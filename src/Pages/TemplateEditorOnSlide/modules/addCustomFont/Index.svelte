@@ -1,6 +1,6 @@
 <script>
-  import LeftArrow from "../../../../svgicons/Leftarrow.svelte"
-  import RightArrow from "../../svg/chevronRight.svelte"
+  import LeftArrow from "../../svg/leftArrow.svelte"
+  import RightArrow from "../../svg/rightArrow.svelte"
   import Tooltip from "../../shared/tooltip.svelte"
   import CustomFonts from "./components/customFonts.svelte"
   import CheckFont from "./components/checkFont.svelte"

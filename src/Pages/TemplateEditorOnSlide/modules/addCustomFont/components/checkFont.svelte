@@ -1,5 +1,6 @@
 <script>
   // import Tooltip from "../../../Components/Tooltip.svelte"
+  import DropDownIcon from "../../../svg/dropDownIcon.svelte"
   import DropdownArrow from "../../../svg/dropDownIcon.svelte"
   // import LeftArrow from "../../../svgIcons/LeftArrow.svelte"
   // import RightArrow from "../../../svgIcons/RightArrow.svelte"
@@ -21,7 +22,7 @@
         option = "textarea"
       }}
     >
-      The lesson here breaks down all of the pieces that go into building a strong narrative paragraph. When you have mastered this lesson, you will be able to describe things that happened to you, or your memories, in writing in English.
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
     </svelte:element>
   </div>
 
@@ -32,15 +33,17 @@
 
   <div>
     <h1 class="pb-2 text-lg font-medium text-textGray">Font Style</h1>
-    <div class="group relative  flex h-full w-full">
+    <div class="group rounded-md relative flex h-full w-full">
       <button
         on:click={() => {
           dropDown = !dropDown
         }}
-        class="flex h-[38px] w-full  items-center justify-between rounded-md  bg-white px-3 text-sm font-bold text-textGray focus:border focus:border-primary_blue focus:outline-none focus:ring-primary_blue dark:bg-lightGray"
+        class="flex h-[38px] w-full items-center justify-between rounded-md  px-3 text-sm font-bold text-textGray focus:border focus:border-primary_blue focus:outline-none focus:ring-primary_blue bg-lightGray"
       >
         {activeDocType}
-        <DropdownArrow />
+        <span class="fill-textGray">
+          <DropDownIcon />
+        </span>
       </button>
 
       <div class="{dropDown ? 'flex flex-col' : 'hidden'} absolute top-12 z-10 w-full overflow-hidden rounded-md border border-primary_blue font-bold text-textGray">

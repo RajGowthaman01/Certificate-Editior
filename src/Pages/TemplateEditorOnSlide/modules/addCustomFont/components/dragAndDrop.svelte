@@ -35,7 +35,7 @@
   }
 </script>
 
-<form enctype="multipart/form-data" id="customFonts" class="relative h-full cursor-pointer flex-col items-center rounded-md dark:bg-emerald-600">
+<form enctype="multipart/form-data" id="customFonts" class="relative h-full cursor-pointer flex-col items-center rounded-md bg-emerald-600">
   <input on:change={customFontFiles} type="file" name="uploadimageSec" class="absolute inset-0 opacity-0" accept=".ttf" />
   <div class="flex h-full flex-col items-center justify-center gap-2">
     <UploadIcon />
