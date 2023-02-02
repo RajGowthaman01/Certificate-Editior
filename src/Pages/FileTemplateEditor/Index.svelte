@@ -4,27 +4,39 @@
   import ImageEditorMenu from "./Components/ImageEditorMenu.svelte"
   import TextEditorMenu from "./Components/TextEditorMenu.svelte"
   import IntroCard2 from "./Modules/IntroCard2/Index.svelte"
-  import IntroCard1 from "./Modules/IntroCard1/Index.svelte"
-  import Dark from "./svgIcons/Dark.svelte"
-  let show = true
+  import CustomFont from "./Modules/CustomFont/Index.svelte"
+  let showIntroCard = false
   const hideModal = () => {
-    show = false
+    showIntroCard = false
+  }
+  let showFontModal = false
+  const fontModal = () => {
+    showFontModal = true
   }
 </script>
 
-<main class="dark relative flex h-screen overflow-hidden bg-darkGray font-nunito">
+<main class="dark relative flex h-screen overflow-hidden bg-darkGray">
   <div class="h-full w-85 space-y-3 overflow-y-auto bg-[#1E1E1E] p-4">
     <BasicImageCard />
-    <TextEditorMenu />
+    <TextEditorMenu on:click={fontModal} />
     <ImageEditorMenu />
   </div>
-  {#if show}
+  {#if showIntroCard}
     <div out:fade class="absolute inset-0 flex items-center justify-center overflow-hidden bg-[#000000cc]">
       <!-- <div class="justify-start self-start">
         <Dark />
       </div> -->
-      <IntroCard1 on:closeModal={hideModal} on:click={hideModal} />
-      <!-- <IntroCard2 on:click={hideModal} /> -->
+      <!-- <IntroCard1 on:closeModal={hideModal} on:click={hideModal} /> -->
+      <IntroCard2 on:click={hideModal} />
+    </div>
+  {/if}
+  {#if showFontModal}
+    <div out:fade class="absolute inset-0 flex items-center justify-center overflow-hidden bg-[#000000cc]">
+      <CustomFont
+        on:click={() => {
+          showFontModal = false
+        }}
+      />
     </div>
   {/if}
 </main>

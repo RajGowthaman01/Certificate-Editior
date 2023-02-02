@@ -65,18 +65,3 @@
     <button on:click disabled={!$Modal.bloburl} class="inline-block items-center rounded-[0.25rem] bg-[#0069d9] py-1.5 px-3 text-base font-normal tracking-wide text-white ring-[#92C7FF] hover:bg-[#134EEC] focus:ring-2 disabled:cursor-not-allowed disabled:bg-[#0D82FF]">Confirm</button>
   </div>
 </div>
-
-<style global lang="postcss">
-  p {
-    @apply text-sm font-normal text-textGray;
-  }
-  .cardHeading {
-    @apply text-center text-2xl font-bold text-textGray;
-  }
-  h4 {
-    @apply text-sm font-bold text-textGray;
-  }
-  h5 {
-    @apply text-sm font-thin text-textGray;
-  }
-</style>
