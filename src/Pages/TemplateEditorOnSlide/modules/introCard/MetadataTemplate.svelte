@@ -1,8 +1,8 @@
 <script>
   import { createEventDispatcher } from "svelte"
-  import NextPage from "../svg/nextPage.svelte"
-  import DisabledPrevButton from "../svg/disabledPrevButton.svelte"
-  import DropdownArrow from "../../FileTemplateEditor/svgIcons/DropdownArrow.svelte"
+  import NextPage from "../../svg/nextPage.svelte"
+  import DisabledPrevButton from "../../svg/disabledPrevButton.svelte"
+  import DropdownArrow from "../../../FileTemplateEditor/svgIcons/DropdownArrow.svelte"
 
   const dispatch = createEventDispatcher()
 
@@ -28,7 +28,7 @@
     <div class=" px-8  text-secondaryGray dark:text-primaryGray">
       <p class="text-justify text-sm">
         Select the <strong>MetaData Template</strong>
-         from which key values will be imported for autocompleting Name fills
+        from which key values will be imported for autocompleting Name fills
       </p>
     </div>
     <div class="relative mx-auto w-2/3">

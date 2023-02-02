@@ -1,4 +1,6 @@
 <script>
+  import { createEventDispatcher } from "svelte"
+
   import { customHorizontalSlide } from "../scripts/customTransition"
   import AlighRight from "../svg/alighRight.svelte"
   import AlignCenter from "../svg/alignCenter.svelte"
@@ -13,7 +15,9 @@
   import Int from "../svg/int.svelte"
   import { linear } from "svelte/easing"
   export let textEditSection = false
+  export let customFontModal = false
 
+  const dispatch = createEventDispatcher()
   let input = true
   let color = ["#ef4444", "#f97f1a", "#f9c921", "#2fedd0", "#1dacf0"]
   let colorPicked = "#1dacf0"
@@ -97,10 +101,10 @@
 </script>
 
 {#if textEditSection}
-  <div class="flex h-full w-[330px] flex-col border-b border-r border-black bg-secondary " transition:customHorizontalSlide={{ direction: "inline", duration: 800 }}>
+  <div class="flex h-full w-[330px] flex-col border-b border-r border-black bg-[#1e1e1e] " transition:customHorizontalSlide={{ direction: "inline", duration: 800 }}>
     <div class="flex ">
       <div class=" w-full flex-col items-center px-4 py-4">
-        <div class="group relative flex items-center rounded-md bg-secondary">
+        <div class="group relative flex items-center rounded-md bg-bg-[#1e1e1e] ">
           <span class="labelSpan ml-1">NAME</span>
           <input name="field_name" class="inputValue" type="text" placeholder="" />
         </div>
@@ -120,7 +124,7 @@
                   {fontFamily}
                   <DropDownIcon />
                 </button>
-                <div class="{fontName ? 'flex' : 'hidden'} absolute z-10 w-full rounded-md bg-secondary px-2 text-sm font-bold text-primary ring-2 ring-blue-500">
+                <div class="{fontName ? 'flex' : 'hidden'} absolute z-10 w-full rounded-md bg-bg-[#1e1e1e]  px-2 text-sm font-bold text-primary ring-2 ring-blue-500">
                   <div class="w-full ">
                     <option on:click={() => changeFont("TimesNewRoman")} class="changefont">TimesNewRoman</option>
                     <option on:click={() => changeFont("Arial")} class="changefont">Arial</option>
@@ -139,7 +143,12 @@
               </div>
             {/if}
           </div>
-          <div on:click={() => console.log("click")} class="group relative flex h-8 w-8 items-center justify-center rounded-md hover:ring-2 hover:ring-primary_blue">
+          <div
+            on:click={() => {
+              dispatch("FontModal")
+            }}
+            class="group relative flex h-8 w-8 items-center justify-center rounded-md hover:ring-2 hover:ring-primary_blue"
+          >
             <div class="group flex text-3xl text-[#6c6c6c] ">
               <div class="z-50 hidden  group-hover:block "><Tooltip tooltip="AddNewFont" top={true} /></div>
               <ChooseFontIcon />

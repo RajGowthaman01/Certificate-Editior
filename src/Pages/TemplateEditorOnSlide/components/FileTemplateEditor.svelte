@@ -3,12 +3,12 @@
   import LayersSection from "./layerPanel.svelte"
   import Image from "../svg/image.svelte"
   import Save from "../svg/save.svelte"
-  import Index from "../modules/introCard.svelte"
-  import ImagePropertyPanel from "./imagePropertyPanel.svelte"
+  import IntroCard from "../modules/introCard/introCard.svelte"
+  import Index from "../modules/addCustomFont/Index.svelte"
 
   let editSection
-  let imagePanel = true
-  let modalOverLay = true
+  let modalOverLay = false
+  let customFontModal = false
 </script>
 
 <div class="relative flex h-screen w-screen flex-col overflow-hidden">
@@ -32,13 +32,29 @@
     </div>
   </div>
   <div class="flex w-full flex-row bg-certificateSection">
-    <LayersSection {editSection} />
+    <LayersSection
+      on:FontModal={() => {
+        customFontModal = true
+      }}
+      {editSection}
+    />
     <div class="flex h-screen w-screen bg-certificateSection" />
   </div>
   <Footer />
-  <!-- {#if modalOverLay}
-    <Index on:hideModal={() => (modalOverLay = !modalOverLay)} />
-  {/if} -->
+
+  {#if customFontModal}
+    <div out:fade class="absolute inset-0 flex items-center justify-center overflow-hidden bg-topNavSvgBg/50">
+      <Index
+        on:FontModal={() => {
+          customFontModal = true
+        }}
+      />
+    </div>
+  {/if}
+
+  {#if modalOverLay}
+    <IntroCard on:hideModal={() => (modalOverLay = !modalOverLay)} />
+  {/if}
 </div>
 
 <style lang="postcss" global>
