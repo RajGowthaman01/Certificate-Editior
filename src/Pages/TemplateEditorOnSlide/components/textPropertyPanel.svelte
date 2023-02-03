@@ -24,8 +24,10 @@
   let defaultSize = ""
   let number = []
   let displayNumbers = []
-  let disable = false
-  let hide = false
+  let styles = ["Times New Roman", "Raleway", "Sans Serif", "Roboto"]
+  let selectedStyle = "Select Font"
+  let container
+  let dropDown = false
 
   for (let i = 5; i <= 100; i++) {
     number.push(i)
@@ -98,8 +100,16 @@
     fontFamily = e
     Dropdown()
   }
+  /**
+   * @function- to close the dropdown by clicking on any point on window
+   * @param e - an event targetting opened dropdown
+   */
+  const onWindowClick = (e) => {
+    if (container.contains(e.target) == false) dropDown = false
+  }
 </script>
 
+<svelte:window on:click={onWindowClick} />
 {#if textEditSection}
   <div class="flex h-full w-[330px] flex-col border-b border-r border-black bg-[#1e1e1e] " transition:customHorizontalSlide={{ direction: "inline", duration: 800 }}>
     <div class="flex ">
@@ -117,32 +127,34 @@
         <div class=" mt-3 h-0.5 w-full bg-primary/50" />
         <div class=" mt-3 ml-2 flex text-sm text-secondaryGray">Font</div>
         <div class="mt-1 flex flex-row items-center justify-between space-x-3">
-          <div class="flex gap-2">
-            {#if input}
-              <div class="relative w-full">
-                <button on:click={Dropdown} type="button" class="flex w-[177px] py-2 px-2 text-sm text-secondaryGray  focus:outline-none">
-                  {fontFamily}
-                  <DropDownIcon />
-                </button>
-                <div class="{fontName ? 'flex' : 'hidden'} absolute z-10 w-full rounded-md bg-primary text-sm font-bold text-primary ring-2 ring-blue-500">
-                  <div class="w-full ">
-                    <option on:click={() => changeFont("TimesNewRoman")} class="changefont">TimesNewRoman</option>
-                    <option on:click={() => changeFont("Arial")} class="changefont">Arial</option>
-                    <option on:click={() => changeFont("Sans")} class="changefont">Sans</option>
-                    <option on:click={() => changeFont("Roboto")} class="changefont">Roboto</option>
-                    <option on:click={() => changeFont("Mono")} class=" changefont">Mono</option>
-                  </div>
-                </div>
-              </div>
-            {:else}
-              <div class="group relative rounded-md">
-                <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                  <span class="group-focus-within:text-bg-primary_blue text-xs font-bold text-secondary">FONT</span>
-                </div>
-                <input type="text" class="focus:border-bg-primary_blue block h-10 w-full rounded-md border-darkGray bg-lightGray  pl-16 text-sm text-textGray sm:pl-14" />
-              </div>
-            {/if}
+          <div bind:this={container} class="group rounded-md relative flex h-full w-full">
+            <button
+              on:click={() => {
+                dropDown = !dropDown
+              }}
+              class="items-center justify-between rounded-md font-bold focus:border focus:border-primary_blue focus:outline-none focus:ring-primary_blue flex py-2 px-2 text-sm text-gray-400"
+            >
+              {selectedStyle}
+              <span class="fill-textGray">
+                <DropDownIcon />
+              </span>
+            </button>
+
+            <div class="{dropDown ? 'flex flex-col' : 'hidden'} absolute top-12 z-10 w-full overflow-hidden rounded-md border border-primary_blue font-bold text-gray-400">
+              {#each styles as style}
+                <option
+                  on:click={() => {
+                    selectedStyle = style
+                    dropDown = false
+                  }}
+                  class="option-class dark:border-gray1"
+                >
+                  {style}
+                </option>
+              {/each}
+            </div>
           </div>
+
           <div
             on:click={() => {
               dispatch("FontModal")
@@ -292,9 +304,9 @@
   /* .labelSpan {
     @apply absolute rounded-md text-sm outline-none focus:ring-1 focus:ring-primary_blue group-focus-within:text-primary_blue;
   } */
-  /* .inputValue {
-    @apply w-full rounded-md px-4 pl-16 text-sm text-white focus:outline-none focus:ring-1 focus:ring-primary_blue;
-  } */
+  .option-class {
+    @apply w-full border-b border-darkGray/50 bg-lightGray px-3 py-1.5 text-sm font-bold text-textGray hover:text-primary_blue;
+  }
   .fontSizeSelect {
     @apply flex items-center text-base text-secondaryGray;
   }

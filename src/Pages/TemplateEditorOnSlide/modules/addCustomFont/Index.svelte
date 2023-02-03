@@ -7,6 +7,7 @@
   import CheckFont from "./components/checkFont.svelte"
   import Tick from "../../svg/tick.svelte"
   import Mark from "../../svg/mark.svelte"
+  import PrevPage from "../../../DarkFileTemplateEditor/svg/prevPage.svelte"
   const dispatch = createEventDispatcher()
   let disabled = true
   let blob
@@ -51,12 +52,16 @@
     <div class="rounded-b-md border-t-2 border-lightGray bg-darkGray px-5 py-1.5">
       <div class="flex items-center justify-end gap-5 text-textGray">
         <button
+          class="final-card group"
           on:click={() => {
             FontComponent = CustomFonts
             disabled = true
           }}
-          class="final-card group"
         >
+          <div class="hidden group-hover:block"><Tooltip tooltip="Choose Different Font" top={true} /></div>
+          <PrevPage />
+        </button>
+        <button on:click={() => dispatch("hideFontModal")} class="final-card group">
           <div class="hidden group-hover:block"><Tooltip tooltip="Delete" top={true} /></div>
           <Mark />
         </button>

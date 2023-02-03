@@ -4,15 +4,20 @@
 
   export let blob
   let customFont
-  // let DocType = ["Normal", "Bold", "Italic"]
-  // let activeDocType = "Normal"
-  // let output = ""
   let styles = ["normal", "bold", "italic", "underline"]
   let selectedStyle = "normal"
   let dropDown = false
   let option = "p"
+
+  /**
+   * dropdown section for close event trigger
+   */
   let container
 
+  /**
+   * @function- to close the dropdown by clicking on any point on window
+   * @param e - an event targetting opened dropdown
+   */
   const onWindowClick = (e) => {
     if (container.contains(e.target) == false) dropDown = false
   }
@@ -22,15 +27,13 @@
       customFont = document.getElementById("customFont")
       console.log("custom font is", customFont)
       console.log("fontBlob is ", blob)
-      customFont.style = `@font-face { font-family: "Roboto";
-      src: url(${blob}) format("truetype") }`
     }
   })
-
-  // $: output = selectedStyle.map((s) => code[s].open).join("")
-  $: fw = selectedStyle.includes("bold") ? 700 : 400
-  $: fs = selectedStyle.includes("italic") ? "italic" : "normal"
-  $: td = selectedStyle.includes("underline") ? "underline" : "none"
+  $: customFont = `@font-face { font-family: "Roboto";
+      src: url(${blob}) format("truetype") }`
+  $: fw = selectedStyle.includes("bold") ? 700 : 400 //making text bolder
+  $: fs = selectedStyle.includes("italic") ? "italic" : "normal" //making text italic
+  $: td = selectedStyle.includes("underline") ? "underline" : "none" //making text underlined
 </script>
 
 <svelte:window on:click={onWindowClick} />
@@ -40,7 +43,6 @@
     <svelte:element
       this={option}
       id="customFont"
-      class="font-Roboto"
       on:dblclick={() => {
         option = "textarea"
       }}
@@ -48,6 +50,7 @@
 		font-weight: {fw};
 		font-style: {fs};
 		text-decoration: {td};	
+    font-family: {customFont}
 	"
     >
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
