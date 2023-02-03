@@ -13,7 +13,6 @@
    * dropdown section for close event trigger
    */
   let container
-
   /**
    * @function- to close the dropdown by clicking on any point on window
    * @param e - an event targetting opened dropdown
@@ -27,10 +26,11 @@
       customFont = document.getElementById("customFont")
       console.log("custom font is", customFont)
       console.log("fontBlob is ", blob)
+      customFont = `@font-face { font-family: "Roboto";
+      src: url(${blob}) format("truetype") }`
     }
   })
-  $: customFont = `@font-face { font-family: "Roboto";
-      src: url(${blob}) format("truetype") }`
+
   $: fw = selectedStyle.includes("bold") ? 700 : 400 //making text bolder
   $: fs = selectedStyle.includes("italic") ? "italic" : "normal" //making text italic
   $: td = selectedStyle.includes("underline") ? "underline" : "none" //making text underlined
