@@ -11,6 +11,7 @@
     console.log([...formData])
     let datum = [...formData][0]
     File = datum[1]
+    console.log(File.name)
     console.log(File)
     fontBlob = URL.createObjectURL(File)
     dispatch("File", fontBlob)

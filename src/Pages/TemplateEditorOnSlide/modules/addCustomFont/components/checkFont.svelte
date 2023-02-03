@@ -4,8 +4,11 @@
 
   export let blob
   let customFont
-  let DocType = ["Normal", "Bold", "Italic"]
-  let activeDocType = "Normal"
+  // let DocType = ["Normal", "Bold", "Italic"]
+  // let activeDocType = "Normal"
+  // let output = ""
+  let styles = ["normal", "bold", "italic", "underline"]
+  let selectedStyle = "normal"
   let dropDown = false
   let option = "p"
   let container
@@ -23,6 +26,11 @@
       src: url(${blob}) format("truetype") }`
     }
   })
+
+  // $: output = selectedStyle.map((s) => code[s].open).join("")
+  $: fw = selectedStyle.includes("bold") ? 700 : 400
+  $: fs = selectedStyle.includes("italic") ? "italic" : "normal"
+  $: td = selectedStyle.includes("strikethrough") ? "line-through" : selectedStyle.includes("underline") ? "underline" : "none"
 </script>
 
 <svelte:window on:click={onWindowClick} />
@@ -36,6 +44,11 @@
       on:dblclick={() => {
         option = "textarea"
       }}
+      style="
+		font-weight: {fw};
+		font-style: {fs};
+		text-decoration: {td};	
+	"
     >
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
     </svelte:element>
@@ -43,7 +56,7 @@
 
   <div>
     <h1 class="pb-2 text-lg font-medium text-textGray">Font Name</h1>
-    <input type="text" class="h-[38px] w-full rounded-md border-none bg-lightGray text-sm font-bold text-textGray focus:border-primary_blue focus:ring-primary_blue dark:bg-lightGray" value="Roboto" />
+    <input bind type="text" class="h-[38px] w-full rounded-md border-none bg-lightGray text-sm font-bold text-textGray focus:border-primary_blue focus:ring-primary_blue dark:bg-lightGray" value="Roboto" />
   </div>
 
   <div>
@@ -55,22 +68,22 @@
         }}
         class="flex h-[38px] w-full items-center justify-between rounded-md  px-3 text-sm font-bold text-textGray focus:border focus:border-primary_blue focus:outline-none focus:ring-primary_blue bg-lightGray "
       >
-        {activeDocType}
+        {selectedStyle}
         <span class="fill-textGray">
           <DropDownIcon />
         </span>
       </button>
 
       <div class="{dropDown ? 'flex flex-col' : 'hidden'} absolute top-12 z-10 w-full overflow-hidden rounded-md border border-primary_blue font-bold text-textGray">
-        {#each DocType as DocType}
+        {#each styles as style}
           <option
             on:click={() => {
-              activeDocType = DocType
+              selectedStyle = style
               dropDown = false
             }}
             class="option-class dark:border-gray1"
           >
-            {DocType}
+            {style}
           </option>
         {/each}
       </div>
