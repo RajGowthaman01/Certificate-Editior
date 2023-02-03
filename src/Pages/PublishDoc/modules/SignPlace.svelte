@@ -33,7 +33,7 @@
     {#if PageNoDiv}
       <div transition:slide class="flex flex-col border-2 py-0.5 border-primary_blue ring-primary_blue text-white w-full rounded-md">
         {#each pageNos as pageNo}
-          <button on:click={() => BindPageNoValue(pageNo)} class="hover:bg-lightGray pb-0.5 rounded-sm border-b border-lightGray px-3 text-start">{pageNo}</button>
+          <button on:click={() => BindPageNoValue(pageNo)} class="hover:bg-lightGray bg-darkGray pb-0.5 rounded-sm border-b border-lightGray px-3 text-start">{pageNo}</button>
         {/each}
       </div>
     {/if}
