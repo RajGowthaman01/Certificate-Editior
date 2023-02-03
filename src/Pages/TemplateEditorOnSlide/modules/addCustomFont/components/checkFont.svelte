@@ -30,7 +30,7 @@
   // $: output = selectedStyle.map((s) => code[s].open).join("")
   $: fw = selectedStyle.includes("bold") ? 700 : 400
   $: fs = selectedStyle.includes("italic") ? "italic" : "normal"
-  $: td = selectedStyle.includes("strikethrough") ? "line-through" : selectedStyle.includes("underline") ? "underline" : "none"
+  $: td = selectedStyle.includes("underline") ? "underline" : "none"
 </script>
 
 <svelte:window on:click={onWindowClick} />
