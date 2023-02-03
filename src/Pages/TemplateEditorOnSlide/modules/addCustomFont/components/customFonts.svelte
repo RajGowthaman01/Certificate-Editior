@@ -7,6 +7,8 @@
   import UploadButton from "./uploadButton.svelte"
 
   const dispatch = createEventDispatcher()
+
+  export let Previous
   let width1 = 50 // upload
   let height1 = 36 //upload
   let width2 = 50 //pastelink
@@ -29,7 +31,6 @@
     dispatch("enableArrow")
   }
   const expandPaste = () => {
-    console.log("paste")
     activePasteComponent = TextArea
     width2 = 100
     height2 = 160
@@ -37,6 +38,17 @@
     height1 = 0
     uploadSec = false
     dispatch("enableArrow")
+  }
+  $: if (Previous) {
+    width1 = 50 // upload
+    height1 = 36 //upload
+    width2 = 50 //pastelink
+    height2 = 36 //pastelink
+    activePasteComponent = PasteButton
+    activeUploadComponent = UploadButton
+    PasteSec = true
+    uploadSec = true
+    dispatch("Previous")
   }
   $: tweenedA.set(width1)
   $: tweenedB.set(height1)
@@ -59,7 +71,7 @@
   </div>
   <div style="width:{$tweenedA}%; height:{$tweenedB}px">
     {#if uploadSec}
-      <svelte:component this={activeUploadComponent} on:click={expandUpload} />
+      <svelte:component this={activeUploadComponent} on:File on:click={expandUpload} />
     {/if}
   </div>
 </div>

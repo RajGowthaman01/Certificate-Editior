@@ -1,31 +1,57 @@
 <script>
-  // import Tooltip from "../../../Components/Tooltip.svelte"
+  import { onMount } from "svelte"
   import DropDownIcon from "../../../svg/dropDownIcon.svelte"
-  import DropdownArrow from "../../../svg/dropDownIcon.svelte"
-  // import LeftArrow from "../../../svgIcons/LeftArrow.svelte"
-  // import RightArrow from "../../../svgIcons/RightArrow.svelte"
-  export let customFont
-  let readonly = true
-  let DocType = ["Normal", "Bold", "Italic"]
-  let activeDocType = "Normal"
+
+  export let blob
+  let customFont
+  let styles = ["normal", "bold", "italic", "underline"]
+  let selectedStyle = "normal"
   let dropDown = false
   let option = "p"
+
+  /**
+   * dropdown section for close event trigger
+   */
   let container
+  /**
+   * @function- to close the dropdown by clicking on any point on window
+   * @param e - an event targetting opened dropdown
+   */
   const onWindowClick = (e) => {
     if (container.contains(e.target) == false) dropDown = false
   }
+
+  onMount(() => {
+    if (blob) {
+      customFont = document.getElementById("customFont")
+      console.log("custom font is", customFont)
+      console.log("fontBlob is ", blob)
+      customFont = `@font-face { font-family: "Roboto";
+      src: url(${blob}) format("truetype") }`
+    }
+  })
+
+  $: fw = selectedStyle.includes("bold") ? 700 : 400 //making text bolder
+  $: fs = selectedStyle.includes("italic") ? "italic" : "normal" //making text italic
+  $: td = selectedStyle.includes("underline") ? "underline" : "none" //making text underlined
 </script>
 
 <svelte:window on:click={onWindowClick} />
-<div bind:this={container} class="flex flex-col gap-3">
+<div class="flex flex-col gap-3">
   <div class="h-48">
     <h1 class="pb-2 text-lg font-medium text-textGray">Font Preview</h1>
-
     <svelte:element
       this={option}
+      id="customFont"
       on:dblclick={() => {
         option = "textarea"
       }}
+      style="
+		font-weight: {fw};
+		font-style: {fs};
+		text-decoration: {td};	
+    font-family: {customFont}
+	"
     >
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
     </svelte:element>
@@ -33,34 +59,34 @@
 
   <div>
     <h1 class="pb-2 text-lg font-medium text-textGray">Font Name</h1>
-    <input type="text" class="h-[38px] w-full rounded-md border-none bg-lightGray text-sm font-bold text-textGray focus:border-primary_blue focus:ring-primary_blue dark:bg-lightGray" value="Roboto" />
+    <input bind type="text" class="h-[38px] w-full rounded-md border-none bg-lightGray text-sm font-bold text-textGray focus:border-primary_blue focus:ring-primary_blue dark:bg-lightGray" value="Roboto" />
   </div>
 
   <div>
     <h1 class="pb-2 text-lg font-medium text-textGray">Font Style</h1>
-    <div class="group rounded-md relative flex h-full w-full">
+    <div bind:this={container} class="group rounded-md relative flex h-full w-full">
       <button
         on:click={() => {
           dropDown = !dropDown
         }}
-        class="flex h-[38px] w-full items-center justify-between rounded-md  px-3 text-sm font-bold text-textGray focus:border focus:border-primary_blue focus:outline-none focus:ring-primary_blue bg-lightGray"
+        class="flex h-[38px] w-full items-center justify-between rounded-md  px-3 text-sm font-bold text-textGray focus:border focus:border-primary_blue focus:outline-none focus:ring-primary_blue bg-lightGray "
       >
-        {activeDocType}
+        {selectedStyle}
         <span class="fill-textGray">
           <DropDownIcon />
         </span>
       </button>
 
       <div class="{dropDown ? 'flex flex-col' : 'hidden'} absolute top-12 z-10 w-full overflow-hidden rounded-md border border-primary_blue font-bold text-textGray">
-        {#each DocType as DocType}
+        {#each styles as style}
           <option
             on:click={() => {
-              activeDocType = DocType
+              selectedStyle = style
               dropDown = false
             }}
             class="option-class dark:border-gray1"
           >
-            {DocType}
+            {style}
           </option>
         {/each}
       </div>

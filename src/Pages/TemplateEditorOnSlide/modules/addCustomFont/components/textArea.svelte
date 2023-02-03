@@ -1,4 +1,4 @@
-<textarea>https://fonts.googleapis.com/css?family=Sofia</textarea>
+<textarea>https://fonts.googleapis.com/css?family=Croissant One</textarea>
 
 <style lang="postcss">
   textarea {
