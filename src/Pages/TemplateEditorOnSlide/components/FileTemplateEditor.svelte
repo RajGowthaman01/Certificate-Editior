@@ -1,4 +1,5 @@
 <script>
+  import { fade } from "svelte/transition"
   import Footer from "./footer.svelte"
   import LayersSection from "./layerPanel.svelte"
   import Image from "../svg/image.svelte"
@@ -43,12 +44,8 @@
   <Footer />
 
   {#if customFontModal}
-    <div out:fade class="absolute inset-0 flex items-center justify-center overflow-hidden bg-topNavSvgBg/50">
-      <Index
-        on:FontModal={() => {
-          customFontModal = true
-        }}
-      />
+    <div out:fade class="absolute inset-0 flex items-center justify-center overflow-hidden bg-topNavSvgBg/70">
+      <Index on:hideFontModal={() => (customFontModal = false)} />
     </div>
   {/if}
 

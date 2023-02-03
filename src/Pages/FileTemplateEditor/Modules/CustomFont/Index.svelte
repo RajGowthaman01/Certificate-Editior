@@ -29,9 +29,6 @@
     <svelte:component
       this={FontComponent}
       {Previous}
-      on:Previous={() => {
-        Previous = false
-      }}
       on:enableArrow={() => {
         disabled = false
       }}

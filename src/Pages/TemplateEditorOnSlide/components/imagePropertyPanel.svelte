@@ -60,7 +60,7 @@
   <div class="flex h-full w-[330px] flex-col border-b border-black bg-secondary pt-4 pb-4" transition:customHorizontalSlide={{ direction: "inline", duration: 800 }}>
     <div class="flex ">
       <div class="w-full flex-col items-center px-4">
-        <div class=" group relative flex items-center rounded-md">
+        <div class=" group bg-black relative flex items-center rounded-md">
           <span class="labelSpan text-gray-400">NAME</span>
           <input name="field_name" class="inputValue" type="text" placeholder="" />
         </div>
@@ -129,11 +129,11 @@
         <div class="mt-3 ml-2 flex text-sm text-secondaryGray">Positions</div>
         <!-- position lock -->
         <div class=" mt-2 flex items-center justify-between gap-3 text-base">
-          <div class="group relative  mx-auto flex w-2/5 items-center justify-between rounded-md bg-primary focus:outline-none">
+          <div class="group relative bg-black mx-auto flex w-2/5 items-center justify-between rounded-md  focus:outline-none">
             <div class="labelSpan text-primary">X</div>
             <input name="field_name" class="inputField" type="number" min="0" placeholder="" />
           </div>
-          <div class="group relative mx-auto flex w-2/5 items-center justify-between rounded-md bg-primary focus:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary_blue">
+          <div class="group relative mx-auto flex w-2/5 items-center justify-between rounded-md  focus:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary_blue">
             <div class="labelSpan text-gray-400">Y</div>
             <input name="field_name" class="inputField" type="number" min="0" placeholder="" />
           </div>
@@ -147,7 +147,7 @@
         <!-- image width and height -->
         <div class="mt-3 ml-2 text-sm text-secondaryGray">Dimensions</div>
         <div class=" mt-2 flex items-center gap-3 text-base">
-          <div class="group relative mx-auto flex w-2/5 items-center justify-between rounded-md bg-primary focus:outline-none ">
+          <div class="group relative mx-auto flex w-2/5 items-center justify-between rounded-md focus:outline-none ">
             <div class="labelSpan text-gray-400">W</div>
             <input name="field_name" class="inputField" type="number" min="0" placeholder="" />
           </div>
@@ -178,9 +178,9 @@
     @apply flex h-8 w-8 items-center justify-center rounded-md hover:ring-1 hover:ring-primary_blue active:bg-primary_blue;
   }
   .inputField {
-    @apply w-full rounded-md bg-primary px-2 py-2 pl-8 text-sm text-white focus:bg-secondary focus:outline-none  focus:ring-1 focus:ring-primary_blue;
+    @apply w-full rounded-md px-2 py-2 pl-8 text-sm text-white focus:bg-secondary focus:outline-none focus:ring-1 focus:ring-primary_blue;
   }
-  .inputValue {
-    @apply w-full rounded-md bg-primary px-4 py-2 pl-16 text-sm font-bold text-white focus:bg-secondary focus:outline-none focus:ring-1 focus:ring-primary_blue;
-  }
+  /* .inputValue {
+    @apply w-full rounded-md bg-secondary px-4 py-2 pl-16 text-sm font-bold text-white focus:outline-none focus:ring-1 focus:ring-primary_blue;
+  } */
 </style>

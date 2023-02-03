@@ -104,9 +104,9 @@
   <div class="flex h-full w-[330px] flex-col border-b border-r border-black bg-[#1e1e1e] " transition:customHorizontalSlide={{ direction: "inline", duration: 800 }}>
     <div class="flex ">
       <div class=" w-full flex-col items-center px-4 py-4">
-        <div class="group relative flex items-center rounded-md bg-bg-[#1e1e1e] ">
+        <div class="group relative flex items-center rounded-md ">
           <span class="labelSpan ml-1">NAME</span>
-          <input name="field_name" class="inputValue" type="text" placeholder="" />
+          <input name="field_name" class="inputValue bg-black" type="text" placeholder="" />
         </div>
 
         <div class="group relative mt-3 flex items-center rounded-md">
@@ -124,7 +124,7 @@
                   {fontFamily}
                   <DropDownIcon />
                 </button>
-                <div class="{fontName ? 'flex' : 'hidden'} absolute z-10 w-full rounded-md bg-bg-[#1e1e1e]  px-2 text-sm font-bold text-primary ring-2 ring-blue-500">
+                <div class="{fontName ? 'flex' : 'hidden'} absolute z-10 w-full rounded-md bg-primary text-sm font-bold text-primary ring-2 ring-blue-500">
                   <div class="w-full ">
                     <option on:click={() => changeFont("TimesNewRoman")} class="changefont">TimesNewRoman</option>
                     <option on:click={() => changeFont("Arial")} class="changefont">Arial</option>
@@ -159,11 +159,11 @@
         <div class="mt-3 ml-2 flex text-sm text-secondaryGray">Positions</div>
         <!-- position lock -->
         <div class=" mt-2 flex items-center justify-between gap-3 text-base">
-          <div class="group relative mx-auto flex w-2/5 items-center justify-between rounded-md bg-primary focus:outline-none">
+          <div class="group relative mx-auto flex w-2/5 items-center justify-between rounded-md focus:outline-none">
             <div class="labelSpan text-secondaryGray">X</div>
             <input name="field_name" class="inputField" type="number" min="0" placeholder="" />
           </div>
-          <div class="group relative mx-auto flex w-2/5 items-center justify-between rounded-md bg-primary focus:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary_blue">
+          <div class="group relative mx-auto flex w-2/5 items-center justify-between rounded-md focus:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary_blue">
             <div class="labelSpan text-secondaryGray">Y</div>
             <input name="field_name" class="inputField" type="number" min="0" placeholder="" />
           </div>
@@ -289,17 +289,17 @@
   .positonHolder {
     @apply ml-1 text-base font-bold text-secondaryGray;
   }
-  .labelSpan {
+  /* .labelSpan {
     @apply absolute rounded-md text-sm outline-none focus:ring-1 focus:ring-primary_blue group-focus-within:text-primary_blue;
-  }
-  .inputValue {
-    @apply w-full rounded-md bg-primary px-4 pl-16 text-sm text-white focus:bg-secondary focus:outline-none focus:ring-1 focus:ring-primary_blue;
-  }
+  } */
+  /* .inputValue {
+    @apply w-full rounded-md px-4 pl-16 text-sm text-white focus:outline-none focus:ring-1 focus:ring-primary_blue;
+  } */
   .fontSizeSelect {
     @apply flex items-center text-base text-secondaryGray;
   }
   .FontSize {
-    @apply flex h-7 w-7 items-center justify-center rounded-md text-base font-bold outline-none  hover:bg-secondary focus:outline-none;
+    @apply flex h-7 w-7 items-center justify-center rounded-md text-base font-bold outline-none hover:bg-secondary focus:outline-none;
   }
   .span-label {
     @apply mr-10 select-none text-sm font-bold text-secondaryGray group-focus-within:text-primary_blue;

@@ -1,28 +1,38 @@
 <script>
-  // import Tooltip from "../../../Components/Tooltip.svelte"
+  import { onMount } from "svelte"
   import DropDownIcon from "../../../svg/dropDownIcon.svelte"
-  import DropdownArrow from "../../../svg/dropDownIcon.svelte"
-  // import LeftArrow from "../../../svgIcons/LeftArrow.svelte"
-  // import RightArrow from "../../../svgIcons/RightArrow.svelte"
-  export let customFont
-  let readonly = true
+
+  export let blob
+  let customFont
   let DocType = ["Normal", "Bold", "Italic"]
   let activeDocType = "Normal"
   let dropDown = false
   let option = "p"
   let container
+
   const onWindowClick = (e) => {
     if (container.contains(e.target) == false) dropDown = false
   }
+
+  onMount(() => {
+    if (blob) {
+      customFont = document.getElementById("customFont")
+      console.log("custom font is", customFont)
+      console.log("fontBlob is ", blob)
+      customFont.style = `@font-face { font-family: "Roboto";
+      src: url(${blob}) format("truetype") }`
+    }
+  })
 </script>
 
 <svelte:window on:click={onWindowClick} />
-<div bind:this={container} class="flex flex-col gap-3">
+<div class="flex flex-col gap-3">
   <div class="h-48">
     <h1 class="pb-2 text-lg font-medium text-textGray">Font Preview</h1>
-
     <svelte:element
       this={option}
+      id="customFont"
+      class="font-Roboto"
       on:dblclick={() => {
         option = "textarea"
       }}
@@ -38,12 +48,12 @@
 
   <div>
     <h1 class="pb-2 text-lg font-medium text-textGray">Font Style</h1>
-    <div class="group rounded-md relative flex h-full w-full">
+    <div bind:this={container} class="group rounded-md relative flex h-full w-full">
       <button
         on:click={() => {
           dropDown = !dropDown
         }}
-        class="flex h-[38px] w-full items-center justify-between rounded-md  px-3 text-sm font-bold text-textGray focus:border focus:border-primary_blue focus:outline-none focus:ring-primary_blue bg-lightGray"
+        class="flex h-[38px] w-full items-center justify-between rounded-md  px-3 text-sm font-bold text-textGray focus:border focus:border-primary_blue focus:outline-none focus:ring-primary_blue bg-lightGray "
       >
         {activeDocType}
         <span class="fill-textGray">
