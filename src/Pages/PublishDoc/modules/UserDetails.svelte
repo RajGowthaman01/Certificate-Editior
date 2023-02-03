@@ -1,9 +1,15 @@
 <script>
+  // import { createEventDispatcher } from "svelte"
+  // const dispatch = createEventDispatcher()
   import LoadingScreen from "../Components/loadingScreen.svelte"
   let loadScreen = true
   setTimeout(() => {
     loadScreen = false
   }, 1000)
+
+  // const gotoNextSignStep = () => {
+  //   dispatch("nextStep")
+  // }
 </script>
 
 <!--card1-->
@@ -147,6 +153,7 @@
         </svg>
         <span class="text-sm">john@email.com</span>
       </div>
+      <!-- <button on:click={gotoNextSignStep} class="btn mt-5 ml-auto">next</button> -->
     </div>
   {/if}
 </div>

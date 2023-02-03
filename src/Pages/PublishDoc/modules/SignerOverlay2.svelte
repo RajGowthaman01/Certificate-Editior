@@ -81,7 +81,7 @@
         <div>
           {#each sections as section (section.id)}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <div on:click={() => changeActiveComponent(section.id)} class="{sections[sections.length - 1] == section ? '' : 'border-b'} {section.Active ? '' : 'blur-sm'} border-l-primary_blue border-b-lightGray">
+            <div on:click={() => changeActiveComponent(section.id)} class="{sections[sections.length - 1] == section ? '' : 'border-b'} {section.Active ? '' : ''} border-l-primary_blue border-b-lightGray">
               <button class="flex py-5">
                 <span class="text-base text-white font-bold px-5">{section.Title}</span>
               </button>
