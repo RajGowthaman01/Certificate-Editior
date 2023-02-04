@@ -6,23 +6,16 @@
   let sections = [
     {
       id: 0,
-      Title: "Choose Document Template",
+      Title: "Single Document Publishing",
       icon: Docicon,
-      Content: "Choose the Document Template based on your preference",
+      Content: "This option supports single document publishing",
       active: true,
     },
     {
       id: 1,
-      Title: "Generate Document ID",
+      Title: "Bulk Upload",
       icon: Msgicon,
-      Content: "Document ID for publishing documents will be generated",
-      active: false,
-    },
-    {
-      id: 2,
-      Title: "Continue with Existing Doc ID",
-      icon: Emailicon,
-      Content: "Choose this option if you already have any existing document IDs",
+      Content: "If you want to upload multiple documents at once, prefer this option",
       active: false,
     },
     {
@@ -34,9 +27,9 @@
     },
     {
       id: 4,
-      Title: "Release Document",
+      Title: "Revoke Document",
       icon: Msgicon,
-      Content: "Release any document that is already published",
+      Content: "Revoke any document that is already published",
       active: false,
     },
   ]
