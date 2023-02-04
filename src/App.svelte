@@ -38,7 +38,6 @@
   .cardHeading {
     @apply text-center text-2xl font-bold text-textGray;
   }
-
   label {
     @apply text-sm font-medium tracking-wider text-white;
   }

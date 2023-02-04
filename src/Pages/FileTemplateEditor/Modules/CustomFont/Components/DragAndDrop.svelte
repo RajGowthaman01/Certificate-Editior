@@ -4,6 +4,7 @@
   import UploadIcon from "../../../svgIcons/UploadIcon.svelte"
   const dispatch = createEventDispatcher()
   let bloburl
+  let fontName
   const customFontFiles = () => {
     console.log("customFonts")
     let FontInput = document.getElementById("customFonts")
@@ -12,17 +13,13 @@
     let datum = [...formData][0]
     File = datum[1]
     console.log(File)
+    fontName = File.name.replace(".ttf", "")
+    console.log("fontName is ", fontName)
     bloburl = URL.createObjectURL(File)
-    // const reader = new FileReader()
-    // reader.onloadend = () => {
-    //   let read = reader.result.replace("data:application/octet-stream;base64,", "")
-    //   localStorage.setItem("base64", read)
-    //   console.log(reader.result)
-    //   // Logs data:<type>;base64,wL2dvYWwgbW9yZ...
-    // }
-    // reader.readAsDataURL(File)
-
-    dispatch("File", bloburl)
+    dispatch("File", {
+      bloburl: bloburl,
+      fontName: fontName,
+    })
   }
 </script>
 

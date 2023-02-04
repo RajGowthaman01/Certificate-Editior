@@ -15,6 +15,7 @@
   }
 </script>
 
+<svelte:head><title>File Template Editor</title></svelte:head>
 <main class="dark relative flex h-screen overflow-hidden bg-darkGray">
   <div class="h-full w-85 space-y-3 overflow-y-auto bg-[#1E1E1E] p-4">
     <BasicImageCard />
@@ -33,6 +34,9 @@
   {#if showFontModal}
     <div out:fade class="absolute inset-0 flex items-center justify-center overflow-hidden bg-[#000000cc]">
       <CustomFont
+        on:delete={() => {
+          showFontModal = false
+        }}
         on:click={() => {
           showFontModal = false
         }}

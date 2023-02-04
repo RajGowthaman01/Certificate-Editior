@@ -2,9 +2,14 @@
   import Navbar from "../../Components/Navbar.svelte"
   import PublishSidebar from "./Components/PublishSidebar.svelte"
   import DocumentTemplate from "./Components/DocumentTemplate.svelte"
-  import RightArrow from "../../svgicons/RightArrow.svelte"
   import Leftarrow from "../../svgicons/Leftarrow.svelte"
   import PublishHeader from "./Components/PublishHeader.svelte"
+  import DocumentUpload from "./Components/DocumentUpload.svelte"
+  import DoubleLeft from "../../svgicons/DoubleLeft.svelte"
+  import DocumentUpload2 from "./Components/DocumentUpload2.svelte"
+  import DocumentUpload3 from "./Components/DocumentUpload3.svelte"
+  import SignerOverlay from "./modules/SignerOverlay.svelte"
+  import SignerOverlay2 from "./modules/SignerOverlay2.svelte"
 
   let uploadImageSection = true
   let File, ImgUrl, KB, imgName
@@ -54,9 +59,10 @@
 
     <!-- <DocumentUpload /> -->
   </div>
-  <!-- <div class="absolute">
-    <SignerOverlay />
-  </div> -->
+  <div class="absolute bg-lightGray">
+    <!-- <SignerOverlay /> -->
+    <SignerOverlay2 />
+  </div>
 </main>
 
 <!-- <main class="h-screen w-screen flex justify-center items-center bg-[#000000cc]">
@@ -70,8 +76,3 @@
     <SignDoc />
   </div>
 </main> -->
-<style lang="postcss">
-  .option-class {
-    @apply w-full border-b-2 px-3 py-1.5 text-sm font-bold text-textGray hover:text-primary_blue;
-  }
-</style>

@@ -31,6 +31,7 @@ module.exports = {
         gray2: "rgb(125 , 125, 127)",
         darkGray: "rgb(36 , 36, 36)",
         lightGray: "rgb(47 , 47, 47)",
+        lightGray2: "#1F1F1F",
         textGray: "rgb(121 , 121, 121)",
         primary_blue: "rgb(48 , 122, 255)",
 
@@ -62,6 +63,7 @@ module.exports = {
       },
       boxShadow: {
         box_Shadow: "0px 0px 20px 10px rgb(0 0 0 / .15)",
+        "3xl": "0 35px 60px -15px rgba(0, 0, 0, 0.3)",
       },
     },
   },
