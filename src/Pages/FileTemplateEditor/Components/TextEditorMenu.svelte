@@ -20,7 +20,7 @@
   import { slide } from "svelte/transition"
 
   let color = ["#FF3333", "#8906F7", "#2CF706", "#0639F7", "#FEFF33", "#F20785"]
-  let dropDowns = ["Emblema_One", "Alfa_Slab_One", "Croissant_One", "Cute_Font", "Dangrek", "Devonshire", "Sans"]
+  let dropDowns = ["Emblema One", "Alfa Slab One", "Croissant One", "Cute Font", "Dangrek", "Devonshire", "Sans"]
   let number = [
     {
       id: 1,
@@ -170,7 +170,7 @@
               <div class="{fontName ? 'flex' : 'hidden'} absolute z-10 mt-2 w-full rounded-md border border-primary_blue bg-darkGray font-bold text-textGray">
                 <div class="w-full">
                   {#each dropDowns as fontStyle}
-                    <option on:click={() => changeFont(fontStyle)} class="option-class font-${fontStyle}">
+                    <option on:click={() => changeFont(fontStyle)} class="option-class font-{fontStyle}">
                       {fontStyle}
                     </option>
                   {/each}

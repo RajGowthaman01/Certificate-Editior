@@ -26,7 +26,7 @@
     width2 = 0
     height2 = 0
     PasteSec = false
-    dispatch("enableArrow")
+    // dispatch("enableArrow")
   }
   const expandPaste = () => {
     console.log("paste")
@@ -76,7 +76,7 @@
 <div class="flex {activePasteComponent == Button1 && activeUploadComponent == Button2 ? 'gap-5' : ''}">
   <div style="width:{$tweenedC}%; height:{$tweenedD}px">
     {#if PasteSec}
-      <svelte:component this={activePasteComponent} on:click={expandPaste} />
+      <svelte:component this={activePasteComponent} on:click={expandPaste} on:FontLink />
     {/if}
   </div>
   <div style="width:{$tweenedA}%; height:{$tweenedB}px">
