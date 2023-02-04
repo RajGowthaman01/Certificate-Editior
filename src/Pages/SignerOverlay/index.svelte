@@ -5,7 +5,7 @@
   import SignerOverlay4 from "./modules/SignerOverlay4.svelte"
 </script>
 
-<!-- <SignerOverlay />
-<SignerOverlay2 />
-<SignerOverlay3 /> -->
+<!-- <SignerOverlay /> -->
+<!-- <SignerOverlay2 /> -->
+<!-- <SignerOverlay3 /> -->
 <SignerOverlay4 />

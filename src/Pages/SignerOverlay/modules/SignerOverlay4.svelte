@@ -81,11 +81,11 @@
 <main class="h-screen w-screen flex justify-center items-center">
   <div class="grid grid-cols-12 w-full h-full">
     <div class="col-span-3 flex" />
-    <div class="col-span-9 flex">
+    <div class="col-span-9 h-full flex">
       <div class="w-8/12" />
-      <div class="w-4/12 h-full relative bg-darkGray">
+      <div class="w-4/12 relative h-full bg-darkGray">
         <h1 class="text-center text-2xl bg-primary_blue text-white py-4">Document Signature Section</h1>
-        <div class="p-5 relative">
+        <div class="p-5 w-full">
           {#each sections as section (section.id)}
             <ol class="overflow-hidden">
               <li class="relative pb-5">
@@ -110,11 +110,11 @@
                       </span>
                     </span>
                   {/if}
-                  <span class="ml-4 flex min-w-0 flex-col">
+                  <span class="ml-4 flex w-full flex-col">
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <span class="text-base text-white font-bold mb-5 cursor-pointer" on:click={() => changeActiveComponent(section.id)}>{section.Title}</span>
                     {#if section.Active}
-                      <div in:slide class="relative">
+                      <div in:slide class="relative w-full">
                         <svelte:component this={section.Component} on:ShowImg={showImg} on:init={InitOTP} {loadScreen} on:nextStep={() => gotoNextSignStep(section.id)} />
                       </div>
                     {/if}
