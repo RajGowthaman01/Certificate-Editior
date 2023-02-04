@@ -1,7 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte"
-  import NextPage from "../svg/nextPage.svelte"
-  import PrevPage from "../svg/prevPage.svelte"
+  import NextPage from "../../svg/nextPage.svelte"
+  import PrevPage from "../../svg/prevPage.svelte"
   const dispatch = createEventDispatcher()
   let active = true
   let pagination = true

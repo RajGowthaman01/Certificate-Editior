@@ -1,11 +1,9 @@
 <script>
   import { slide, fade } from "svelte/transition"
-  import SignDoc from "./SignDoc.svelte"
+  import UserDetails from "./UserDetails.svelte"
   import SignPlace from "./SignPlace.svelte"
-  import Empty from "./empty.svelte"
   import SignClr from "./signClr.svelte"
   import EnterOtp from "./EnterOtp.svelte"
-  import PreOrDownDoc from "./PreOrDownDoc.svelte"
 
   // let uploadImageSection = true
   // let File, ImgUrl, KB, imgName
@@ -21,8 +19,8 @@
     {
       id: 0,
       Title: "User Details",
-      Component: SignDoc,
-      Active: false,
+      Component: UserDetails,
+      Active: true,
     },
     {
       id: 1,
@@ -31,21 +29,15 @@
       Active: false,
     },
     {
-      id: 3,
+      id: 2,
       Title: "Select Signature Colour",
       Component: SignClr,
       Active: false,
     },
     {
-      id: 4,
+      id: 3,
       Title: "Enter OTP",
       Component: EnterOtp,
-      Active: false,
-    },
-    {
-      id: 5,
-      Title: "PDF Preview (or) Download",
-      Component: PreOrDownDoc,
       Active: false,
     },
   ]
@@ -64,6 +56,12 @@
   let img = false
   const showImg = () => {
     img = !img
+  }
+  let loadScreen = false
+  const InitOTP = () => {
+    sections[2].Active = false
+    sections[3].Active = true
+    loadScreen = true
   }
 </script>
 
@@ -85,19 +83,15 @@
           <img src="assets/images/download (1).png" alt="img" on:click={showImg} />
         {:else}
           <!-- <h1 class="text-center text-2xl text-primary_blue mb-5">Document Signature Section</h1> -->
-          <div class="px-5">
+          <div>
             {#each sections as section (section.id)}
-              <div class="{sections[sections.length - 1] == section ? '' : 'border-b'} border-textGray">
-                <div class=" flex justify-between py-5">
-                  <span class="text-lg text-textGray font-bold">{section.Title}</span>
-                  <!-- svelte-ignore a11y-click-events-have-key-events -->
-                  <svg on:click={() => changeActiveComponent(section.id)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-textGray w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="{section.Active ? 'M15 12' : 'M12 9v6m3-3'}H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
+              <div class="{sections[sections.length - 1] == section ? '' : 'border-b'} {section.Active ? ' border-l-4 bg-lightGray2' : ''} border-l-primary_blue border-b-lightGray">
+                <button on:click={() => changeActiveComponent(section.id)} class="flex py-5">
+                  <span class="text-base text-white font-bold px-5">{section.Title}</span>
+                </button>
                 {#if section.Active}
-                  <div in:slide>
-                    <svelte:component this={section.Component} on:ShowImg={showImg} />
+                  <div in:slide class="px-5">
+                    <svelte:component this={section.Component} on:ShowImg={showImg} on:init={InitOTP} {loadScreen} />
                   </div>
                 {/if}
               </div>

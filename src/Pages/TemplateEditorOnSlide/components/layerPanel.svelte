@@ -7,6 +7,10 @@
   let imageUploadedSection = false
   let textEditSection = false
   let activeComponent
+  let customFontModal = false
+  // const fontModal = () => {
+  //   customFontModal = true
+  // }
 </script>
 
 <div class="flex h-[screen] min-w-[330px] flex-col border-r border-black bg-certificateSection">
@@ -25,6 +29,6 @@
 </div>
 <div class="flex min-w-[330px] flex-col">
   {#if activeComponent}
-    <svelte:component this={activeComponent} {imageUploadedSection} {textEditSection} />
+    <svelte:component this={activeComponent} on:FontModal {imageUploadedSection} {textEditSection} />
   {/if}
 </div>

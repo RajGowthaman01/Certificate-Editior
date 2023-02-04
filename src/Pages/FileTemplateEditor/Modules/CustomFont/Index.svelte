@@ -47,9 +47,6 @@
       this={FontComponent}
       on:FontLink={getFontLink}
       {Previous}
-      on:Previous={() => {
-        Previous = false
-      }}
       on:enableArrow={() => {
         disabled = false
       }}

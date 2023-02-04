@@ -1,8 +1,8 @@
 <script>
-  import MetadataTemplate from "../modules/MetadataTemplate.svelte"
-  import FileName from "../modules/FileName.svelte"
+  import MetadataTemplate from "./MetadataTemplate.svelte"
+  import FileName from "./FileName.svelte"
   import { fade } from "svelte/transition"
-  import Tooltip from "../shared/tooltip.svelte"
+  import Tooltip from "../../shared/tooltip.svelte"
   import { createEventDispatcher } from "svelte"
   import OverlappingImageUpload from "./overlappingImageUpload.svelte"
 
