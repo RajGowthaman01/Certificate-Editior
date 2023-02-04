@@ -1,4 +1,11 @@
-<textarea>https://fonts.googleapis.com/css?family=Sofia</textarea>
+<script>
+  import { createEventDispatcher } from "svelte"
+  const dispatch = createEventDispatcher()
+  let fontLink = "https://fonts.googleapis.com/css?family=Abril Fatface"
+  $: dispatch("FontLink", fontLink)
+</script>
+
+<textarea bind:value={fontLink} />
 
 <style lang="postcss">
   textarea {
