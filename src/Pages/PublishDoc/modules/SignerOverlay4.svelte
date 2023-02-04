@@ -55,16 +55,6 @@
   import SignClr from "./signClr.svelte"
   import EnterOtp from "./EnterOtp.svelte"
 
-  // let uploadImageSection = true
-  // let File, ImgUrl, KB, imgName
-  // const imgUrl = (e) => {
-  //   File = e.detail
-  //   ImgUrl = URL.createObjectURL(File)
-  //   KB = Math.floor(File.size / 1000).toFixed(1)
-  //   console.log(ImgUrl)
-  //   uploadImageSection = false
-  // }
-
   let sections = [
     {
       id: 0,
@@ -139,12 +129,6 @@
 </script>
 
 <main class="h-screen w-screen flex justify-center items-center">
-  <!-- <div class="relative p-5 w-4/6 bg-darkGray rounded-md"> -->
-  <!-- <ImageUploadSection /> -->
-  <!-- <ImagePreview /> -->
-  <!-- <ImgUpload /> -->
-  <!-- <ImguploadSec /> -->
-  <!-- </div> -->
   <div class="grid grid-cols-12 w-full h-full">
     <div class="col-span-3 flex" />
     <div class="col-span-9 flex">
@@ -153,103 +137,76 @@
         <h1 class="text-center text-2xl bg-primary_blue text-white py-4">Document Signature Section</h1>
         <div>
           {#each sections as section (section.id)}
-            <div class="{sections[sections.length - 1] == section ? '' : 'border-b'} {section.Active ? '' : ''} border-l-primary_blue border-b-lightGray">
-              <button class="flex items-center gap-5 p-5">
+            <div>
+              <div class="flex">
                 <nav aria-label="Progress">
-                  <ol class="overflow-hidden">
+                  <ol class="overflow-hidden m-5">
                     <li class="relative pb-10">
-                      <div class="absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600" aria-hidden="true" />
-                      <!-- Complete Step -->
-                      <div class="group relative flex items-start">
+                      <div class=" {sections[3] == section ? 'hidden' : ''}absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600" aria-hidden="true" />
+                      <div class="group relative items-center gap-5 flex">
                         <span class="flex h-9 items-center">
                           <span class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 group-hover:bg-indigo-800">
-                            <!-- Heroicon name: mini/check -->
                             <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                               <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
                             </svg>
                           </span>
                         </span>
-                        <span class="ml-4 flex min-w-0 flex-col">
-                          <span class="text-sm font-medium">Create account</span>
-                          <span class="text-sm text-gray-500">Vitae sed mi luctus laoreet.</span>
-                        </span>
+                        <!-- svelte-ignore a11y-click-events-have-key-events -->
+                        <span on:click={() => changeActiveComponent(section.id)} class="text-base text-white font-bold">{section.Title}</span>
                       </div>
+                      {#if section.Active}
+                        <div in:slide class="pl-10 mt-5 pr-5 relative">
+                          <svelte:component this={section.Component} on:ShowImg={showImg} on:init={InitOTP} {loadScreen} on:nextStep={() => gotoNextSignStep(section.id)} />
+                          <button on:click={() => gotoNextSignStep(section.id)} class="btn absolute right-5 bottom-5 w-20 {sections[3] == section ? 'hidden' : ''}">next</button>
+                        </div>
+                      {/if}
                     </li>
 
-                    <li class="relative pb-10">
+                    <!-- <li class="relative pb-10">
                       <div class="absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5 bg-gray-300" aria-hidden="true" />
-                      <!-- Current Step -->
                       <div class="group relative flex items-start" aria-current="step">
                         <span class="flex h-9 items-center" aria-hidden="true">
                           <span class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-indigo-600 bg-white">
                             <span class="h-2.5 w-2.5 rounded-full bg-indigo-600" />
                           </span>
                         </span>
-                        <span class="ml-4 flex min-w-0 flex-col">
-                          <span class="text-sm font-medium text-indigo-600">Profile information</span>
-                          <span class="text-sm text-gray-500">Cursus semper viverra facilisis et et some more.</span>
-                        </span>
                       </div>
                     </li>
-
+  
                     <li class="relative pb-10">
                       <div class="absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5 bg-gray-300" aria-hidden="true" />
-                      <!-- Upcoming Step -->
                       <div class="group relative flex items-start">
                         <span class="flex h-9 items-center" aria-hidden="true">
                           <span class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-gray-300 bg-white group-hover:border-gray-400">
                             <span class="h-2.5 w-2.5 rounded-full bg-transparent group-hover:bg-gray-300" />
                           </span>
                         </span>
-                        <span class="ml-4 flex min-w-0 flex-col">
-                          <span class="text-sm font-medium text-gray-500">Business information</span>
-                          <span class="text-sm text-gray-500">Penatibus eu quis ante.</span>
-                        </span>
                       </div>
                     </li>
-
+  
                     <li class="relative pb-10">
                       <div class="absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5 bg-gray-300" aria-hidden="true" />
-                      <!-- Upcoming Step -->
                       <div class="group relative flex items-start">
                         <span class="flex h-9 items-center" aria-hidden="true">
                           <span class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-gray-300 bg-white group-hover:border-gray-400">
                             <span class="h-2.5 w-2.5 rounded-full bg-transparent group-hover:bg-gray-300" />
                           </span>
                         </span>
-                        <span class="ml-4 flex min-w-0 flex-col">
-                          <span class="text-sm font-medium text-gray-500">Theme</span>
-                          <span class="text-sm text-gray-500">Faucibus nec enim leo et.</span>
-                        </span>
                       </div>
-                    </li>
-
-                    <li class="relative">
-                      <!-- Upcoming Step -->
-                      <div class="group relative flex items-start">
-                        <span class="flex h-9 items-center" aria-hidden="true">
-                          <span class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-gray-300 bg-white group-hover:border-gray-400">
-                            <span class="h-2.5 w-2.5 rounded-full bg-transparent group-hover:bg-gray-300" />
-                          </span>
-                        </span>
-                        <span class="ml-4 flex min-w-0 flex-col">
-                          <span class="text-sm font-medium text-gray-500">Preview</span>
-                          <span class="text-sm text-gray-500">Iusto et officia maiores porro ad non quas.</span>
-                        </span>
-                      </div>
-                    </li>
+                    </li> -->
                   </ol>
                 </nav>
-
+                <!-- <button class="flex items-center gap-5 p-5"> -->
                 <!-- svelte-ignore a11y-click-events-have-key-events -->
-                <span on:click={() => changeActiveComponent(section.id)} class="text-base text-white font-bold">{section.Title}</span>
-              </button>
-              {#if section.Active}
-                <div in:slide class="px-5 relative">
+                <!-- <span on:click={() => changeActiveComponent(section.id)} class="text-base text-white font-bold">{section.Title}</span>
+                </button> -->
+              </div>
+              <!-- {#if section.Active}
+                <div in:slide class="px-5 ml-10 relative">
                   <svelte:component this={section.Component} on:ShowImg={showImg} on:init={InitOTP} {loadScreen} on:nextStep={() => gotoNextSignStep(section.id)} />
                   <button on:click={() => gotoNextSignStep(section.id)} class="btn absolute right-5 bottom-5 w-20 {sections[3] == section ? 'hidden' : ''}">next</button>
                 </div>
-              {/if}
+              {/if} -->
             </div>
           {/each}
         </div>

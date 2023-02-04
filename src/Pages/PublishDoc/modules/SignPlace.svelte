@@ -20,7 +20,7 @@
   }
 </script>
 
-<div class="pb-5 space-y-3">
+<div class="space-y-3 pb-5">
   <div class="flex flex-col justify-between items-start gap-3">
     <div class="relative w-full mt-1 rounded-md shadow-sm">
       <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
