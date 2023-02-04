@@ -1,9 +1,9 @@
 <script>
   import { slide, fade } from "svelte/transition"
-  import UserDetails from "./UserDetails.svelte"
-  import SignPlace from "./SignPlace.svelte"
-  import SignClr from "./signClr.svelte"
-  import EnterOtp from "./EnterOtp.svelte"
+  import UserDetails from "../Components/UserDetails.svelte"
+  import SignPlace from "../Components/SignPlace.svelte"
+  import SignClr from "../Components/signClr.svelte"
+  import EnterOtp from "../Components/EnterOtp.svelte"
 
   let sections = [
     {

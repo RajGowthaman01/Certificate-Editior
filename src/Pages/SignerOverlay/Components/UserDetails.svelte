@@ -1,7 +1,7 @@
 <script>
   // import { createEventDispatcher } from "svelte"
   // const dispatch = createEventDispatcher()
-  import LoadingScreen from "../Components/loadingScreen.svelte"
+  import LoadingScreen from "./loadingScreen.svelte"
   let loadScreen = true
   setTimeout(() => {
     loadScreen = false

@@ -1,9 +1,9 @@
 <script>
   import { slide, fade } from "svelte/transition"
-  import UserDetails from "./UserDetails.svelte"
-  import SignPlace from "./SignPlace.svelte"
-  import SignClr from "./signClr.svelte"
-  import EnterOtp from "./EnterOtp.svelte"
+  import UserDetails from "../Components/UserDetails.svelte"
+  import SignPlace from "../Components/SignPlace.svelte"
+  import SignClr from "../Components/signClr.svelte"
+  import EnterOtp from "../Components/EnterOtp.svelte"
 
   // let uploadImageSection = true
   // let File, ImgUrl, KB, imgName
@@ -77,22 +77,27 @@
     <div class="col-span-9 flex">
       <div class="w-8/12" />
       <div class="w-4/12 h-full relative bg-darkGray">
-        <h1 class="text-center text-2xl bg-primary_blue text-white py-4">Document Signature Section</h1>
-        <div>
-          {#each sections as section (section.id)}
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <div on:click={() => changeActiveComponent(section.id)} class="{sections[sections.length - 1] == section ? '' : 'border-b'} {section.Active ? '' : ''} border-l-primary_blue border-b-lightGray">
-              <button class="flex py-5">
-                <span class="text-base text-white font-bold px-5">{section.Title}</span>
-              </button>
-              {#if section.Active}
-                <div in:slide class="px-5">
-                  <svelte:component this={section.Component} on:ShowImg={showImg} on:init={InitOTP} {loadScreen} />
-                </div>
-              {/if}
-            </div>
-          {/each}
-        </div>
+        <!-- <div class=" w-5/12"> -->
+        {#if img}
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <img src="assets/images/download (1).png" alt="img" on:click={showImg} />
+        {:else}
+          <!-- <h1 class="text-center text-2xl text-primary_blue mb-5">Document Signature Section</h1> -->
+          <div>
+            {#each sections as section (section.id)}
+              <div class="{sections[sections.length - 1] == section ? '' : 'border-b'} {section.Active ? ' border-l-4 bg-lightGray2' : ''} border-l-primary_blue border-b-lightGray">
+                <button on:click={() => changeActiveComponent(section.id)} class="flex py-5">
+                  <span class="text-base text-white font-bold px-5">{section.Title}</span>
+                </button>
+                {#if section.Active}
+                  <div in:slide class="px-5">
+                    <svelte:component this={section.Component} on:ShowImg={showImg} on:init={InitOTP} {loadScreen} />
+                  </div>
+                {/if}
+              </div>
+            {/each}
+          </div>
+        {/if}
       </div>
     </div>
   </div>

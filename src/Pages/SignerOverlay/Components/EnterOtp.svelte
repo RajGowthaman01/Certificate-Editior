@@ -1,5 +1,5 @@
 <script>
-  import LoadingScreen from "../Components/loadingScreen.svelte"
+  import LoadingScreen from "./loadingScreen.svelte"
   export let loadScreen = false
   setTimeout(() => {
     loadScreen = false
