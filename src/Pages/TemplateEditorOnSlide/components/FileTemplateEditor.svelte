@@ -1,15 +1,28 @@
 <script>
   import { fade } from "svelte/transition"
   import Footer from "./footer.svelte"
-  import LayersSection from "./layerPanel.svelte"
+  import LayerPanel from "./layerPanel.svelte"
   import Image from "../svg/image.svelte"
   import Save from "../svg/save.svelte"
-  import IntroCard from "../modules/introCard/introCard.svelte"
+  import IntroCard from "../modules/introCard/index.svelte"
   import Index from "../modules/addCustomFont/Index.svelte"
+  import { createEventDispatcher } from "svelte"
+  import { imageStore, textStore } from "../Stores/stores"
+  import ImageLayerTile from "./imageLayerTile.svelte"
+  import TextLayerTile from "./textLayerTile.svelte"
+
+  const dispatch = createEventDispatcher()
 
   let editSection
+  let text, image
   let modalOverLay = false
   let customFontModal = false
+  const addImage = () => {
+    imageStore.update((imageStore) => [...imageStore, text])
+  }
+  const addText = () => {
+    textStore.update((textStore) => [...textStore, image])
+  }
 </script>
 
 <div class="relative flex h-screen w-screen flex-col overflow-hidden">
@@ -20,11 +33,11 @@
           <button class="Button">
             <Save /> Save
           </button>
-          <button class="Button">
+          <button class="Button" on:click={addText}>
             <span class="font-serif">A</span>
             Text
           </button>
-          <button class="Button">
+          <button class="Button" on:click={addImage}>
             <Image />Image
           </button>
         </div>
@@ -33,12 +46,14 @@
     </div>
   </div>
   <div class="flex w-full flex-row bg-certificateSection">
-    <LayersSection
+    <!-- {#each $propertyStore as item} -->
+    <LayerPanel
       on:FontModal={() => {
         customFontModal = true
       }}
       {editSection}
     />
+    <!-- {/each} -->
     <div class="flex h-screen w-screen bg-certificateSection" />
   </div>
   <Footer />

@@ -1,10 +1,10 @@
 <script>
-  import MetadataTemplate from "./MetadataTemplate.svelte"
-  import FileName from "./FileName.svelte"
+  import MetadataTemplate from "./components/MetadataTemplate.svelte"
+  import FileName from "./components/FileName.svelte"
+  import OverlappingImageUpload from "./components/overlappingImageUpload.svelte"
   import { fade } from "svelte/transition"
   import Tooltip from "../../shared/tooltip.svelte"
   import { createEventDispatcher } from "svelte"
-  import OverlappingImageUpload from "./overlappingImageUpload.svelte"
 
   const dispatch = createEventDispatcher()
   let modalOverLay = true

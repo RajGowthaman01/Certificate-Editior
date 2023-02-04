@@ -1,10 +1,10 @@
 <script>
   import { createEventDispatcher } from "svelte"
   const dispatch = createEventDispatcher()
-  import Tooltip from "../../shared/tooltip.svelte"
-  import DisabledNexPage from "../../svg/disabledNexPage.svelte"
-  import PrevPage from "../../svg/prevPage.svelte"
-  import Tick from "../../svg/tick.svelte"
+  import Tooltip from "../../../shared/tooltip.svelte"
+  import DisabledNexPage from "../../../svg/disabledNexPage.svelte"
+  import PrevPage from "../../../svg/prevPage.svelte"
+  import Tick from "../../../svg/tick.svelte"
   export let baseImgUpload = true
   let PreviewBaseImage = false
   let pagination = true

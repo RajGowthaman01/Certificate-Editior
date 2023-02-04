@@ -1,8 +1,8 @@
 <script>
   import { createEventDispatcher } from "svelte"
-  import NextPage from "../../svg/nextPage.svelte"
-  import DisabledPrevButton from "../../svg/disabledPrevButton.svelte"
-  import DropdownArrow from "../../../FileTemplateEditor/svgIcons/DropdownArrow.svelte"
+  import NextPage from "../../../svg/nextPage.svelte"
+  import DisabledPrevButton from "../../../svg/disabledPrevButton.svelte"
+  import DropdownArrow from "../../../../FileTemplateEditor/svgIcons/DropdownArrow.svelte"
 
   const dispatch = createEventDispatcher()
 
