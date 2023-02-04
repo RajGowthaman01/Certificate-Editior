@@ -1,7 +1,5 @@
 <script>
   import { slide, fade } from "svelte/transition"
-  import { createEventDispatcher } from "svelte"
-  const dispatch = createEventDispatcher()
   let toggleSwitchPosition = false
   const toggleSwitch = () => {
     toggleSwitchPosition = !toggleSwitchPosition
