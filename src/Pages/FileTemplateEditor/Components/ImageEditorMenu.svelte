@@ -15,6 +15,7 @@
   let minimize = false
   let btnName = "DYNAMIC"
   let blobUrl
+  let count1 = 0
   let toggleBtn = false,
     KB = 0,
     File,
@@ -63,59 +64,33 @@
         <Info />
       </span>
       <h1 class="text-sm font-bold text-textGray">{btnName}</h1>
-      <button
-        on:click={displayUploadSection}
-        class:justify-end={toggleBtn}
-        class="ml-auto flex h-5 w-12 items-center rounded-full  bg-darkGray py-1 text-textGray focus:outline-none focus:ring-2 focus:ring-primary_blue"
-      >
-        <button
-          class="h-4 w-6 rounded-full bg-primary_blue text-xs text-white focus:outline-none focus:ring-2 focus:ring-primary_blue"
-        />
+      <button on:click={displayUploadSection} class:justify-end={toggleBtn} class="ml-auto flex h-5 w-12 items-center rounded-full  bg-darkGray py-1 text-textGray focus:outline-none focus:ring-2 focus:ring-primary_blue">
+        <button class="h-4 w-6 rounded-full bg-primary_blue text-xs text-white focus:outline-none focus:ring-2 focus:ring-primary_blue" />
       </button>
     </div>
     {#if minimize}
       <div class="space-y-2" transition:slide={{ duration: 500 }}>
         {#if uploadImg}
-          <div
-            class="relative flex h-24 flex-col items-center gap-2 rounded-md bg-lightGray p-2"
-          >
+          <div class="relative flex h-24 flex-col items-center gap-2 rounded-md bg-lightGray p-2">
             <form id="formImage">
-              <input
-                on:change={uploadImage}
-                type="file"
-                name="userImage"
-                class="absolute top-0 left-0 py-12 opacity-0"
-                accept="image/*"
-              />
+              <input on:change={uploadImage} type="file" name="userImage" class="absolute top-0 left-0 py-12 opacity-0" accept="image/*" />
             </form>
             <ChooseFile />
             <div class="flex flex-col items-center justify-center">
               <p class="text-sm text-white">
                 Upload Image <span>or drag and drop</span>
               </p>
-              <span class="rounded-md px-2 py-0.5 text-xs text-textGray"
-                >PNG, JPG, GIF up to 10MB</span
-              >
+              <span class="rounded-md px-2 py-0.5 text-xs text-textGray">PNG, JPG, GIF up to 10MB</span>
             </div>
           </div>
         {:else if !uploadImg && btnName == "STATIC"}
-          <div
-            class="flex h-24 items-center justify-between gap-2 rounded-md bg-lightGray p-2"
-          >
+          <div class="flex h-24 items-center justify-between gap-2 rounded-md bg-lightGray p-2">
             <div class="flex w-full gap-3">
-              <img
-                id="previewImage"
-                src={blobUrl}
-                alt="QRCode"
-                class="h-20 w-20 rounded-md"
-              />
+              <img id="previewImage" src={blobUrl} alt="QRCode" class="h-20 w-20 rounded-md" />
               <div class="w-full space-y-2">
                 <div class="flex items-center justify-between">
                   <h3 class="mt-1 text-sm font-bold text-white">{File.name}</h3>
-                  <button
-                    on:click={() => (uploadImg = true)}
-                    class="group relative flex items-start justify-end rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-primary_blue"
-                  >
+                  <button on:click={() => (uploadImg = true)} class="group relative flex items-start justify-end rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-primary_blue">
                     <div class="hidden group-hover:block">
                       <Tooltip tip="Back" />
                     </div>
@@ -138,36 +113,20 @@
               <span class="span-label">X</span>
             </div>
             <div class="down-arrow">
-              <svg
-                on:click={() => (count1 -= 5)}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                class="h-4 w-4 stroke-textGray hover:stroke-primary_blue"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                />
-              </svg>
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
+              <span on:click={() => (count1 -= 5)}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </span>
             </div>
             <div class="up-arrow">
-              <svg
-                on:click={() => (count1 += 5)}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                class="h-4 w-4 stroke-textGray hover:stroke-primary_blue"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M4.5 15.75l7.5-7.5 7.5 7.5"
-                />
-              </svg>
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
+              <span on:click={() => (count1 += 5)}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                </svg>
+              </span>
             </div>
             <input type="text" class="px-8" />
           </div>
@@ -177,35 +136,15 @@
               <span class="span-label">Y</span>
             </div>
             <div class="down-arrow">
-              <svg
-                on:click={() => (count1 -= 5)}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                class="h-4 w-4 stroke-textGray hover:stroke-primary_blue"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                />
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
+              <svg on:click={() => (count1 -= 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
               </svg>
             </div>
             <div class="up-arrow">
-              <svg
-                on:click={() => (count1 += 5)}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                class="h-4 w-4 stroke-textGray hover:stroke-primary_blue"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M4.5 15.75l7.5-7.5 7.5 7.5"
-                />
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
+              <svg on:click={() => (count1 += 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
               </svg>
             </div>
             <input type="text" class="px-8" />
@@ -221,35 +160,15 @@
               <span class="span-label">W</span>
             </div>
             <div class="down-arrow">
-              <svg
-                on:click={() => (count1 -= 5)}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                class="h-4 w-4 stroke-textGray hover:stroke-primary_blue"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                />
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
+              <svg on:click={() => (count1 -= 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
               </svg>
             </div>
             <div class="up-arrow">
-              <svg
-                on:click={() => (count1 += 5)}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                class="h-4 w-4 stroke-textGray hover:stroke-primary_blue"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M4.5 15.75l7.5-7.5 7.5 7.5"
-                />
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
+              <svg on:click={() => (count1 += 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
               </svg>
             </div>
             <input type="text" class="px-8" />
@@ -260,35 +179,15 @@
               <span class="span-label">H</span>
             </div>
             <div class="down-arrow">
-              <svg
-                on:click={() => (count1 -= 5)}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                class="h-4 w-4 stroke-textGray hover:stroke-primary_blue"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                />
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
+              <svg on:click={() => (count1 -= 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
               </svg>
             </div>
             <div class="up-arrow">
-              <svg
-                on:click={() => (count1 += 5)}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                class="h-4 w-4 stroke-textGray hover:stroke-primary_blue"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M4.5 15.75l7.5-7.5 7.5 7.5"
-                />
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
+              <svg on:click={() => (count1 += 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
               </svg>
             </div>
             <input type="text" class="px-8" />
@@ -302,9 +201,7 @@
     {/if}
   </div>
 
-  <div
-    class="w-75 rounded-b-md border-t-2 border-lightGray bg-darkGray px-4 py-1.5"
-  >
+  <div class="w-75 rounded-b-md border-t-2 border-lightGray bg-darkGray px-4 py-1.5">
     <div class="flex items-center justify-end gap-2 text-textGray">
       {#if minimize}
         <button on:click={() => (minimize = false)} class="final-card group">
@@ -317,11 +214,7 @@
           <div class="hidden group-hover:block"><Tooltip tip="Maximize" /></div>
 
           <Maximize />
-          <div
-            class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500 {textName
-              ? 'animate-ping'
-              : ''}"
-          />
+          <div class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500 {textName ? 'animate-ping' : ''}" />
         </button>
       {/if}
       <button class="delete group">

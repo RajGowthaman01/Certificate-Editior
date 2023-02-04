@@ -2,23 +2,40 @@
   import LeftArrow from "../../svgIcons/LeftArrow.svelte"
   import RightArrow from "../../svgIcons/RightArrow.svelte"
   import Tooltip from "../../Components/Tooltip.svelte"
-  import CustomFonts from "./Components/CustomFonts.svelte"
+  import PasteAndUpload from "./Components/PasteAndUpload.svelte"
   import CheckFont from "./Components/CheckFont.svelte"
   import Tick2 from "../../svgIcons/Tick2.svelte"
   import Delete from "../../svgIcons/Delete.svelte"
+  import { createEventDispatcher } from "svelte"
+  const dispatch = createEventDispatcher()
   let disabled = true
-  let FontComponent = CustomFonts
+  let fontLink = "https://fonts.googleapis.com/css?family=Abril Fatface"
+  let FontComponent = PasteAndUpload
   const fontPreview = () => {
-    FontComponent = CheckFont
+    if (fontLink) {
+      let linkElem = document.createElement("link")
+      linkElem.href = fontLink
+      linkElem.rel = "stylesheet"
+      document.head.appendChild(linkElem)
+      fontName = fontLink.replace("https://fonts.googleapis.com/css?family=", "")
+      console.log(fontName)
+      FontComponent = CheckFont
+      blob = ""
+    }
   }
   let Previous = false
   const PrevComponent = () => {
     Previous = true
   }
   let blob
+  let fontName
   const getBlobUrl = (e) => {
     FontComponent = CheckFont
-    blob = e.detail
+    blob = e.detail.bloburl
+    fontName = e.detail.fontName
+  }
+  const getFontLink = (e) => {
+    fontLink = e.detail
   }
 </script>
 
@@ -28,45 +45,70 @@
     <CheckFont /> -->
     <svelte:component
       this={FontComponent}
+      on:FontLink={getFontLink}
       {Previous}
       on:enableArrow={() => {
         disabled = false
       }}
       on:File={getBlobUrl}
       {blob}
+      {fontName}
     />
   </div>
-  {#if FontComponent == CustomFonts}
+  {#if FontComponent == PasteAndUpload}
     <div class="rounded-b-md border-t-2 border-lightGray bg-darkGray px-5 py-1.5">
-      <div class="flex items-center justify-end gap-5 text-textGray">
-        <button on:click={PrevComponent} {disabled} class="final-card group">
-          <div class="hidden group-hover:block"><Tooltip tip="LeftArrow" /></div>
-          <LeftArrow />
-        </button>
-
-        <button {disabled} on:click={fontPreview} class="final-card group">
-          <div class="hidden group-hover:block"><Tooltip tip="RightArrow" /></div>
-          <RightArrow />
-        </button>
-      </div>
-    </div>
-  {:else}
-    <div class="rounded-b-md border-t-2 border-lightGray bg-darkGray px-5 py-1.5">
-      <div class="flex items-center justify-end gap-5 text-textGray">
+      <div class="flex text-textGray">
         <button
           on:click={() => {
-            FontComponent = CustomFonts
-            disabled = true
+            dispatch("delete")
           }}
           class="final-card group"
         >
           <div class="hidden group-hover:block"><Tooltip tip="Delete" /></div>
           <Delete stroke="stroke-red-500" />
         </button>
-        <button on:click class="final-card group">
-          <div class="hidden group-hover:block"><Tooltip tip="Save" /></div>
-          <Tick2 />
+        <div class="ml-auto gap-5 flex">
+          <button on:click={PrevComponent} {disabled} class="final-card group">
+            <div class="hidden group-hover:block"><Tooltip tip="LeftArrow" /></div>
+            <LeftArrow />
+          </button>
+
+          <button {disabled} on:click={fontPreview} class="final-card group">
+            <div class="hidden group-hover:block"><Tooltip tip="RightArrow" /></div>
+            <RightArrow />
+          </button>
+        </div>
+      </div>
+    </div>
+  {:else}
+    <div class="rounded-b-md border-t-2 border-lightGray bg-darkGray px-5 py-1.5">
+      <div class="flex text-textGray">
+        <button
+          on:click={() => {
+            dispatch("delete")
+          }}
+          class="final-card group"
+        >
+          <div class="hidden group-hover:block"><Tooltip tip="Delete" /></div>
+          <Delete stroke="stroke-red-500" />
         </button>
+        <div class="ml-auto gap-5 flex">
+          <button
+            on:click={() => {
+              FontComponent = PasteAndUpload
+              disabled = true
+            }}
+            class="final-card group"
+          >
+            <div class="hidden group-hover:block"><Tooltip tip="LeftArrow" /></div>
+            <LeftArrow />
+          </button>
+
+          <button on:click class="final-card group">
+            <div class="hidden group-hover:block"><Tooltip tip="Save" /></div>
+            <RightArrow />
+          </button>
+        </div>
       </div>
     </div>
   {/if}
