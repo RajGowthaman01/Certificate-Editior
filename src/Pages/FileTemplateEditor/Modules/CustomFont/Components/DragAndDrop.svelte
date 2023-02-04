@@ -13,6 +13,15 @@
     File = datum[1]
     console.log(File)
     bloburl = URL.createObjectURL(File)
+    // const reader = new FileReader()
+    // reader.onloadend = () => {
+    //   let read = reader.result.replace("data:application/octet-stream;base64,", "")
+    //   localStorage.setItem("base64", read)
+    //   console.log(reader.result)
+    //   // Logs data:<type>;base64,wL2dvYWwgbW9yZ...
+    // }
+    // reader.readAsDataURL(File)
+
     dispatch("File", bloburl)
   }
 </script>

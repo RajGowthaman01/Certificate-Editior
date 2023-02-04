@@ -13,10 +13,24 @@
       customFont = document.getElementById("CustomFonts")
       console.log("custoim font is", customFont)
       console.log("bloburl is ", blob)
-      customFont.style = `@font-face {
-    font-family: "Roboto";
-    src: url(${blob}) format("truetype");
-  }`
+      // // let blob1 = blob.replace("blob:", "")
+      // let newElement = document.createElement("style")
+      // newElement.appendChild(
+      //   document.createTextNode(`@font-face {
+      //   font-family: "myfont";
+      //   src: url(data:font/truetype;charset=utf-8;base64,${localStorage.getItem("base64")}) format("truetype");
+      // }`)
+      // )
+      // document.head.appendChild(newElement)
+      let newElement = document.createElement("style")
+      newElement.appendChild(
+        document.createTextNode(`@font-face {
+        font-family: "myfont";
+        src: url(${blob}) format("truetype");
+      }`)
+      )
+      document.head.appendChild(newElement)
+      customFont.style["fontFamily"] = "myfont"
     }
   })
 </script>
@@ -31,7 +45,6 @@
       on:dblclick={() => {
         option = "textarea"
       }}
-      class="font-Roboto"
     >
       The lesson here breaks down all of the pieces that go into building a strong narrative paragraph. When you have mastered this lesson, you will be able to describe things that happened to you, or your memories, in writing in English.
     </svelte:element>
