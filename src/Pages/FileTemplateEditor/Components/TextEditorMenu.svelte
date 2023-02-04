@@ -161,6 +161,7 @@
       <div transition:slide={{ duration: 500 }} class="space-y-2">
         <div class="flex gap-2">
           {#if input}
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
             <div on:click={dropDown} class="group relative w-full">
               <button type="button" class="flex h-10 w-full items-center justify-between rounded-md border-2 border-none  bg-lightGray px-3 text-sm font-bold text-textGray focus:ring-2 focus:ring-primary_blue font-{fontFamily} focus:border-2 focus:outline-none">
                 {fontFamily}
@@ -200,11 +201,13 @@
               <span class="span-label">X</span>
             </div>
             <div class="down-arrow">
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
               <svg on:click={() => (count -= 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
               </svg>
             </div>
             <div class="up-arrow">
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
               <svg on:click={() => (count += 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4  w-4 stroke-textGray hover:stroke-primary_blue">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
               </svg>
@@ -217,11 +220,13 @@
               <span class="span-label">Y</span>
             </div>
             <div class="down-arrow">
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
               <svg on:click={() => (count1 -= 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
               </svg>
             </div>
             <div class="up-arrow">
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
               <svg on:click={() => (count1 += 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
               </svg>

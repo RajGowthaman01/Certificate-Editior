@@ -1,14 +1,12 @@
 <script>
   import Navbar from "../../Components/Navbar.svelte"
   import PublishSidebar from "./Components/PublishSidebar.svelte"
-  import Nexticon from "../../svgicons/Nexticon.svelte"
   import DocumentTemplate from "./Components/DocumentTemplate.svelte"
+  import Leftarrow from "../../svgicons/Leftarrow.svelte"
+  import PublishHeader from "./Components/PublishHeader.svelte"
   import DocumentUpload from "./Components/DocumentUpload.svelte"
   import DoubleLeft from "../../svgicons/DoubleLeft.svelte"
-  import DocumentUpload2 from "./Components/DocumentUpload2.svelte"
-  import DocumentUpload3 from "./Components/DocumentUpload3.svelte"
-  import SignerOverlay from "./modules/SignerOverlay.svelte"
-  import SignerOverlay2 from "./modules/SignerOverlay2.svelte"
+  import SignerOverlay4 from "../SignerOverlay/modules/SignerOverlay4.svelte"
 
   let uploadImageSection = true
   let File, ImgUrl, KB, imgName
@@ -30,26 +28,39 @@
     <Navbar />
     <PublishSidebar />
   </div>
-  <div class="relative col-span-9 grid grid-cols-2 h-full items-center bg-Analytics-primary">
-    <!-- <PublishHeader /> -->
-    <div class="absolute bottom-5 right-32">
-      <div class="flex gap-56">
-        <div class="inline-flex gap-2 items-center">
-          <DoubleLeft />
-          <span class="text-xs text-Analytics-primarytext font-medium">Prev</span>
-        </div>
-        <div class="inline-flex gap-2 items-center">
-          <span class="text-xs text-Analytics-primarytext font-medium">Next</span>
-          <Nexticon />
-        </div>
-      </div>
+  <div class="relative col-span-9 h-full bg-Analytics-primary">
+    <!-- <div class="absolute top-24 pl-[115px] pr-36 grid grid-cols-7 w-full">
+      <div class="col-span-1 h-2 bg-Analytics-iconcolor " />
+      <div class="col-span-1 h-2 bg-Analytics-secondary border-r-2 border-r-Analytics-sidebar" />
+      <div class="col-span-1 h-2 bg-Analytics-secondary border-r-2 border-r-Analytics-sidebar" />
+      <div class="col-span-1 h-2 bg-Analytics-secondary border-r-2 border-r-Analytics-sidebar" />
+      <div class="col-span-1 h-2 bg-Analytics-secondary border-r-2 border-r-Analytics-sidebar" />
+      <div class="col-span-1 h-2 bg-Analytics-secondary border-r-2 border-r-Analytics-sidebar" />
+      <div class="col-span-1 h-2 bg-Analytics-secondary border-r-2 border-r-Analytics-sidebar" />
+    </div> -->
+    <div class="absolute top-12 grid grid-cols-7 w-full">
+      <div class="col-span-1 h-2 bg-Analytics-iconcolor " />
+      <div class="col-span-1 h-2 bg-Analytics-secondary border-r-2 border-r-Analytics-sidebar" />
+      <div class="col-span-1 h-2 bg-Analytics-secondary border-r-2 border-r-Analytics-sidebar" />
+      <div class="col-span-1 h-2 bg-Analytics-secondary border-r-2 border-r-Analytics-sidebar" />
+      <div class="col-span-1 h-2 bg-Analytics-secondary border-r-2 border-r-Analytics-sidebar" />
+      <div class="col-span-1 h-2 bg-Analytics-secondary border-r-2 border-r-Analytics-sidebar" />
+      <div class="col-span-1 h-2 bg-Analytics-secondary border-r-2 border-r-Analytics-sidebar" />
     </div>
-    <!-- <DocumentTemplate /> -->
-    <DocumentUpload />
+
+    <PublishHeader />
+
+    <div class="pt-24 pb-[37.2px] h-full col-span-9 grid grid-cols-2 items-center justify-center">
+      <DocumentTemplate />
+    </div>
+
+    <!-- <DocumentUpload /> -->
   </div>
-  <div class="absolute bg-lightGray">
+  <div class="absolute right-0 bg-lightGray">
     <!-- <SignerOverlay /> -->
-    <SignerOverlay2 />
+    <!-- <SignerOverlay2 /> -->
+    <!-- <SignerOverlay3 /> -->
+    <SignerOverlay4 />
   </div>
 </main>
 
@@ -64,8 +75,3 @@
     <SignDoc />
   </div>
 </main> -->
-<style lang="postcss">
-  .option-class {
-    @apply w-full border-b-2 px-3 py-1.5 text-sm font-bold text-textGray hover:text-primary_blue;
-  }
-</style>
