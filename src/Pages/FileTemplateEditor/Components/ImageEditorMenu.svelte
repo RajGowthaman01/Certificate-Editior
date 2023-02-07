@@ -24,7 +24,7 @@
   let formData
   const uploadImage = () => {
     console.log("uploadImage")
-    let image = document.getElementById("formImage")
+    let image = document.getElementById("formImageEdit")
     formData = new FormData(image)
     console.log([...formData])
     let datum = [...formData][0]
@@ -72,7 +72,7 @@
       <div class="space-y-2" transition:slide={{ duration: 500 }}>
         {#if uploadImg}
           <div class="relative flex h-24 flex-col items-center gap-2 rounded-md bg-lightGray p-2">
-            <form id="formImage">
+            <form id="formImageEdit">
               <input on:change={uploadImage} type="file" name="userImage" class="absolute top-0 left-0 py-12 opacity-0" accept="image/*" />
             </form>
             <ChooseFile />
