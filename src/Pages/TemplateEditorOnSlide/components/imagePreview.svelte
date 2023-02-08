@@ -1,24 +1,24 @@
 <script>
   import { editorStore } from "../Stores/stores"
-  // let certificate
+  let certificate
 </script>
 
 <div class="flex flex-col">
   <div class="flex space-x-2 bg-secondary px-4 py-4">
-    <!-- {#if certificate}
+    {#if certificate}
       <div class="baseImage" id="baseImage">
-        <img src="assets/images/down1.png" alt="" class="aspect-square w-24  rounded-md" />
+        <img src="/assets/images/down1.png" alt="" class="aspect-square w-24  rounded-md" />
       </div>
-    {:else} -->
-    <div class="baseImage" id="baseImage">
-      <img src={$editorStore.baseImage.url} alt="" class="aspect-square w-24  rounded-md" />
-    </div>
-    <!-- {/if} -->
-    <div class="space-y-1">
-      <p class="imgProps truncate ">{$editorStore.baseImage.name}</p>
+    {:else}
+      <div class="baseImage" id="baseImage">
+        <img src={$editorStore.baseImage.url} alt="" class="aspect-square w-24  rounded-md" />
+      </div>
+    {/if}
+    <div class="space-y-1 w-48">
+      <p class="imgProps truncate  ">{$editorStore.baseImage.name}</p>
       <p class="imgProps">{$editorStore.baseImage.dimensions.w} X {$editorStore.baseImage.dimensions.h} px</p>
       <p class="imgProps">{$editorStore.baseImage.fileSize} KB</p>
-      <p class="imgProps">Quality: {$editorStore.baseImage.quality}</p>
+      <!-- <p class="imgProps">Quality: {$editorStore.baseImage.quality}</p> -->
     </div>
   </div>
 </div>

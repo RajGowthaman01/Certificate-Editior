@@ -36,7 +36,11 @@
       document.head.appendChild(styleElem)
     }
   })
-
+  editorStore.update((data) => {
+    data.fonts = [...$editorStore.fonts]
+    console.log(data.fonts)
+    return data
+  })
   $: fw = selectedStyle.includes("bold") ? 700 : 400 //making text bolder
   $: fs = selectedStyle.includes("italic") ? "italic" : "normal" //making text italic
   $: td = selectedStyle.includes("underline") ? "underline" : "none" //making text underlined
