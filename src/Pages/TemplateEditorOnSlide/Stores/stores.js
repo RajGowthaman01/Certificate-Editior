@@ -9,6 +9,7 @@ export const editorStore = writable({
     name: "", //template Name or file name
     url: "", //baseImage Source or blobURL
     dimensions: { w: "", h: "" }, //baseImage dimensions
+    fileSize: "",
     quality: 0.9,
   },
   fonts: [
@@ -26,9 +27,9 @@ export const editorStore = writable({
         value: "",
         src: "", //image or blob source path
         dynamic: true, //to define static or dynamic for image only
-        positions: { x: 100, y: 100 }, //image or text position in x and y axis in pixels
-        dimensions: { w: 30, h: 30 }, //image's width and height in pixels
-        size: 200, // in pixels to define text height
+        positions: { x: "", y: "" }, //image or text position in x and y axis in pixels
+        dimensions: { w: "", h: "" }, //image's width and height in pixels
+        size: "", // in pixels to define text height
         fontFamily: "Nunito",
         color: "#eee", //say black as default color
         style: "normal", //default value
@@ -39,8 +40,8 @@ export const editorStore = writable({
 })
 
 export const addLayer = () => {
-  for (let t = 1; t < $editorStore.layers.layerOperations[t].length; t++) {
-    if (($editorStore.layers.layerOperations.type = "text")) {
+  for (let t = 1; t < editorStore.layers.layerOperations.length; t++) {
+    if ((editorStore.layers.layerOperations.type = "text")) {
     }
   }
 }

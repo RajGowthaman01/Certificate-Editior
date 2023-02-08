@@ -1,6 +1,6 @@
 <script>
   import { editorStore } from "../Stores/stores"
-  let certificate
+  // let certificate
 </script>
 
 <div class="flex flex-col">
@@ -14,9 +14,10 @@
       <img src={$editorStore.baseImage.url} alt="" class="aspect-square w-24  rounded-md" />
     </div>
     <!-- {/if} -->
-    <div class="mt-4 flex-auto space-y-1 w-12">
+    <div class="space-y-1">
       <p class="imgProps truncate ">{$editorStore.baseImage.name}</p>
       <p class="imgProps">{$editorStore.baseImage.dimensions.w} X {$editorStore.baseImage.dimensions.h} px</p>
+      <p class="imgProps">{$editorStore.baseImage.fileSize} KB</p>
       <p class="imgProps">Quality: {$editorStore.baseImage.quality}</p>
     </div>
   </div>
@@ -27,6 +28,6 @@
     @apply h-24 w-24 flex-none rounded-md bg-transparent;
   }
   .imgProps {
-    @apply text-xs font-medium text-heading;
+    @apply text-sm font-medium text-heading;
   }
 </style>

@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte"
+  import { editorStore } from "../../../Stores/stores"
   import DropDownIcon from "../../../svg/dropDownIcon.svelte"
   export let blob, fontName
   let customFont

@@ -7,7 +7,7 @@
   import PrevPage from "../../../svg/prevPage.svelte"
   import { editorStore } from "../../../Stores/stores"
 
-  let url, w, h
+  let url, w, h, fileSize
   let active = true
   let baseImgUpload = true
   let PreviewBaseImage = false
@@ -16,7 +16,7 @@
 
   const handleDrop = (e) => {
     url = URL.createObjectURL(e.detail.file)
-    // fileSize = Math.floor(e.detail.file.size / 1000).toFixed(1)
+    fileSize = Math.floor(e.detail.file.size / 1000).toFixed(1)
     // fileName = e.detail.file.name
     // console.log(fileName)
     setTimeout(() => {
@@ -25,7 +25,7 @@
     }, 500)
     dispatch("uploadFile")
     editorStore.update((data) => {
-      ;(data.baseImage.url = url), (data.baseImage.dimensions.w = w), (data.baseImage.dimensions.h = h)
+      ;(data.baseImage.url = url), (data.baseImage.fileSize = fileSize), (data.baseImage.dimensions.w = w), (data.baseImage.dimensions.h = h)
       console.log(data)
       return data
     })

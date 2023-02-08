@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte"
+  import { editorStore } from "../../../Stores/stores"
   import NextPage from "../../../svg/nextPage.svelte"
   import DisabledPrevButton from "../../../svg/disabledPrevButton.svelte"
   import DropdownArrow from "../../../../FileTemplateEditor/svgIcons/DropdownArrow.svelte"
@@ -8,12 +9,23 @@
 
   let pagination = true
   let active = true
-  let nameFills = ["Quotaions", "Balance", "Delivery Note", "purchase Order", "E-Invoice", "Payment Receipt"]
+  let nameFills = ["Quotaions", "Balance", "Certificate Of Appreciation", "purchase Order", "E-Invoice", "Payment Receipt"]
   let activeNameFill = "Select Template"
   let KeyValues = false
   let container
   const onWindowClick = (e) => {
     if (container.contains(e.target) == false) KeyValues = false
+  }
+
+  /**
+   * updating
+   */
+  const handleUpdate = () => {
+    editorStore.update((data) => {
+      data.metaData = activeNameFill
+      console.log(data)
+      return data
+    })
   }
 </script>
 
@@ -39,7 +51,7 @@
           <DropdownArrow />
         </span>
       </button>
-      <div class:hidden={!KeyValues} class="absolute z-20 mt-2 w-full rounded-md bg-heading text-sm ring-1 dark:bg-secondary dark:ring-primary_blue">
+      <div class:hidden={!KeyValues} on:click={handleUpdate} class="absolute z-20 mt-2 w-full rounded-md bg-heading text-sm ring-1 dark:bg-secondary dark:ring-primary_blue">
         {#each nameFills as nameFill}
           <option
             on:click={() => {

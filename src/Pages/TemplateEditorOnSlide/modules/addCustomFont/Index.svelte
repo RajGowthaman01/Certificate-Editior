@@ -6,7 +6,6 @@
   import CustomFonts from "./components/customFonts.svelte"
   import CheckFont from "./components/checkFont.svelte"
   import Tick from "../../svg/tick.svelte"
-  import Mark from "../../svg/mark.svelte"
   import Delete from "../../svg/delete.svelte"
   import PrevPage from "../../../DarkFileTemplateEditor/svg/prevPage.svelte"
   const dispatch = createEventDispatcher()
@@ -87,10 +86,7 @@
           <div class="hidden group-hover:block"><Tooltip tooltip="Choose Different Font" top={true} /></div>
           <PrevPage />
         </button>
-        <!-- <button  class="final-card group">
-          <div class="hidden group-hover:block"><Tooltip tooltip="Delete" top={true} /></div>
-          <Mark />
-        </button> -->
+
         <button on:click={() => dispatch("hideFontModal")} class="final-card group">
           <div class="hidden group-hover:block"><Tooltip tooltip="Save" top={true} /></div>
           <Tick />
