@@ -76,18 +76,18 @@ export const editorStore = writable({
   /** @type {Array<layerOperations>} */
   layerOperations: [
     {
-      type: "image or text", //specifying layer type i.e., image or text
-      name: "image", // can be selected from key values also
-      value: "certificate",
+      type: "", //specifying layer type i.e., image or text
+      name: "", // can be selected from key values also
+      value: "",
       src: "", //image or blob source path
       dynamic: true, //to define static or dynamic for image only
-      positions: { x: 20, y: 20 }, //image or text position in x and y axis in pixels
-      dimensions: { w: 20, h: 20 }, //image's width and height in pixels
-      size: 24, // in pixels to define text height
-      fontFamily: "Nunito",
-      color: "#eee", //say black as default color
-      style: "normal", //default value
-      align: "center", //default value
+      positions: { x: "", y: "" }, //image or text position in x and y axis in pixels
+      dimensions: { w: "", h: "" }, //image's width and height in pixels
+      size: "", // in pixels to define text height
+      fontFamily: "",
+      color: "", //text color
+      style: "", //font style
+      align: "", //text align
     },
   ],
 })
