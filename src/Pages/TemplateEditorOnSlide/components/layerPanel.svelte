@@ -1,10 +1,12 @@
 <script>
+  import { createEventDispatcher } from "svelte"
   import ImageLayerTile from "./imageLayerTile.svelte"
   import TextLayerTile from "./textLayerTile.svelte"
   import ImagePreview from "./imagePreview.svelte"
   import ImagePropertyPanel from "./imagePropertyPanel.svelte"
   import TextPropertyPanel from "./textPropertyPanel.svelte"
-  import { imageStore, textStore, editorStore } from "../Stores/stores"
+  import { imageStore, textStore } from "../Stores/stores"
+  const dispatch = createEventDispatcher()
   // import Save from "../svg/save.svelte"
   import Text from "../svg/text.svelte"
   import Image from "../svg/image.svelte"
@@ -25,10 +27,12 @@
 
 <div class="flex h-[screen] min-w-[330px] flex-col border-r border-black bg-certificateSection">
   <ImagePreview />
+  <!-- <div class="inline-flex w-full pt-2 px-4 shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+    <button on:click={() => dispatch("fontList")} class="buttonGroup text-center  justify-center rounded-md w-full">Font Details</button>
+  </div> -->
   <div class="flex py-2 px-4">
     <div class="flex font-medium text-heading">Layers</div>
   </div>
-
   <!-- button groups -->
   <div class="flex items-center justify-center mx-auto">
     <div class="inline-flex w-full pb-4 pt-2 shadow-md hover:shadow-lg focus:shadow-lg" role="group">

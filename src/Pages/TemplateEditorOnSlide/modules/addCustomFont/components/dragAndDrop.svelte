@@ -1,7 +1,7 @@
 <script>
   import { editorStore } from "../../../Stores/stores"
-  import { createEventDispatcher } from "svelte/internal"
   import { fade } from "svelte/transition"
+  import { createEventDispatcher } from "svelte/internal"
   import UploadIcon from "../../../svg/upload.svelte"
 
   const dispatch = createEventDispatcher()

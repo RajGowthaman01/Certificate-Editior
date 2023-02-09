@@ -65,11 +65,11 @@ export const editorStore = writable({
    * @property {String} src bloburl of an image
    * @property {Boolean} dynamic dynamic  is true or false for static image upload
    * @property {Object} positions - image or text position object in canvas
-   * @property {String} positions.x - image position in x-axis
-   * @property {String} positions.y - image position in y-axis
+   * @property {Number} positions.x - image position in x-axis
+   * @property {Number} positions.y - image position in y-axis
    * @property {Object} dimensions - image dimensions object in canvas
-   * @property {String} dimensions.w - image width in x-axis
-   * @property {String} dimensions.h - image position in y-axis
+   * @property {Number} dimensions.w - image width in x-axis
+   * @property {Number} dimensions.h - image position in y-axis
    * @property {Number} size height of the text
    * @property {String} fontFamily font fammily of the text
    * @property {String} color color of the text

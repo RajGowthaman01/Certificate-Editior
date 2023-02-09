@@ -1,7 +1,13 @@
 <script>
   import { createEventDispatcher } from "svelte"
+  import { editorStore } from "../../../Stores/stores"
   const dispatch = createEventDispatcher()
   let fontLink = "https://fonts.googleapis.com/css?family=Abril Fatface"
+  editorStore.update((data) => {
+    data.fonts[0].fileName = fontLink
+    console.log(data.fonts)
+    return data
+  })
   $: dispatch("FontLink", fontLink)
 </script>
 
