@@ -6,16 +6,16 @@ export const textStore = writable([TextLayerTile])
 
 export const editorStore = writable({
   /**
-   * @typedef {Object} base represents baseImage object and its properties
+   * @typedef {Object} base - represents baseImage object and its properties
    * @type {Object}
-   * @property {String} name Name of the whole File template
-   * @property {String} url BlobUrl of a baseImage
-   * @property {Number} w Width of an Image
-   * @property {Number} h Height of an image
-   * @property {Number} fileSize baseimage size in Kb
-   * @property {Number} quality quality of an  image in Canvas
-   * @property {String} id 24 char alphanumeric id of the fie from database
-   * @property {String} name filename from introcard
+   * @property {String} name - Name of the whole File template
+   * @property {String} url - BlobUrl of a baseImage
+   * @property {Number} w - Width of an Image
+   * @property {Number} h - Height of an image
+   * @property {Number} fileSize - baseimage size in Kb
+   * @property {Number} quality - quality of an  image in Canvas
+   * @property {String} id - 24 char alphanumeric id of the fie from database
+   * @property {String} name - filename from introcard
    *
    */
 
