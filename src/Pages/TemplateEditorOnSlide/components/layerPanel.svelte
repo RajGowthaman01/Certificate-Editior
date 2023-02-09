@@ -1,0 +1,79 @@
+<script>
+  import { createEventDispatcher } from "svelte"
+  import ImageLayerTile from "./imageLayerTile.svelte"
+  import TextLayerTile from "./textLayerTile.svelte"
+  import ImagePreview from "./imagePreview.svelte"
+  import ImagePropertyPanel from "./imagePropertyPanel.svelte"
+  import TextPropertyPanel from "./textPropertyPanel.svelte"
+  import { imageStore, textStore } from "../Stores/stores"
+  const dispatch = createEventDispatcher()
+  // import Save from "../svg/save.svelte"
+  import Text from "../svg/text.svelte"
+  import Image from "../svg/image.svelte"
+  import QrCode from "../svg/qrCode.svelte"
+
+  let imageUploadedSection = false
+  let textEditSection = false
+  let activeComponent
+  let text, image
+
+  const addImage = () => {
+    imageStore.update((imageStore) => [...imageStore, text])
+  }
+  const addText = () => {
+    textStore.update((textStore) => [...textStore, image])
+  }
+</script>
+
+<div class="flex h-[screen] min-w-[330px] flex-col border-r border-black bg-certificateSection">
+  <ImagePreview />
+  <!-- <div class="inline-flex w-full pt-2 px-4 shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+    <button on:click={() => dispatch("fontList")} class="buttonGroup text-center  justify-center rounded-md w-full">Font Details</button>
+  </div> -->
+  <div class="flex py-2 px-4">
+    <div class="flex font-medium text-heading">Layers</div>
+  </div>
+  <!-- button groups -->
+  <div class="flex items-center justify-center mx-auto">
+    <div class="inline-flex w-full pb-4 pt-2 shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+      <button type="button" class="rounded-l gap-1 px-3 buttonGroup border-r border-blue-400">
+        <span class="text-heading">
+          <QrCode />
+        </span>
+        QrCode
+      </button>
+      <button on:click={addImage} type="button" class="px-5 py-2.5 gap-1 buttonGroup">
+        <Image />
+        Image
+      </button>
+      <button on:click={addText} type="button" class="rounded-r px-6 py-2.5 buttonGroup border-l border-blue-400">
+        <span class="h-5 w-5 fill-heading">
+          <Text />
+        </span>
+        Text
+      </button>
+    </div>
+  </div>
+  <div class="pb-96 max-h-screen flex flex-col overflow-y-auto overflow-x-hidden">
+    <!-- {#each Array(15) as _, index (index)} -->
+    {#each $imageStore as image}
+      <ImageLayerTile on:hideImageProp={() => (imageUploadedSection = !imageUploadedSection)} on:hideImage={() => (imageUploadedSection = false)} on:click={() => (activeComponent = ImagePropertyPanel)} />
+    {/each}
+    {#each $textStore as text}
+      <TextLayerTile on:hideTextProp={() => (textEditSection = !textEditSection)} on:hideText={() => (textEditSection = false)} on:click={() => (activeComponent = TextPropertyPanel)} />
+    {/each}
+    <!-- {/each} -->
+  </div>
+</div>
+
+<div class="flex flex-col">
+  {#if activeComponent}
+    <svelte:component this={activeComponent} on:FontModal {imageUploadedSection} {textEditSection} />
+  {/if}
+</div>
+
+<style lang="postcss">
+  .buttonGroup {
+    @apply inline-flex items-center bg-primary_blue py-2.5 text-xs font-medium uppercase leading-tight text-white transition duration-150 ease-in-out hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800;
+  }
+</style>
