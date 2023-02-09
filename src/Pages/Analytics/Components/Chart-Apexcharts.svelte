@@ -242,6 +242,9 @@
   h5 {
     @apply text-sm font-medium tracking-wider;
   }
+  h1 {
+    @apply text-base font-medium tracking-wider text-white;
+  }
   #chart .apexcharts-tooltip {
     background: transparent !important;
     border: none !important;

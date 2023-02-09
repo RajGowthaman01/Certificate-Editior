@@ -24,7 +24,7 @@
   let formData
   const uploadImage = () => {
     console.log("uploadImage")
-    let image = document.getElementById("formImage")
+    let image = document.getElementById("form")
     formData = new FormData(image)
     console.log([...formData])
     let datum = [...formData][0]
@@ -71,10 +71,8 @@
     {#if minimize}
       <div class="space-y-2" transition:slide={{ duration: 500 }}>
         {#if uploadImg}
-          <div class="relative flex h-24 flex-col items-center gap-2 rounded-md bg-lightGray p-2">
-            <form id="formImage">
-              <input on:change={uploadImage} type="file" name="userImage" class="absolute top-0 left-0 py-12 opacity-0" accept="image/*" />
-            </form>
+          <form id="form" enctype="multipart/form-data" class="relative flex h-24 flex-col items-center gap-2 rounded-md bg-lightGray p-2">
+            <input on:change={uploadImage} type="file" name="userImage" class="absolute inset-0 opacity-0" accept="image/*" />
             <ChooseFile />
             <div class="flex flex-col items-center justify-center">
               <p class="text-sm text-white">
@@ -82,7 +80,7 @@
               </p>
               <span class="rounded-md px-2 py-0.5 text-xs text-textGray">PNG, JPG, GIF up to 10MB</span>
             </div>
-          </div>
+          </form>
         {:else if !uploadImg && btnName == "STATIC"}
           <div class="flex h-24 items-center justify-between gap-2 rounded-md bg-lightGray p-2">
             <div class="flex w-full gap-3">
