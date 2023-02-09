@@ -24,10 +24,6 @@
 </script>
 
 <div class="flex h-[screen] min-w-[330px] flex-col border-r border-black bg-certificateSection">
-  <div class="text-xl mt-4 text-primary_blue truncate font-bold px-4">
-    {$editorStore.metaData}
-    <!-- MetaData Name -->
-  </div>
   <ImagePreview />
   <div class="flex py-2 px-4">
     <div class="flex font-medium text-heading">Layers</div>

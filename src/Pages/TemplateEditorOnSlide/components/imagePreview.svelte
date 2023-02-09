@@ -5,27 +5,21 @@
 
 <div class="flex flex-col">
   <div class="flex space-x-2 bg-secondary px-4 py-4">
-    {#if certificate}
-      <div class="baseImage" id="baseImage">
-        <img src="/assets/images/down1.png" alt="" class="aspect-square w-24  rounded-md" />
-      </div>
-    {:else}
-      <div class="baseImage" id="baseImage">
-        <img src={$editorStore.baseImage.url} alt="" class="aspect-square w-24  rounded-md" />
-      </div>
-    {/if}
+    <div class="baseImage" id="baseImage">
+      <img src={$editorStore.base.url} alt="" class="h-24 w-24 rounded-md" />
+    </div>
+
     <div class="space-y-1 w-48">
-      <p class="imgProps truncate  ">{$editorStore.baseImage.name}</p>
-      <p class="imgProps">{$editorStore.baseImage.dimensions.w} X {$editorStore.baseImage.dimensions.h} px</p>
-      <p class="imgProps">{$editorStore.baseImage.fileSize} KB</p>
-      <!-- <p class="imgProps">Quality: {$editorStore.baseImage.quality}</p> -->
+      <p class="imgProps truncate  ">{$editorStore.base.name}</p>
+      <p class="imgProps">{$editorStore.base.dimensions.w} X {$editorStore.base.dimensions.h} px</p>
+      <p class="imgProps">{$editorStore.base.fileSize} KB</p>
     </div>
   </div>
 </div>
 
 <style lang="postcss">
   .baseImage {
-    @apply h-24 w-24 flex-none rounded-md bg-transparent;
+    @apply rounded-md border-none bg-transparent;
   }
   .imgProps {
     @apply text-sm font-medium text-heading;

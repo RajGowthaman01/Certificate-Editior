@@ -2,19 +2,21 @@
   import { fade } from "svelte/transition"
   import Footer from "./footer.svelte"
   import LayerPanel from "./layerPanel.svelte"
-
+  import { editorStore } from "../Stores/stores"
   import IntroCard from "../modules/introCard/index.svelte"
   import Index from "../modules/addCustomFont/Index.svelte"
 
   let editSection
-  let modalOverLay = true
+  let modalOverLay = false
   let customFontModal = false
 </script>
 
 <div class="relative flex h-screen w-screen flex-col overflow-hidden">
   <div class="w-full items-center justify-center border-b-0 border-inherit bg-secondary">
-    <div class="justify-right h-10">
-      <div class="flex w-[330px] flex-row items-center justify-between gap-8 border-l border-gray-700 px-8" />
+    <div class="h-14 flex items-center">
+      <div class="text-2xl capitalize text-primary_blue font-bold px-4">
+        {$editorStore.metaData}
+      </div>
     </div>
   </div>
   <div class="flex w-full flex-row bg-certificateSection">

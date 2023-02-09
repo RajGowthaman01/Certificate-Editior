@@ -20,12 +20,12 @@
     // fileName = e.detail.file.name
     // console.log(fileName)
     setTimeout(() => {
-      $editorStore.baseImage.dimensions.w = document.getElementById("displayImage").naturalWidth
-      $editorStore.baseImage.dimensions.h = document.getElementById("displayImage").naturalHeight
+      $editorStore.base.dimensions.w = document.getElementById("displayImage").naturalWidth
+      $editorStore.base.dimensions.h = document.getElementById("displayImage").naturalHeight
     }, 500)
     dispatch("uploadFile")
     editorStore.update((data) => {
-      ;(data.baseImage.url = url), (data.baseImage.fileSize = fileSize), (data.baseImage.dimensions.w = w), (data.baseImage.dimensions.h = h)
+      ;(data.base.url = url), (data.base.fileSize = fileSize), (data.base.dimensions.w = w), (data.base.dimensions.h = h)
       console.log(data)
       return data
     })
@@ -126,7 +126,7 @@
   <div class="absolute inset-y-0 -right-[140px] flex h-full w-[600px] items-center justify-center">
     <div class="flex items-center justify-center">
       <!-- svelte-ignore a11y-img-redundant-alt -->
-      <img id="displayImage" src={$editorStore.baseImage.url} alt="preview image" class="max-h-[90vh] max-w-[400px] rounded-md 2xl:max-h-[80vh] 2xl:max-w-[450px]" />
+      <img id="displayImage" src={$editorStore.base.url} alt="preview image" class="max-h-[90vh] max-w-[400px] rounded-md 2xl:max-h-[80vh] 2xl:max-w-[450px]" />
     </div>
   </div>
 </div>
