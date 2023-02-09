@@ -96,11 +96,11 @@
   <!-- <ImguploadSec /> -->
   <!-- </div> -->
   <div class="grid grid-cols-12 w-full h-full">
-    <div class="col-span-3 flex" />
-    <div class="col-span-9 flex">
+    <div class="col-span-3 flex bg-lightGray" />
+    <div class="col-span-9 flex bg-lightGray">
       <div class="w-8/12" />
       <div class="w-4/12 h-full relative bg-darkGray">
-        <h1 class="text-center text-2xl bg-primary_blue text-white py-4">Document Signature Section</h1>
+        <h1 class="text-center text-2xl text-white bg-primary_blue py-3">Document Signature Section</h1>
         <div>
           {#each sections as section (section.id)}
             <div class="{sections[sections.length - 1] == section ? '' : 'border-b'} {section.Active ? '' : ''} border-l-primary_blue border-b-lightGray">
@@ -125,7 +125,7 @@
                 <span on:click={() => changeActiveComponent(section.id)} class="text-base text-white font-bold">{section.Title}</span>
               </button>
               {#if section.Active}
-                <div in:slide class="px-5 relative">
+                <div in:slide class="px-5 pb-5 relative">
                   <svelte:component this={section.Component} on:ShowImg={showImg} on:init={InitOTP} {loadScreen} on:nextStep={() => gotoNextSignStep(section.id)} />
                 </div>
                 <button on:click={() => gotoNextSignStep(section.id)} class="btn absolute right-5 bottom-5 w-20 {sections[3] == section ? 'hidden' : ''}">next</button>
@@ -139,9 +139,3 @@
 
   <!-- <Empty /> -->
 </main>
-
-<style global lang="postcss">
-  .btn {
-    @apply rounded-[0.375rem] bg-[#0d6efd] py-[0.375rem] px-[0.75rem] font-semibold text-white;
-  }
-</style>
