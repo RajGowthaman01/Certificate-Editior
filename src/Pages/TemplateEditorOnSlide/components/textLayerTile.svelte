@@ -37,7 +37,7 @@
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <span on:click={() => dispatch("hideTextProp")}>
         <div class="z-20 hidden group-hover:block">
-          <Tooltip tooltip="Edit Text" left={true} />
+          <Tooltip tooltip="Edit Text" top={true} />
         </div>
         <div class="relative flex stroke-[3px]">
           <ChevronRight />

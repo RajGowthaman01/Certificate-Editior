@@ -41,7 +41,7 @@
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <span on:click={() => dispatch("hideImageProp")}>
         <div class="z-20 hidden group-hover:block">
-          <Tooltip tooltip="Hide Edit" top={true} />
+          <Tooltip tooltip="Edit Image" top={true} />
         </div>
         <div class="relative flex stroke-[3px]">
           <ChevronRight />

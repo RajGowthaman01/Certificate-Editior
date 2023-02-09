@@ -6,7 +6,8 @@
   import Tooltip from "../shared/tooltip.svelte"
   import Mark from "../svg/mark.svelte"
   import { slide, fly } from "svelte/transition"
-  import { linear, cubicOut, cubicInOut } from "svelte/easing"
+  import { linear } from "svelte/easing"
+  import { editorStore } from "../Stores/stores"
   export let imageUploadedSection = false
   export let imageUploaded = false
   export let togglePosition = "DYNAMIC"
@@ -14,7 +15,7 @@
   let toggleButton = false
   let blobUrl,
     File,
-    a,
+    fileName,
     KB = 0,
     imgHeight = 0,
     imgWidth = 0
@@ -32,8 +33,8 @@
     imageUploaded = !imageUploaded
     dargAndDrop = !dargAndDrop
     console.log("draganddrop hidden")
-    a = File.name
-    console.log(a)
+    fileName = File.name
+    console.log(fileName)
     setTimeout(() => {
       imgHeight = document.getElementById("uploadImage").naturalHeight
       imgWidth = document.getElementById("uploadImage").naturalWidth
@@ -109,9 +110,9 @@
                 </div>
                 <div class="group/item relative flex w-8/12 items-start gap-2 rounded-md">
                   <div class="flex flex-col gap-1">
-                    <h3 class="h-5 w-32 overflow-hidden text-sm font-bold text-heading">
-                      <div class="hidden group-hover:block"><Tooltip tooltip={a} top={true} /></div>
-                      {a}
+                    <h3 class="h-5 w-32 truncate overflow-hidden text-sm font-bold text-heading">
+                      <div class="hidden group-hover:block"><Tooltip tooltip={fileName} top={true} /></div>
+                      {fileName}
                     </h3>
 
                     <span class="text-xs font-bold  text-heading">{imgWidth}px X {imgHeight}px</span>
@@ -149,12 +150,12 @@
         <div class=" mt-2 flex items-center gap-3 text-base">
           <div class="group relative mx-auto flex w-2/5 items-center justify-between rounded-md focus:outline-none ">
             <div class="labelSpan text-gray-400">W</div>
-            <input name="field_name" class="inputField" type="number" min="0" placeholder="" />
+            <input name="field_name" class="inputField" type="number" min="0" />
           </div>
 
           <div class="group relative mx-auto flex w-2/5 items-center justify-between rounded-md focus:outline-none ">
             <div class="labelSpan  text-gray-400">H</div>
-            <input name="field_name" class="inputField" type="number" min="0" placeholder="" />
+            <input name="field_name" class="inputField" type="number" min="0" />
           </div>
           <button class="lockPositionBtn group relative">
             <div class="flex text-3xl">
@@ -183,4 +184,9 @@
   /* .inputValue {
     @apply w-full rounded-md bg-secondary px-4 py-2 pl-16 text-sm font-bold text-white focus:outline-none focus:ring-1 focus:ring-primary_blue;
   } */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 </style>
