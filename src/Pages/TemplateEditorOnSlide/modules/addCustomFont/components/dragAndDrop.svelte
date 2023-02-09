@@ -1,4 +1,5 @@
 <script>
+  import { editorStore } from "../../../Stores/stores"
   import { createEventDispatcher } from "svelte/internal"
   import { fade } from "svelte/transition"
   import UploadIcon from "../../../svg/upload.svelte"
@@ -19,6 +20,16 @@
     dispatch("File", {
       bloburl: bloburl,
       fontName: fontName,
+    })
+    console.log("fontName", fontName)
+    console.log("fileName", File.name)
+
+    editorStore.update((data) => {
+      data.fonts[0].fontName = fontName
+      // data.fonts[0].fontStyle = selectedStyle
+      data.fonts[0].fileName = File.name
+      console.log(data.fonts)
+      return data
     })
   }
 </script>

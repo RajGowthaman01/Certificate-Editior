@@ -36,6 +36,7 @@
   }
   const getFontLink = (e) => {
     fontLink = e.detail
+    console.log("fontLink", fontLink)
   }
 </script>
 

@@ -14,9 +14,9 @@ export const editorStore = writable({
    * @property {Number} h - Height of an image
    * @property {Number} fileSize - baseimage size in Kb
    * @property {Number} quality - quality of an  image in Canvas
-   * @property {String} id - 24 char alphanumeric id of the fie from database
-   * @property {String} name - filename from introcard
-   *
+   * @property {Object} template - baseimage template properties object
+   * @property {String} template.id - id from database
+   * @property {String} template.name - file name from introcard
    */
 
   /** @type {base} */
@@ -26,6 +26,8 @@ export const editorStore = writable({
     dimensions: { w: "", h: "" }, //baseImage dimensions
     fileSize: "", // filesize in kilobytes
     quality: 0.9, //quality of an image in canvas
+
+    /**@type {template} */
     template: {
       id: "", //24 char alphanumeric id of the fie from database
       name: "", //filename fom introcard modal
@@ -44,9 +46,10 @@ export const editorStore = writable({
 
   fonts: [
     {
+      id: 1,
       fileName: "", //uploaded custom font filename
       fontName: "", //custom font Name
-      fontStyle: "", //font style normal as default
+      fontStyle: "normal", //font style normal as default
     },
   ],
 
@@ -61,10 +64,12 @@ export const editorStore = writable({
    * @property {String} value visual representation of the value to be printed on the document
    * @property {String} src bloburl of an image
    * @property {Boolean} dynamic dynamic  is true or false for static image upload
-   * @property {Number} w Width of an Image for image layer
-   * @property {Number} h Height of an image for image layer
-   * @property {Number} x position of an Image or Text on canvas in x-axis
-   * @property {Number} y position of an Image or Text on canvas in y-axis
+   * @property {Object} positions - image or text position object in canvas
+   * @property {String} positions.x - image position in x-axis
+   * @property {String} positions.y - image position in y-axis
+   * @property {Object} dimensions - image dimensions object in canvas
+   * @property {String} dimensions.w - image width in x-axis
+   * @property {String} dimensions.h - image position in y-axis
    * @property {Number} size height of the text
    * @property {String} fontFamily font fammily of the text
    * @property {String} color color of the text
@@ -81,7 +86,11 @@ export const editorStore = writable({
       value: "",
       src: "", //image or blob source path
       dynamic: true, //to define static or dynamic for image only
+
+      /**@type {positions} */
       positions: { x: "", y: "" }, //image or text position in x and y axis in pixels
+
+      /**@type {dimensions} */
       dimensions: { w: "", h: "" }, //image's width and height in pixels
       size: "", // in pixels to define text height
       fontFamily: "",
@@ -91,3 +100,9 @@ export const editorStore = writable({
     },
   ],
 })
+export const createLayerOperations = () => {
+  for (let i = 0; i < editorStore.layerOperations[i].length; i++) {
+    if (layerOperations[i].type == "text") {
+    }
+  }
+}

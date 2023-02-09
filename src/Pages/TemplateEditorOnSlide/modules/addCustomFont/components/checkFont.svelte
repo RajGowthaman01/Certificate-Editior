@@ -2,24 +2,13 @@
   import { onMount } from "svelte"
   import { editorStore } from "../../../Stores/stores"
   import DropDownIcon from "../../../svg/dropDownIcon.svelte"
-  export let blob, fontName
+
+  export let blob, fontName, fontStyle, style
   let customFont
-  let styles = ["normal", "bold", "italic", "underline"]
+  let styles = ["normal", "bold", "italic"]
   let selectedStyle = "normal"
   let dropDown = false
   let option = "p"
-
-  /**
-   * dropdown section for close event trigger
-   */
-  let container
-  /**
-   * @function- to close the dropdown by clicking on any point on window
-   * @param e - an event targetting opened dropdown
-   */
-  const onWindowClick = (e) => {
-    if (container.contains(e.target) == false) dropDown = false
-  }
 
   onMount(() => {
     if (blob) {
@@ -36,17 +25,21 @@
       document.head.appendChild(styleElem)
     }
   })
-  editorStore.update((data) => {
-    data.fonts = [...$editorStore.fonts]
-    console.log(data.fonts)
-    return data
-  })
+
+  const styleSelect = () => {
+    dropDown = false
+    editorStore.update((data) => {
+      data.fonts[0].fontStyle = selectedStyle
+      console.log(data.fonts)
+      return data
+    })
+  }
+
   $: fw = selectedStyle.includes("bold") ? 700 : 400 //making text bolder
   $: fs = selectedStyle.includes("italic") ? "italic" : "normal" //making text italic
-  $: td = selectedStyle.includes("underline") ? "underline" : "none" //making text underlined
+  // $: td = selectedStyle.includes("underline") ? "underline" : "none" //making text underlined
 </script>
 
-<svelte:window on:click={onWindowClick} />
 <div class="flex flex-col gap-3">
   <div class="h-48">
     <h1 class="pb-2 text-lg font-medium text-textGray">Font Preview</h1>
@@ -61,7 +54,7 @@
         style="
 		      font-weight: {fw};
 		      font-style: {fs};
-		      text-decoration: {td};"
+		     "
       >
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
       </svelte:element>
@@ -75,7 +68,7 @@
 
   <div>
     <h1 class="pb-2 text-lg font-medium text-textGray">Font Style</h1>
-    <div bind:this={container} class="group rounded-md relative flex h-full w-full">
+    <div class="group rounded-md relative flex h-full w-full">
       <button
         on:click={() => {
           dropDown = !dropDown
@@ -90,13 +83,7 @@
 
       <div class="{dropDown ? 'flex flex-col' : 'hidden'} absolute top-12 z-10 w-full overflow-hidden rounded-md border border-primary_blue font-bold text-textGray">
         {#each styles as style}
-          <option
-            on:click={() => {
-              selectedStyle = style
-              dropDown = false
-            }}
-            class="option-class dark:border-gray1"
-          >
+          <option on:click={() => (selectedStyle = style)} on:click={styleSelect} class="option-class dark:border-gray1">
             {style}
           </option>
         {/each}
