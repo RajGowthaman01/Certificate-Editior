@@ -160,10 +160,10 @@
           <div class="relative -ml-2 mr-5 w-full h-full flex flex-col justify-center">
             <h1 class="text-center absolute top-0 w-full text-xl bg-primary_blue text-white py-4">Document Signature Section</h1>
 
-            <div class="w-full relative">
+            <div class="w-full mt-12 relative">
               {#each sections as section (section.id)}
                 {#if section.Active}
-                  <div class="w-full  min-h-[250px] h-full bg-darkGray flex-col rounded-md">
+                  <div class="w-full min-h-[250px] h-full bg-darkGray flex-col rounded-md">
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <div class="text-base text-white w-full font-bold cursor-pointer text-center py-4">{section.Title}</div>
 

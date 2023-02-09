@@ -1,7 +1,7 @@
 <div class="flex gap-2 items-center justify-center min-h-[250px] w-full pb-5">
-  <div class="w-5 h-5 bg-darkGray wave9 rounded-full" />
-  <div class="w-5 h-5 bg-darkGray wave9 rounded-full" />
-  <div class="w-5 h-5 bg-darkGray wave9 rounded-full" />
+  <div class="w-5 h-5 bg-lightGray wave9 rounded-full" />
+  <div class="w-5 h-5 bg-lightGray wave9 rounded-full" />
+  <div class="w-5 h-5 bg-lightGray wave9 rounded-full" />
 </div>
 
 <style>
