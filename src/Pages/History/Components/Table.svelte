@@ -1,70 +1,139 @@
-<div class="px-4 sm:px-6 lg:px-8 mt-20">
-  <div class="-mx-4 mt-10 ring-1 ring-textGray sm:-mx-6 md:mx-0">
-    <table class="min-w-full divide-y divide-textGray">
-      <thead>
-        <tr>
-          <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-Analytics-primarytext sm:pl-6">Document Id</th>
-          <th scope="col" class="hidden px-3 py-3.5 text-left text-sm font-semibold text-Analytics-primarytext lg:table-cell">Issued date</th>
-          <th scope="col" class="hidden px-3 py-3.5 text-left text-sm font-semibold text-Analytics-primarytext lg:table-cell">Issuer Name</th>
-          <th scope="col" class="hidden px-3 py-3.5 text-left text-sm font-semibold text-Analytics-primarytext lg:table-cell">Title</th>
-          <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-Analytics-primarytext">Status</th>
-          <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-            <span class="sr-only">Select</span>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="font-medium text-Analytics-primarytext py-4 pl-4 sm:pl-6 pr-3 text-sm">63c793566cb6b239c0218675</td>
-          <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">Wed Jan 18 2023 12:06:06</td>
-          <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">SIDBI (DEMO)</td>
-          <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">Fixed Deposit Receipt</td>
-          <td class="px-3 py-3.5 text-sm text-green-700">Active</td>
-          <td class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
-            <button type="button" class="inline-flex items-center bg-Analytics-iconcolor px-5 py-2 text-sm font-medium leading-4 text-white hover:bg-primary_blue focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">View</button>
-          </td>
-        </tr>
-        <tr>
-          <td class="font-medium text-Analytics-primarytext py-4 pl-4 sm:pl-6 pr-3 text-sm">63c793566cb6b239c0218675</td>
-          <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">Wed Jan 18 2023 12:06:06</td>
-          <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">SIDBI (DEMO)</td>
-          <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">Fixed Deposit Receipt</td>
-          <td class="px-3 py-3.5 text-sm text-green-700">Active</td>
-          <td class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
-            <button type="button" class="inline-flex items-center bg-Analytics-iconcolor px-5 py-2 text-sm font-medium leading-4 text-white hover:bg-primary_blue focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">View</button>
-          </td>
-        </tr>
-        <tr>
-          <td class="font-medium text-Analytics-primarytext py-4 pl-4 sm:pl-6 pr-3 text-sm">63c793566cb6b239c0218675</td>
-          <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">Wed Jan 18 2023 12:06:06</td>
-          <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">SIDBI (DEMO)</td>
-          <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">Fixed Deposit Receipt</td>
-          <td class="px-3 py-3.5 text-sm text-green-700">Active</td>
-          <td class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
-            <button type="button" class="inline-flex items-center bg-Analytics-iconcolor px-5 py-2 text-sm font-medium leading-4 text-white hover:bg-primary_blue focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">View</button>
-          </td>
-        </tr>
-        <tr>
-          <td class="font-medium text-Analytics-primarytext py-4 pl-4 sm:pl-6 pr-3 text-sm">63c793566cb6b239c0218675</td>
-          <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">Wed Jan 18 2023 12:06:06</td>
-          <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">SIDBI (DEMO)</td>
-          <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">Fixed Deposit Receipt</td>
-          <td class="px-3 py-3.5 text-sm text-green-700">Active</td>
-          <td class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
-            <button type="button" class="inline-flex items-center bg-Analytics-iconcolor px-5 py-2 text-sm font-medium leading-4 text-white hover:bg-primary_blue focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">View</button>
-          </td>
-        </tr>
-        <tr>
-          <td class="font-medium text-Analytics-primarytext py-4 pl-4 sm:pl-6 pr-3 text-sm">63c793566cb6b239c0218675</td>
-          <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">Wed Jan 18 2023 12:06:06</td>
-          <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">SIDBI (DEMO)</td>
-          <td class="hidden px-3 py-3.5 text-sm text-gray-500 lg:table-cell">Fixed Deposit Receipt</td>
-          <td class="px-3 py-3.5 text-sm text-green-700">Active</td>
-          <td class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
-            <button type="button" class="inline-flex items-center bg-Analytics-iconcolor px-5 py-2 text-sm font-medium leading-4 text-white hover:bg-primary_blue focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">View</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5">
+  <table class="min-w-full divide-y divide-Analytics-sidebar">
+    <thead class="bg-transparent">
+      <tr>
+        <th scope="col" class="whitespace-nowrap py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6">Document ID</th>
+        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-white">Issuer name</th>
+        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-white">Issued Date</th>
+        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-white">Title</th>
+        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-white">Actions</th>
+        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-white">Status</th>
+        <th scope="col" class="relative whitespace-nowrap py-3.5 pl-3 pr-4 sm:pr-6">
+          <span class="sr-only">Edit</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-Analytics-sidebar bg-transparent">
+      <tr>
+        <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-Analytics-primarytext sm:pl-6">629743bd6cb6b239c0215563</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-Analytics-primarytext">SIDBI (DEMO)</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">Wed Jun 01 2022</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">Fixed Bank Deposit</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">
+          <div class="flex gap-5">
+            <button class="b text-blue-600">Analytics</button>
+            <button class="  text-green-600">Revoke</button>
+            <button class="  text-slate-400">Aliases</button>
+          </div>
+        </td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-green-600">Active</td>
+        <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+          <a href="/" class="text-white px-3 py-1 rounded-md bg-Analytics-iconcolor hover:text-primary_blue">
+            View
+            <span class="sr-only">, AAPS0L</span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-Analytics-primarytext sm:pl-6">629743bd6cb6b239c0215563</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-Analytics-primarytext">SIDBI (DEMO)</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">Wed Jun 01 2022</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">Fixed Bank Deposit</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">
+          <div class="flex gap-5">
+            <button class=" text-blue-600">Analytics</button>
+            <button class="  text-green-600">Revoke</button>
+            <button class="  text-slate-400">Aliases</button>
+          </div>
+        </td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-green-600">Active</td>
+        <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+          <a href="/" class="text-white px-3 py-1 rounded-md bg-Analytics-iconcolor hover:text-primary_blue">
+            View
+            <span class="sr-only">, AAPS0L</span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-Analytics-primarytext sm:pl-6">629743bd6cb6b239c0215563</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-Analytics-primarytext">SIDBI (DEMO)</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">Wed Jun 01 2022</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">Fixed Bank Deposit</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">
+          <div class="flex gap-5">
+            <button class=" text-blue-600">Analytics</button>
+            <button class="  text-green-600">Revoke</button>
+            <button class="  text-slate-400">Aliases</button>
+          </div>
+        </td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-green-600">Active</td>
+        <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+          <a href="/" class="text-white px-3 py-1 rounded-md bg-Analytics-iconcolor hover:text-primary_blue">
+            View
+            <span class="sr-only">, AAPS0L</span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-Analytics-primarytext sm:pl-6">629743bd6cb6b239c0215563</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-Analytics-primarytext">SIDBI (DEMO)</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">Wed Jun 01 2022</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">Fixed Bank Deposit</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">
+          <div class="flex gap-5">
+            <button class=" text-blue-600">Analytics</button>
+            <button class="  text-green-600">Revoke</button>
+            <button class="  text-slate-400">Aliases</button>
+          </div>
+        </td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-green-600">Active</td>
+        <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+          <a href="/" class="text-white px-3 py-1 rounded-md bg-Analytics-iconcolor hover:text-primary_blue">
+            View
+            <span class="sr-only">, AAPS0L</span>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-Analytics-primarytext sm:pl-6">629743bd6cb6b239c0215563</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-Analytics-primarytext">SIDBI (DEMO)</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">Wed Jun 01 2022</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">Fixed Bank Deposit</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">
+          <div class="flex gap-5">
+            <button class=" text-blue-600">Analytics</button>
+            <button class="  text-green-600">Revoke</button>
+            <button class="  text-slate-400">Aliases</button>
+          </div>
+        </td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-green-600">Active</td>
+        <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+          <a href="/" class="text-white px-3 py-1 rounded-md bg-Analytics-iconcolor hover:text-primary_blue">
+            View
+            <span class="sr-only">, AAPS0L</span>
+          </a>
+        </td>
+      </tr>
+      <!-- <tr>
+        <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-Analytics-primarytext sm:pl-6">629743bd6cb6b239c0215563</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-Analytics-primarytext">SIDBI (DEMO)</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">Wed Jun 01 2022</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">Fixed Bank Deposit</td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-Analytics-primarytext">
+          <div class="flex gap-5">
+            <button class=" text-blue-600">Analytics</button>
+            <button class="  text-green-600">Revoke</button>
+            <button class="  text-slate-400">Aliases</button>
+          </div>
+        </td>
+        <td class="whitespace-nowrap px-2 py-2 text-sm text-green-600">Active</td>
+        <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+          <a href="/" class="text-white px-3 py-1 rounded-md bg-Analytics-iconcolor hover:text-primary_blue">
+            View
+            <span class="sr-only">, AAPS0L</span>
+          </a>
+        </td>
+      </tr> -->
+    </tbody>
+  </table>
 </div>

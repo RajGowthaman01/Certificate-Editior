@@ -11,6 +11,7 @@
   import Navbar from "../../Components/Navbar.svelte"
   import DocumentPreview from "./Components/DocumentPreview.svelte"
   import DocumentMetadata from "./Components/DocumentMetadata.svelte"
+  import SignOverlay from "../SignerOverlay/index.svelte"
 
   let activeID = 1
   let width = 20
@@ -24,7 +25,7 @@
       Title: "Document Template",
       Content: "Choose the Document Template from the available options in the dropdown which you already created in the settings page.",
       Component: DocumentTemplate2,
-      Active: false,
+      Active: true,
     },
     {
       id: 2,
@@ -52,7 +53,7 @@
       Title: "Document Metadata",
       Content: "The uploaded Document is previewed here.Please make sure that and move to document metadata section",
       Component: DocumentMetadata,
-      Active: true,
+      Active: false,
     },
   ]
 
@@ -125,12 +126,12 @@
     <Navbar />
     <SecondSidebar {sections} title="Publish Documents" />
   </div>
-  <div class="relative col-span-9 h-full bg-Analytics-primary">
+  <div class="relative col-span-6 h-full bg-Analytics-primary border-r border-r-Analytics-sidebar">
     <PublishHeader />
-    <div class="h-full col-span-9 grid grid-cols-2">
+    <div class="h-full col-span-6 grid grid-cols-4 px-4">
       {#each publishSections as section (section.id)}
         {#if section.Active}
-          <div class="col-span-1 flex items-start justify-center h-full flex-col pl-10">
+          <div class="col-span-2 flex items-start justify-center h-full w-full flex-col">
             <h1>{section.Title}</h1>
             <p class="pt-4">{section.Content}</p>
             {#if section.id == 4}
@@ -138,7 +139,7 @@
                 <img src={File.type == "application/pdf" ? "assets/images/pdficon.png" : "assets/images/imageicon.png"} alt="pdfIcon" />
                 <div class="flex flex-col gap-1">
                   <h4 class="text-base font-medium text-Analytics-secondarytext">{File.name}</h4>
-                  <div class="flex gap-4">
+                  <div class="flex gap-2">
                     <h4 class="text-xs font-medium text-Analytics-secondarytext">{KB ? `${KB}KB` : `${MB}MB`}</h4>
                     <h4 class="text-xs font-medium text-Analytics-secondarytext">
                       {File.type == "application/pdf" ? `${pages} Pages` : `${imgWidth} x ${imgHeight} px`}
@@ -148,10 +149,13 @@
               </div>
             {/if}
           </div>
-          <svelte:component this={section.Component} {File} on:File={dispatchFile} on:resolution={getResolution} on:pages={(e) => (pages = e.detail)} />
+          <div class="col-span-2 flex flex-col justify-center items-end">
+            <svelte:component this={section.Component} {File} on:File={dispatchFile} on:resolution={getResolution} on:pages={(e) => (pages = e.detail)} />
+          </div>
         {/if}
       {/each}
     </div>
+
     <div class="absolute bottom-12 w-full">
       <div class="relative h-2 w-full bg-Analytics-secondary">
         <div class="absolute h-2 inset-0 bg-Analytics-iconcolor" style="width:{$tweenedA}%" />
@@ -188,6 +192,9 @@
         <span class={activeID == 5 ? "pointer-events-none cursor-not-allowed" : "cursor-pointer"} on:click={() => changeActiveComponent(activeID + 1)}><RightArrow /></span>
       </div>
     </div> -->
+  </div>
+  <div class="flex col-span-3 bg-Analytics-primary">
+    <SignOverlay />
   </div>
 </main>
 

@@ -5,7 +5,7 @@
   import ImagePreview from "./imagePreview.svelte"
   import ImagePropertyPanel from "./imagePropertyPanel.svelte"
   import TextPropertyPanel from "./textPropertyPanel.svelte"
-  import { imageStore, textStore } from "../Stores/stores"
+  import { imageStore, textStore, editorStore } from "../Stores/stores"
   const dispatch = createEventDispatcher()
   // import Save from "../svg/save.svelte"
   import Text from "../svg/text.svelte"
@@ -42,11 +42,12 @@
         </span>
         QrCode
       </button>
-      <button on:click={addImage} type="button" class="px-5 py-2.5 gap-1 buttonGroup">
+      <button on:click={addImage} type="image" class="px-5 py-2.5 gap-1 buttonGroup">
         <Image />
         Image
       </button>
-      <button on:click={addText} type="button" class="rounded-r px-6 py-2.5 buttonGroup border-l border-blue-400">
+
+      <button on:click={addText} type="text" class="rounded-r px-6 py-2.5 buttonGroup border-l border-blue-400">
         <span class="h-5 w-5 fill-heading">
           <Text />
         </span>
@@ -56,10 +57,10 @@
   </div>
   <div class="pb-96 max-h-screen flex flex-col overflow-y-auto overflow-x-hidden">
     <!-- {#each Array(15) as _, index (index)} -->
-    {#each $imageStore as image}
+    {#each $imageStore as store}
       <ImageLayerTile on:hideImageProp={() => (imageUploadedSection = !imageUploadedSection)} on:hideImage={() => (imageUploadedSection = false)} on:click={() => (activeComponent = ImagePropertyPanel)} />
     {/each}
-    {#each $textStore as text}
+    {#each $textStore as store}
       <TextLayerTile on:hideTextProp={() => (textEditSection = !textEditSection)} on:hideText={() => (textEditSection = false)} on:click={() => (activeComponent = TextPropertyPanel)} />
     {/each}
     <!-- {/each} -->
