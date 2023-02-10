@@ -81,6 +81,7 @@ export const editorStore = writable({
   /** @type {Array<layerOperations>} */
   layerOperations: [
     {
+      id: 1,
       type: "", //specifying layer type i.e., image or text
       name: "", // can be selected from key values also
       value: "",
@@ -101,10 +102,11 @@ export const editorStore = writable({
   ],
 })
 
-export const createLayerOperations = (newLayer) => {
+export const createLayerOperations = () => {
   editorStore.update((data) => {
-    data.layerOperations = Object.freeze([...data.layerOperations, newLayer])
+    data.layerOperations = [...data.layerOperations]
     // data.layerOperations.push(newLayer)
+
     console.log(data.layerOperations)
     return data
   })

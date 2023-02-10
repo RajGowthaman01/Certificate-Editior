@@ -17,8 +17,8 @@
   let activeComponent
   let text,
     image,
-    type = "",
-    component
+    type = ""
+  let component
 
   const addImage = () => {
     imageStore.update((imageStore) => [...imageStore, text])
@@ -37,28 +37,31 @@
       // await sleep(500)
       if ((type = "image")) {
         component = ImageLayerTile
-        // createLayerOperations(
-        editorStore.update((data) => {
-          data.layerOperations[i].type = type
-          data.layerOperations = [...data.layerOperations]
+        createLayerOperations(
+          // editorStore.update((data) => {
+          ($editorStore.layerOperations[i].type = type),
+          // $editorStore.layerOperations.push(component)
+          // $editorStore = $editorStore
+          // console.log($editorStore)
+
+          // return editorStore
+
+          ($editorStore.layerOperations = [...$editorStore.layerOperations])
           // data.layerOperations.push(component)
-          return data
-        })
-        // )
+          // })
+        )
       } else if ((type = "text")) {
         component = TextLayerTile
-        // createLayerOperations(
-        editorStore.update((data) => {
-          data.layerOperations[i].type = type
-          data.layerOperations = [...data.layerOperations]
-          // data.layerOperations.push(component)
-          return data
-        })
-        // )
+        createLayerOperations(
+          ($editorStore.layerOperations[i].type = type)
+          // editorStore.layerOperations.push(component)
+          // editorStore = $editorStore
+          // // data.layerOperations = [...data.layerOperations]
+          // return editorStore
+        )
       }
-      $editorStore = $editorStore
+      console.log($editorStore)
     }
-    console.log($editorStore)
   }
 </script>
 
@@ -107,7 +110,7 @@
       {:else if (type = "text")}
         <TextLayerTile on:hideTextProp={() => (textEditSection = !textEditSection)} on:hideText={() => (textEditSection = false)} on:click={() => (activeComponent = TextPropertyPanel)} />
       {/if} -->
-      <svelte:component this={component} {layer} />
+      <svelte:component this={component} />
     {/each}
     <!-- {/each} -->
   </div>
