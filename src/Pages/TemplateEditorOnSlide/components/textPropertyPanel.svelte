@@ -14,7 +14,6 @@
   import Tick from "../svg/tick.svelte"
   import Int from "../svg/int.svelte"
   export let textEditSection = false
-  export let customFontModal = false
 
   const dispatch = createEventDispatcher()
 

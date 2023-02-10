@@ -51,11 +51,9 @@
 
 <div>
   <div class="w-75 space-y-2 rounded-t-md bg-darkGray p-4">
-    <div class="group relative rounded-md">
-      <div class="label-division2">
-        <span class="span-label">NAME</span>
-      </div>
-      <input bind:value={textName} type="text" class="pl-16" />
+    <div class="relative rounded-md w-full group">
+      <div class="labeltext">NAME</div>
+      <input bind:value={textName} type="text" class="pl-16 input1" />
     </div>
 
     <div class="flex h-10 w-full items-center gap-2 bg-lightGray px-3">
@@ -108,10 +106,8 @@
           </div>
         {/if}
         <div class="flex gap-2">
-          <div class="label-division1 group">
-            <div class="label-division2">
-              <span class="span-label">X</span>
-            </div>
+          <div class="relative rounded-md w-full group">
+            <div class="labeltext">X</div>
             <div class="down-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
               <span on:click={() => (count1 -= 5)}>
@@ -128,13 +124,11 @@
                 </svg>
               </span>
             </div>
-            <input type="text" class="px-8" />
+            <input type="text" class="px-8 input1" />
           </div>
 
-          <div class="label-division1 group">
-            <div class="label-division2">
-              <span class="span-label">Y</span>
-            </div>
+          <div class="relative rounded-md w-full group">
+            <div class="labeltext">Y</div>
             <div class="down-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
               <svg on:click={() => (count1 -= 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
@@ -147,7 +141,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
               </svg>
             </div>
-            <input type="text" class="px-8" />
+            <input type="text" class="px-8 input1" />
           </div>
           <button class="icons group">
             <div class="hidden group-hover:block"><Tooltip tip="Move" /></div>
@@ -155,10 +149,8 @@
           </button>
         </div>
         <div class="flex gap-2">
-          <div class="label-division1 group">
-            <div class="label-division2">
-              <span class="span-label">W</span>
-            </div>
+          <div class="relative rounded-md w-full group">
+            <div class="labeltext">W</div>
             <div class="down-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
               <svg on:click={() => (count1 -= 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
@@ -171,13 +163,11 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
               </svg>
             </div>
-            <input type="text" class="px-8" />
+            <input type="text" class="px-8 input1" />
           </div>
 
-          <div class="label-division1 group">
-            <div class="label-division2">
-              <span class="span-label">H</span>
-            </div>
+          <div class="relative rounded-md w-full group">
+            <div class="labeltext">H</div>
             <div class="down-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
               <svg on:click={() => (count1 -= 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
@@ -190,7 +180,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
               </svg>
             </div>
-            <input type="text" class="px-8" />
+            <input type="text" class="px-8 input1" />
           </div>
           <button class="icons group">
             <div class="hidden group-hover:block"><Tooltip tip="Link" /></div>
@@ -227,17 +217,11 @@
 </div>
 
 <style lang="postcss">
-  .span-label {
-    @apply select-none text-sm font-bold text-textGray group-focus-within:text-primary_blue;
+  .labeltext {
+    @apply absolute left-3 top-2.5 select-none text-sm font-bold text-textGray group-focus-within:text-primary_blue;
   }
-  .label-division1 {
-    @apply relative flex cursor-pointer items-center justify-center rounded-md text-xs hover:bg-zinc-900;
-  }
-  .label-division2 {
-    @apply absolute inset-y-0 left-3 flex items-center;
-  }
-  input {
-    @apply block h-10 w-full rounded-md border-none bg-lightGray text-sm text-white focus:ring-2  focus:ring-primary_blue;
+  .input1 {
+    @apply h-10 w-full rounded-md border-none bg-lightGray text-sm text-white focus:ring-2  focus:ring-primary_blue;
   }
   .icons {
     @apply relative rounded-md p-2.5 hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-primary_blue active:bg-primary_blue;

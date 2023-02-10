@@ -52,7 +52,6 @@
   let disable = true
   let hide = false
   let minimize = false
-  let input = true
   let alignValue = "Left"
   $: sizeValue = number[number.length - 3].value // number[2].value
   let styleValue = "Normal"
@@ -144,48 +143,35 @@
 
 <div>
   <div class="w-75 space-y-2 rounded-t-md bg-darkGray p-4">
-    <div class="group relative rounded-md">
-      <div class="label-division2">
-        <span class="span-label">NAME</span>
-      </div>
-      <input bind:value={textName} type="text" class="pl-16" />
+    <div class="group relative rounded-md w-full">
+      <div class="labeltext">NAME</div>
+      <input bind:value={textName} type="text" class="pl-16 input1" />
     </div>
 
-    <div class="group relative rounded-md">
-      <div class="label-division2">
-        <span class="span-label">VALUE</span>
-      </div>
-      <input bind:value={textValue} type="text" class="pl-[4.3rem]" />
+    <div class="group relative rounded-md w-full">
+      <div class="labeltext">VALUE</div>
+      <input bind:value={textValue} type="text" class="pl-[4.3rem] input1" />
     </div>
     {#if minimize}
       <div transition:slide={{ duration: 500 }} class="space-y-2">
         <div class="flex gap-2">
-          {#if input}
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <div on:click={dropDown} class="group relative w-full">
-              <button type="button" class="flex h-10 w-full items-center justify-between rounded-md border-2 border-none  bg-lightGray px-3 text-sm font-bold text-textGray focus:ring-2 focus:ring-primary_blue font-{fontFamily} focus:border-2 focus:outline-none">
-                {fontFamily}
-                <DropdownArrow />
-              </button>
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <div on:click={dropDown} class="group relative w-full">
+            <button type="button" class="flex h-10 w-full items-center justify-between rounded-md border-2 border-none  bg-lightGray px-3 text-sm font-bold text-textGray focus:ring-2 focus:ring-primary_blue font-{fontFamily} focus:border-2 focus:outline-none">
+              {fontFamily}
+              <DropdownArrow />
+            </button>
 
-              <div class="{fontName ? 'flex' : 'hidden'} absolute z-10 mt-2 w-full rounded-md border border-primary_blue bg-darkGray font-bold text-textGray">
-                <div class="w-full">
-                  {#each dropDowns as fontStyle}
-                    <option on:click={() => changeFont(fontStyle)} class="option-class font-{fontStyle}">
-                      {fontStyle}
-                    </option>
-                  {/each}
-                </div>
+            <div class="{fontName ? 'flex' : 'hidden'} absolute z-10 mt-2 w-full rounded-md border border-primary_blue bg-darkGray font-bold text-textGray">
+              <div class="w-full">
+                {#each dropDowns as fontStyle}
+                  <option on:click={() => changeFont(fontStyle)} class="option-class font-{fontStyle}">
+                    {fontStyle}
+                  </option>
+                {/each}
               </div>
             </div>
-          {:else}
-            <div class="group relative rounded-md">
-              <div class="label-division2">
-                <span class="span-label">FONT</span>
-              </div>
-              <input type="text" class="pl-16" />
-            </div>
-          {/if}
+          </div>
 
           <button on:click class="icons group">
             <div class="hidden group-hover:block">
@@ -196,10 +182,8 @@
         </div>
 
         <div class="flex gap-2">
-          <div class="label-division1 group">
-            <div class="label-division2">
-              <span class="span-label">X</span>
-            </div>
+          <div class="group relative rounded-md">
+            <div class="labeltext">X</div>
             <div class="down-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
               <svg on:click={() => (count -= 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
@@ -212,13 +196,11 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
               </svg>
             </div>
-            <input type="text" class="px-9" value={count} />
+            <input type="text" class="px-9 input1" value={count} />
           </div>
 
-          <div class="label-division1 group">
-            <div class="label-division2">
-              <span class="span-label">Y</span>
-            </div>
+          <div class="group relative rounded-md">
+            <div class="labeltext">Y</div>
             <div class="down-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
               <svg on:click={() => (count1 -= 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
@@ -231,7 +213,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
               </svg>
             </div>
-            <input type="text" class="px-9" value={count1} />
+            <input type="text" class="px-9 input1" value={count1} />
           </div>
 
           <button class="icons group">
@@ -302,10 +284,8 @@
             </button>
           </div>
         {:else}
-          <div class="label-division1 group w-full">
-            <div class="label-division2">
-              <span class="span-label">SIZE</span>
-            </div>
+          <div class="relative rounded-md group w-full">
+            <div class="labeltext">SIZE</div>
             <div class="absolute inset-y-1.5 right-3 flex gap-2">
               <button on:click={onCustomSize} class="rounded-full focus:outline-none focus:ring-2 focus:ring-primary_blue">
                 <Tick />
@@ -319,7 +299,7 @@
                 <Remove />
               </button>
             </div>
-            <input bind:value={defaultSize} type="text" class="pl-16" />
+            <input bind:value={defaultSize} type="text" class="pl-16 input1" />
           </div>
         {/if}
 
@@ -367,27 +347,17 @@
     border-radius: 50%;
     display: flex;
   }
-  .span-label {
-    @apply select-none text-sm font-bold text-textGray group-focus-within:text-primary_blue;
-  }
-  .label-division1 {
-    @apply relative flex cursor-pointer items-center justify-center rounded-md text-xs hover:bg-zinc-900;
-  }
-  .label-division2 {
-    @apply absolute inset-y-0 left-3 flex items-center;
-  }
   .align-input {
     @apply relative flex items-center justify-center rounded-md fill-textGray p-2 hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-primary_blue active:bg-primary_blue;
   }
-
   .size {
     @apply grid w-10 place-content-center rounded-md border-none hover:bg-zinc-900 focus:outline-none focus:ring-2  focus:ring-primary_blue active:bg-primary_blue;
   }
   .size1 {
     @apply flex h-7 w-7 items-center justify-center rounded-md text-base font-bold outline-none  hover:bg-zinc-900 focus:outline-none focus:ring-2  focus:ring-primary_blue active:bg-primary_blue;
   }
-  input {
-    @apply block h-10 w-full rounded-md border-none bg-lightGray text-sm text-white focus:ring-2  focus:ring-primary_blue;
+  .input1 {
+    @apply h-10 w-full rounded-md border-none bg-lightGray text-sm text-white focus:ring-2  focus:ring-primary_blue;
   }
   .option-class {
     @apply w-full rounded-md px-4 py-1 text-sm font-bold text-textGray hover:bg-zinc-900 hover:text-primary_blue;
@@ -406,5 +376,8 @@
   }
   .delete {
     @apply relative rounded-md border-none p-1.5 text-xs hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-red-500 active:bg-red-500;
+  }
+  .labeltext {
+    @apply absolute left-3 top-2.5 select-none text-sm font-bold text-textGray group-focus-within:text-primary_blue;
   }
 </style>

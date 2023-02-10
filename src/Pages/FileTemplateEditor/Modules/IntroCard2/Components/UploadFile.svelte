@@ -10,7 +10,8 @@
     formData,
     imgHeight,
     imgWidth,
-    KB
+    KB,
+    File
   const uploadImage = () => {
     console.log("uploadImage")
     let image = document.getElementById("imageUpload")
@@ -28,9 +29,9 @@
     })
 
     setTimeout(() => {
-      imgHeight = document.getElementById("upload").naturalHeight
+      imgHeight = document.getElementById("UploadImage").naturalHeight
       // imgHeight = document.querySelector("img").naturalHeight
-      imgWidth = document.getElementById("upload").naturalWidth
+      imgWidth = document.getElementById("UploadImage").naturalWidth
     }, 200)
   }
   const chooseDiffFile = () => {
@@ -41,48 +42,44 @@
 <div transition:slide={{ duration: 500, easing: linear }}>
   {#if upload}
     <div class="w-3/4">
-      <p>Select the MetaData Template from which key values imported for autocompleting Name fills</p>
+      <p class="text-xs tracking-wider leading-relaxed text-textGray font-medium">Select the MetaData Template from which key values imported for autocompleting Name fills</p>
     </div>
 
     <form enctype="multipart/form-data" id="imageUpload" class="relative mt-3 flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed border-gray2 bg-white dark:bg-lightGray">
       <input on:change={uploadImage} type="file" name="uploadimageSec" class="absolute inset-0 opacity-0" accept="image/*" />
       <div class="flex h-full flex-col items-center justify-center gap-2">
         <UploadIcon />
-        <p>Drag and Drop or Click here to Upload a File</p>
+        <p class="text-sm tracking-wider leading-relaxed text-textGray font-medium">Drag and Drop or Click here to Upload a File</p>
         <h6 class="text-xs font-normal text-gray1 dark:text-textGray">PNG, JPG, GIF up to 10MB</h6>
       </div>
     </form>
   {:else}
-    <div class="flex items-center gap-5 pt-4">
-      <div class="group relative flex justify-start">
-        <img id="upload" src={blobUrl} alt="selected img" class="h-32 rounded-md object-contain" />
-
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div class="absolute inset-0 hidden items-center justify-center bg-[#000000cc] group-hover:flex">
-          <span on:click={chooseDiffFile} class="rounded-full border p-2">
-            <Delete stroke="stroke-white" />
-          </span>
-        </div>
+    <div transition:slide={{ duration: 500, easing: linear }} class="flex items-center gap-5">
+      <div class="flex justify-start">
+        <img id="UploadImage" src={blobUrl} alt="selected img" class="h-36 rounded-md object-contain" />
       </div>
-
-      <div class="flex flex-col justify-center space-y-1.5">
-        <div>
-          <h4>File Name</h4>
-          <h5>{$Modal.fileName}</h5>
+      <div class="flex flex-col justify-center space-y-3">
+        <div class="overflow-hidden text-ellipsis whitespace-nowrap text-sm text-textGray">
+          <p class="font-bold">File Name</p>
+          <p class="overflow-hidden text-ellipsis whitespace-nowrap font-thin">
+            {File.name}
+          </p>
         </div>
-
-        <div>
-          <h4>Resolution</h4>
-          <h5 class="flex items-center">
+        <div class="text-sm text-textGray">
+          <p class="font-bold">Resolution</p>
+          <p class="flex items-center font-thin">
             {imgWidth}
-            <Int />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
             {imgHeight} px
-          </h5>
+          </p>
         </div>
-
-        <div>
-          <h4>Size</h4>
-          <h5>{KB} KB</h5>
+        <div class="text-sm text-textGray">
+          <p class="font-bold">Size</p>
+          <p class="font-thin">
+            {KB}KB
+          </p>
         </div>
       </div>
     </div>

@@ -101,8 +101,8 @@ export const editorStore = writable({
   ],
 })
 export const createLayerOperations = () => {
-  for (let i = 0; i < editorStore.layerOperations[i].length; i++) {
-    if (layerOperations[i].type == "text") {
+  for (let i = 1; i < editorStore.layerOperations[i].length; i++) {
+    if (editorStore.layerOperations[i].type == "text") {
     }
   }
 }
