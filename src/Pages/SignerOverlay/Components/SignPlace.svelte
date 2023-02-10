@@ -1,9 +1,9 @@
 <script>
   import { createEventDispatcher } from "svelte"
   const dispatch = createEventDispatcher()
-  // import NextIcon from "../svg/NextIcon.svelte"
+  import NextIcon from "../svg/NextIcon.svelte"
   import { slide, fade } from "svelte/transition"
-  // import SelectPlacement from "../svg/SelectPlacement.svelte"
+  import SelectPlacement from "../svg/SelectPlacement.svelte"
   let toggleSwitchPosition = false
   const toggleSwitch = () => {
     toggleSwitchPosition = !toggleSwitchPosition
@@ -59,9 +59,9 @@
     </div>
 
     <div class="flex justify-end gap-2 w-full">
-      <!-- <button on:click={signDoc} class="btn"><SelectPlacement /></button> -->
+      <button on:click={signDoc} class="btn"><SelectPlacement /></button>
       <button on:click={() => Next(1)} class="btn">
-        <!-- <NextIcon /> -->
+        <NextIcon />
       </button>
     </div>
   </div>

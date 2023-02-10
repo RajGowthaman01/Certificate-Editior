@@ -17,7 +17,7 @@
   }
 </script>
 
-<div class:active class="shadow-b relative flex justify-between  bg-primary px-4 shadow-lg">
+<div class:active class=" border-b border-black relative flex justify-between bg-primary px-4 ">
   <div class="flex items-center gap-3 py-2">
     <button on:click={() => (active = !active)} on:click={openEdit} on:click={() => dispatch("hideText")}>
       {#if editSection}
@@ -37,7 +37,7 @@
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <span on:click={() => dispatch("hideTextProp")}>
         <div class="z-20 hidden group-hover:block">
-          <Tooltip tooltip="Edit Text" left={true} />
+          <Tooltip tooltip="Edit Text" top={true} />
         </div>
         <div class="relative flex stroke-[3px]">
           <ChevronRight />

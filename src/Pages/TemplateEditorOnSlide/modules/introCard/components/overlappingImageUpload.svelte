@@ -1,22 +1,34 @@
 <script>
   import { createEventDispatcher } from "svelte"
-  import Tooltip from "../../shared/tooltip.svelte"
-  import Tick from "../../svg/tick.svelte"
-  // import BaseDesignImageUpload from "./BaseImageUpload.svelte"
+  import Tooltip from "../../../shared/tooltip.svelte"
+  import Tick from "../../../svg/tick.svelte"
   import DragAndDrop from "./dragAndDropImageUpload.svelte"
-  import DisabledNexPage from "../../svg/disabledNexPage.svelte"
-  import PrevPage from "../../svg/prevPage.svelte"
+  import DisabledNexPage from "../../../svg/disabledNexPage.svelte"
+  import PrevPage from "../../../svg/prevPage.svelte"
+  import { editorStore } from "../../../Stores/stores"
 
+  let url, w, h, fileSize
   let active = true
   let baseImgUpload = true
   let PreviewBaseImage = false
   let pagination = true
-  let fileBlobUrl = null
-
   const dispatch = createEventDispatcher()
 
   const handleDrop = (e) => {
-    fileBlobUrl = URL.createObjectURL(e.detail.file)
+    url = URL.createObjectURL(e.detail.file)
+    fileSize = Math.floor(e.detail.file.size / 1000).toFixed(1)
+    // fileName = e.detail.file.name
+    // console.log(fileName)
+    setTimeout(() => {
+      $editorStore.base.dimensions.w = document.getElementById("displayImage").naturalWidth
+      $editorStore.base.dimensions.h = document.getElementById("displayImage").naturalHeight
+    }, 500)
+    dispatch("uploadFile")
+    editorStore.update((data) => {
+      ;(data.base.url = url), (data.base.fileSize = fileSize), (data.base.dimensions.w = w), (data.base.dimensions.h = h)
+      console.log(data)
+      return data
+    })
     PreviewBaseImage = true
     baseImgUpload = false
     pagination = !pagination
@@ -114,7 +126,7 @@
   <div class="absolute inset-y-0 -right-[140px] flex h-full w-[600px] items-center justify-center">
     <div class="flex items-center justify-center">
       <!-- svelte-ignore a11y-img-redundant-alt -->
-      <img id="displayImage" src={fileBlobUrl} alt="preview image" class="max-h-[90vh] max-w-[400px] rounded-md 2xl:max-h-[80vh] 2xl:max-w-[450px]" />
+      <img id="displayImage" src={$editorStore.base.url} alt="preview image" class="max-h-[90vh] max-w-[400px] rounded-md 2xl:max-h-[80vh] 2xl:max-w-[450px]" />
     </div>
   </div>
 </div>

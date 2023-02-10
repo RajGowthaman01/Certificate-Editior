@@ -1,11 +1,20 @@
 <script>
+  import { editorStore } from "../../../Stores/stores"
+  import NextPage from "../../../svg/nextPage.svelte"
+  import PrevPage from "../../../svg/prevPage.svelte"
   import { createEventDispatcher } from "svelte"
-  import NextPage from "../../svg/nextPage.svelte"
-  import PrevPage from "../../svg/prevPage.svelte"
+
   const dispatch = createEventDispatcher()
+
   let active = true
   let pagination = true
-  let fileName = ""
+  let name = ""
+
+  editorStore.update((data) => {
+    data.name = name
+    console.log(data)
+    return data
+  })
 </script>
 
 <h1 class="mb-4 pt-8 pl-8 text-4xl text-primary_blue dark:text-blue-400">
@@ -24,8 +33,12 @@
   <div class="relative mx-auto w-2/3">
     <div class="w-full text-center">
       <div class="group w-full items-center rounded-md">
-        <input type="text" bind:value={fileName} name="first-name" id="first-name" autocomplete="given-name" class="block w-full max-w-lg rounded-md border-gray-300 text-secondaryGray shadow-sm focus:border-primary_blue focus:ring-primary_blue dark:border-primary_blue dark:bg-secondary dark:text-heading dark:focus:bg-secondary sm:max-w-xs sm:text-sm" />
+        <input type="text" bind:value={$editorStore.base.name} class="block w-full max-w-lg rounded-md border-gray-300 text-secondaryGray shadow-sm focus:border-primary_blue focus:ring-primary_blue dark:border-primary_blue dark:bg-secondary dark:text-heading dark:focus:bg-secondary sm:max-w-xs sm:text-sm" />
       </div>
+    </div>
+    <div class="inline-flex items-center gap-1 justify-center">
+      <p class="text-red-600 text-lg ">*</p>
+      <div class="text-sm text-primary_blue">Mandatory field</div>
     </div>
   </div>
 </div>
@@ -57,14 +70,14 @@
         }}
       />
       <button
-        class="pagination {fileName ? '' : 'pointer-events-none'}"
+        class="pagination {$editorStore.base.name ? '' : 'pointer-events-none'}"
         title="Page 3"
         on:click={() => {
           dispatch("Component", 2)
         }}
       />
       <button
-        class={fileName ? "" : "pointer-events-none"}
+        class={$editorStore.base.name ? "" : "pointer-events-none"}
         title="next page"
         on:click={() => {
           dispatch("Component", 2)

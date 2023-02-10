@@ -69,7 +69,7 @@
       <h2>FILTER</h2>
     </div>
     <div class="col-span-1 flex items-center justify-center bg-Analytics-iconcolor py-3">
-      <h2>EXPORT</h2>
+      <h2>SEARCH</h2>
     </div>
   </div>
 </div>

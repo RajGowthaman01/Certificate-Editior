@@ -1,5 +1,5 @@
 <script>
-  // import NextIcon from "../svg/NextIcon.svelte"
+  import NextIcon from "../svg/NextIcon.svelte"
   import LoadingScreen from "./loadingScreen.svelte"
   export let loadScreen = false
   setTimeout(() => {
@@ -20,7 +20,7 @@
       </div>
       <div class="flex w-full justify-end">
         <button class="btn" on:click={() => (loadScreen = true)}>
-          <!-- <NextIcon /> -->
+          <NextIcon />
         </button>
       </div>
     </div>

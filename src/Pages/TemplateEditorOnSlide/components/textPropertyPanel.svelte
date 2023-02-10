@@ -13,12 +13,11 @@
   import Tooltip from "../shared/tooltip.svelte"
   import Tick from "../svg/tick.svelte"
   import Int from "../svg/int.svelte"
-  import { linear } from "svelte/easing"
   export let textEditSection = false
   export let customFontModal = false
 
   const dispatch = createEventDispatcher()
-  let input = true
+
   let color = ["#ef4444", "#f97f1a", "#f9c921", "#2fedd0", "#1dacf0"]
   let colorPicked = "#1dacf0"
   let defaultSize = ""
@@ -87,19 +86,7 @@
     colorPicked = colors
     console.log(colorPicked)
   }
-  const newFont = () => {
-    input = !input
-  }
-  let fontName = false
-  let fontFamily = "Choose Font"
-  const Dropdown = () => {
-    fontName = !fontName
-  }
-  const changeFont = (e) => {
-    console.log(e)
-    fontFamily = e
-    Dropdown()
-  }
+
   /**
    * @function- to close the dropdown by clicking on any point on window
    * @param e - an event targetting opened dropdown

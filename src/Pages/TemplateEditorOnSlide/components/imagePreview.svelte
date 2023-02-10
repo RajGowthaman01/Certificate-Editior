@@ -1,18 +1,25 @@
+<script>
+  import { editorStore } from "../Stores/stores"
+  let certificate
+</script>
+
 <div class="flex flex-col">
-  <div class="flex space-x-4 bg-secondary px-4 py-4">
-    <div class="canvas" id="canvas">
-      <img src="assets/images/download.png" alt="" class="h-20 w-20 flex-none rounded-md" />
+  <div class="flex space-x-2 bg-secondary px-4 py-4">
+    <div class="baseImage" id="baseImage">
+      <img src={$editorStore.base.url} alt="" class="h-24 w-24 rounded-md" />
     </div>
-    <div class="mt-2 flex-auto space-y-1">
-      <p class="imgProps">SAMPLE 1</p>
-      <p class="imgProps">1280 X 720Px</p>
+
+    <div class="space-y-1 w-48">
+      <p class="imgProps truncate  ">{$editorStore.base.name}</p>
+      <p class="imgProps">{$editorStore.base.dimensions.w} X {$editorStore.base.dimensions.h} px</p>
+      <p class="imgProps">{$editorStore.base.fileSize} KB</p>
     </div>
   </div>
 </div>
 
 <style lang="postcss">
-  .canvas {
-    @apply h-20 w-20 flex-none rounded-md bg-gray-100 object-contain;
+  .baseImage {
+    @apply rounded-md border-none bg-transparent;
   }
   .imgProps {
     @apply text-sm font-medium text-heading;

@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte"
-  // import NextIcon from "../svg/NextIcon.svelte"
+  import NextIcon from "../svg/NextIcon.svelte"
   const dispatch = createEventDispatcher()
   import LoadingScreen from "./loadingScreen.svelte"
   let loadScreen = true
@@ -363,7 +363,7 @@
       </div>
       <div class="flex w-full absolute bottom-0 right-2 justify-end">
         <button class="btn" on:click={() => Next(0)}>
-          <!-- <NextIcon /> -->
+          <NextIcon />
         </button>
       </div>
     </div>

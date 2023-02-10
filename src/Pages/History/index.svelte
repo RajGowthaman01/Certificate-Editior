@@ -1,10 +1,11 @@
 <script>
   import Navbar from "../../Components/Navbar.svelte"
   import SecondSidebar from "../../Components/SecondSidebar.svelte"
-  import PublishHeader from "../PublishDoc/Components/PublishHeader.svelte"
   import Docicon from "../../svgicons/Docicon.svelte"
   import Msgicon from "../../svgicons/msgicon.svelte"
   import Emailicon from "../../svgicons/Emailicon.svelte"
+  import AnalyticHeader from "../Analytics/Components/AnalyticHeader.svelte"
+  import Table from "./Components/Table.svelte"
 
   let sections = [
     {
@@ -41,6 +42,9 @@
     <SecondSidebar {sections} title="History" />
   </div>
   <div class="relative col-span-9 h-full bg-Analytics-primary">
-    <PublishHeader />
+    <AnalyticHeader />
+    <div class="mt-12">
+      <Table />
+    </div>
   </div>
 </main>

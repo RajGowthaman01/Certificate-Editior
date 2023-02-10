@@ -29,8 +29,8 @@ module.exports = {
         //from karthick
         gray1: "rgb(33 , 33, 41)",
         gray2: "rgb(125 , 125, 127)",
-        darkGray: "rgb(36 , 36, 36)",
-        lightGray: "rgb(47 , 47, 47)",
+        darkGray: "rgb(36 , 36, 36)",//#242424
+        lightGray: "rgb(47 , 47, 47)",//#2F2F2F
         lightGray2: "#1F1F1F",
         textGray: "rgb(121 , 121, 121)",
         primary_blue: "rgb(48 , 122, 255)",
