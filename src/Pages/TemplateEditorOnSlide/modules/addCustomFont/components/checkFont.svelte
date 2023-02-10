@@ -3,7 +3,9 @@
   import { editorStore } from "../../../Stores/stores"
   import DropDownIcon from "../../../svg/dropDownIcon.svelte"
 
-  export let blob, fontName, fontStyle, style
+  export let blob, fontName
+  // let fontStyle
+
   let customFont
   let styles = ["normal", "bold", "italic"]
   let selectedStyle = "normal"
