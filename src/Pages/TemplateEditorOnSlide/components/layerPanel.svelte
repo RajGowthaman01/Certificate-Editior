@@ -17,7 +17,8 @@
   let activeComponent
   let text,
     image,
-    type = ""
+    type = "",
+    i
   let component
 
   const addImage = () => {
@@ -32,33 +33,19 @@
       setTimeout(resolve, time)
     })
   }
-  const addLayerTile = async () => {
+
+  const addImageLayerTile = () => {
+    sleep(500)
     for (let i = 0; i < $editorStore.layerOperations.length; i++) {
       // await sleep(500)
       if ((type = "image")) {
         component = ImageLayerTile
-        createLayerOperations(
-          // editorStore.update((data) => {
-          ($editorStore.layerOperations[i].type = type),
-          // $editorStore.layerOperations.push(component)
-          // $editorStore = $editorStore
-          // console.log($editorStore)
-
-          // return editorStore
-
-          ($editorStore.layerOperations = [...$editorStore.layerOperations])
-          // data.layerOperations.push(component)
-          // })
-        )
+        createLayerOperations(($editorStore.layerOperations[i].type = type))
+        return component
       } else if ((type = "text")) {
         component = TextLayerTile
-        createLayerOperations(
-          ($editorStore.layerOperations[i].type = type)
-          // editorStore.layerOperations.push(component)
-          // editorStore = $editorStore
-          // // data.layerOperations = [...data.layerOperations]
-          // return editorStore
-        )
+        createLayerOperations(($editorStore.layerOperations[i].type = type))
+        return component
       }
       console.log($editorStore)
     }
@@ -82,18 +69,19 @@
         </span>
         QrCode
       </button>
-
-      <button on:click={addLayerTile} type="image" class="px-5 py-2.5 gap-1 buttonGroup">
+      <!-- {#if $editorStore.layerOperations.type === "image"} -->
+      <button on:click={addImageLayerTile} type="image" class="px-5 py-2.5 gap-1 buttonGroup">
         <Image />
         Image
       </button>
-
-      <button on:click={addLayerTile} type="text" class="rounded-r px-6 py-2.5 buttonGroup border-l-blue-400">
+      <!-- {:else if $editorStore.layerOperations.type === "text"} -->
+      <button on:click={addImageLayerTile} type="text" class="rounded-r px-6 py-2.5 buttonGroup border-l-blue-400">
         <span class="h-5 w-5 fill-heading">
           <Text />
         </span>
         Text
       </button>
+      <!-- {/if} -->
     </div>
   </div>
   <div class="pb-96 max-h-screen flex flex-col overflow-y-auto overflow-x-hidden">
@@ -110,7 +98,7 @@
       {:else if (type = "text")}
         <TextLayerTile on:hideTextProp={() => (textEditSection = !textEditSection)} on:hideText={() => (textEditSection = false)} on:click={() => (activeComponent = TextPropertyPanel)} />
       {/if} -->
-      <svelte:component this={component} />
+      <svelte:component this={component} {layer} />
     {/each}
     <!-- {/each} -->
   </div>

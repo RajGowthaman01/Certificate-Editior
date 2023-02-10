@@ -102,10 +102,10 @@ export const editorStore = writable({
   ],
 })
 
-export const createLayerOperations = () => {
+export const createLayerOperations = (item) => {
   editorStore.update((data) => {
-    data.layerOperations = [...data.layerOperations]
-    // data.layerOperations.push(newLayer)
+    data.layerOperations = [...data.layerOperations, item]
+    // data.layerOperations.push(item)
 
     console.log(data.layerOperations)
     return data
