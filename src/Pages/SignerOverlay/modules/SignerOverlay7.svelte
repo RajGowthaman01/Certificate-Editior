@@ -11,7 +11,7 @@
   $: sections = [
     {
       id: 0,
-      Title: "User Details",
+      Title: "Signer Details",
       Component: UserDetails,
       Active: true,
       complete: false,
@@ -115,11 +115,10 @@
   }
 </script>
 
-<main class="h-screen w-screen flex justify-center items-center">
+<main class="h-screen w-screen">
   <div class="grid grid-cols-12 w-full h-full bg-lightGray">
     <div class="col-span-3 flex" />
-    <div class="col-span-9 h-full flex">
-      <div class="w-8/12" />
+    <div class="col-span-9 h-full flex justify-end">
       <div class="w-4/12 relative h-full">
         <div class="w-full h-full flex items-center">
           <div class="pl-5 {transition} transition ease-in-out duration-500 ">
