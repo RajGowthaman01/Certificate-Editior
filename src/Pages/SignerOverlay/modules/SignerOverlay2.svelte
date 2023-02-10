@@ -99,9 +99,3 @@
 
   <!-- <Empty /> -->
 </main>
-
-<style global lang="postcss">
-  .btn {
-    @apply rounded-[0.375rem] bg-[#0d6efd] py-[0.375rem] px-[0.75rem] font-semibold text-white;
-  }
-</style>

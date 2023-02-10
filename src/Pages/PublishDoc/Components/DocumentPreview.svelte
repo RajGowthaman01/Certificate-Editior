@@ -3,18 +3,25 @@
   import { onMount } from "svelte"
   import Leftarrow from "../../../svgicons/Leftarrow.svelte"
   import RightArrow from "../../../svgicons/RightArrow.svelte"
+  import { createEventDispatcher } from "svelte"
+  const dispatch = createEventDispatcher()
 
   let pdfDoc,
     totalPages,
     currentpage,
     showpdf = true
 
-  let blobPdf, bloburl
+  let blobPdf, bloburl, imgHeight, imgWidth
   onMount(async () => {
     if (File.type == "image/png" || File.type == "image/jpg" || File.type == "image/jpeg") {
       bloburl = URL.createObjectURL(File)
       showpdf = false
-      await showPdf(bloburl)
+      setTimeout(() => {
+        imgHeight = document.querySelector("#Docimage").naturalHeight
+        imgWidth = document.querySelector("#Docimage").naturalWidth
+        console.log(imgHeight, imgWidth)
+        dispatch("resolution", { imgHeight: imgHeight, imgWidth: imgWidth })
+      }, 100)
     } else if (File.type == "application/pdf") {
       blobPdf = URL.createObjectURL(File)
       showpdf = true
@@ -33,6 +40,7 @@
     loadingTask = loadingTask.promise
     pdfDoc = await loadingTask
     totalPages = pdfDoc.numPages
+    dispatch("pages", totalPages)
     currentpage = 1
     showPage(currentpage)
   }
@@ -77,26 +85,28 @@
   }
 </script>
 
-<div id="pdfPreviewSection" class="relative rounded-md">
-  <!-- <div class="absolute inset-0 flex justify-center bg-gradient-to-b pb-3 via-transparent items-end from-transparent to-[#000000cc] z-10 rounded-md">
+<div class="col-span-1 flex flex-col justify-center items-end pr-10">
+  <div id="pdfPreviewSection" class="relative rounded-md">
+    <!-- <div class="absolute inset-0 flex justify-center bg-gradient-to-b pb-3 via-transparent items-end from-transparent to-[#000000cc] z-10 rounded-md">
     
   </div> -->
 
-  {#if showpdf}
-    <canvas id="mycanvas" class="relative rounded-md w-[400px]  max-h-[80vh] overflow-hidden" />
-    <!-- <canvas id="mycanvas" class="relative rounded-md w-[380px] aspect-[8/10]  overflow-hidden" /> -->
-    <div class="flex gap-2 items-center justify-center pt-3">
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <span on:click={previouspage} class={currentpage > 1 ? "cursor-pointer" : "cursor-not-allowed pointer-events-none"}>
-        <Leftarrow />
-      </span>
-      <span class="text-white">{currentpage} / {totalPages}</span>
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <span on:click={nextpage} class={currentpage < totalPages ? "cursor-pointer" : "cursor-not-allowed pointer-events-none"}>
-        <RightArrow />
-      </span>
-    </div>
-  {:else}
-    <img src={bloburl} alt="bloburl" class="overflow-hidden max-h-[90vh] max-w-[600px] rounded-md 2xl:max-h-[80vh]" />
-  {/if}
+    {#if showpdf}
+      <canvas id="mycanvas" class="relative rounded-md w-[400px]  max-h-[80vh] overflow-hidden" />
+      <!-- <canvas id="mycanvas" class="relative rounded-md w-[380px] aspect-[8/10]  overflow-hidden" /> -->
+      <div class="flex gap-2 items-center justify-center pt-3">
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <span on:click={previouspage} class={currentpage > 1 ? "cursor-pointer" : "cursor-not-allowed pointer-events-none"}>
+          <Leftarrow />
+        </span>
+        <span class="text-white">{currentpage} / {totalPages}</span>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <span on:click={nextpage} class={currentpage < totalPages ? "cursor-pointer" : "cursor-not-allowed pointer-events-none"}>
+          <RightArrow />
+        </span>
+      </div>
+    {:else}
+      <img src={bloburl} alt="bloburl" id="Docimage" class="overflow-hidden max-h-[90vh] max-w-[600px] rounded-md 2xl:max-h-[80vh]" />
+    {/if}
+  </div>
 </div>

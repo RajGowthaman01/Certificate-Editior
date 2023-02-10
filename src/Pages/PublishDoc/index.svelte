@@ -1,4 +1,5 @@
 <script>
+  import { tweened } from "svelte/motion"
   import PublishHeader from "./Components/PublishHeader.svelte"
   import DocumentUpload from "./Components/DocumentUpload.svelte"
   import DocumentTemplate2 from "./Components/DocumentTemplate2.svelte"
@@ -10,10 +11,10 @@
   import Navbar from "../../Components/Navbar.svelte"
   import DocumentPreview from "./Components/DocumentPreview.svelte"
   import DocumentMetadata from "./Components/DocumentMetadata.svelte"
-  import { tweened } from "svelte/motion"
 
-  let width = 20,
-    File
+  let activeID = 1
+  let width = 20
+  let File, KB, MB, imgHeight, imgWidth, pages
   const tweenedA = tweened(0)
   $: tweenedA.set(width)
 
@@ -23,7 +24,7 @@
       Title: "Document Template",
       Content: "Choose the Document Template from the available options in the dropdown which you already created in the settings page.",
       Component: DocumentTemplate2,
-      Active: true,
+      Active: false,
     },
     {
       id: 2,
@@ -51,7 +52,7 @@
       Title: "Document Metadata",
       Content: "The uploaded Document is previewed here.Please make sure that and move to document metadata section",
       Component: DocumentMetadata,
-      Active: false,
+      Active: true,
     },
   ]
 
@@ -86,7 +87,6 @@
     },
   ]
 
-  let activeID = 1
   const changeActiveComponent = (id) => {
     publishSections = publishSections.map((publishSections) => {
       publishSections.Active = false
@@ -99,7 +99,7 @@
       return publishSections
     })
   }
-  let KB, MB
+
   const dispatchFile = (e) => {
     File = e.detail
     KB = (File.size / 1024).toFixed(2)
@@ -108,6 +108,11 @@
       KB = ""
     }
     changeActiveComponent(activeID + 1)
+  }
+
+  const getResolution = (e) => {
+    imgHeight = e.detail.imgHeight
+    imgWidth = e.detail.imgWidth
   }
 </script>
 
@@ -122,25 +127,28 @@
   </div>
   <div class="relative col-span-9 h-full bg-Analytics-primary">
     <PublishHeader />
-    <div class="px-10 h-full col-span-9 grid grid-cols-2">
+    <div class="h-full col-span-9 grid grid-cols-2">
       {#each publishSections as section (section.id)}
         {#if section.Active}
-          <div class="col-span-1 flex items-start justify-center h-full flex-col">
+          <div class="col-span-1 flex items-start justify-center h-full flex-col pl-10">
             <h1>{section.Title}</h1>
             <p class="pt-4">{section.Content}</p>
             {#if section.id == 4}
               <div class="flex gap-3 items-center pt-3">
-                <img src={File.type == "application/pdf" ? "assets/images/pdficon.png" : "assets/images/imageicon.png"} class="w-14 h-14" alt="pdfIcon" />
+                <img src={File.type == "application/pdf" ? "assets/images/pdficon.png" : "assets/images/imageicon.png"} alt="pdfIcon" />
                 <div class="flex flex-col gap-1">
                   <h4 class="text-base font-medium text-Analytics-secondarytext">{File.name}</h4>
-                  <h4 class="text-base font-medium text-Analytics-secondarytext">{KB ? `${KB}KB` : `${MB}MB`}</h4>
+                  <div class="flex gap-4">
+                    <h4 class="text-xs font-medium text-Analytics-secondarytext">{KB ? `${KB}KB` : `${MB}MB`}</h4>
+                    <h4 class="text-xs font-medium text-Analytics-secondarytext">
+                      {File.type == "application/pdf" ? `${pages} Pages` : `${imgWidth} x ${imgHeight} px`}
+                    </h4>
+                  </div>
                 </div>
               </div>
             {/if}
           </div>
-          <div class="col-span-1 flex flex-col justify-center h-full w-full items-center">
-            <svelte:component this={section.Component} {File} on:File={dispatchFile} />
-          </div>
+          <svelte:component this={section.Component} {File} on:File={dispatchFile} on:resolution={getResolution} on:pages={(e) => (pages = e.detail)} />
         {/if}
       {/each}
     </div>
