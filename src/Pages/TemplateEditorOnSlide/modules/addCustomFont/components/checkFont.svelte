@@ -4,7 +4,6 @@
   import DropDownIcon from "../../../svg/dropDownIcon.svelte"
 
   export let blob, fontName
-  // let fontStyle
 
   let customFont
   let styles = ["normal", "bold", "italic"]

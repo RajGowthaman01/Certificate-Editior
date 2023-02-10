@@ -95,14 +95,18 @@ export const editorStore = writable({
       size: "", // in pixels to define text height
       fontFamily: "",
       color: "", //text color
-      style: "", //font style
-      align: "", //text align
+      style: "normal", //font style
+      align: "center", //text align
     },
   ],
 })
-export const createLayerOperations = () => {
-  for (let i = 0; i < editorStore.layerOperations[i].length; i++) {
-    if (layerOperations[i].type == "text") {
-    }
-  }
+
+export const createLayerOperations = (newLayer) => {
+  editorStore.update((data) => {
+    data.layerOperations = Object.freeze([...data.layerOperations, newLayer])
+    // data.layerOperations.push(newLayer)
+    console.log(data.layerOperations)
+    return data
+  })
+  // }
 }
