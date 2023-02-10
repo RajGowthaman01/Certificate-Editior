@@ -1,8 +1,6 @@
 <script>
-  import Downarrow from "../../svgicons/Downarrow.svelte"
   import Card from "./Components/Card.svelte"
   import ChartApexcharts from "./Components/Chart-Apexcharts.svelte"
-  import ChartChartjs from "./Components/Chart-Chartjs.svelte"
   import Navbar from "../../Components/Navbar.svelte"
   import SecondSidebar from "../../Components/SecondSidebar.svelte"
   import Emailsent from "../../svgicons/Emailsent.svelte"
@@ -10,6 +8,9 @@
   import EmailBounce from "../../svgicons/EmailBounce.svelte"
   import Emaildeliver from "../../svgicons/Emaildeliver.svelte"
   import AnalyticHeader from "./Components/AnalyticHeader.svelte"
+  import Docicon from "../../svgicons/Docicon.svelte"
+  import Emailicon from "../../svgicons/Emailicon.svelte"
+  import Msgicon from "../../svgicons/msgicon.svelte"
 
   let activeDropDown = "Monthly",
     currentMonth = "January",
@@ -21,12 +22,36 @@
     currentMonth = e.detail.currentMonth
     currentYear = e.detail.currentYear
   }
+
+  let sections = [
+    {
+      id: 0,
+      Title: "Document Analytics",
+      icon: Docicon,
+      Content: "Stats related to the Issued , Published , Verified and Downloaded documents",
+      active: true,
+    },
+    {
+      id: 1,
+      Title: "Email Analytics",
+      icon: Emailicon,
+      Content: "Stats related to the delivered , sent , bounced and viewed Emails",
+      active: false,
+    },
+    {
+      id: 3,
+      Title: "SMS Analytics",
+      icon: Msgicon,
+      Content: "Stats related to the delivered , sent , blocked SMS",
+      active: false,
+    },
+  ]
 </script>
 
 <main class="grid h-screen grid-cols-12 relative">
   <div class="col-span-3 flex h-full w-full">
     <Navbar />
-    <SecondSidebar />
+    <SecondSidebar {sections} title="Analytics" />
   </div>
   <div class="relative col-span-9 h-full bg-Analytics-primary py-6">
     <AnalyticHeader on:Dateinput={onDateinput} />
@@ -41,32 +66,4 @@
       <Card value="Email Delivered" icon={Emaildeliver} stat={8} color="card4" />
     </div>
   </div>
-  <!-- <div class="absolute inset-0 z-10 bg-black/75 grid grid-cols-12 h-full">
-    <div class="col-span-3 flex">
-      <div class="flex w-2/12 flex-col justify-center items-center gap-5">
-        <div class="w-7 h-7 rounded-full border-2" />
-        <div class="w-7 h-7 rounded-full border-2" />
-        <div class="w-7 h-7 rounded-full border-2" />
-        <div class="w-7 h-7 rounded-full border-2" />
-        <div class="w-7 h-7 rounded-full border-2" />
-      </div>
-      <div class="w-10/12 flex flex-col text-white items-start justify-center gap-5">
-        <div class="h-7">
-          <h1>Publish Doc</h1>
-        </div>
-        <div class="h-7">
-          <h1>Settings icon</h1>
-        </div>
-        <div class="h-7">
-          <h1>Analytics icon</h1>
-        </div>
-        <div class="h-7">
-          <h1>History icon</h1>
-        </div>
-        <div class="h-7">
-          <h1>Template icon</h1>
-        </div>
-      </div>
-    </div>
-  </div> -->
 </main>

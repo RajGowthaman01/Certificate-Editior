@@ -16,10 +16,5 @@
         <button class="rounded-md text-xs text-Analytics-primarytext">PNG, JPG, GIF up to 10MB</button>
       </div>
     </form>
-
-    <div class="flex mt-44 gap-8">
-      <button class="inline-flex items-center gap-2 text-white"><Leftarrow /> Prev</button>
-      <button class="px-4 py-1.5 h-10 bg-Analytics-iconcolor text-white rounded-md">Next</button>
-    </div>
   </div>
 </div>
