@@ -67,7 +67,7 @@
     </div> -->
     <div class="flex h-24 items-center justify-between gap-2 rounded-md bg-lightGray p-2">
       <div class="flex w-full gap-3">
-        <img id="previewImage" src={blobUrl} alt="image" class="h-20 w-20 rounded-md" />
+        <img id="previewImage" src={blobUrl} alt="previewImage" class="h-20 w-20 rounded-md" />
         <div class="w-full space-y-2">
           <div class="flex items-center justify-between">
             <h3 class="mt-1 text-sm font-bold text-white">{File.name}</h3>

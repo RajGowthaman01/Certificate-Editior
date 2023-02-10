@@ -1,5 +1,5 @@
 <script>
-  import UploadIcon from "../../FileTemplateEditor/svgIcons/UploadIcon.svelte"
+  import UploadIcon from "../../../svgicons/UploadIcon.svelte"
 </script>
 
 <div class="col-span-2 flex flex-col gap-5 h-full items-center justify-center">
@@ -14,6 +14,4 @@
       <button class="rounded-md text-xs text-Analytics-primarytext">PNG, JPG, GIF up to 10MB</button>
     </div>
   </form>
-
-  <button class="px-4 py-1.5 bg-Analytics-iconcolor text-white rounded-md">Next</button>
 </div>

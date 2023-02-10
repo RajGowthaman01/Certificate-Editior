@@ -32,7 +32,7 @@ function serve() {
 export default {
   input: "src/main.js",
   output: {
-    sourcemap: true,
+    sourcemap: false,
     format: "iife",
     name: "app",
     file: "public/build/bundle.js",
@@ -42,7 +42,6 @@ export default {
       onwarn: (warning, handler) => {
         const { code, frame } = warning
         if (code === "css-unused-selector") return
-
         handler(warning)
       },
       preprocess: [
