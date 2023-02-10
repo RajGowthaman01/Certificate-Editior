@@ -11,7 +11,7 @@
   $: sections = [
     {
       id: 0,
-      Title: "User Details",
+      Title: "Signer Details",
       Component: UserDetails,
       Active: true,
       complete: false,
