@@ -14,7 +14,7 @@
 </script>
 
 <div class="relative flex h-screen w-screen flex-col overflow-hidden">
-  <div class="w-full items-center justify-center border-b-0 border-inherit bg-secondary">
+  <div class="w-full fixed items-center justify-center border-b-0 border-inherit bg-secondary">
     <div class="h-14 flex items-center">
       <!-- <div class="text-2xl capitalize text-primary_blue font-bold px-4">
         {$editorStore.metaData}
@@ -29,8 +29,10 @@
       }}
       {editSection}
     />
-    <div class="flex h-screen w-screen aspect-[4/3] items-center justify-center bg-certificateSection">
-      <!-- <img id="displayImage" src={$baseImage.blobURL} alt="preview image" class="rounded-md w-[600px] max-w-[800px]" /> -->
+    <div class="flex h-screen w-screen items-center justify-center bg-certificateSection">
+      <!-- <img id="displayImage" src={$editorStore.base.url} alt="preview image" class="rounded-md max-w-[800px]" /> -->
+
+      <!-- <img src="/assets/images/landscape.png" class="rounded-md max-w-[800px] " alt="" /> -->
     </div>
   </div>
   <Footer />
