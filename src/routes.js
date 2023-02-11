@@ -29,8 +29,10 @@ export default {
   "/Analytics": Analytics,
   "/FileTemplateEditor": FileTemplateEditor,
   "/History": History,
-  "/TemplateEditorOnSlide": TemplateEditorOnSlide,
+  "/SignerOverlay": SignerOverlay,
   "/DarkFileTemplateEditor": DarkFileTemplateEditor,
+  "/TemplateEditorOnSlide": TemplateEditorOnSlide,
+
   // The catch-all route must always be last
   "*": Analytics,
 }

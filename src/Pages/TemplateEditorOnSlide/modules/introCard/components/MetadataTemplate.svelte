@@ -51,6 +51,7 @@
           <DropdownArrow />
         </span>
       </button>
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
       <div class:hidden={!KeyValues} on:click={handleUpdate} class="absolute z-20 mt-2 w-full rounded-md bg-heading text-sm ring-1 dark:bg-secondary dark:ring-primary_blue">
         {#each nameFills as nameFill}
           <option
