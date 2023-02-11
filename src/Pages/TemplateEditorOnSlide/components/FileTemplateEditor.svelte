@@ -8,7 +8,7 @@
   import FontList from "../modules/addCustomFont/components/fontList.svelte"
 
   let editSection
-  let modalOverLay = true
+  let modalOverLay = false
   let customFontModal = false
   let fontListModal = false
 </script>
@@ -30,9 +30,8 @@
       {editSection}
     />
     <div class="flex h-screen w-screen items-center justify-center bg-certificateSection">
-      <!-- <img id="displayImage" src={$editorStore.base.url} alt="preview image" class="rounded-md max-w-[800px]" /> -->
-
-      <!-- <img src="/assets/images/landscape.png" class="rounded-md max-w-[800px] " alt="" /> -->
+      <!-- <img id="canvas" src={$editorStore.base.url} alt="preview image" class="rounded-md max-w-[1000px] mt-8" /> -->
+      <img src="/assets/images/landscape.png" class="max-w-[1000px] mt-8 overflow-hidden max-h-[90vh] rounded-md 2xl:max-h-[80vh]" alt="" />
     </div>
   </div>
   <Footer />
