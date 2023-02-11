@@ -2,7 +2,6 @@
   import { fade } from "svelte/transition"
   import Footer from "./footer.svelte"
   import LayerPanel from "./layerPanel.svelte"
-  import { editorStore } from "../Stores/stores"
   import IntroCard from "../modules/introCard/index.svelte"
   import Index from "../modules/addCustomFont/Index.svelte"
   import FontList from "../modules/addCustomFont/components/fontList.svelte"
@@ -15,11 +14,7 @@
 
 <div class="relative flex h-screen w-screen flex-col overflow-hidden">
   <div class="w-full fixed items-center justify-center border-b-0 border-inherit bg-secondary">
-    <div class="h-14 flex items-center">
-      <!-- <div class="text-2xl capitalize text-primary_blue font-bold px-4">
-        {$editorStore.metaData}
-      </div> -->
-    </div>
+    <div class="h-14 flex items-center" />
   </div>
   <div class="flex w-full flex-row bg-certificateSection">
     <LayerPanel
