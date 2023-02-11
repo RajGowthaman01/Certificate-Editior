@@ -32,11 +32,9 @@
 </script>
 
 <div class="w-75 space-y-2 rounded-md bg-darkGray p-4">
-  <div class="group relative rounded-md">
-    <div class="label-division2">
-      <span class="span-label">NAME</span>
-    </div>
-    <input type="text" class="pl-16 dark:bg-lightGray" />
+  <div class="group relative rounded-md w-full">
+    <div class="labeltext">NAME</div>
+    <input type="text" class="pl-16 dark:bg-lightGray input1" />
   </div>
   {#if uploadImg}
     <div class="relative flex h-24 flex-col items-center gap-2 rounded-md bg-lightGray p-2">
@@ -92,16 +90,10 @@
 </div>
 
 <style lang="postcss">
-  .span-label {
-    @apply select-none text-sm font-bold text-textGray group-focus-within:text-primary_blue;
+  .labeltext {
+    @apply absolute left-3 top-2.5 select-none text-sm font-bold text-textGray group-focus-within:text-primary_blue;
   }
-  .label-division1 {
-    @apply relative flex cursor-pointer items-center justify-center rounded-md text-xs hover:bg-zinc-900;
-  }
-  .label-division2 {
-    @apply absolute inset-y-0 left-3 flex items-center;
-  }
-  input {
+  .input1 {
     @apply block h-10 w-full rounded-md border-none text-sm text-white focus:ring-2 focus:ring-primary_blue;
   }
 </style>

@@ -22,6 +22,6 @@
   }
 
   .btn {
-    @apply flex h-8 w-8 items-center justify-center rounded-[0.375rem] bg-[#0d6efd] font-semibold text-white;
+    @apply flex h-8 w-8 items-center justify-center rounded-[0.375rem] bg-[#0d6efd] font-semibold text-white hover:bg-lightGray;
   }
 </style>

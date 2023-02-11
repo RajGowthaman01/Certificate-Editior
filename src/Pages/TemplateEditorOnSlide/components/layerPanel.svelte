@@ -5,6 +5,9 @@
   import ImagePropertyPanel from "./imagePropertyPanel.svelte"
   import TextPropertyPanel from "./textPropertyPanel.svelte"
   import { editorStore, createLayerOperations } from "../Stores/stores"
+  import { imageStore, textStore, editorStore } from "../Stores/stores"
+  const dispatch = createEventDispatcher()
+  // import Save from "../svg/save.svelte"
   import Text from "../svg/text.svelte"
   import Image from "../svg/image.svelte"
   import QrCode from "../svg/qrCode.svelte"
@@ -69,6 +72,12 @@
       </button>
       <!-- {:else if $editorStore.layerOperations.type === "text"} -->
       <button on:click={() => addLayerTile("text")} type="button" class="rounded-r px-6 py-2.5 buttonGroup border-l-blue-400">
+      <button on:click={addImage} type="image" class="px-5 py-2.5 gap-1 buttonGroup">
+        <Image />
+        Image
+      </button>
+
+      <button on:click={addText} type="text" class="rounded-r px-6 py-2.5 buttonGroup border-l border-blue-400">
         <span class="h-5 w-5 fill-heading">
           <Text />
         </span>
@@ -84,6 +93,12 @@
       {:else if type == "text"}
         <TextLayerTile on:hideTextProp={() => (textEditSection = !textEditSection)} on:hideText={() => (textEditSection = false)} on:click={() => (activeComponent = TextPropertyPanel)} />
       {/if}
+    <!-- {#each Array(15) as _, index (index)} -->
+    {#each $imageStore as store}
+      <ImageLayerTile on:hideImageProp={() => (imageUploadedSection = !imageUploadedSection)} on:hideImage={() => (imageUploadedSection = false)} on:click={() => (activeComponent = ImagePropertyPanel)} />
+    {/each}
+    {#each $textStore as store}
+      <TextLayerTile on:hideTextProp={() => (textEditSection = !textEditSection)} on:hideText={() => (textEditSection = false)} on:click={() => (activeComponent = TextPropertyPanel)} />
     {/each}
   </div>
 </div>

@@ -73,46 +73,44 @@
   }
 </script>
 
-<div class="col-span-1 flex flex-col justify-center items-end pr-10">
-  <div class="group relative w-3/4">
-    {#each sections as sections (sections.id)}
-      {#if sections.Active}
-        <button
-          on:click={() => {
-            dropDown = !dropDown
-          }}
-          class="flex h-12 w-full items-center justify-between rounded-md border-2 border-Analytics-sidebar bg-Analytics-secondary px-3 text-sm font-bold text-Analytics-primarytext focus:border-Analytics-iconcolor focus:outline-none focus:ring-Analytics-iconcolor"
-        >
-          {sections.value}
-          <DropdownArrow />
-        </button>
-      {/if}
-    {/each}
+<div class="group relative w-4/5">
+  {#each sections as sections (sections.id)}
+    {#if sections.Active}
+      <button
+        on:click={() => {
+          dropDown = !dropDown
+        }}
+        class="flex h-12 w-full items-center justify-between rounded-md border-2 border-Analytics-sidebar bg-Analytics-secondary px-3 text-sm font-bold text-Analytics-primarytext focus:border-Analytics-iconcolor focus:outline-none focus:ring-Analytics-iconcolor"
+      >
+        {sections.value}
+        <DropdownArrow />
+      </button>
+    {/if}
+  {/each}
 
-    <div on:mouseleave={() => (dropDown = false)} class="{dropDown ? 'flex flex-col' : 'hidden'} absolute top-14 z-10 w-full rounded-md overflow-hidden border-2 border-Analytics-sidebar  font-bold text-Analytics-primarytext">
-      {#each sections as sections (sections.id)}
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div on:click={() => changeActive(sections.id)} class="relative w-full group">
-          <input bind:value={sections.value} readonly={sections.readonly} class=" px-2 w-full py-1.5 cursor-pointer focus:outline-none {sections.Active ? 'bg-Analytics-primary border-l-4 border-Analytics-iconcolor' : 'bg-Analytics-secondary border-l-4 border-l-transparent'}" />
-          {#if sections.Active}
-            <div class="absolute bottom-2 right-2 cursor-pointer">
+  <div on:mouseleave={() => (dropDown = false)} class="{dropDown ? 'flex flex-col' : 'hidden'} absolute top-14 z-10 w-full rounded-md overflow-hidden border-2 border-Analytics-sidebar  font-bold text-Analytics-primarytext">
+    {#each sections as sections (sections.id)}
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <div on:click={() => changeActive(sections.id)} class="relative w-full group">
+        <input bind:value={sections.value} readonly={sections.readonly} class=" px-2 w-full py-1.5 cursor-pointer focus:outline-none {sections.Active ? 'bg-Analytics-primary border-l-4 border-Analytics-iconcolor' : 'bg-Analytics-secondary border-l-4 border-l-transparent'}" />
+        {#if sections.Active}
+          <div class="absolute bottom-2 right-2 cursor-pointer">
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            {#if sections.readonly}
+              <span on:click={() => changeIcon(sections.id)}><Editicon /></span>
+            {:else}
               <!-- svelte-ignore a11y-click-events-have-key-events -->
-              {#if sections.readonly}
-                <span on:click={() => changeIcon(sections.id)}><Editicon /></span>
-              {:else}
-                <!-- svelte-ignore a11y-click-events-have-key-events -->
-                <span
-                  on:click={() => {
-                    changeEditIcon(sections.id)
-                  }}
-                >
-                  <EditTick />
-                </span>
-              {/if}
-            </div>
-          {/if}
-        </div>
-      {/each}
-    </div>
+              <span
+                on:click={() => {
+                  changeEditIcon(sections.id)
+                }}
+              >
+                <EditTick />
+              </span>
+            {/if}
+          </div>
+        {/if}
+      </div>
+    {/each}
   </div>
 </div>

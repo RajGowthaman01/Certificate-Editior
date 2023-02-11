@@ -85,28 +85,26 @@
   }
 </script>
 
-<div class="col-span-1 flex flex-col justify-center items-end pr-10">
-  <div id="pdfPreviewSection" class="relative rounded-md">
-    <!-- <div class="absolute inset-0 flex justify-center bg-gradient-to-b pb-3 via-transparent items-end from-transparent to-[#000000cc] z-10 rounded-md">
+<div id="pdfPreviewSection" class="relative rounded-md">
+  <!-- <div class="absolute inset-0 flex justify-center bg-gradient-to-b pb-3 via-transparent items-end from-transparent to-[#000000cc] z-10 rounded-md">
     
   </div> -->
 
-    {#if showpdf}
-      <canvas id="mycanvas" class="relative rounded-md w-[400px]  max-h-[80vh] overflow-hidden" />
-      <!-- <canvas id="mycanvas" class="relative rounded-md w-[380px] aspect-[8/10]  overflow-hidden" /> -->
-      <div class="flex gap-2 items-center justify-center pt-3">
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <span on:click={previouspage} class={currentpage > 1 ? "cursor-pointer" : "cursor-not-allowed pointer-events-none"}>
-          <Leftarrow />
-        </span>
-        <span class="text-white">{currentpage} / {totalPages}</span>
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <span on:click={nextpage} class={currentpage < totalPages ? "cursor-pointer" : "cursor-not-allowed pointer-events-none"}>
-          <RightArrow />
-        </span>
-      </div>
-    {:else}
-      <img src={bloburl} alt="bloburl" id="Docimage" class="overflow-hidden max-h-[90vh] max-w-[600px] rounded-md 2xl:max-h-[80vh]" />
-    {/if}
-  </div>
+  {#if showpdf}
+    <canvas id="mycanvas" class="relative rounded-md w-[350px] max-h-[80vh] overflow-hidden" />
+    <!-- <canvas id="mycanvas" class="relative rounded-md w-[380px] aspect-[8/10]  overflow-hidden" /> -->
+    <div class=" gap-2 items-center justify-center pt-3 {totalPages == 1 ? 'hidden' : 'flex'}">
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <span on:click={previouspage} class={currentpage > 1 ? "cursor-pointer" : "cursor-not-allowed pointer-events-none"}>
+        <Leftarrow />
+      </span>
+      <span class="text-white">{currentpage} / {totalPages}</span>
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <span on:click={nextpage} class={currentpage < totalPages ? "cursor-pointer" : "cursor-not-allowed pointer-events-none"}>
+        <RightArrow />
+      </span>
+    </div>
+  {:else}
+    <img src={bloburl} alt="bloburl" id="Docimage" class="overflow-hidden max-h-[90vh] max-w-[380px] rounded-md 2xl:max-h-[80vh]" />
+  {/if}
 </div>

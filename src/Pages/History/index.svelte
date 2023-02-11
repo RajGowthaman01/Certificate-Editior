@@ -1,33 +1,18 @@
 <script>
   import Navbar from "../../Components/Navbar.svelte"
   import SecondSidebar from "../../Components/SecondSidebar.svelte"
+  import HistoryHeader2 from "./Components/HistoryHeader2.svelte"
+  import Pagination from "./Components/Pagination.svelte"
+  import Table3 from "./Components/Table3.svelte"
   import Docicon from "../../svgicons/Docicon.svelte"
-  import Msgicon from "../../svgicons/msgicon.svelte"
-  import Emailicon from "../../svgicons/Emailicon.svelte"
-  import AnalyticHeader from "../Analytics/Components/AnalyticHeader.svelte"
-  import Table from "./Components/Table.svelte"
 
   let sections = [
     {
       id: 0,
-      Title: "Document Analytics",
+      Title: "Document History",
       icon: Docicon,
-      Content: "Stats related to the Issued , Published , Verified and Downloaded documents",
+      Content: "This option supports the stats related to the Published documents",
       active: true,
-    },
-    {
-      id: 1,
-      Title: "Email Analytics",
-      icon: Emailicon,
-      Content: "Stats related to the delivered , sent , bounced and viewed Emails",
-      active: false,
-    },
-    {
-      id: 3,
-      Title: "SMS Analytics",
-      icon: Msgicon,
-      Content: "Stats related to the delivered , sent , blocked SMS",
-      active: false,
     },
   ]
 </script>
@@ -42,9 +27,14 @@
     <SecondSidebar {sections} title="History" />
   </div>
   <div class="relative col-span-9 h-full bg-Analytics-primary">
-    <AnalyticHeader />
-    <div class="mt-12">
-      <Table />
+    <!-- <AnalyticHeader /> -->
+    <!-- <HistoryHeader /> -->
+    <HistoryHeader2 />
+    <div class="p-4">
+      <!-- <Table /> -->
+      <!-- <Table2 /> -->
+      <Table3 />
     </div>
+    <Pagination />
   </div>
 </main>

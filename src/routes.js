@@ -1,10 +1,9 @@
 import FileTemplateEditor from "./Pages/FileTemplateEditor/Index.svelte"
 import PublishDoc from "./Pages/PublishDoc/index.svelte"
 import Analytics from "./Pages/Analytics/index.svelte"
-import SignerOverlay from "./Pages/SignerOverlay/index.svelte"
 import History from "./Pages/History/index.svelte"
-import DarkFileTemplateEditor from "./Pages/DarkFileTemplateEditor/index.svelte"
 import TemplateEditorOnSlide from "./Pages/TemplateEditorOnSlide/index.svelte"
+import DarkFileTemplateEditor from "./Pages/DarkFileTemplateEditor/index.svelte"
 
 // export default {
 //   "/": PublishDoc,
@@ -33,6 +32,7 @@ export default {
   "/SignerOverlay": SignerOverlay,
   "/DarkFileTemplateEditor": DarkFileTemplateEditor,
   "/TemplateEditorOnSlide": TemplateEditorOnSlide,
+
   // The catch-all route must always be last
   "*": Analytics,
 }
