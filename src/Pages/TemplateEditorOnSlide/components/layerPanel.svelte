@@ -34,18 +34,23 @@
     })
   }
 
-  const addImageLayerTile = () => {
+  const addLayerTile = (type) => {
     sleep(500)
     for (let i = 0; i < $editorStore.layerOperations.length; i++) {
       // await sleep(500)
-      if ((type = "image")) {
+      if (type == "image") {
         component = ImageLayerTile
-        createLayerOperations(($editorStore.layerOperations[i].type = type))
-        return component
-      } else if ((type = "text")) {
+        createLayerOperations(($editorStore.layerOperations[i].type = type), ($editorStore = $editorStore))
+        $editorStore.layerOperations = [...$editorStore.layerOperations]
+        console.log($editorStore.layerOperations[i].type)
+        return type
+      } else if (type == "text") {
         component = TextLayerTile
-        createLayerOperations(($editorStore.layerOperations[i].type = type))
-        return component
+        createLayerOperations(($editorStore.layerOperations[i].type = type), ($editorStore = $editorStore))
+        $editorStore.layerOperations = [...$editorStore.layerOperations]
+        console.log($editorStore.layerOperations[i].type)
+
+        return type
       }
       console.log($editorStore)
     }
@@ -70,12 +75,24 @@
         QrCode
       </button>
       <!-- {#if $editorStore.layerOperations.type === "image"} -->
-      <button on:click={addImageLayerTile} type="image" class="px-5 py-2.5 gap-1 buttonGroup">
+      <button
+        on:click={() => {
+          addLayerTile((type = "image"))
+        }}
+        type="button"
+        class="px-5 py-2.5 gap-1 buttonGroup"
+      >
         <Image />
         Image
       </button>
       <!-- {:else if $editorStore.layerOperations.type === "text"} -->
-      <button on:click={addImageLayerTile} type="text" class="rounded-r px-6 py-2.5 buttonGroup border-l-blue-400">
+      <button
+        on:click={() => {
+          addLayerTile((type = "text"))
+        }}
+        type="button"
+        class="rounded-r px-6 py-2.5 buttonGroup border-l-blue-400"
+      >
         <span class="h-5 w-5 fill-heading">
           <Text />
         </span>
@@ -92,13 +109,13 @@
     {#each $textStore as store}
       <TextLayerTile on:hideTextProp={() => (textEditSection = !textEditSection)} on:hideText={() => (textEditSection = false)} on:click={() => (activeComponent = TextPropertyPanel)} />
     {/each}
-    {#each $editorStore.layerOperations as layer}
+    {#each $editorStore.layerOperations as type}
       <!-- {#if (type = "image")}
         <ImageLayerTile on:hideImageProp={() => (imageUploadedSection = !imageUploadedSection)} on:hideImage={() => (imageUploadedSection = false)} on:click={() => (activeComponent = ImagePropertyPanel)} />
       {:else if (type = "text")}
         <TextLayerTile on:hideTextProp={() => (textEditSection = !textEditSection)} on:hideText={() => (textEditSection = false)} on:click={() => (activeComponent = TextPropertyPanel)} />
       {/if} -->
-      <svelte:component this={component} {layer} />
+      <svelte:component this={component} />
     {/each}
     <!-- {/each} -->
   </div>
