@@ -11,6 +11,7 @@
   import Navbar from "../../Components/Navbar.svelte"
   import DocumentPreview from "./Components/DocumentPreview.svelte"
   import DocumentMetadata from "./Components/DocumentMetadata.svelte"
+  import SignerOverlay from "../SignerOverlay/index.svelte"
 
   let activeID = 1
   let width = 20
@@ -24,7 +25,7 @@
       Title: "Document Template",
       Content: "Choose the Document Template from the available options in the dropdown which you already created in the settings page.",
       Component: DocumentTemplate2,
-      Active: false,
+      Active: true,
     },
     {
       id: 2,
@@ -52,7 +53,7 @@
       Title: "Document Metadata",
       Content: "The uploaded Document is previewed here.Please make sure that and move to document metadata section",
       Component: DocumentMetadata,
-      Active: true,
+      Active: false,
     },
   ]
 
@@ -130,7 +131,7 @@
     <div class="h-full col-span-9 grid grid-cols-2">
       {#each publishSections as section (section.id)}
         {#if section.Active}
-          <div class="col-span-1 flex items-start justify-center h-full flex-col pl-10">
+          <!-- <div class="col-span-1 flex items-start justify-center h-full flex-col pl-10">
             <h1>{section.Title}</h1>
             <p class="pt-4">{section.Content}</p>
             {#if section.id == 4}
@@ -147,30 +148,60 @@
                 </div>
               </div>
             {/if}
-          </div>
+          </div> -->
+          <SignerOverlay />
           <svelte:component this={section.Component} {File} on:File={dispatchFile} on:resolution={getResolution} on:pages={(e) => (pages = e.detail)} />
         {/if}
       {/each}
     </div>
-    <div class="absolute bottom-12 w-full">
+    <div class="absolute bottom-24 mb-2 w-full">
       <div class="relative h-2 w-full bg-Analytics-secondary">
-        <div class="absolute h-2 inset-0 bg-Analytics-iconcolor" style="width:{$tweenedA}%" />
+        <div class="absolute h-2 inset-0 bg-Analytics-iconcolor" style="width:25%" />
       </div>
     </div>
 
-    <div class="absolute bottom-0 flex w-full">
+    <div class="absolute bottom-14 flex w-full">
       <div class="flex w-1/4">
         <div class="w-1/2 flex items-center justify-center border-r border-r-Analytics-sidebar py-3 cursor-pointer">
           <h2>CANCEL</h2>
         </div>
       </div>
+
       <div class="flex w-1/4 ml-auto">
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div class="w-1/2 flex items-center justify-center border-l border-l-Analytics-sidebar py-3 cursor-pointer" on:click={() => changeActiveComponent(activeID - 1)}>
+        <div class="w-full flex items-center justify-center border-l border-l-Analytics-sidebar py-3 cursor-pointer" on:click={() => changeActiveComponent(activeID - 1)}>
           <h2>BACK</h2>
         </div>
         <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div class="w-1/2 flex items-center justify-center bg-Analytics-iconcolor py-3 cursor-pointer" on:click={() => changeActiveComponent(activeID + 1)}>
+        <div class="w-full flex items-center justify-center bg-Analytics-iconcolor py-3 cursor-pointer" on:click={() => changeActiveComponent(activeID + 1)}>
+          <h2>PROCEED</h2>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-12 w-full opacity-25">
+      <div class="relative h-2 w-full bg-Analytics-secondary">
+        <div class="absolute h-2 inset-0 bg-Analytics-iconcolor" style="width:{$tweenedA}%" />
+      </div>
+    </div>
+
+    <div class="absolute bottom-0 flex w-full opacity-25">
+      <div class="flex w-1/4">
+        <div class="w-1/2 flex items-center justify-center border-r border-r-Analytics-sidebar py-3 cursor-pointer">
+          <h2>CANCEL</h2>
+        </div>
+      </div>
+
+      <div class="flex w-2/4 ml-auto">
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="w-1/3 flex items-center justify-center border-l border-l-Analytics-sidebar py-3 cursor-pointer" on:click={() => changeActiveComponent(activeID - 1)}>
+          <h2>BACK</h2>
+        </div>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="w-1/3 flex items-center justify-center border-l border-l-Analytics-sidebar py-3 cursor-pointer bg-Analytics-addbtn" on:click={() => changeActiveComponent(activeID - 1)}>
+          <h2>SIGN</h2>
+        </div>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="w-1/3 flex items-center justify-center bg-Analytics-iconcolor py-3 cursor-pointer" on:click={() => changeActiveComponent(activeID + 1)}>
           <h2>PROCEED</h2>
         </div>
       </div>

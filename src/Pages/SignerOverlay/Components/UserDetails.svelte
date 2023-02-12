@@ -340,9 +340,9 @@
           <QrCode />
         </div>
         <div class="flex justify-center text-sm">
-          <span class="text-textGray text-center text-sm break-all font-mono py-1">
+          <span class="text-textGray p-2 text-center font-mono py-1">
             <strong class="font-extrabold">Signer ID</strong>
-            <p class="px-4">{$pdfSigning.signerDetails.id}</p>
+            <p class="break-all">{$pdfSigning.signerDetails.id}</p>
           </span>
         </div>
       </div>
@@ -354,11 +354,11 @@
         <strong class="font-bold mr-2">Email:</strong>
         {$pdfSigning.signerDetails.eMail}
       </div>
-      <div class="flex w-full absolute bottom-0 right-2 justify-end">
+      <!-- <div class="flex w-full absolute bottom-0 right-2 justify-end">
         <button class="btn" on:click={() => Next(0)}>
           <NextIcon />
         </button>
-      </div>
+      </div> -->
     </div>
   {/if}
 </div>
