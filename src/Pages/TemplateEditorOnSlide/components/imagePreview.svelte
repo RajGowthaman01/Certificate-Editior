@@ -19,7 +19,7 @@
 
 <style lang="postcss">
   .baseImage {
-    @apply rounded-md border-none bg-transparent;
+    @apply rounded-sm border-none bg-transparent;
   }
   .imgProps {
     @apply text-sm font-medium text-heading;

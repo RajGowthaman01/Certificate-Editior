@@ -29,7 +29,7 @@ export default {
   "/Analytics": Analytics,
   "/FileTemplateEditor": FileTemplateEditor,
   "/History": History,
-  "/SignerOverlay": SignerOverlay,
+  // "/SignerOverlay": SignerOverlay,
   "/DarkFileTemplateEditor": DarkFileTemplateEditor,
   "/TemplateEditorOnSlide": TemplateEditorOnSlide,
 

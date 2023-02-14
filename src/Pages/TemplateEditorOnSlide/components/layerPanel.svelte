@@ -8,33 +8,25 @@
   import Text from "../svg/text.svelte"
   import Image from "../svg/image.svelte"
   import QrCode from "../svg/qrCode.svelte"
+  import { createEventDispatcher } from "svelte"
+
+  const dispatch = createEventDispatcher()
 
   let imageUploadedSection = false
   let textEditSection = false
   let activeComponent
-
   let component
-
-  const sleep = (time) => {
-    return new Promise((resolve) => {
-      setTimeout(resolve, time)
-    })
-  }
-
+  let layer
   const addLayerTile = (type) => {
-    // sleep(500)
     for (let i = 0; i < $editorStore.layerOperations.length; i++) {
-      // await sleep(500)
-      if (type == "image") {
+      if (type === "image") {
         component = ImageLayerTile
         createLayerOperations(($editorStore.layerOperations[i].type = type), ($editorStore = $editorStore))
-        // $editorStore.layerOperations = [...$editorStore.layerOperations]
         console.log($editorStore.layerOperations[i])
         return $editorStore.layerOperations
-      } else if (type == "text") {
+      } else if (type === "text") {
         component = TextLayerTile
         createLayerOperations(($editorStore.layerOperations[i].type = type), ($editorStore = $editorStore))
-        $editorStore.layerOperations = [...$editorStore.layerOperations]
         console.log($editorStore.layerOperations[i])
         return $editorStore.layerOperations
       }
@@ -47,9 +39,9 @@
     <ImagePreview />
   </div>
 
-  <!-- <div class="inline-flex w-full pt-2 px-4 shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+  <div class="inline-flex w-full pt-2 px-4 shadow-md hover:shadow-lg focus:shadow-lg" role="group">
     <button on:click={() => dispatch("fontList")} class="buttonGroup text-center  justify-center rounded-md w-full">Font Details</button>
-  </div> -->
+  </div>
   <div class="flex py-2 px-4">
     <div class="flex font-medium text-heading">Layers</div>
   </div>
@@ -62,19 +54,16 @@
         </span>
         QrCode
       </button>
-      <!-- {#if $editorStore.layerOperations.type === "image"} -->
-      <button on:click={() => addLayerTile("image")} type="button" class="px-5 py-2.5 gap-1 buttonGroup">
+      <button on:click={() => addLayerTile("image", layer)} type="button" class="px-5 py-2.5 gap-1 buttonGroup">
         <Image />
         Image
       </button>
-      <!-- {:else if $editorStore.layerOperations.type === "text"} -->
-      <button on:click={() => addLayerTile("text")} type="button" class="rounded-r px-6 py-2.5 buttonGroup border-l-blue-400">
+      <button on:click={() => addLayerTile("text")} type="button" class="rounded-r px-6 py-2.5 buttonGroup border-l border-blue-400">
         <span class="h-5 w-5 fill-heading">
           <Text />
         </span>
         Text
       </button>
-      <!-- {/if} -->
     </div>
   </div>
   <div class="pb-96 max-h-screen flex flex-col overflow-y-auto overflow-x-hidden">
