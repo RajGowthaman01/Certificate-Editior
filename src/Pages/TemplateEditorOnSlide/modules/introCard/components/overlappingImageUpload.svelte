@@ -17,16 +17,14 @@
   const handleDrop = (e) => {
     url = URL.createObjectURL(e.detail.file)
     fileSize = Math.floor(e.detail.file.size / 1000).toFixed(1)
-    // fileName = e.detail.file.name
-    // console.log(fileName)
     setTimeout(() => {
       $editorStore.base.dimensions.w = document.getElementById("displayImage").naturalWidth
       $editorStore.base.dimensions.h = document.getElementById("displayImage").naturalHeight
     }, 500)
-    dispatch("uploadFile")
+
     editorStore.update((data) => {
       ;(data.base.url = url), (data.base.fileSize = fileSize), (data.base.dimensions.w = w), (data.base.dimensions.h = h)
-      console.log(data)
+      console.log("data", data)
       return data
     })
     PreviewBaseImage = true

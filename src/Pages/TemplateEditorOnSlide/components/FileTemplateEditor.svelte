@@ -1,5 +1,7 @@
 <script>
+  import { afterUpdate, onMount } from "svelte"
   import { fade } from "svelte/transition"
+  import { editorStore } from "../Stores/stores"
   import Footer from "./footer.svelte"
   import LayerPanel from "./layerPanel.svelte"
   import IntroCard from "../modules/introCard/index.svelte"
@@ -7,9 +9,23 @@
   import FontList from "../modules/addCustomFont/components/fontList.svelte"
 
   let editSection
-  let modalOverLay = false
+  let modalOverLay = true
   let customFontModal = false
   let fontListModal = false
+
+  afterUpdate(() => {
+    const canvas = document.getElementById("canvas")
+    let ctx = canvas.getContext("2d")
+    let img = new Image()
+    img.onload = function () {
+      ctx.font = "40pt Calibri"
+      ctx.fillText($editorStore.layerOperations["name"], 10, 10)
+      ctx.canvas.width = img.width
+      ctx.canvas.height = img.height
+      ctx.drawImage(img, 0, 0, img.width, img.height)
+    }
+    img.src = $editorStore.base.url
+  })
 </script>
 
 <div class="relative flex h-screen w-screen flex-col overflow-hidden">
@@ -25,8 +41,7 @@
       {editSection}
     />
     <div class="flex h-screen w-screen items-center justify-center bg-certificateSection">
-      <!-- <img id="canvas" src={$editorStore.base.url} alt="preview image" class="rounded-md max-w-[1000px] mt-8" /> -->
-      <img src="/assets/images/landscape.png" class="max-w-[1000px] mt-8 overflow-hidden max-h-[90vh] rounded-md 2xl:max-h-[80vh]" alt="" />
+      <canvas id="canvas" alt="preview image" class="max-w-[1000px] mt-8 overflow-hidden max-h-[80vh] rounded-md 2xl:max-h-[90vh]" />
     </div>
   </div>
   <Footer />

@@ -25,7 +25,7 @@ export const editorStore = writable({
 
     /**@type {template} */
     template: {
-      id: "", //24 char alphanumeric id of the fie from database
+      id: "", //24 char alphanumeric id of the file from database
       name: "", //filename fom introcard modal
     },
   },
@@ -97,9 +97,11 @@ export const editorStore = writable({
     },
   ],
 })
-export const createLayerOperations = () => {
-  for (let i = 1; i < editorStore.layerOperations[i].length; i++) {
-    if (editorStore.layerOperations[i].type == "text") {
-    }
-  }
+
+export const createLayerOperations = (layer) => {
+  editorStore.update((data) => {
+    data.layerOperations = [...data.layerOperations, layer]
+    console.log("stored", data.layerOperations)
+    return data
+  })
 }
