@@ -1,8 +1,4 @@
 import { writable } from "svelte/store"
-import ImageLayerTile from "../components/imageLayerTile.svelte"
-import TextLayerTile from "../components/textLayerTile.svelte"
-export const imageStore = writable([ImageLayerTile])
-export const textStore = writable([TextLayerTile])
 
 export const editorStore = writable({
   /**
@@ -81,6 +77,7 @@ export const editorStore = writable({
   /** @type {Array<layerOperations>} */
   layerOperations: [
     {
+      id: 1,
       type: "", //specifying layer type i.e., image or text
       name: "", // can be selected from key values also
       value: "",
@@ -95,14 +92,14 @@ export const editorStore = writable({
       size: "", // in pixels to define text height
       fontFamily: "",
       color: "", //text color
-      style: "", //font style
-      align: "", //text align
+      style: "normal", //font style
+      align: "center", //text align
     },
   ],
 })
 export const createLayerOperations = () => {
-  for (let i = 0; i < editorStore.layerOperations[i].length; i++) {
-    if (layerOperations[i].type == "text") {
+  for (let i = 1; i < editorStore.layerOperations[i].length; i++) {
+    if (editorStore.layerOperations[i].type == "text") {
     }
   }
 }
