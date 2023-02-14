@@ -1,25 +1,20 @@
 <script>
   export let File, SignPortion
-  import { onMount } from "svelte"
+  import { onMount, createEventDispatcher } from "svelte"
   import Leftarrow from "../../../svgicons/Leftarrow.svelte"
   import RightArrow from "../../../svgicons/RightArrow.svelte"
-  import { createEventDispatcher } from "svelte"
   const dispatch = createEventDispatcher()
 
-  let pdfDoc,
-    totalPages,
-    currentpage,
-    showpdf = true
+  let pdfDoc, canvas, documentPreview, totalPages, currentpage, blobPdf, bloburl, imgHeight, imgWidth
+  let showpdf = true
 
-  let blobPdf, bloburl, imgHeight, imgWidth
   onMount(async () => {
-    if (File.type == "image/png" || File.type == "image/jpg" || File.type == "image/jpeg") {
+    if (File.type != "application/pdf") {
       bloburl = URL.createObjectURL(File)
       showpdf = false
       setTimeout(() => {
-        imgHeight = document.querySelector("#Docimage").naturalHeight
-        imgWidth = document.querySelector("#Docimage").naturalWidth
-        console.log(imgHeight, imgWidth)
+        imgHeight = documentPreview.naturalHeight
+        imgWidth = documentPreview.naturalWidth
         dispatch("resolution", { imgHeight: imgHeight, imgWidth: imgWidth })
       }, 100)
     } else if (File.type == "application/pdf") {
@@ -53,7 +48,6 @@
     let page = await pdfDoc.getPage(pageno)
     let viewport = page.getViewport({ scale: 1 })
     // Prepare canvas using PDF page dimensions
-    let canvas = document.getElementById("mycanvas")
     let context = canvas.getContext("2d")
     canvas.height = viewport.height
     canvas.width = viewport.width
@@ -74,6 +68,7 @@
       showPage(currentpage)
     }
   }
+
   /**
    * Function to move to the previous page
    */
@@ -86,14 +81,11 @@
 </script>
 
 <div id="pdfPreviewSection" class="relative rounded-md" class:mb-16={SignPortion}>
-  <!-- <div class="absolute inset-0 flex justify-center bg-gradient-to-b pb-3 via-transparent items-end from-transparent to-[#000000cc] z-10 rounded-md">
-    
-  </div> -->
-
   {#if showpdf}
-    <canvas id="mycanvas" class="relative  rounded-md w-[350px] max-h-[80vh] overflow-hidden" />
+    <canvas bind:this={canvas} class="relative rounded-md w-[350px] max-h-[80vh] overflow-hidden" />
+
     <!-- <canvas id="mycanvas" class="relative rounded-md w-[380px] aspect-[8/10]  overflow-hidden" /> -->
-    <div class:hidden={SignPortion} class="gap-2 items-center justify-center pt-3 {totalPages == 0 ? 'hidden' : 'flex'}">
+    <div class="gap-2 items-center justify-center pt-3 {totalPages == 1 || SignPortion ? 'hidden' : 'flex'}">
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <span on:click={previouspage} class={currentpage > 1 ? "cursor-pointer" : "cursor-not-allowed pointer-events-none"}>
         <Leftarrow />
@@ -105,6 +97,7 @@
       </span>
     </div>
   {:else}
-    <img src={bloburl} alt="bloburl" id="Docimage" class="overflow-hidden max-h-[90vh] max-w-[600px] rounded-md 2xl:max-h-[80vh]" />
+    <!-- <img src={bloburl} alt="bloburl" id="Docimage" class="overflow-hidden max-h-[90vh] max-w-[380px] rounded-md 2xl:max-h-[80vh]" /> -->
+    <img src={bloburl} alt="bloburl" bind:this={documentPreview} class="overflow-hidden max-h-[90vh] max-w-[600px] rounded-md 2xl:max-h-[80vh]" />
   {/if}
 </div>

@@ -1,5 +1,5 @@
 <script>
-  import { slide, fade } from "svelte/transition"
+  import { fade } from "svelte/transition"
   import UserDetails from "../Components/UserDetails.svelte"
   import SignPlace from "../Components/SignPlace.svelte"
   import SignClr from "../Components/signClr.svelte"
@@ -91,7 +91,7 @@
   }
 </script>
 
-<main class="h-wull w-screen">
+<main class="h-full w-screen">
   <!-- <div class="grid grid-cols-12 w-full h-full bg-lightGray">
     <div class="col-span-3 flex" />
     <div class="col-span-9 h-full flex justify-end">

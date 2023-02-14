@@ -2,19 +2,12 @@
   import { createEventDispatcher } from "svelte"
   const dispatch = createEventDispatcher()
   import pdfSigning from "../Stores/pdfSigning.js"
-
-  import NextIcon from "../svg/NextIcon.svelte"
-  import QrCode from "../svg/QRCode.svelte"
   import UserIcon from "../svg/UserIcon.svelte"
   import LoadingScreen from "./loadingScreen.svelte"
   let loadScreen = true
   setTimeout(() => {
     loadScreen = false
   }, 1000)
-
-  const Next = () => {
-    dispatch("init")
-  }
 </script>
 
 <!-- <div> -->
