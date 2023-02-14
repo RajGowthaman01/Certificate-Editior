@@ -2,7 +2,7 @@
   import { tweened } from "svelte/motion"
   import PublishHeader from "./Components/PublishHeader.svelte"
   import DocumentUpload from "./Components/DocumentUpload.svelte"
-  import DocumentTemplate2 from "./Components/DocumentTemplate2.svelte"
+  import DocumentTemplate from "./Components/DocumentTemplate.svelte"
   import DocumentId from "./Components/DocumentID.svelte"
   import SecondSidebar from "../../Components/SecondSidebar.svelte"
   import Docicon from "../../svgicons/Docicon.svelte"
@@ -11,11 +11,10 @@
   import Navbar from "../../Components/Navbar.svelte"
   import DocumentPreview from "./Components/DocumentPreview.svelte"
   import DocumentMetadata from "./Components/DocumentMetadata.svelte"
-  import SignOverlay from "../SignerOverlay/index.svelte"
 
-  let activeID = 1
-  let width = 20
   let File, KB, MB, imgHeight, imgWidth, pages
+  let activeID = 1
+  let width = 12.5
   const tweenedA = tweened(0)
   $: tweenedA.set(width)
 
@@ -24,7 +23,7 @@
       id: 1,
       Title: "Document Template",
       Content: "Choose the Document Template from the available options in the dropdown which you already created in the settings page.",
-      Component: DocumentTemplate2,
+      Component: DocumentTemplate,
       Active: true,
     },
     {
@@ -51,7 +50,7 @@
     {
       id: 5,
       Title: "Document Metadata",
-      Content: "The uploaded Document is previewed here.Please make sure that and move to document metadata section",
+      Content: "Choose the document Metadata for the uploaded Document.You can also edit and change the metadata fields",
       Component: DocumentMetadata,
       Active: false,
     },
@@ -94,7 +93,7 @@
       if (publishSections.id === id) {
         publishSections.Active = true
         activeID = id
-        width = id * 20
+        width = id * 12.5
         console.log(width)
       }
       return publishSections
@@ -126,12 +125,12 @@
     <Navbar />
     <SecondSidebar {sections} title="Publish Documents" />
   </div>
-  <div class="relative col-span-6 h-full bg-Analytics-primary border-r border-r-Analytics-sidebar">
+  <div class="relative col-span-9 h-full bg-Analytics-primary border-r border-r-Analytics-sidebar">
     <PublishHeader />
-    <div class="h-full col-span-6 grid grid-cols-4 px-4">
+    <div class="h-full col-span-9 grid grid-cols-2 px-4">
       {#each publishSections as section (section.id)}
         {#if section.Active}
-          <div class="col-span-2 flex items-start justify-center h-full w-full flex-col">
+          <div class="col-span-1 flex items-start justify-center h-full w-full flex-col">
             <h1>{section.Title}</h1>
             <p class="pt-4">{section.Content}</p>
             {#if section.id == 4}
@@ -149,7 +148,7 @@
               </div>
             {/if}
           </div>
-          <div class="col-span-2 flex flex-col justify-center items-end">
+          <div class="col-span-1 flex flex-col justify-center items-end">
             <svelte:component this={section.Component} {File} on:File={dispatchFile} on:resolution={getResolution} on:pages={(e) => (pages = e.detail)} />
           </div>
         {/if}
@@ -164,37 +163,23 @@
 
     <div class="absolute bottom-0 flex w-full">
       <div class="flex w-1/4">
-        <div class="w-1/2 flex items-center justify-center border-r border-r-Analytics-sidebar py-3 cursor-pointer">
-          <h2>CANCEL</h2>
+        <div class="w-1/2 border-r border-r-Analytics-sidebar">
+          <button class="footer-btn">CANCEL</button>
         </div>
       </div>
-      <div class="flex w-1/4 ml-auto">
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div class="w-1/2 flex items-center justify-center border-l border-l-Analytics-sidebar py-3 cursor-pointer" on:click={() => changeActiveComponent(activeID - 1)}>
-          <h2>BACK</h2>
+
+      <div class="flex w-2/4 ml-auto">
+        <div class="w-1/3 flex items-center justify-center ml-auto border-l border-l-Analytics-sidebar">
+          <button on:click={() => changeActiveComponent(activeID - 1)} disabled={activeID == 1} class="footer-btn">BACK</button>
         </div>
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div class="w-1/2 flex items-center justify-center bg-Analytics-iconcolor py-3 cursor-pointer" on:click={() => changeActiveComponent(activeID + 1)}>
-          <h2>PROCEED</h2>
+        <div class="w-1/3 border-l border-l-Analytics-sidebar {activeID == 4 ? 'flex' : 'hidden'} bg-Analytics-addbtn">
+          <button on:click={() => changeActiveComponent(activeID - 1)} class="footer-btn">SIGN</button>
+        </div>
+        <div class="w-1/3 bg-Analytics-iconcolor">
+          <button on:click={() => changeActiveComponent(activeID + 1)} disabled={activeID == 3} class="footer-btn">PROCEED</button>
         </div>
       </div>
     </div>
-
-    <!-- <div class="absolute flex justify-center w-full inset-x-0 bottom-3">
-      <div class="flex items-center space-x-5">
-        svelte-ignore a11y-click-events-have-key-events
-        <span class={activeID == 1 ? "pointer-events-none cursor-not-allowed" : "cursor-pointer"} on:click={() => changeActiveComponent(activeID - 1)}><Leftarrow /></span>
-        {#each publishSections as sections (sections.id)}
-          svelte-ignore a11y-click-events-have-key-events
-          <div on:click={() => changeActiveComponent(sections.id)} class={sections.Active ? "dots-active" : "dots"} />
-        {/each}
-        svelte-ignore a11y-click-events-have-key-events
-        <span class={activeID == 5 ? "pointer-events-none cursor-not-allowed" : "cursor-pointer"} on:click={() => changeActiveComponent(activeID + 1)}><RightArrow /></span>
-      </div>
-    </div> -->
-  </div>
-  <div class="flex col-span-3 bg-Analytics-primary">
-    <SignOverlay />
   </div>
 </main>
 
@@ -213,5 +198,8 @@
   }
   h2 {
     @apply text-base font-medium tracking-wider text-white;
+  }
+  .footer-btn {
+    @apply w-full py-3 text-base font-medium tracking-wider text-white disabled:cursor-not-allowed;
   }
 </style>

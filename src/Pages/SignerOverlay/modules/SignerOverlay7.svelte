@@ -1,11 +1,9 @@
 <script>
-  import { slide, fade } from "svelte/transition"
+  import { fade } from "svelte/transition"
   import UserDetails from "../Components/UserDetails.svelte"
   import SignPlace from "../Components/SignPlace.svelte"
   import SignClr from "../Components/signClr.svelte"
   import EnterOtp from "../Components/EnterOtp.svelte"
-  import { transition_in } from "svelte/internal"
-  import NextIcon from "../svg/NextIcon.svelte"
   import BackIcon from "../svg/BackIcon.svelte"
 
   $: sections = [
@@ -115,20 +113,15 @@
   }
 </script>
 
-<!-- <main class="h-screen w-screen flex justify-center items-center">
-  <div class="grid grid-cols-12 w-full h-full bg-lightGray">
-    <div class="col-span-3 flex" />
-    <div class="col-span-9 h-full flex">
-      <div class="w-8/12" /> -->
 <div class="w-full relative h-full">
   <h1 class="text-center absolute top-0 w-full text-base bg-primary_blue text-white py-3">Document Signature Section</h1>
 
   <div class="w-full h-full flex items-center">
     <div class="px-2 {transition} transition ease-in-out h-80 duration-500 ">
-      <ol class="overflow-hidden">
+      <ol class="overflow-hidden -ml-20">
         {#each sections as section}
           <li class="relative pb-12">
-            <div class="absolute{sections[sections.length - 1] == section ? 'hidden' : ''} {section.complete ? 'bg-primary_blue' : 'bg-Analytics-sidebar'} top-4 left-2.5 -ml-px mt-0.5 h-full w-0.1 opacity-50" />
+            <div class="absolute{sections[sections.length - 1] == section ? 'hidden' : ''} {section.complete ? 'bg-primary_blue' : 'bg-Analytics-sidebar'} top-4 left-10 -ml-px mt-0.5 h-full w-0.1 opacity-50" />
             {#if (section.Active && !section.complete) || (section.Active && section.complete)}
               <!-- Complete Step -->
               <div class="group relative flex items-center justify-center" aria-current="step">
@@ -182,8 +175,3 @@
     </div>
   </div>
 </div>
-<!-- </div>
-  </div> -->
-
-<!-- <Empty /> -->
-<!-- </main> -->

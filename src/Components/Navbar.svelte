@@ -77,11 +77,11 @@
     <Logo />
   </div>
   <div class="flex flex-col items-center justify-center gap-5">
-    <a href="#/Publish" id="step_1"><Pdicon /></a>
-    <a href="#/FileTemplateEditor" id="step_2"><Settingsicon /></a>
-    <a href="#/Analytics" id="step_3" class="bg-Analytics-primary p-2"><Analyticicon /></a>
-    <a href="#/History" id="step_4"><Historyicon /></a>
-    <a href="#/Publish" id="step_5"><Templateicon /></a>
+    <a href="#/Publish" id="step_1"><Pdicon class="h-6 w-6 flex-shrink-0 stroke-Analytics-secondarytext" /></a>
+    <a href="#/FileTemplateEditor" id="step_2"><Settingsicon class="h-6 w-6 flex-shrink-0 stroke-Analytics-secondarytext" /></a>
+    <a href="#/Analytics" id="step_3" class="bg-Analytics-primary p-2"><Analyticicon class="h-6 w-6 flex-shrink-0 fill-Analytics-secondarytext" /></a>
+    <a href="#/History" id="step_4"><Historyicon class="h-6 w-6 flex-shrink-0 text-Analytics-secondarytext" /></a>
+    <a href="#/Templates" id="step_5"><Templateicon class="h-6 w-6 flex-shrink-0 stroke-Analytics-secondarytext" /></a>
   </div>
   <div class="absolute bottom-0 w-full flex items-center justify-center px-3 py-2">
     <Help on:click={clickHelper} />

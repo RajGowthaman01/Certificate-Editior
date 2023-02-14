@@ -5,6 +5,7 @@
   import Pagination from "./Components/Pagination.svelte"
   import Table3 from "./Components/Table3.svelte"
   import Docicon from "../../svgicons/Docicon.svelte"
+  import HistoryHeader3 from "./Components/HistoryHeader3.svelte"
 
   let sections = [
     {
@@ -29,8 +30,8 @@
   <div class="relative col-span-9 h-full bg-Analytics-primary">
     <!-- <AnalyticHeader /> -->
     <!-- <HistoryHeader /> -->
-    <HistoryHeader2 />
-    <div class="p-4">
+    <HistoryHeader3 />
+    <div class="px-4 py-3">
       <!-- <Table /> -->
       <!-- <Table2 /> -->
       <Table3 />

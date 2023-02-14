@@ -340,9 +340,9 @@
           <QrCode />
         </div>
         <div class="flex justify-center text-sm">
-          <span class="text-textGray text-center text-sm break-all font-mono py-1">
+          <span class="text-textGray text-center text-sm break-all font-mono py-1 w-8/10">
             <strong class="font-extrabold">Signer ID</strong>
-            <p class="px-4">{$pdfSigning.signerDetails.id}</p>
+            <p class="break-all">{$pdfSigning.signerDetails.id}</p>
           </span>
         </div>
       </div>

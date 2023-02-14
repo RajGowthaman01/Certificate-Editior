@@ -2,6 +2,7 @@ import FileTemplateEditor from "./Pages/FileTemplateEditor/Index.svelte"
 import PublishDoc from "./Pages/PublishDoc/index.svelte"
 import Analytics from "./Pages/Analytics/index.svelte"
 import History from "./Pages/History/index.svelte"
+import Templates from "./Pages/Templates/index.svelte"
 import TemplateEditorOnSlide from "./Pages/TemplateEditorOnSlide/index.svelte"
 import DarkFileTemplateEditor from "./Pages/DarkFileTemplateEditor/index.svelte"
 
@@ -29,6 +30,7 @@ export default {
   "/Analytics": Analytics,
   "/FileTemplateEditor": FileTemplateEditor,
   "/History": History,
+  "/Templates": Templates,
   "/TemplateEditorOnSlide": TemplateEditorOnSlide,
   "/DarkFileTemplateEditor": DarkFileTemplateEditor,
   // The catch-all route must always be last
