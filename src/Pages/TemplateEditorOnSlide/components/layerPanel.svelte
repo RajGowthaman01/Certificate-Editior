@@ -1,13 +1,10 @@
 <script>
-  import { createEventDispatcher } from "svelte"
   import ImageLayerTile from "./imageLayerTile.svelte"
   import TextLayerTile from "./textLayerTile.svelte"
   import ImagePreview from "./imagePreview.svelte"
   import ImagePropertyPanel from "./imagePropertyPanel.svelte"
   import TextPropertyPanel from "./textPropertyPanel.svelte"
-  import { imageStore, textStore, editorStore } from "../Stores/stores"
-  const dispatch = createEventDispatcher()
-  // import Save from "../svg/save.svelte"
+  import { editorStore, createLayerOperations } from "../Stores/stores"
   import Text from "../svg/text.svelte"
   import Image from "../svg/image.svelte"
   import QrCode from "../svg/qrCode.svelte"
@@ -15,18 +12,41 @@
   let imageUploadedSection = false
   let textEditSection = false
   let activeComponent
-  let text, image
 
-  const addImage = () => {
-    imageStore.update((imageStore) => [...imageStore, text])
+  let component
+
+  const sleep = (time) => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, time)
+    })
   }
-  const addText = () => {
-    textStore.update((textStore) => [...textStore, image])
+
+  const addLayerTile = (type) => {
+    // sleep(500)
+    for (let i = 0; i < $editorStore.layerOperations.length; i++) {
+      // await sleep(500)
+      if (type == "image") {
+        component = ImageLayerTile
+        createLayerOperations(($editorStore.layerOperations[i].type = type), ($editorStore = $editorStore))
+        // $editorStore.layerOperations = [...$editorStore.layerOperations]
+        console.log($editorStore.layerOperations[i])
+        return $editorStore.layerOperations
+      } else if (type == "text") {
+        component = TextLayerTile
+        createLayerOperations(($editorStore.layerOperations[i].type = type), ($editorStore = $editorStore))
+        $editorStore.layerOperations = [...$editorStore.layerOperations]
+        console.log($editorStore.layerOperations[i])
+        return $editorStore.layerOperations
+      }
+    }
   }
 </script>
 
 <div class="flex h-[screen] min-w-[330px] flex-col border-r border-black bg-certificateSection">
-  <ImagePreview />
+  <div class="mt-14">
+    <ImagePreview />
+  </div>
+
   <!-- <div class="inline-flex w-full pt-2 px-4 shadow-md hover:shadow-lg focus:shadow-lg" role="group">
     <button on:click={() => dispatch("fontList")} class="buttonGroup text-center  justify-center rounded-md w-full">Font Details</button>
   </div> -->
@@ -42,32 +62,33 @@
         </span>
         QrCode
       </button>
-      <button on:click={addImage} type="image" class="px-5 py-2.5 gap-1 buttonGroup">
+      <!-- {#if $editorStore.layerOperations.type === "image"} -->
+      <button on:click={() => addLayerTile("image")} type="button" class="px-5 py-2.5 gap-1 buttonGroup">
         <Image />
         Image
       </button>
-
-      <button on:click={addText} type="text" class="rounded-r px-6 py-2.5 buttonGroup border-l border-blue-400">
+      <!-- {:else if $editorStore.layerOperations.type === "text"} -->
+      <button on:click={() => addLayerTile("text")} type="button" class="rounded-r px-6 py-2.5 buttonGroup border-l-blue-400">
         <span class="h-5 w-5 fill-heading">
           <Text />
         </span>
         Text
       </button>
+      <!-- {/if} -->
     </div>
   </div>
   <div class="pb-96 max-h-screen flex flex-col overflow-y-auto overflow-x-hidden">
-    <!-- {#each Array(15) as _, index (index)} -->
-    {#each $imageStore as store}
-      <ImageLayerTile on:hideImageProp={() => (imageUploadedSection = !imageUploadedSection)} on:hideImage={() => (imageUploadedSection = false)} on:click={() => (activeComponent = ImagePropertyPanel)} />
+    {#each $editorStore.layerOperations as type}
+      {#if type == "image"}
+        <ImageLayerTile on:hideImageProp={() => (imageUploadedSection = !imageUploadedSection)} on:hideImage={() => (imageUploadedSection = false)} on:click={() => (activeComponent = ImagePropertyPanel)} />
+      {:else if type == "text"}
+        <TextLayerTile on:hideTextProp={() => (textEditSection = !textEditSection)} on:hideText={() => (textEditSection = false)} on:click={() => (activeComponent = TextPropertyPanel)} />
+      {/if}
     {/each}
-    {#each $textStore as store}
-      <TextLayerTile on:hideTextProp={() => (textEditSection = !textEditSection)} on:hideText={() => (textEditSection = false)} on:click={() => (activeComponent = TextPropertyPanel)} />
-    {/each}
-    <!-- {/each} -->
   </div>
 </div>
 
-<div class="flex flex-col">
+<div class="flex flex-col mt-14">
   {#if activeComponent}
     <svelte:component this={activeComponent} on:FontModal {imageUploadedSection} {textEditSection} />
   {/if}

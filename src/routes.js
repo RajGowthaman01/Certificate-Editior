@@ -14,6 +14,8 @@ export default {
   "/Templates": Templates,
   "/TemplateEditorOnSlide": TemplateEditorOnSlide,
   "/DarkFileTemplateEditor": DarkFileTemplateEditor,
+  "/TemplateEditorOnSlide": TemplateEditorOnSlide,
+
   // The catch-all route must always be last
   "*": Analytics,
 }
