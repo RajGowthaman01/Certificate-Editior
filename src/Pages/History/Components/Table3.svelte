@@ -241,7 +241,7 @@
           </div>
         </td>
       </tr>
-      <!-- <tr>
+      <tr>
         <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm sm:pl-6 border-y-2 border-l-2 border-Analytics-sidebar">
           <div class="flex items-center">
             <div class="h-10 w-10 flex-shrink-0">
@@ -278,7 +278,7 @@
             <button class="px-4 py-2 border border-Analytics-sidebar text-Analytics-iconcolor hover:bg-Analytics-iconcolor hover:text-white">View</button>
           </div>
         </td>
-      </tr> -->
+      </tr>
       <!-- <tr>
         <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm sm:pl-6 border-y-2 border-l-2 border-Analytics-sidebar">
           <div class="flex items-center">

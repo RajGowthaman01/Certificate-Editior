@@ -1,18 +1,16 @@
 <script>
   import Navbar from "../../Components/Navbar.svelte"
-  import SecondSidebar from "../../Components/SecondSidebar.svelte"
   import HistoryHeader2 from "./Components/HistoryHeader2.svelte"
   import Pagination from "./Components/Pagination.svelte"
   import Table3 from "./Components/Table3.svelte"
+  import SecondSidebar from "../../Components/SecondSidebar.svelte"
   import Docicon from "../../svgicons/Docicon.svelte"
-  import HistoryHeader3 from "./Components/HistoryHeader3.svelte"
-
   let sections = [
     {
       id: 0,
       Title: "Document History",
       icon: Docicon,
-      Content: "This option supports the stats related to the Published documents",
+      Content: "This option supports the Document History",
       active: true,
     },
   ]
@@ -30,8 +28,8 @@
   <div class="relative col-span-9 h-full bg-Analytics-primary">
     <!-- <AnalyticHeader /> -->
     <!-- <HistoryHeader /> -->
-    <HistoryHeader3 />
-    <div class="px-4 py-3">
+    <HistoryHeader2 />
+    <div class="p-4">
       <!-- <Table /> -->
       <!-- <Table2 /> -->
       <Table3 />

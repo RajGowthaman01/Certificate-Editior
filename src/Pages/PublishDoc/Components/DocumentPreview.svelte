@@ -1,5 +1,5 @@
 <script>
-  export let File
+  export let File, SignPortion
   import { onMount, createEventDispatcher } from "svelte"
   import Leftarrow from "../../../svgicons/Leftarrow.svelte"
   import RightArrow from "../../../svgicons/RightArrow.svelte"
@@ -80,12 +80,12 @@
   }
 </script>
 
-<div id="pdfPreviewSection" class="relative rounded-md">
+<div id="pdfPreviewSection" class="relative rounded-md" class:mb-16={SignPortion}>
   {#if showpdf}
     <canvas bind:this={canvas} class="relative rounded-md w-[350px] max-h-[80vh] overflow-hidden" />
 
     <!-- <canvas id="mycanvas" class="relative rounded-md w-[380px] aspect-[8/10]  overflow-hidden" /> -->
-    <div class="gap-2 items-center justify-center pt-3 {totalPages == 1 ? 'hidden' : 'flex'}">
+    <div class="gap-2 items-center justify-center pt-3 {totalPages == 1 || SignPortion ? 'hidden' : 'flex'}">
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <span on:click={previouspage} class={currentpage > 1 ? "cursor-pointer" : "cursor-not-allowed pointer-events-none"}>
         <Leftarrow />
