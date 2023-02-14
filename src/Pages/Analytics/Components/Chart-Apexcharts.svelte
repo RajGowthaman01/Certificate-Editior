@@ -234,7 +234,7 @@
     </div>
   </div>
 </div>
-<div class="z-0 h-80 w-full rounded-md bg-transparent shadow-sm dark:bg-Analytics-primary">
+<div class="z-0 min-h-[54vh] w-full rounded-md bg-transparent shadow-sm dark:bg-Analytics-primary">
   <div id="chart" class="h-full" />
 </div>
 

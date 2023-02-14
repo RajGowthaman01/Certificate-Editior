@@ -1,13 +1,19 @@
 <script>
   import { createEventDispatcher } from "svelte"
+  import LoadingScreen from "../../SignerOverlay/Components/loadingScreen.svelte"
   const dispatch = createEventDispatcher()
-  import pdfSigning from "../Stores/pdfSigning.js"
-  import UserIcon from "../svg/UserIcon.svelte"
-  import LoadingScreen from "./loadingScreen.svelte"
+  import pdfSigning from "../../SignerOverlay/Stores/pdfSigning"
+  import QRCode from "../../SignerOverlay/svg/QRCode.svelte"
+  import NextIcon from "../../SignerOverlay/svg/NextIcon.svelte"
+  import UserIcon from "../../SignerOverlay/svg/UserIcon.svelte"
   let loadScreen = true
   setTimeout(() => {
     loadScreen = false
   }, 1000)
+
+  const Next = () => {
+    dispatch("init")
+  }
 </script>
 
 <!-- <div> -->
@@ -196,131 +202,128 @@
 
 <!--card5-->
 <!-- <div class="pb-5">
-    {#if loadScreen}
-      <LoadingScreen />
-    {:else}
-      <div class="text-textGray bg-lightGray2 p-5 grid grid-cols-2">
-        <div class="col-span-1 flex">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-lightGray -ml-2 -mt-2 w-24 h-24">
-            <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
+  {#if loadScreen}
+    <LoadingScreen />
+  {:else}
+    <div class="text-textGray grid grid-cols-2">
+      <div class="col-span-1 flex">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-darkGray -ml-2 -mt-2 w-24 h-24">
+          <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div class="col-span-1 flex gap-2 justify-end">
+        <div class="w-10 h-10 bg-darkGray rounded-full flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-Analytics-sidebar cursor-pointer w-4 h-4">
+            <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
           </svg>
         </div>
-        <div class="col-span-1 flex gap-2 justify-end">
-          <div class="w-10 h-10 bg-lightGray rounded-full flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-textGray cursor-pointer w-4 h-4">
-              <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
-            </svg>
-          </div>
-          <div class="w-10 h-10 bg-lightGray rounded-full flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-textGray cursor-pointer w-4 h-4">
-              <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-              <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-            </svg>
-          </div>
-        </div>
-        <div class="col-span-2">
-          <h1 class="text-2xl text-textGray font-bold">John Doe</h1>
-          <h6 class="text-sm text-textGray font-thin mb-2">Designation</h6>
-          <span class="text-textGray text-sm break-all font-mono leading-none">ID: 819f82006a4c49263fcde49372eb58589194cc759fcc2c8758d804f97021cbe3</span>
-          <div class="flex justify-between mt-2 items-center">
-            <p class="text-xs">Test Company Pvt. Ltd</p>
-            <div class="col-span-1 flex items-center gap-3 justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mb-0.5">
-                <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
-              </svg>
-              <p class="text-xs">Chennai</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    {/if}
-  </div> -->
-
-<!--card6-->
-<!-- <div class="pb-5">
-    {#if loadScreen}
-      <LoadingScreen />
-    {:else}
-      <div class="pb-2">
-        <span class="text-textGray text-sm break-all font-mono leading-none">
-          <strong class="font-extrabold">Signer ID</strong>
-          <br />
-          819f82006a4c49263fcde49372eb58589194cc759fcc2c8758d804f97021cbe3
-        </span>
-      </div>
-      <div class="text-textGray bg-lightGray2 p-5 grid grid-cols-7">
-        <div class="col-span-4 flex flex-col items-center justify-center">
-          <h1 class="text-2xl text-textGray font-bold">John Doe</h1>
-          <h6 class="text-xs text-textGray font-thin">Designation</h6>
-          <p class="text-xs">Test Company Pvt. Ltd</p>
-        </div>
-        <div class="col-span-3 flex gap-2 justify-center items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-lightGray ring-4 rounded-full ring-primary_blue -ml-2 -mt-2 w-28 h-28">
-            <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
+        <div class="w-10 h-10 bg-darkGray rounded-full flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-Analytics-sidebar cursor-pointer w-4 h-4">
+            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
           </svg>
         </div>
-        <div class="col-span-7 flex justify-between mt-5">
-          <div class="flex items-center gap-1 border-r-2 border-r-darkGray pr-3">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-textGray cursor-pointer w-4 h-4">
-              <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
-            </svg>
-            <span class="text-xs">9787564310</span>
-          </div>
-          <div class="flex items-center gap-1 border-r-2 border-r-darkGray pr-3">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-textGray cursor-pointer w-4 h-4">
-              <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-              <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-            </svg>
-            <span class="text-xs">john@email.com</span>
-          </div>
-          <div class="flex items-center gap-1">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 mb-0.5">
-              <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
-            </svg>
+      </div>
+      <div class="col-span-2">
+        <h1 class="text-2xl text-textGray font-bold">John Doe</h1>
+        <h6 class="text-sm text-textGray font-thin mb-2">Designation</h6>
+        <span class="text-textGray text-sm break-all font-mono leading-none">ID: 819f82006a4c49263fcde49372eb58589194cc759fcc2c8758d804f97021cbe3</span>
+        <div class="mt-2 flex gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mb-0.5">
+            <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+          </svg>
+          <div class="flex gap-1 mt-1">
+            <p class="text-xs">Test Company Pvt. Ltd,</p>
             <p class="text-xs">Chennai</p>
           </div>
         </div>
       </div>
-    {/if}
-  </div> -->
+    </div>
+  {/if}
+</div> -->
+
+<!--card6-->
+<!-- <div class="pb-5">
+  {#if loadScreen}
+    <LoadingScreen />
+  {:else}
+    <div class="pb-2">
+      <span class="text-textGray text-sm break-all font-mono leading-none">
+        <strong class="font-extrabold">Signer ID</strong>
+        <br />
+        819f82006a4c49263fcde49372eb58589194cc759fcc2c8758d804f97021cbe3
+      </span>
+    </div>
+    <div class="text-textGray bg-lightGray2 p-5 grid grid-cols-7">
+      <div class="col-span-4 flex flex-col items-center justify-center">
+        <h1 class="text-2xl text-textGray font-bold">John Doe</h1>
+        <h6 class="text-xs text-textGray font-thin">Designation</h6>
+        <p class="text-xs">Test Company Pvt. Ltd</p>
+      </div>
+      <div class="col-span-3 flex gap-2 justify-center items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-lightGray ring-4 rounded-full ring-primary_blue -ml-2 -mt-2 w-28 h-28">
+          <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div class="col-span-7 flex justify-between mt-5">
+        <div class="flex items-center gap-1 border-r-2 border-r-darkGray pr-3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-textGray cursor-pointer w-4 h-4">
+            <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-xs">9787564310</span>
+        </div>
+        <div class="flex items-center gap-1 border-r-2 border-r-darkGray pr-3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-textGray cursor-pointer w-4 h-4">
+            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+          </svg>
+          <span class="text-xs">john@email.com</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 mb-0.5">
+            <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+          </svg>
+          <p class="text-xs">Chennai</p>
+        </div>
+      </div>
+    </div>
+  {/if}
+</div> -->
 
 <!--card7-->
 <!-- <div class="pb-5">
-    {#if loadScreen}
-      <LoadingScreen />
-    {:else}
-      <div class="pb-2">
-      </div>
-      <div class="text-textGray bg-lightGray2 p-5">
-        <div class="flex flex-col gap-2 items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-lightGray w-28 h-28">
-            <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
-          </svg>
-          <div class="-mt-2">
-            <h1 class="text-2xl text-textGray font-bold text-center">John Doe</h1>
-            <h6 class="text-xs text-textGray font-thin text-center">Designation</h6>
-          </div>
-          <p class="text-xs">Test Company Pvt. Ltd</p>
-          <span class="text-textGray px-3 text-center text-sm break-all font-mono leading-none">819f82006a4c49263fcde49372eb58589194cc759fcc2c8758d804f97021cbe3</span>
+  {#if loadScreen}
+    <LoadingScreen />
+  {:else}
+    <div class="pb-2" />
+    <div class="text-textGray bg-lightGray2 p-5">
+      <div class="flex flex-col gap-2 items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-lightGray w-28 h-28">
+          <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
+        </svg>
+        <div class="-mt-2">
+          <h1 class="text-2xl text-textGray font-bold text-center">John Doe</h1>
+          <h6 class="text-xs text-textGray font-thin text-center">Designation</h6>
         </div>
-        <div class="flex justify-between items-center gap-3 mt-5">
-          <button class="w-1/2 border-primary_blue border-2 py-2 rounded text-primary_blue">Message</button>
-  
-          <button class="w-1/2 bg-primary_blue py-2 rounded text-white">Connect</button>
-        </div>
+        <p class="text-xs">Test Company Pvt. Ltd</p>
+        <span class="text-textGray px-3 text-center text-sm break-all font-mono leading-none">819f82006a4c49263fcde49372eb58589194cc759fcc2c8758d804f97021cbe3</span>
       </div>
-    {/if}
-  </div> -->
-<!-- </div> -->
+      <div class="flex justify-between items-center gap-3 mt-5">
+        <button class="w-1/2 border-primary_blue border-2 py-2 rounded text-primary_blue">Message</button>
+
+        <button class="w-1/2 bg-primary_blue py-2 rounded text-white">Connect</button>
+      </div>
+    </div>
+  {/if}
+</div> -->
 
 <!--card8-->
-<div>
+<!-- <div>
   {#if loadScreen}
     <LoadingScreen />
   {:else}
     <div class="relative text-textGray mx-auto w-full">
       <p class="text-lg text-center">{$pdfSigning.signerDetails.companyName}</p>
-      <!-- <h6 class="text-xs text-textGray font-thin text-center"></h6> -->
 
       <div class="flex flex-col gap-2 items-center justify-center">
         <UserIcon />
@@ -329,9 +332,7 @@
 
           <h6 class="text-xs text-textGray font-thin text-center">{$pdfSigning.signerDetails.Designation}</h6>
         </div>
-        <!-- <div class="flex justify-center mt-3">
-          <QrCode />
-        </div> -->
+        <QRCode />
         <div class="flex justify-center text-sm">
           <span class="text-textGray p-7 text-center font-mono py-1">
             <strong class="font-extrabold">Signer ID</strong>
@@ -347,11 +348,93 @@
         <strong class="font-bold mr-2">Email:</strong>
         {$pdfSigning.signerDetails.eMail}
       </div>
-      <!-- <div class="flex w-full absolute bottom-0 right-2 justify-end">
+      <div class="flex w-full absolute bottom-0 right-2 justify-end">
         <button class="btn" on:click={() => Next(0)}>
           <NextIcon />
         </button>
-      </div> -->
+      </div>
+    </div>
+  {/if}
+</div> -->
+
+<!--card9-->
+<!-- <div>
+  {#if loadScreen}
+    <LoadingScreen />
+  {:else}
+    <div class="flex gap-5 items-start justify-center">
+      <div>
+        <UserIcon />
+        <h1 class="text-xl text-textGray font-bold text-center border-b border-b-lightGray pb-0.5">{$pdfSigning.signerDetails.name}</h1>
+        <h6 class="text-xs text-textGray font-thin text-center">{$pdfSigning.signerDetails.Designation}</h6>
+      </div>
+      <div>
+        <p class="text-xl mb-3 font-semibold text-textGray">{$pdfSigning.signerDetails.companyName}</p>
+        <span class="text-textGray ">
+          <strong class="font-extrabold">Signer ID</strong>
+          <p class="break-all">{$pdfSigning.signerDetails.id}</p>
+        </span>
+        <div class="flex gap-2 items-center pt-3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-textGray w-4 h-4">
+            <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
+          </svg>
+          <span class="font-mono text-sm text-textGray">9876543210</span>
+        </div>
+        <div class="flex gap-2 items-center pt-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-textGray w-4 h-4">
+            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+          </svg>
+          <span class="text-sm text-textGray">john@email.com</span>
+        </div>
+        <div class="flex gap-2 items-center pt-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 fill-textGray">
+            <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+          </svg>
+          <p class="text-xs text-textGray">Chennai</p>
+        </div>
+      </div>
+    </div>
+  {/if}
+</div> -->
+
+<!--card9-->
+<div>
+  {#if loadScreen}
+    <LoadingScreen />
+  {:else}
+    <div class="flex gap-5 items-start justify-center">
+      <div>
+        <UserIcon />
+        <h1 class="text-xl text-textGray font-bold text-center border-b border-b-lightGray pb-0.5">{$pdfSigning.signerDetails.name}</h1>
+        <h6 class="text-xs text-textGray font-thin text-center">{$pdfSigning.signerDetails.Designation}</h6>
+      </div>
+      <div>
+        <p class="text-xl mb-3 font-semibold text-textGray">{$pdfSigning.signerDetails.companyName}</p>
+        <span class="text-textGray ">
+          <strong class="font-extrabold">Signer ID</strong>
+          <p class="break-all">{$pdfSigning.signerDetails.id}</p>
+        </span>
+        <div class="flex gap-2 items-center pt-3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-textGray w-4 h-4">
+            <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
+          </svg>
+          <span class="font-mono text-sm text-textGray">9876543210</span>
+        </div>
+        <div class="flex gap-2 items-center pt-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-textGray w-4 h-4">
+            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+          </svg>
+          <span class="text-sm text-textGray">john@email.com</span>
+        </div>
+        <div class="flex gap-2 items-center pt-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 fill-textGray">
+            <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+          </svg>
+          <p class="text-xs text-textGray">Chennai</p>
+        </div>
+      </div>
     </div>
   {/if}
 </div>

@@ -57,7 +57,6 @@
     <AnalyticHeader on:Dateinput={onDateinput} />
     <div class="mt-14 flex flex-col gap-4 pr-4 pb-4">
       <ChartApexcharts {activeDropDown} {currentMonth} {currentYear} />
-      <!-- <ChartChartjs {activeDropDown} {currentMonth} {currentYear} /> -->
     </div>
     <div class="grid grid-cols-4 gap-4 pr-4 pl-6">
       <Card value="Email Sent" icon={Emailsent} stat={100} color="iconcolor" />
