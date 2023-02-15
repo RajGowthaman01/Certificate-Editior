@@ -9,6 +9,8 @@
   import Move from "../svgIcons/Move.svelte"
   import Tooltip from "./Tooltip.svelte"
   import { slide } from "svelte/transition"
+  import UpArrow1 from "../../../svgicons/UpArrow1.svelte"
+  import DownArrow1 from "../../../svgicons/DownArrow1.svelte"
 
   let uploadImg = false
   let textName
@@ -18,23 +20,20 @@
   let count1 = 0
   let toggleBtn = false,
     KB = 0,
-    File,
     imgHeight = 0,
     imgWidth = 0
-  let formData
-  const uploadImage = () => {
-    console.log("uploadImage")
-    let image = document.getElementById("formImageEdit")
-    formData = new FormData(image)
-    console.log([...formData])
-    let datum = [...formData][0]
-    File = datum[1]
-    KB = Math.floor(File.size / 1000).toFixed(1)
-    blobUrl = URL.createObjectURL(File)
+  let previewImage, files
+  $: if (files) {
+    console.log(files)
+
+    KB = Math.floor(files[0].size / 1000).toFixed(1)
+    console.log(KB)
+    blobUrl = URL.createObjectURL(files[0])
+    console.log(blobUrl)
     uploadImg = false
     setTimeout(() => {
-      imgHeight = document.querySelector("#previewImage").naturalHeight
-      imgWidth = document.querySelector("#previewImage").naturalWidth
+      imgHeight = previewImage.naturalHeight
+      imgWidth = previewImage.naturalWidth
     }, 500)
   }
   const displayUploadSection = () => {
@@ -71,7 +70,7 @@
         {#if uploadImg}
           <div class="relative flex h-24 flex-col items-center gap-2 rounded-md bg-lightGray p-2">
             <form id="formImageEdit">
-              <input on:change={uploadImage} type="file" name="userImage" class="absolute top-0 left-0 py-12 opacity-0" accept="image/*" />
+              <input bind:files type="file" name="userImage" class="absolute inset-0 opacity-0" accept="image/*" />
             </form>
             <ChooseFile />
             <div class="flex flex-col items-center justify-center">
@@ -84,11 +83,17 @@
         {:else if !uploadImg && btnName == "STATIC"}
           <div class="flex h-24 items-center justify-between gap-2 rounded-md bg-lightGray p-2">
             <div class="flex w-full gap-3">
-              <img id="previewImage" src={blobUrl} alt="QRCode" class="h-20 w-20 rounded-md" />
+              <img bind:this={previewImage} src={blobUrl} alt="QRCode" class="h-20 w-20 rounded-md" />
               <div class="w-full space-y-2">
                 <div class="flex items-center justify-between">
-                  <h3 class="mt-1 text-sm font-bold text-white">{File.name}</h3>
-                  <button on:click={() => (uploadImg = true)} class="group relative flex items-start justify-end rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-primary_blue">
+                  <h3 class="mt-1 text-sm font-bold text-white">{files[0].name}</h3>
+                  <button
+                    on:click={() => {
+                      files = ""
+                      uploadImg = true
+                    }}
+                    class="group relative flex items-start justify-end rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-primary_blue"
+                  >
                     <div class="hidden group-hover:block">
                       <Tooltip tip="Back" />
                     </div>
@@ -111,17 +116,13 @@
             <div class="down-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
               <span on:click={() => (count1 -= 5)}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                </svg>
+                <DownArrow1 />
               </span>
             </div>
             <div class="up-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
               <span on:click={() => (count1 += 5)}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-                </svg>
+                <UpArrow1 />
               </span>
             </div>
             <input type="text" class="px-8 input1" />
@@ -131,15 +132,15 @@
             <div class="labeltext">Y</div>
             <div class="down-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
-              <svg on:click={() => (count1 -= 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
+              <span on:click={() => (count1 -= 5)}>
+                <DownArrow1 />
+              </span>
             </div>
             <div class="up-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
-              <svg on:click={() => (count1 += 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-              </svg>
+              <span on:click={() => (count1 += 5)}>
+                <UpArrow1 />
+              </span>
             </div>
             <input type="text" class="px-8 input1" />
           </div>
@@ -153,15 +154,15 @@
             <div class="labeltext">W</div>
             <div class="down-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
-              <svg on:click={() => (count1 -= 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
+              <span on:click={() => (count1 -= 5)}>
+                <DownArrow1 />
+              </span>
             </div>
             <div class="up-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
-              <svg on:click={() => (count1 += 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-              </svg>
+              <span on:click={() => (count1 += 5)}>
+                <UpArrow1 />
+              </span>
             </div>
             <input type="text" class="px-8 input1" />
           </div>
@@ -170,15 +171,15 @@
             <div class="labeltext">H</div>
             <div class="down-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
-              <svg on:click={() => (count1 -= 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
+              <span on:click={() => (count1 -= 5)}>
+                <DownArrow1 />
+              </span>
             </div>
             <div class="up-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
-              <svg on:click={() => (count1 += 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-              </svg>
+              <span on:click={() => (count1 += 5)}>
+                <UpArrow1 />
+              </span>
             </div>
             <input type="text" class="px-8 input1" />
           </div>

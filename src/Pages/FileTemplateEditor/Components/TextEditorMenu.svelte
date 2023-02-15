@@ -18,6 +18,8 @@
   import Remove from "../svgIcons/Remove.svelte"
   import Tick from "../svgIcons/Tick.svelte"
   import { slide } from "svelte/transition"
+  import DownArrow1 from "../../../svgicons/DownArrow1.svelte"
+  import UpArrow1 from "../../../svgicons/UpArrow1.svelte"
 
   let color = ["#FF3333", "#8906F7", "#2CF706", "#0639F7", "#FEFF33", "#F20785"]
   let dropDowns = ["Emblema One", "Alfa Slab One", "Croissant One", "Cute Font", "Dangrek", "Devonshire", "Sans"]
@@ -186,15 +188,17 @@
             <div class="labeltext">X</div>
             <div class="down-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
-              <svg on:click={() => (count -= 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
+
+              <span on:click={() => (count -= 5)}>
+                <DownArrow1 />
+              </span>
             </div>
             <div class="up-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
-              <svg on:click={() => (count += 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4  w-4 stroke-textGray hover:stroke-primary_blue">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-              </svg>
+
+              <span on:click={() => (count += 5)}>
+                <UpArrow1 />
+              </span>
             </div>
             <input type="text" class="px-9 input1" value={count} />
           </div>
@@ -203,15 +207,15 @@
             <div class="labeltext">Y</div>
             <div class="down-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
-              <svg on:click={() => (count1 -= 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
+              <span on:click={() => (count -= 5)}>
+                <DownArrow1 />
+              </span>
             </div>
             <div class="up-arrow">
               <!-- svelte-ignore a11y-click-events-have-key-events -->
-              <svg on:click={() => (count1 += 5)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="h-4 w-4 stroke-textGray hover:stroke-primary_blue">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-              </svg>
+              <span on:click={() => (count += 5)}>
+                <UpArrow1 />
+              </span>
             </div>
             <input type="text" class="px-9 input1" value={count1} />
           </div>
