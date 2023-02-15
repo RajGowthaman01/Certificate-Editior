@@ -217,9 +217,7 @@
             {#if SignPortion}
               {#each SignerSections as section (section.id)}
                 {#if section.Active}
-                  <div in:fade class="w-[27.2rem] h-auto bg-Analytics-secondary flex-col rounded-md relative p-4">
-                    <svelte:component this={section.Component} />
-                  </div>
+                  <svelte:component this={section.Component} />
                 {/if}
               {/each}
             {/if}
