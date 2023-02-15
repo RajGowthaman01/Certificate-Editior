@@ -1,17 +1,17 @@
 <script>
-	import FileTemplateEditor from "./components/FileTemplateEditor.svelte"
+  import FileTemplateEditor from "./components/FileTemplateEditor.svelte"
 </script>
 
 <main>
-	<FileTemplateEditor />
+  <FileTemplateEditor />
 </main>
 
 <style lang="postcss">
-	@tailwind base;
-	@tailwind components;
-	@tailwind utilities;
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 
-	/* main {
+  /* main {
 		@apply font-nunito;
 	} */
 </style>

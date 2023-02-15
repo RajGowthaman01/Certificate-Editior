@@ -73,7 +73,7 @@
   }
 </script>
 
-<div class="group relative w-4/5">
+<div class="group relative w-3/4">
   {#each sections as sections (sections.id)}
     {#if sections.Active}
       <button

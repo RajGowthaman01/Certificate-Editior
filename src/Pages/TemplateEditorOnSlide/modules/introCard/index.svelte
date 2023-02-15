@@ -5,6 +5,7 @@
   import { fade } from "svelte/transition"
   import Tooltip from "../../shared/tooltip.svelte"
   import { createEventDispatcher } from "svelte"
+  import { editorStore } from "../../Stores/stores"
 
   const dispatch = createEventDispatcher()
   let modalOverLay = true

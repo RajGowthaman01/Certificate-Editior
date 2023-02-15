@@ -8,9 +8,13 @@
   import { slide, fly } from "svelte/transition"
   import { linear } from "svelte/easing"
   import { editorStore } from "../Stores/stores"
+  import { onMount } from "svelte"
+  import { afterUpdate } from "svelte"
+
   export let imageUploadedSection = false
   export let imageUploaded = false
   export let togglePosition = "DYNAMIC"
+
   let dargAndDrop = false
   let toggleButton = false
   let blobUrl,
@@ -20,6 +24,7 @@
     imgHeight = 0,
     imgWidth = 0
 
+  let layer
   let formData
   const uploadImage = () => {
     let image = document.getElementById("formImage")
@@ -39,7 +44,11 @@
       imgHeight = document.getElementById("uploadImage").naturalHeight
       imgWidth = document.getElementById("uploadImage").naturalWidth
     }, 200)
+
+    $editorStore.layerOperations["src"] = blobUrl
+    console.log("secondImage", $editorStore.layerOperations["src"])
   }
+
   const displayUploadSection = () => {
     toggleButton = !toggleButton
     imageUploaded = false
@@ -55,6 +64,32 @@
     imageUploaded = !imageUploaded
     dargAndDrop = true
   }
+
+  let fields = {
+    name: "",
+  }
+  // const handleImageLayer = () => {
+  console.log("afterUpdate")
+  layer = {
+    ...fields,
+    src: blobUrl,
+    dynamic: true,
+    positions: {
+      x: 0,
+      y: 0,
+    },
+    dimensions: {
+      w: 0,
+      h: 0,
+    },
+  }
+  editorStore.update((data) => {
+    // data.layerOperations["src"] = blobUrl
+    data.layerOperations = [...data.layerOperations, layer]
+    console.log("stored", data.layerOperations)
+    return data
+  })
+  // }
 </script>
 
 {#if imageUploadedSection}
@@ -63,7 +98,7 @@
       <div class="w-full flex-col items-center px-4">
         <div class=" group bg-black relative flex items-center rounded-md">
           <span class="labelSpan text-gray-400">NAME</span>
-          <input name="field_name" class="inputValue" type="text" placeholder="" />
+          <input bind:value={fields.name} name="field_name" class="inputValue" type="text" placeholder="" />
         </div>
 
         <!-- toggle button -->
@@ -94,7 +129,7 @@
                     <span class="text-primary_blue underline">browse</span>
                   </span>
                 </span>
-                <input on:input={uploadImage} type="file" name="file_upload" class="hidden" />
+                <input on:input={uploadImage} bind:value={fields.src} type="file" name="file_upload" class="hidden" />
               </label>
             </form>
           </div>

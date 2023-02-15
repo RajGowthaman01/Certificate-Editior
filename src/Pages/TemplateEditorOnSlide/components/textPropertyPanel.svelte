@@ -1,7 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte"
-
   import { customHorizontalSlide } from "../scripts/customTransition"
+  import { editorStore } from "../Stores/stores"
   import AlighRight from "../svg/alighRight.svelte"
   import AlignCenter from "../svg/alignCenter.svelte"
   import AlignLeft from "../svg/alignLeft.svelte"
@@ -13,6 +13,7 @@
   import Tooltip from "../shared/tooltip.svelte"
   import Tick from "../svg/tick.svelte"
   import Int from "../svg/int.svelte"
+
   export let textEditSection = false
 
   const dispatch = createEventDispatcher()
@@ -140,7 +141,7 @@
               {/each}
             </div>
           </div>
-
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
           <div
             on:click={() => {
               dispatch("FontModal")
