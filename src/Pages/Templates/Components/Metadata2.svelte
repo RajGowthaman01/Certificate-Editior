@@ -40,10 +40,10 @@
       {#each Object.entries(overallvalue) as [key, value]}
         <div class="w-full flex border-b border-b-Analytics-sidebar">
           <div class="w-1/3 p-2">
-            <h1>{key}</h1>
+            <h1 contenteditable="true" bind:innerHTML={key} />
           </div>
           <div class="border-l w-2/3 border-Analytics-sidebar p-2">
-            <h1>{value}</h1>
+            <h1 contenteditable="true" bind:innerHTML={value} />
           </div>
         </div>
       {/each}
