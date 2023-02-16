@@ -19,6 +19,8 @@
       location: "Chennai",
     },
   }
+  let result = Object.entries(data).map(([category, v]) => ({ category, ...v }))
+  console.log(result)
 </script>
 
 <div class="flex flex-col w-3/4">

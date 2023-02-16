@@ -6,7 +6,7 @@
     <div class="flex items-center flex-grow w-0 h-10 px-2 text-base"><span>Document Id</span></div>
     <div class="flex items-center flex-grow w-0 h-10 px-2 text-base"><span>Actions</span></div>
   </div>
-  <div class="overflow-auto h-[520px]">
+  <div class="overflow-auto min-w-full h-[520px]">
     <div class="flex flex-shrink-0 pt-2">
       <div class="flex items-center flex-grow w-0 h-16 px-2 border-b border-l border-t border-Analytics-sidebar">
         <span>
