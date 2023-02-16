@@ -5,7 +5,6 @@ import History from "./Pages/History/index.svelte"
 import Templates from "./Pages/Templates/index.svelte"
 import TemplateEditorOnSlide from "./Pages/TemplateEditorOnSlide/index.svelte"
 import DarkFileTemplateEditor from "./Pages/DarkFileTemplateEditor/index.svelte"
-import SignerOverlay from "./Pages/SignerOverlay/index.svelte"
 import LoadingScreen from "./Pages/LoadingScreen/index.svelte"
 
 export default {

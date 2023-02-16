@@ -1,10 +1,10 @@
 <script>
   import Navbar from "../../Components/Navbar.svelte"
   import SecondSidebar from "../../Components/SecondSidebar.svelte"
-  import PublishHeader from "../PublishDoc/Components/PublishHeader.svelte"
   import Docicon from "../../svgicons/Docicon.svelte"
   import Metadata2 from "./Components/Metadata2.svelte"
   import Metadatajson from "./Components/Metadatajson.svelte"
+  import TemplateHeader from "./Components/TemplateHeader.svelte"
 
   let sections = [
     {
@@ -51,7 +51,7 @@
     <SecondSidebar {sections} title="Templates" />
   </div>
   <div class="relative col-span-9 h-full bg-Analytics-primary flex items-center justify-center">
-    <PublishHeader on:click={() => (activeComponent = Metadatajson)} on:displayform={() => (activeComponent = Metadata2)} />
+    <TemplateHeader on:click={() => (activeComponent = Metadatajson)} on:displayform={() => (activeComponent = Metadata2)} />
 
     <svelte:component this={activeComponent} on:dispatchData={getData} {data} />
 

@@ -238,6 +238,7 @@
 
       <div class="absolute bottom-14 flex w-full">
         <div class="flex w-1/4">
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
           <div class="w-1/2 flex items-center justify-center border-r border-r-Analytics-sidebar py-3 cursor-pointer" on:click={() => changeActiveComponent(3)}>
             <h2>CANCEL</h2>
           </div>
